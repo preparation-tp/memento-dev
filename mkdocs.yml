@@ -1,0 +1,55 @@
+site_name: Memento Dev
+
+nav:
+  - Accueil: index.md
+  - DWWM:
+      - Millésime 2018: dwwm/2018/index.md
+      - Millésime 2023: dwwm/2023/index.md
+  - CDA:
+      - Millésime 2018: cda/2018/index.md
+      - Millésime 2023: cda/2023/index.md
+  - Ressources:
+      - Front-end: ressources/front-end.md
+      - Back-end: ressources/back-end.md
+      - DevOps: ressources/devops.md
+      - Divers: ressources/divers.md
+  - A propos: about.md
+
+extra_css:
+  - extra.css
+
+theme:
+  language: fr
+  icon:
+    admonition:
+      heart: octicons/heart-16
+  name: material
+  favicon: assets/favicon.webp
+  logo: assets/logo.webp
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Passer en mode sombre
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Passer en mode clair
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+copyright: >
+  <p>
+    Créé avec ❤️ par <a href="https://gauthierdaniels.fr/fr" target="_blank" rel="noreferrer noopener">Gauthier Daniels</a>
+  </p>
+
+extra:
+  generator: false
