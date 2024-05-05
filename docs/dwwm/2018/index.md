@@ -8,9 +8,7 @@
 
     Si tu t'es trompé de millésime, n'hésite pas à consulter le [millésime 2023](../2023/index.md) pour te remettre sur les bons rails 🚀
 
-## Sommaire
-
-## Compétences évaluées
+## Informations sur le référentiel
 
 ### Activité type 1
 > Développer la partie front-end d’une application web ou web mobile en intégrant les recommandations de sécurité
@@ -31,3 +29,11 @@
 ### Compétences transverses
 - Utiliser l'anglais dans son activité professionnelle en développement web et web mobile
 - Actualiser et partager ses compétences en développement web et web mobile
+
+### Déroulé de l'examen
+
+2. Présentation d'un projet réalisé en amont de la session : 35 minutes
+3. Entretien technique : 40 minutes
+4. Entretien final : 15 minutes
+
+**Durée totale :** 1 heure et 30 minutes
