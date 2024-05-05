@@ -1,4 +1,4 @@
-# CP 1 - Maquetter une application
+# <abbr title="Compétence Professionnelle">CP</abbr> 1 - Maquetter une application
 > [REAC (03/05/2018), pages 13 et 14](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
 
 ## 🚀 Contexte
@@ -64,7 +64,7 @@ allant de l'ergonomie à l'accessibilité.
 
 ### 👓 Accessibilité
 
-- On évite les couleurs trop proches ou trop peu contrastées _(WCAG)_
+- On évite les couleurs trop proches ou trop peu contrastées _(<abbr title="Web Content Accessibility Guidelines">WCAG</abbr>)_
 - On prévoit des alternatives textuelles pour les images, vidéos et autres médias
 
 !!! info "Contrastes des couleurs"
@@ -74,13 +74,13 @@ allant de l'ergonomie à l'accessibilité.
 
     Tu as également des extensions pour Firefox et Chrome qui te permettent de vérifier les contrastes directement sur ton site :
 
-    - [(Firefox) WCAG Contrast Checker, par Jorge Rumoroso](https://addons.mozilla.org/fr/firefox/addon/wcag-contrast-checker)
-    - [(Chrome) WCAG Color Contrast Checker, par Jorge Rumoroso](https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf)
+    - [_(Firefox)_ <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> Contrast Checker, par Jorge Rumoroso](https://addons.mozilla.org/fr/firefox/addon/wcag-contrast-checker)
+    - [_(Chrome)_ <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> Color Contrast Checker, par Jorge Rumoroso](https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf)
 
 ---
 
 ## 📚 Documentations
-- [Wikipédia - Wireframe (design)](https://fr.wikipedia.org/wiki/Wireframe_(design))
+- [Wikipédia - Wireframe _(design)_](https://fr.wikipedia.org/wiki/Wireframe_(design))
 - [Atlassian - User stories](https://www.atlassian.com/fr/agile/project-management/user-stories)
 
 ## 🛠️ Outils
@@ -94,5 +94,5 @@ allant de l'ergonomie à l'accessibilité.
 
 ---
 
-[➡️ CP 2 - Réaliser une interface utilisateur web statique et adaptable](cp-2-realiser-une-interface-utilisateur-web-statique-et-adaptable.md)  
+[➡️ <abbr title="Compétence Professionnelle">CP</abbr> 2 - Réaliser une interface utilisateur web statique et adaptable](cp-2-realiser-une-interface-utilisateur-web-statique-et-adaptable.md)  
 [🏠 Retour à l'accueil du millésime 2018](index.md)

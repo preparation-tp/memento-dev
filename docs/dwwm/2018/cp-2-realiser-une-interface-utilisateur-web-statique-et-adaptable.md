@@ -1,6 +1,8 @@
 # CP 2 - Réaliser une interface utilisateur web statique et adaptable
 > [REAC (03/05/2018), pages 15 et 16](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
 
+## 🚀 Contexte
+
 Ça y est, on peut enfin démarrer le code ! 🚀  
 À cette étape, on ne parle encore que d'interface statique, c'est-à-dire sans interaction avec l'utilisateur.
 
@@ -73,7 +75,17 @@ Bien sûr, il est préférable que les projets illustrés et présentés durant 
 
     Si tu as le temps, essaye de refaire l'intégralité de la [CP 1](/cp-1-maquetter-une-application.md) pour tous les documents de maquettage, à minima pour les maquettes desktop et mobile que tu présentes lors de ta soutenance _(non, ne refais pas les 3123 pages d'un coup, ça serait un peu trop 😅)_.
 
-## Critères d'évaluation
+## ➕ Informations complémentaires
+
+Au delà du simple terme "responsive design", on parle régulièrement d'une bonne pratique qui est le **mobile first**.  
+Le mobile first consiste à concevoir en priorité l'interface pour les mobiles, puis de l'adapter pour les tablettes et les ordinateurs.
+
+Cet ordre permet de s'assurer que l'interface est bien adaptée pour les mobiles, qui sont les appareils les plus utilisés pour naviguer sur le web. _(Et oui, on est en 2023, les mobiles ont pris le dessus sur les ordinateurs 😉)_
+
+**Anecdote inutile _(donc indispensable)_ :**  
+> Selon [Statista](https://fr.statista.com/infographie/31588/trafic-web-en-france-selon-le-support-utilise-pour-se-connecter-mobile-ordinateur-tablette/#:~:text=Utilisation%20d'Internet&text=Comme%20l'indique%20notre%20graphique,de%203%20%25%20sur%20une%20tablette.), en 2022/2023, 50.7% du trafic web en France était réalisé depuis un mobile, contre 46.7% depuis un ordinateur et 2.6% depuis une tablette.
+
+## 📝 Critères d'évaluation
 !!! abstract "Critères d'évaluation"
     - L'interface est conforme à la maquette de l'application
     - Les bonnes pratiques de structuration sont respectées y compris pour le web mobile
@@ -82,8 +94,10 @@ Bien sûr, il est préférable que les projets illustrés et présentés durant 
     - La démarche de recherche permet de résoudre un problème technique ou de mettre en œuvre une nouvelle fonctionnalité
     - La documentation technique liée aux technologies associées, rédigée en langue anglaise, est comprise (sans contre-sens, ...)
 
-## Aller plus loin _(hors référentiel)_
+## 🤯 Aller plus loin _(hors référentiel)_
 
+Si tu as lu les informations complémentaires de la <abbr title="Compétence Professionnelle">CP</abbr> 1, tu as déjà une idée de ce que je vais te dire ici... 😏  
+Tu te rappelles du terme <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> ?
 
 ---
 
