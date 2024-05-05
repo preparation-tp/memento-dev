@@ -20,6 +20,8 @@ Pour ce qui est du "statique et adaptable", on parle de la capacité de l'interf
 
 Si je te parle de "responsive design", ça te dit quelque chose ?
 
+
+
 ---
 
 ## 📚 Documentations
