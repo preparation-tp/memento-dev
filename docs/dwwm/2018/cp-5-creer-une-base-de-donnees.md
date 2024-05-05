@@ -10,7 +10,8 @@ Comme pour la CP 1, on va avant toute chose parler de la conception, soit : La m
 Et pour modéliser notre base de données, on va se baser sur la méthode [Merise](https://fr.wikipedia.org/wiki/Merise_(informatique)).
 
 Dans cette méthode on retrouvera plusieurs schémas, notamment ces derniers :
-- Le dictionnaire des donnée qui permet de définir les données de chaque entité.
+
+- Le dictionnaire des données qui permet de définir les données de chaque entité.
 - Le MCD (Modèle Conceptuel de Données) qui permet de définir les entités et les relations entre ces entités.
 - Le MLD (Modèle Logique de Données) qui permet de définir les tables et les relations entre ces tables.
 - Le MPD (Modèle Physique de Données) qui permet de définir les tables, les relations, les types de données, les contraintes, etc.
@@ -22,43 +23,53 @@ Toutefois, un super outil pour réaliser tout cette conception existe : [Looping
     Looping est un logiciel qui fonctionne sous Windows.  
     Pour les utilisateurs de Mac ou Linux, il faudra passer par une machine virtuelle ou un émulateur comme [Wine](https://www.winehq.org/).
 
+!!! warning "Conformité des schémas"
+    Même si la base de données peut évoluer au travers du développement, le fait de maintenir à jour les schémas _(tous, sans exception !)_ est primordial.  
+    Votre jury sera très attentif à la conformité de vos schémas, alors ne négligez pas cette partie.
+
+## ➕ Informations complémentaires
+
+Tout comme la <abbr title="Compétence Professionnelle">CP</abbr> 1, on serait tenté de se plonger immédiatement dans le code, mais il est important de bien modéliser sa base de données avant de commencer à coder.
+
+Voici les étapes à suivre pour bien modéliser sa base de données :
+
+1. **Définition des besoins**
+    - Il est important de bien comprendre les besoins du client pour définir les données à stocker.
+2. **Dictionnaire des données**
+    - Il permet de définir les données de chaque entité, avec des types génériques comme "alphanumérique", "alphabétique", "numérique", "date", etc.
+3. **Modèle Conceptuel de Données _(MCD)_**
+    - Il permet de définir les entités et les relations entre ces entités, sans se soucier des contraintes techniques.
+4. **Modèle Logique de Données _(MLD)_**
+    - Il permet de définir les tables et les relations entre ces tables, en prenant en compte les contraintes techniques.
+5. **Modèle Physique de Données _(MPD)_**
+    - Il permet de définir les tables, les relations, les types de données, les contraintes, etc. pour la base de données.
+
+!!! warning "Intentions pour le <abbr title="Modèle Conceptuel de Données">MCD</abbr>"
+    N'oubliez pas que le <abbr title="Modèle Conceptuel de Données">MCD</abbr> est un modèle conceptuel, il ne doit pas contenir de contraintes techniques ni de termes techniques.  
+    Ce dernier est avant tout destiné à être compris par le client.
+
+!!! warning "Liaisons graphiques entre entités/tables"
+    Les liaisons entre les entités/tables au travers de la méthode Merise ne doivent en aucun cas se faire avec la notation "crow's foot" _(pied de corbeau)_.  
+    Cette dernière n'est pas conforme à cette méthode et est davanatge utilisée dans la méthode [UML](https://fr.wikipedia.org/wiki/UML_(informatique)).
+
 ## 📝 Critères d'évaluation
 !!! abstract "Critères d'évaluation"
-    - Les pages web sont conformes à l’expérience utilisateur y compris pour l’expérience mobile
-    - L'architecture de l'application répond aux bonnes pratiques de développement et de sécurisation d'application web
-    - L’application web est optimisée pour les équipements mobiles
+    - La base de données est conforme au schéma physique
+    - Les scripts de création de bases de données et d’insertion des données de test s’exécutent sans erreurs
+    - Les besoins de sécurité du <abbr title="Système de Gestion de Base de Données">SGBD</abbr> sont exprimés selon l’état de l’art et les exigences de sécurité identifiées
     - La démarche de recherche permet de résoudre un problème technique ou de mettre en œuvre une nouvelle fonctionnalité
-    - La veille sur les vulnérabilités connues permet d’identifier des failles potentielles
     - La documentation technique liée aux technologies associées, rédigée en langue anglaise, est comprise (sans contre-sens, ...)
-
-## 🤯 Aller plus loin _(hors référentiel)_
-
-Cette partie concerne principalement les développeuses et développeurs qui ont utilisés des frameworks/bibliothèques
-pour le développement de leur interface utilisateur, comme React, Angular, Vue.js, etc.
-
-Dans la plupart des cas, ces outils permettent de créer la partie front-end de manière dynamique, mais sans aucune gestion de la partie back-end.  
-Peut-être que vous me voyez venir... 😏
-
-Comme la partie référencement est essentielle sur un site web et sur ce titre professionnel,
-il est important de bien comprendre comment fonctionne le référencement sur une application web dynamique qui ne gère pas le back-end.  
-Le contenu généré par Javascript _(côté navigateur)_ n'est pas indexé par les moteurs de recherche, ce qui implique que le référencement naturel est impacté.
-
-Pour contre-balancer cet aspect, il est possible de mettre en place des solutions comme le [Server Side Rendering _(SSR)_](https://openclassrooms.com/fr/courses/5922626-optimisez-le-referencement-de-votre-site-seo-en-ameliorant-ses-performances-techniques/6055261-decidez-entre-client-side-et-server-side-rendering) ou le [Static Site Generation _(SSG)_](https://www.cloudflare.com/fr-fr/learning/performance/static-site-generator/) pour générer le contenu côté serveur et le rendre accessible aux moteurs de recherche.
-
-Pour React, l'une des solutions les plus connue reste [Next.js](https://nextjs.org/), qui permet de gérer le rendu côté serveur et de générer des pages statiques.  
-On retrouve d'ailleurs une solution similaire pour Vue.js avec [Nuxt.js](https://nuxtjs.org/).
-
-Bien que ces solutions soient très intéressantes, je conseille régulièrement de regarder [Vike](https://vike.dev/)
-qui permet aux applications React, Vue, Svelte, Preact, Solid et Angular de palier à ce problème de référencement _(et bien plus encore)_.
 
 ---
 
 ## 📚 Documentations
-- [MDN - Responsive Design](https://developer.mozilla.org/fr/docs/Learn/CSS/CSS_layout/Responsive_Design)
-- [MDN - Media Queries](https://developer.mozilla.org/fr/docs/Web/CSS/Media_Queries/Using_media_queries)
+- [Éditions ENI - Merise - Guide pratique (3e édition), par Jean-Luc Baptiste](https://www.editions-eni.fr/livre/merise-guide-pratique-3e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-9782409015342)
+
+## 🛠 Outils
+- [Looping](https://www.looping.fr/)
 
 ---
 
-[⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 2 - Réaliser une interface utilisateur web statique et adaptable](cp-2-realiser-une-interface-utilisateur-web-statique-et-adaptable.md)  
-[➡️ <abbr title="Compétence Professionnelle">CP</abbr> 4 - Réaliser une interface utilisateur avec une solution de gestion de contenu ou e-commerce](cp-4-realiser-une-interface-utilisateur-avec-une-solution-de-gestion-de-contenu-ou-e-commerce.md)  
+[⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 4 - Réaliser une interface avec une solution de gestion de contenu ou e-commerce](cp-4-realiser-une-interface-utilisateur-avec-une-solution-de-gestion-de-contenu-ou-e-commerce.md)  
+[➡️ <abbr title="Compétence Professionnelle">CP</abbr> 6 - Développer les composants d'accès aux données](cp-6-developper-les-composants-d-acces-aux-donnees.md)  
 [🏠 Retour à l'accueil du millésime 2018](index.md)
