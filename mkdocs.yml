@@ -5,15 +5,12 @@ nav:
   - DWWM:
       - Millésime 2018: dwwm/2018/index.md
       - Millésime 2023: dwwm/2023/index.md
-  - CDA:
-      - Millésime 2018: cda/2018/index.md
-      - Millésime 2023: cda/2023/index.md
   - Ressources:
       - Front-end: ressources/front-end.md
       - Back-end: ressources/back-end.md
       - DevOps: ressources/devops.md
       - Divers: ressources/divers.md
-  - A propos: about.md
+  - A propos: a-propos.md
 
 extra_css:
   - extra.css

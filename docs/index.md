@@ -2,8 +2,7 @@
 
 !!! heart "Bienvenue !"
 
-Le guide de préparation aux titres professionnels <abbr title="Développeur Web et Web Mobile">DWWM</abbr>
-et <abbr title="Concepteur Développeur d'Applications"> CDA</abbr> qui te veut du bien !
+Le guide de préparation aux titres professionnels <abbr title="Développeur Web et Web Mobile">DWWM</abbr> qui te veut du bien !
 
 ## Préambule
 
@@ -34,7 +33,3 @@ et te préparer au mieux pour ton passage ! 💪
     -   [Millésime 2018](dwwm/2018/index.md)
 -   ⏳ <strong>Référentiel actuel</strong> <small>(du 01/09/2023 au 31/08/2028)</small> :
     -   [Millésime 2023](dwwm/2023/index.md)
-
-### CDA
-
-🚧 En cours de rédaction 🚧
