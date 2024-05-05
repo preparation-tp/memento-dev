@@ -100,6 +100,6 @@ Bien entendu, lorsque l'utilisateur souhaite supprimer définitivement ses donn�
 
 ---
 
-[⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 4 - Réaliser une interface avec une solution de gestion de contenu ou e-commerce](cp-4-realiser-une-interface-utilisateur-avec-une-solution-de-gestion-de-contenu-ou-e-commerce.md)  
-[➡️ <abbr title="Compétence Professionnelle">CP</abbr> 6 - Développer les composants d'accès aux données](cp-6-developper-les-composants-d-acces-aux-donnees.md)  
+[⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 5 - Créer une base de données](cp-5-creer-une-base-de-donnees.md)  
+[➡️ <abbr title="Compétence Professionnelle">CP</abbr> 7 - Développer la partie back-end d'une application web ou web mobile](cp-7-developper-la-partie-back-end-d-une-application-web-ou-web-mobile.md)  
 [🏠 Retour à l'accueil du millésime 2018](index.md)
