@@ -92,14 +92,6 @@ Bien entendu, lorsque l'utilisateur souhaite supprimer définitivement ses donn�
 
 ---
 
-## 📚 Documentations
-- [Éditions ENI - Merise - Guide pratique (3e édition), par Jean-Luc Baptiste](https://www.editions-eni.fr/livre/merise-guide-pratique-3e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-9782409015342)
-
-## 🛠 Outils
-- [Looping](https://www.looping.fr/)
-
----
-
 [⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 5 - Créer une base de données](cp-5-creer-une-base-de-donnees.md)  
 [➡️ <abbr title="Compétence Professionnelle">CP</abbr> 7 - Développer la partie back-end d'une application web ou web mobile](cp-7-developper-la-partie-back-end-d-une-application-web-ou-web-mobile.md)  
 [🏠 Retour à l'accueil du millésime 2018](index.md)
