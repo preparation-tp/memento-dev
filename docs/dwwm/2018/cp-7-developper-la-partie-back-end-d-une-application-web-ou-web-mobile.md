@@ -22,7 +22,7 @@ Concrètement, voici ce qu’il faut couvrir :
     - Le code source des composants est documenté ou auto-documenté
     - La démarche de recherche permet de résoudre un problème technique ou de mettre en œuvre une nouvelle fonctionnalité
     - La veille sur les vulnérabilités connues permet d’identifier des failles potentielles
-    - La documentation technique liée aux technologies associées, rédigée en langue anglaise, est comprise (sans contre-sens,...)
+    - La documentation technique liée aux technologies associées, rédigée en langue anglaise, est comprise (sans contre-sens, ...)
 
 ---
 
