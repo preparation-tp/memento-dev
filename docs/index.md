@@ -29,7 +29,7 @@ et te préparer au mieux pour ton passage ! 💪
 
 ### DWWM
 
--   ⌛ <strong>Ancien référentiel</strong> <small>(du 01/09/2018 au 01/09/2023)</small> :
-    -   [Millésime 2018](dwwm/2018/index.md)
 -   ⏳ <strong>Référentiel actuel</strong> <small>(du 01/09/2023 au 31/08/2028)</small> :
     -   [Millésime 2023](dwwm/2023/index.md)
+-   ⌛ <strong>Ancien référentiel</strong> <small>(du 01/09/2018 au 01/09/2023)</small> :
+    -   [Millésime 2018](dwwm/2018/index.md)

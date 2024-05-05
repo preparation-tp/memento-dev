@@ -3,8 +3,17 @@ site_name: Memento Dev
 nav:
   - Accueil: index.md
   - DWWM:
-      - Millésime 2018: dwwm/2018/index.md
       - Millésime 2023: dwwm/2023/index.md
+      - Millésime 2018:
+          - Sommaire: dwwm/2018/index.md
+          - CP 1: dwwm/2018/cp-1-maquetter-une-application.md
+          - CP 2: dwwm/2018/cp-2-realiser-une-interface-utilisateur-web-statique-et-adaptable.md
+          - CP 3: dwwm/2018/cp-3-developper-une-interface-utilisateur-web-dynamique.md
+          - CP 4: dwwm/2018/cp-4-realiser-une-interface-utilisateur-avec-une-solution-de-gestion-de-contenu-ou-e-commerce.md
+          - CP 5: dwwm/2018/cp-5-creer-une-base-de-donnees.md
+          - CP 6: dwwm/2018/cp-6-developper-les-composants-d-acces-aux-donnees.md
+          - CP 7: dwwm/2018/cp-7-developper-la-partie-back-end-d-une-application-web-ou-web-mobile.md
+          - CP 8: dwwm/2018/cp-8-elaborer-et-mettre-en-oeuvre-des-composants-dans-une-application-de-gestion-de-contenu-ou-e-commerce.md
   - Ressources:
       - Front-end: ressources/front-end.md
       - Back-end: ressources/back-end.md

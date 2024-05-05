@@ -1,6 +1,6 @@
 # Titre professionnel DWWM (2023)
 
-!!! wip "En cours de rédaction"
+!!! warning "En cours de rédaction"
     Cette page et les pages associées sont en cours de rédaction.  
     Le contenu actuellement présent est susceptible de changer.
 
