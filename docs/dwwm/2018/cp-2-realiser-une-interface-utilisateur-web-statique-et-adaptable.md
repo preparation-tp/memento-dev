@@ -1,4 +1,4 @@
-# CP 2 - Réaliser une interface utilisateur web statique et adaptable
+# <abbr title="Compétence Professionnelle">CP</abbr> 2 - Réaliser une interface utilisateur web statique et adaptable
 > [REAC (03/05/2018), pages 15 et 16](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
 
 ## 🚀 Contexte
@@ -32,9 +32,9 @@ L'idée va être de faire en sorte que l'interface s'adapte à la taille de l'é
     Il est important de comprendre comment ils fonctionnent pour ne pas se retrouver bloqué si un problème survient ou si demain,
     tu dois travailler sur un projet qui n'utilise pas de framework.
 
-Allez, c’est presque terminé pour cette CP, accroche-toi ! 🫠
+Allez, c’est presque terminé pour cette <abbr title="Compétence Professionnelle">CP</abbr>, accroche-toi ! 🫠
 
-Si on résume ce que tu as actuellement sous la main avec cette CP, tu as déjà fait :
+Si on résume ce que tu as actuellement sous la main avec cette <abbr title="Compétence Professionnelle">CP</abbr>, tu as déjà fait :
 
 - Une structure de page en HTML _(ou JSX si tu utilises React par exemple)_
 - Une mise en forme de cette structure en CSS
@@ -73,7 +73,7 @@ Bien sûr, il est préférable que les projets illustrés et présentés durant 
 
     Si tu as des différences, il est préférable de les expliquer lors de ta soutenance pour montrer que tu as conscience de ces différences et que tu comprends l'enjeu de la cohérence entre la maquette et l'intégration.
 
-    Si tu as le temps, essaye de refaire l'intégralité de la [CP 1](/cp-1-maquetter-une-application.md) pour tous les documents de maquettage, à minima pour les maquettes desktop et mobile que tu présentes lors de ta soutenance _(non, ne refais pas les 3123 pages d'un coup, ça serait un peu trop 😅)_.
+    Si tu as le temps, essaye de refaire l'intégralité de la [<abbr title="Compétence Professionnelle">CP</abbr> 1](/cp-1-maquetter-une-application.md) pour tous les documents de maquettage, à minima pour les maquettes desktop et mobile que tu présentes lors de ta soutenance _(non, ne refais pas les 3123 pages d'un coup, ça serait un peu trop 😅)_.
 
 ## ➕ Informations complémentaires
 
@@ -99,6 +99,8 @@ Cet ordre permet de s'assurer que l'interface est bien adaptée pour les mobiles
 Si tu as lu les informations complémentaires de la <abbr title="Compétence Professionnelle">CP</abbr> 1, tu as déjà une idée de ce que je vais te dire ici... 😏  
 Tu te rappelles du terme <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> ?
 
+Si ce n'est pas le cas, je t'invite à consulter la section ["Aller plus loin" de la <abbr title="Compétence Professionnelle">CP</abbr> 1 pour en savoir plus sur l'accessibilité web.](cp-1-maquetter-une-application.md#aller-plus-loin-hors-referentiel)
+
 ---
 
 ## 📚 Documentations
@@ -107,6 +109,6 @@ Tu te rappelles du terme <abbr title="Web Content Accessibility Guidelines">WCAG
 
 ---
 
-[⬅️ CP 1 - Maquetter une application](cp-1-maquetter-une-application.md)  
-[➡️ CP 3 - Développer une interface utilisateur web dynamique](cp-3-developper-une-interface-utilisateur-web-dynamique.md)  
+[⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 1 - Maquetter une application](cp-1-maquetter-une-application.md)  
+[➡️ <abbr title="Compétence Professionnelle">CP</abbr> 3 - Développer une interface utilisateur web dynamique](cp-3-developper-une-interface-utilisateur-web-dynamique.md)  
 [🏠 Retour à l'accueil du millésime 2018](index.md)
