@@ -65,7 +65,7 @@ On est d'accord : cette <abbr title="Compétence Professionnelle">CP</abbr> est 
 
 ## 🤯 Aller plus loin _(hors référentiel)_
 
-### 🛡 Sécurisation des données
+### 🛡️ Sécurisation des données
 
 J'imagine que dans ton application tu as des données sensibles, comme des informations personnelles ou encore des mots de passe.  
 En ce qui concerne les mots de passe, il est essentiel que ces derniers soient stockés de manière sécurisée, c'est-à-dire **hashés**.  

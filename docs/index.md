@@ -2,7 +2,7 @@
 
 !!! heart "Bienvenue !"
 
-Le guide de préparation aux titres professionnels <abbr title="Développeur Web et Web Mobile">DWWM</abbr> qui te veut du bien !
+Le guide de préparation au titre professionnel <abbr title="Développeur Web et Web Mobile">DWWM</abbr> qui te veut du bien !
 
 ## Préambule
 
@@ -29,7 +29,7 @@ et te préparer au mieux pour ton passage ! 💪
 
 ### DWWM
 
--   ⏳ <strong>Référentiel actuel</strong> <small>(du 01/09/2023 au 31/08/2028)</small> :
+-   ⏳ **Référentiel actuel** _(du 01/09/2023 au 31/08/2028)_ :
     -   [Millésime 2023](dwwm/2023/index.md)
--   ⌛ <strong>Ancien référentiel</strong> <small>(du 01/09/2018 au 01/09/2023)</small> :
+-   ⌛ **Ancien référentiel** _(du 01/09/2018 au 01/09/2023)_ :
     -   [Millésime 2018](dwwm/2018/index.md)

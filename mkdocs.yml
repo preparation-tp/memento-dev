@@ -19,6 +19,7 @@ nav:
       - Back-end: ressources/back-end/index.md
       - DevOps: ressources/devops/index.md
       - Divers: ressources/divers/index.md
+  - Glossaire: glossaire.md
   - A propos: a-propos.md
 
 extra_css:
@@ -26,7 +27,10 @@ extra_css:
 
 theme:
   language: fr
+  features:
+    - content.action.view
   icon:
+    repo: fontawesome/brands/github
     admonition:
       heart: octicons/heart-16
   name: material
@@ -52,6 +56,10 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
 
+repo_url: https://github.com/gauthierwebdev/memento-dev
+repo_name: gauthierwebdev/memento-dev
+edit_uri: edit/main/docs/
+
 copyright: >
   <p>
     Créé avec ❤️ par <a href="https://gauthierdaniels.fr/fr" target="_blank" rel="noreferrer noopener">Gauthier Daniels</a>
@@ -59,3 +67,9 @@ copyright: >
 
 extra:
   generator: false
+
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      locale: fr
