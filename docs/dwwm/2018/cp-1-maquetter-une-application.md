@@ -1,5 +1,5 @@
 # _(<abbr title="Développeur Web et Web Mobile">DWWM</abbr> 2018)_ <abbr title="Compétence Professionnelle">CP</abbr> 1 - Maquetter une application
-> [REAC _(03/05/2018), pages 13 et 14](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
+> [REAC _(03/05/2018)_, pages 13 et 14](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
 
 ## 🚀 Contexte
 

@@ -1,5 +1,5 @@
 # _(<abbr title="Développeur Web et Web Mobile">DWWM</abbr> 2018)_ <abbr title="Compétence Professionnelle">CP</abbr> 8 - Élaborer et mettre en œuvre des composants dans une application de gestion de contenu ou e-commerce
-> [REAC _(03/05/2018), pages 27 et 28](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
+> [REAC _(03/05/2018)_, pages 27 et 28](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
 
 ## 🚀 Contexte
 

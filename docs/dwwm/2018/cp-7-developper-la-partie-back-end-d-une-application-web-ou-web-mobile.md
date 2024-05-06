@@ -1,5 +1,5 @@
 # _(<abbr title="Développeur Web et Web Mobile">DWWM</abbr> 2018)_ <abbr title="Compétence Professionnelle">CP</abbr> 7 - Développer la partie back-end d’une application web ou web mobile
-> [REAC _(03/05/2018), pages 25 et 26](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
+> [REAC _(03/05/2018)_, pages 25 et 26](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m03&type=t)
 
 ## 🚀 Contexte
 
