@@ -5,19 +5,19 @@
 
 Maintenant que tu connais la structure de ta base de données et qu’elle est créée, il va falloir expliquer comment ton application pourra accéder aux données stockées.
 
-En PHP, tu connais certainement PDO, mais tu as peut-être également utilisé un ORM comme Eloquent ou encore Doctrine.  
-Pour NodeJS, tu as peut-être utilisé les pilotes [mysql](https://www.npmjs.com/package/mysql), [pg](https://www.npmjs.com/package/pg) ou [sqlite](https://www.npmjs.com/package/sqlite) pour accéder à ta base de données ou encore un ORM comme [Prisma](https://www.npmjs.com/package/prisma) ou [Sequelize](https://www.npmjs.com/package/sequelize).
+En PHP, tu connais certainement `PDO`, mais tu as peut-être également utilisé un <abbr title="Object-Relational Mapping">ORM</abbr> comme [Eloquent](https://laravel.com/docs/11.x/eloquent) ou encore [Doctrine](https://symfony.com/doc/current/doctrine.html).  
+Pour NodeJS, tu as peut-être utilisé les pilotes [mysql](https://www.npmjs.com/package/mysql), [pg](https://www.npmjs.com/package/pg) ou [sqlite](https://www.npmjs.com/package/sqlite) pour accéder à ta base de données ou encore un <abbr title="Object-Relational Mapping">ORM</abbr> comme [Prisma](https://www.npmjs.com/package/prisma) ou [Sequelize](https://www.npmjs.com/package/sequelize).
 
 L’idée ici est d’expliquer comment le back va se connecter à la base de données **ET** comment le back est structuré pour accéder aux données.
 
 Tu vas donc avoir très certainement avoir besoin de parler des services et des modèles qui permettent d’accéder aux données et de les altérer.
 
 Comme cette <abbr title="Compétence Professionnelle">CP</abbr> _(et les suivantes)_ parlent de sécurité,
-c’est l’occasion de parler de ton fichier .env et du .gitignore afin de ne pas avoir de fichiers sensibles dans le repo de ton projet,
+c’est l’occasion de parler de ton fichier `.env` et du `.gitignore` afin de ne pas avoir de fichiers sensibles dans le repository de ton projet,
 dont les informations de connexion à la base de données.
 
-!!! warning "Utilisation d'ORM/query builder"
-    Si tu utilises un ORM ou un query builder, il est important de bien expliquer comment tu l'as configuré et comment tu l'utilises.  
+!!! warning "Utilisation d'<abbr title="Object-Relational Mapping">ORM</abbr>/query builder"
+    Si tu utilises un <abbr title="Object-Relational Mapping">ORM</abbr> ou un query builder, il est important de bien expliquer comment tu l'as configuré et comment tu l'utilises.  
     En plus d'expliquer comment cet outil a été paramétré, tu dois être en mesure d'expliquer la construction SQL générée par cet outil.
 
     Par exemple avec Prisma :
