@@ -15,10 +15,10 @@ nav:
           - CP 7: dwwm/2018/cp-7-developper-la-partie-back-end-d-une-application-web-ou-web-mobile.md
           - CP 8: dwwm/2018/cp-8-elaborer-et-mettre-en-oeuvre-des-composants-dans-une-application-de-gestion-de-contenu-ou-e-commerce.md
   - Ressources:
-      - Front-end: ressources/front-end.md
-      - Back-end: ressources/back-end.md
-      - DevOps: ressources/devops.md
-      - Divers: ressources/divers.md
+      - Front-end: ressources/front-end/index.md
+      - Back-end: ressources/back-end/index.md
+      - DevOps: ressources/devops/index.md
+      - Divers: ressources/divers/index.md
   - A propos: a-propos.md
 
 extra_css:
