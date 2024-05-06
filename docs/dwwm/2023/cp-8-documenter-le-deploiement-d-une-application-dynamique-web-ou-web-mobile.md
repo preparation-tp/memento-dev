@@ -1,5 +1,5 @@
 # _(<abbr title="Développeur Web et Web Mobile">DWWM</abbr> 2023)_ <abbr title="Compétence Professionnelle">CP</abbr> 8 - Documenter le déploiement d’une application dynamique web ou web mobile
-> [REAC _(24/05/2023)_, page 29](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
+> [REAC _(24/05/2023)_, page 29](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)  
 > [RE _(24/05/2023)_, page 12](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
 
 ## 🚀 Contexte
