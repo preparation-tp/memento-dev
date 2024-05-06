@@ -73,7 +73,7 @@ Bien sûr, il est préférable que les projets illustrés et présentés durant 
 
     Si tu as des différences, il est préférable de les expliquer lors de ta soutenance pour montrer que tu as conscience de ces différences et que tu comprends l'enjeu de la cohérence entre la maquette et l'intégration.
 
-    Si tu as le temps, essaye de refaire l'intégralité de la [<abbr title="Compétence Professionnelle">CP</abbr> 1](/cp-1-maquetter-une-application.md) pour tous les documents de maquettage, à minima pour les maquettes desktop et mobile que tu présentes lors de ta soutenance _(non, ne refais pas les 3123 pages d'un coup, ça serait un peu trop 😅)_.
+    Si tu as le temps, essaye de refaire l'intégralité de la [<abbr title="Compétence Professionnelle">CP</abbr> 1](cp-1-maquetter-une-application.md) pour tous les documents de maquettage, à minima pour les maquettes desktop et mobile que tu présentes lors de ta soutenance _(non, ne refais pas les 3123 pages d'un coup, ça serait un peu trop 😅)_.
 
 ## ➕ Informations complémentaires
 
