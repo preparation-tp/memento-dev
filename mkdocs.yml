@@ -5,6 +5,14 @@ nav:
   - DWWM:
       - Millésime 2023:
           - dwwm/2023/index.md
+          - CP 1: dwwm/2023/cp-1-installer-et-configurer-son-environnement-de-travail-en-fonction-du-projet-web-ou-web-mobile.md
+          - CP 2: dwwm/2023/cp-2-maquetter-des-interfaces-utilisateur-web-ou-web-mobile.md
+          - CP 3: dwwm/2023/cp-3-realiser-des-interfaces-statiques-web-ou-web-mobile.md
+          - CP 4: dwwm/2023/cp-4-developper-la-partie-dynamique-des-interfaces-utilisateur-web-ou-web-mobile.md
+          - CP 5: dwwm/2023/cp-5-mettre-en-place-une-base-de-donnees-relationnelle.md
+          - CP 6: dwwm/2023/cp-6-developper-des-composants-d-acces-aux-donnees-sql-et-nosql.md
+          - CP 7: dwwm/2023/cp-7-developper-des-composants-metier-cote-serveur.md
+          - CP 8: dwwm/2023/cp-8-documenter-le-deploiement-d-une-application-dynamique-web-ou-web-mobile.md
       - Millésime 2018:
           - dwwm/2018/index.md
           - CP 1: dwwm/2018/cp-1-maquetter-une-application.md
