@@ -40,7 +40,7 @@ Alors voici un condensé des points les plus importants à respecter :
 - **Contraste** : Assure-toi que le texte est lisible sur n'importe quel fond. Il faut viser un score AA au minimum et idéalement AAA sur nos éléments textuels et pour l'iconographie.
 - **Taille de police** : La taille de police doit être suffisamment grande pour être lisible par tout le monde. En général, on recommande une taille de 16px minimum.
 - **Choix de la police** : Utilise des polices lisibles et évite les polices fantaisistes. Si tu cherches une police légère, gratuite et réputée pour être lisible, tu peux te tourner vers la police [Luciole](https://luciole-vision.com/) !
-- **Descriptions des liens et boutons** : Les liens et boutons doivent être clairs et explicites. Évite les "Cliquez ici" et préfère des phrases plus descriptives. Évite également d'uniquer mettre un pictogramme pour un lien, car cela peut ne pas être compris par tout le monde.
+- **Intitulés des liens et boutons** : Les liens et boutons doivent être clairs et explicites. Évite les "Cliquez ici" et préfère des phrases plus descriptives. Évite également d'uniquer mettre un pictogramme pour un lien, car cela peut ne pas être compris par tout le monde.
 
 Bien entendu, l'accessibilité ne se limite pas à ces points, mais c'est un bon début pour rendre ton site accessible à tous.  
 J'y reviendrai plus en détail dans la compétence suivante, puisqu'on parlera de l'intégration de ces maquettes 😉
@@ -51,6 +51,7 @@ L'éco-conception, c'est l'art de concevoir un site web de manière à réduire 
 De manière générale : moins il y a de requêtes, moins il y a de données à charger, et donc moins d'énergie consommée.
 
 ## ➕ Informations complémentaires
+
 Il est probable que ton client t'impose une charte graphique à respecter et que cette dernière ne soit pas forcément accessible, ergonomique ou éco-conçue.  
 C'est à toi en tant que développeur d'expliquer à ton client les enjeux que ça représente pour son site web.
 
@@ -58,6 +59,7 @@ Il aura dans tous les cas le dernier mot, mais il est important de l'informer de
 S'il ne veut pas améliorer prendre en compte ces informations, tu pourras toujours lui proposer de le faire évoluer par la suite, une fois le site en ligne _(mais attention, cela peut coûter cher pour rattraper les différents défauts)_.
 
 ## 📝 Critères d'évaluation
+
 !!! abstract "Critères d'évaluation"
     - Les maquettes sont réalisées conformément au dossier de conception, en langue française ou anglaise _(niveau B1 du CECRL pour l’anglais)_
     - La charte graphique de l’entreprise est respectée
@@ -67,6 +69,7 @@ S'il ne veut pas améliorer prendre en compte ces informations, tu pourras toujo
     - La législation en vigueur est respectée, y compris celle relative à l’accessibilité
 
 ## 🤯 Aller plus loin _(hors référentiel)_
+
 Tu trouves que je n'ai pas assez parlé dans cette compétence ? Déjà, tu m'en vois surpris, mais je vais te donner quelques pistes pour aller plus loin !
 
 Je vais parler un peu plus en détail de l'éco-conception, tant il s'agit d'un sujet très important et souvent négligé.  
@@ -85,10 +88,12 @@ En effet, un site éco-conçu, c'est un site qui se charge plus vite et qui sera
 ---
 
 ## 📚 Documentations
+
 - [Wikipédia - Wireframe _(design)_](https://fr.wikipedia.org/wiki/Wireframe_(design))
 - [Atlassian - User stories](https://www.atlassian.com/fr/agile/project-management/user-stories)
 
 ## 🛠️ Outils
+
 - [Figma - Outil de création de design](https://www.figma.com/fr-fr/)
 - [Adobe XD - Outil de design et de prototypage](https://www.adobe.com/fr/products/xd.html)
 - [Sketch - Outil de design](https://www.sketch.com/)

@@ -33,6 +33,7 @@ Si tu fais un projet Laravel et React, nul besoin d'expliquer comment installer 
     Étant donné que chaque version corrige probablement diverses failles de sécurité et/ou ajoute des fonctionnalités, c'est un bon moment pour montrer que tu prends la veille technologique au sérieux.
 
 ## 📝 Critères d'évaluation
+
 !!! abstract "Critères d'évaluation"
     - Les outils de développement nécessaires sont installés et configurés
     - Les outils de gestion des versions et de collaboration sont installés
