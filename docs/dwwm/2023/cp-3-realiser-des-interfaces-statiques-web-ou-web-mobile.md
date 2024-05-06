@@ -1,6 +1,6 @@
 # _(<abbr title="Développeur Web et Web Mobile">DWWM</abbr> 2023)_ <abbr title="Compétence Professionnelle">CP</abbr> 3 - Réaliser des interfaces utilisateur statiques web ou web mobile
-> [REAC (24/05/2023), pages 19 et 20](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
-> [RE (24/05/2023), page 10](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
+> [REAC _(24/05/2023)_, pages 19 et 20](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
+> [RE _(24/05/2023)_, page 10](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
 
 ## 🚀 Contexte
 

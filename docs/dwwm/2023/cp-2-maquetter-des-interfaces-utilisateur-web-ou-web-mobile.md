@@ -1,6 +1,6 @@
 # _(<abbr title="Développeur Web et Web Mobile">DWWM</abbr> 2023)_ <abbr title="Compétence Professionnelle">CP</abbr> 2 - Installer et configurer son environnement de travail en fonction du projet web ou web mobile
-> [REAC (24/05/2023), pages 17 et 18](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
-> [RE (24/05/2023), page 9](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
+> [REAC __(24/05/2023)__, pages 17 et 18](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
+> [RE __(24/05/2023)__, page 9](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
 
 ## 🚀 Contexte
 
@@ -8,7 +8,7 @@
 
 ## 📝 Critères d'évaluation
 !!! abstract "Critères d'évaluation"
-    - Les maquettes sont réalisées conformément au dossier de conception, en langue française ou anglaise (niveau B1 du CECRL pour l’anglais)
+    - Les maquettes sont réalisées conformément au dossier de conception, en langue française ou anglaise _(niveau B1 du CECRL pour l’anglais)_
     - La charte graphique de l’entreprise est respectée
     - Les exigences de sécurisation sont respectées
     - Les maquettes tiennent compte de l’expérience utilisateur, y compris pour les personnes en situation de handicap et du type d’utilisation, y compris pour les équipements mobiles
