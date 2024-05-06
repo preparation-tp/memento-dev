@@ -3,9 +3,10 @@ site_name: Memento Dev
 nav:
   - Accueil: index.md
   - DWWM:
-      - Millésime 2023: dwwm/2023/index.md
+      - Millésime 2023:
+          - dwwm/2023/index.md
       - Millésime 2018:
-          - Sommaire: dwwm/2018/index.md
+          - dwwm/2018/index.md
           - CP 1: dwwm/2018/cp-1-maquetter-une-application.md
           - CP 2: dwwm/2018/cp-2-realiser-une-interface-utilisateur-web-statique-et-adaptable.md
           - CP 3: dwwm/2018/cp-3-developper-une-interface-utilisateur-web-dynamique.md
@@ -25,10 +26,20 @@ nav:
 extra_css:
   - extra.css
 
+site_url: http://localhost:8000
+
 theme:
   language: fr
   features:
     - content.action.view
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - toc.integrate
+    - navigation.top
   icon:
     repo: fontawesome/brands/github
     admonition:

@@ -1,4 +1,4 @@
-# Titre professionnel DWWM (2018)
+# Titre professionnel DWWM _(2018)_
 
 !!! warning "Ancien millésime"
     Attention, on parle d'un référentiel qui n'est plus d'actualité ! 🚨
