@@ -96,6 +96,8 @@ En effet, un site éco-conçu, c'est un site qui se charge plus vite et qui sera
 - [WebAim Contrast Checker](https://webaim.org/resources/contrastchecker/)
 - [Contrast Checker](https://contrastchecker.com/)
 - [Coolors - Contrast Checker](https://coolors.co/contrast-checker/112a46-acc8e5)
+- [Luciole - Police de caractères](https://luciole-vision.com/)
+- [Éco-index - Testeur d'éco-conception](https://www.ecoindex.fr/)
 
 ---
 
