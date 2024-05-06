@@ -1,5 +1,5 @@
 # _(<abbr title="Développeur Web et Web Mobile">DWWM</abbr> 2023)_ <abbr title="Compétence Professionnelle">CP</abbr> 2 - Installer et configurer son environnement de travail en fonction du projet web ou web mobile
-> [REAC (24/05/2023), pages 15 et 16](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
+> [REAC (24/05/2023), pages 17 et 18](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
 > [RE (24/05/2023), page 9](https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?ct=01280m04&type=t)
 
 ## 🚀 Contexte
