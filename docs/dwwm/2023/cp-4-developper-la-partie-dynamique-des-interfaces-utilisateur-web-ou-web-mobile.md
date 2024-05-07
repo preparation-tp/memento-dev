@@ -191,6 +191,7 @@ Mais on peut améliorer notre page en mettant en place une légère interaction 
 - [Wikipédia - API](https://fr.wikipedia.org/wiki/Interface_de_programmation)
 
 ## 🛠️ Outils
+
 - [Vike - Framework front-end pour un rendu côté serveur et côté client](https://vike.dev/)
 - [Next.js - Framework pour React avec rendu côté serveur](https://nextjs.org/)
 - [Nuxt.js - Framework pour Vue.js avec rendu côté serveur](https://nuxtjs.org/)
