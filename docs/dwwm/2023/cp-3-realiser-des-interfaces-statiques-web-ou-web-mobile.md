@@ -100,17 +100,16 @@ On va évidemment utiliser une balise `<img>`, mais on va également utiliser de
 En tant que juré, j'ai souvent vu des projets qui exploitent un script JS pour faire du lazy loading, mais il existe un attribut HTML qui permet de faire ça très simplement : `loading="lazy"`.  
 De cette manière, nos images ne seront chargées que si elles sont visibles à l'écran, ce qui permet de réduire la consommation de bande passante et donc l'impact environnemental.
 
-Un exemple concret de tout ce qu'on vient de voir ?
-    
-```html 
-<img
-    src="clairiere.jpg"
-    srcset="clairiere-480w.webp 480w, clairiere-800w.webp 800w"
-    sizes="(max-width: 600px) 480px, 800px"
-    alt="Une clairière verdoyante"
-    loading="lazy"
->
-```
+??? example "Voici un exemple concret de ce qu'on vient de voir"
+    ```html 
+    <img
+        src="clairiere.jpg"
+        srcset="clairiere-480w.webp 480w, clairiere-800w.webp 800w"
+        sizes="(max-width: 600px) 480px, 800px"
+        alt="Une clairière verdoyante"
+        loading="lazy"
+    >
+    ```
 
 Allez, arrêtons-nous là pour l'éco-conception !
 
@@ -144,21 +143,22 @@ Tu peux très bien faire la redirection sur le même serveur, c'est d'ailleurs c
 
 Prenons un exemple concret, le cas d'une application qui tourne sur le port 3000, mais que l'on souhaite rendre accessible sur le port 80.
 
-Avec Nginx, on peut faire ça très simplement en créant un fichier de configuration dans `/etc/nginx/sites-available/` :
+Avec Nginx, on peut faire ça très simplement en créant un fichier de configuration dans `/etc/nginx/sites-available/`.
 
-```nginx
-server {
-    listen 80;
-    listen [::]:80;
-    server_name monsite.fr;
+??? example "Exemple de configuration d'un reverse proxy Nginx"
+    ```nginx
+    server {
+        listen 80;
+        listen [::]:80;
+        server_name monsite.fr;
 
-    location / {
-        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for ; # On transmet l'adresse IP du client
-        proxy_set_header    Host $host; # On transmet le nom de domaine
-        proxy_pass          http://localhost:3000; # On redirige les requêtes vers le port 3000, où tourne notre application
+        location / {
+            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for ; # On transmet l'adresse IP du client
+            proxy_set_header    Host $host; # On transmet le nom de domaine
+            proxy_pass          http://localhost:3000; # On redirige les requêtes vers le port 3000, où tourne notre application
+        }
     }
-}
-```
+    ```
 
 ... Tadaaa ! C'est tout !  
 Bien entendu, il va falloir activer ce site avec un lien symbolique dans `/etc/nginx/sites-enabled/` et redémarrer Nginx pour que les changements soient pris en compte.  
