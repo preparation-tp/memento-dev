@@ -13,7 +13,7 @@
   mask-image: var(--md-admonition-icon--heart);
 }
 
-.giphy {
+.giphy-embed {
   display: block;
   margin: 0 auto;
   pointer-events: none;

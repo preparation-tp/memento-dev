@@ -13,7 +13,7 @@ Eh bien c'est reparti pour un tour, car maintenant tu vas devoir réaliser les i
 Pour réaliser ces interfaces, tu vas devoir respecter les maquettes que tu as réalisées précédemment, tout en prenant en compte les besoins en éco-conception et en accessibilité. _(je radote, mais c'est important !)_
 
 On va rentrer directement dans le vif du sujet, avec pour commencer... les technologies à utiliser !  
-Puisqu'on ne parle pas de dynamique, tu vas devoir te tourner vers des technologies front-end, comme le HTML et le CSS. Le Javascript sera également de la partie, mais qu'à partir de la <abbr title="Compétence Professionnelle">CP</abbr> 4 😉
+Puisqu'on ne parle pas de dynamique mais de statique, tu vas devoir te tourner vers des technologies front-end, comme le HTML et le CSS. Le Javascript sera également de la partie, mais qu'à partir de la <abbr title="Compétence Professionnelle">CP</abbr> 4 😉
 
 Dans un premier temps, tu vas devoir parler du squelette de ton site, c'est-à-dire de la structure HTML. On retrouvera par ailleurs des notions essentielles comme :
 

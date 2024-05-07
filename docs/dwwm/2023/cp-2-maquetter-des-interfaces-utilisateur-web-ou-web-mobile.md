@@ -7,7 +7,7 @@
 Pour cette compétence, tu dois réaliser des maquettes d'interfaces utilisateur.  
 Mais par maquette, on ne parle pas de maquette en papier ou en carton, mais de maquettes numériques.
 
-<iframe src="https://giphy.com/embed/28n0C19zo9OOvHnYww" width="480" height="269" frameBorder="0" class="giphy" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/28n0C19zo9OOvHnYww" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 Blague à part, on entend par cette <abbr title="Compétence Professionnelle">CP</abbr> la réalisation de maquettes numériques d'interfaces utilisateur web ou web mobile, au travers des différentes étapes de maquettage :
 
