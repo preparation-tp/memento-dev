@@ -28,22 +28,23 @@ L'objectif du dictionnaire des données est de recenser toutes les données que 
 L'idée est qu'il soit très simple et compréhensible par tout le monde, même par quelqu'un qui n'y connaît rien en base de données.
 
 ??? example "Exemple simplifié de dictionnaire des données"
-    | Nom de la donnée               | Format         | Longueur |
-    |--------------------------------|----------------|----------|
-    | Prénom du salarié              | Alphabétique   | 30       |
-    | Nom de famille du salarié      | Alphabétique   | 30       |
-    | Adresse email du salarié       | Alphanumérique | 80       |
-    | Adresse postale du salarié     | Alphanumérique | 60       |
-    | Code postal du salarié         | Aphanumérique  | 9        |
-    | Ville du salarié               | Alphabétique   | 30       |
-    | Mot de passe du salarié        | Alphanumérique | 80       |
-    | Date de naissance du salarié   | Date           | 8        |
-    | Manager du salarié             | Alphabétique   | 30       |
-    | Début de congé du salarié      | Date           | 8        |
-    | Fin de congé du salarié        | Date           | 8        |
-    | Motif de congé du salarié      | Alphabétique   | 30       |
-    | Date d'embauche du salarié     | Date           | 8        |
-    | Salaire brut annuel du salarié | Numérique      | 6        |
+    | Nom de la donnée                   | Format         | Longueur |
+    |------------------------------------|----------------|----------|
+    | Numéro d'identification du salarié | Alphanumérique | 30       |
+    | Prénom du salarié                  | Alphabétique   | 30       |
+    | Nom de famille du salarié          | Alphabétique   | 30       |
+    | Adresse email du salarié           | Alphanumérique | 80       |
+    | Adresse postale du salarié         | Alphanumérique | 60       |
+    | Code postal du salarié             | Aphanumérique  | 9        |
+    | Ville du salarié                   | Alphabétique   | 30       |
+    | Mot de passe du salarié            | Alphanumérique | 80       |
+    | Date de naissance du salarié       | Date           | 8        |
+    | Manager du salarié                 | Alphabétique   | 30       |
+    | Début de congé du salarié          | Date           | 8        |
+    | Fin de congé du salarié            | Date           | 8        |
+    | Motif de congé du salarié          | Alphabétique   | 30       |
+    | Date d'embauche du salarié         | Date           | 8        |
+    | Salaire brut annuel du salarié     | Numérique      | 6        |
 
 On peut constater qu'on ne fait apparaître aucun terme technique, on se contente de décrire les données de manière simple et compréhensible.  
 Grossièrement, voici les formats que l'on peut retrouver dans un dictionnaire des données :
@@ -70,7 +71,27 @@ On fera attention à ne pas être technique, comme pour le dictionnaire des donn
 Ce document est avant tout destiné à être compris par tout le monde, notamment le client final.
 
 ??? example "Exemple de MCD"
-    _Schéma en cours de création_
+    ![Exemple de MCD](../../assets/mcd.webp "MCD relatif à un site de gestion de congés, selon le dictionnaire des données précédent")
+
+    Sur ce schéma, on peut distinguer deux entités : **Salarié** et **Congé**. Elles sont représentées par des rectangles et contiennent leurs différentes propriétés.   
+    On peut également remarquer d'autres éléments, comme des "bulles" bleues qui représentent les relations entre les entités. On y retrouve des verbes à l'infinitif qui décrivent la relation entre les entités.
+
+    Mais entre ces verbes et les entités, il y a des chiffres _(et parfois un `n` qui se balade)_, ce sont les fameuses **cardinalités**.
+
+    Ce schéma nous apprend donc que :
+
+    - Salarié - GÉRER - Salarié _(Relation récursive)_
+        - Un même salarié peut gérer plusieurs autres salariés _(`Salarié 0,n` - GÉRER - `Salarié 0,1`)_
+        - Un salarié peut n'avoir aucun ou qu'un seul manager _(`Salarié 0,1` - GÉRER - `Salarié 0,n`)_
+    - Salarié - POSER - Congé
+        - Un salarié peut poser plusieurs congés _(`Salarié 0,n` - POSER - `Congé 1,1`)_
+        - Un congé est posé par un et un seul salarié _(`Congé 1,1` - POSER - `Salarié 0,n`)_
+
+    !!! question "Mais pourquoi il n'y a pas les ID dans le schéma ?"
+        Tout simplement parce que les ID ne sont pas des données à proprement parler. Ce sont avant tout des identifiants qui permettent de différencier les entités entre elles, d'un point de vue technique.
+
+        Sauf s'il s'agit d'une donnée concrète _(comme le numéro de badge de salarié, un numéro de sécurité sociale, etc.)_, on ne les fait pas apparaître dans le <abbr title="Modèle Conceptuel des Données">MCD</abbr>.
+        Cependant, on peut noter que ce n'est pas pour autant que nous n'avons pas de discriminant dans nos entités ! On peut très bien voir la propriété `adresse email` dans l'entité `Salarié` qui pourrait servir de discriminant, puisque chaque salarié a une adresse email unique.
 
 Ce document peut être réalisé à l'aide de divers outils, mais je vous recommande chaudement le logiciel [Looping](https://www.looping.fr/) qui est gratuit et très simple d'utilisation.
 
@@ -141,6 +162,7 @@ On retrouvera tout de même des lignes fléchées pour illustrer nos relations d
 ## 📚 Documentations
 
 - [Éditions ENI - Merise - Guide pratique _(3e édition)_, par **Jean-Luc Baptiste**](https://www.editions-eni.fr/livre/merise-guide-pratique-3e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-9782409015342)
+- [Jean Prulière - Non, les ID n'ont pas leur place dans un MCD](https://jeanpruliere.medium.com/non-les-id-nont-pas-leur-place-dans-un-mcd-43b5cd5ce9b6)
 - [SQL.sh - Cours et tutoriels SQL](https://sql.sh/)
 - [Wikipédia - UML](https://fr.wikipedia.org/wiki/UML_(informatique))
 
