@@ -187,7 +187,16 @@ Mais on peut améliorer notre page en mettant en place une légère interaction 
 - [MDN Web Docs - Attribut `loading` sur les balises `<img>`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/img#loading)
 - [MDN Web Docs - Attribut `defer` sur les balises `<script>`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/script#defer)
 - [MDN Web Docs - Attribut `data-*`](https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/data-*)
+- [MDN Web Docs - `fetch`](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API)
 - [Wikipédia - API](https://fr.wikipedia.org/wiki/Interface_de_programmation)
+
+## 🛠️ Outils
+- [Vike - Framework front-end pour un rendu côté serveur et côté client](https://vike.dev/)
+- [Next.js - Framework pour React avec rendu côté serveur](https://nextjs.org/)
+- [Nuxt.js - Framework pour Vue.js avec rendu côté serveur](https://nuxtjs.org/)
+- [SvelteKit - Framework pour Svelte avec rendu côté serveur](https://kit.svelte.dev/)
+
+---
 
 [⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 3 - Réaliser des interfaces utilisateur statiques web ou web mobile](cp-3-realiser-des-interfaces-statiques-web-ou-web-mobile.md)  
 [➡️ <abbr title="Compétence Professionnelle">CP</abbr> 5 - Mettre en place une base de données relationnelle](cp-5-mettre-en-place-une-base-de-donnees-relationnelle.md)  
