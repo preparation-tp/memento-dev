@@ -45,7 +45,7 @@ C'est le meilleur moment pour parler de nombreuses fonctionnalités implémenté
 
 ## ➕ Informations complémentaires
 
-Je me permets également de lâcher une bombe sur Javascript : **jQuery**.  
+Je me permets également de lâcher une bombe sur une certaine techno JS : **jQuery**.  
 Bon sang, celui-là il me fait penser à un vieux pote qui a pris un coup de vieux... 😅
 
 ??? question "jQuery, c'est quoi ?"
@@ -95,7 +95,7 @@ Dans la mesure du possible, il est recommandé de ne pas utiliser jQuery pour un
             .then((data) => console.log(data));
         ```
 
-    Non seulement `fetch` est plus simple à utiliser et comprendre _(contrairement à `XMLHttpRequest`)_ mais elle est également plus légère que `jQuery.ajax()` puisqu'elle est native au navigateur ! Alors pourquoi se priver ? 😉
+    Non seulement `fetch` est plus simple à utiliser et comprendre _(contrairement à `XMLHttpRequest`)_ mais elle est également plus légère que `jQuery.ajax()` puisqu'elle est native au navigateur ! Alors pourquoi s'en priver ? 😉
 
 ## 📝 Critères d'évaluation
 
