@@ -113,6 +113,38 @@ De cette manière, nos images ne seront chargées que si elles sont visibles à 
 
 Allez, arrêtons-nous là pour l'éco-conception !
 
+## 📱 Le responsive design
+
+Maintenant que notre site est éco-conçu, accessible et optimisé pour le référencement, il est temps de s'attaquer à la partie responsive design.
+Tu connais certainement déjà le principe, mais pour les autres, le responsive design c'est le fait de rendre un site web adaptatif et lisible sur tous les types d'écrans, que ce soit un ordinateur, une tablette ou un smartphone.
+
+Pour cela, nous avons plusieurs possibilités :
+
+- Les media queries _(pour adapter le style en fonction de la taille de l'écran et du type de support)_
+- Les unités relatives _(pour adapter la taille des éléments en fonction de la taille de la police)_
+    - `em` : unité relative à la taille de la police de l'élément parent
+    - `rem` : unité relative à la taille de la police de l'élément racine
+    - `%` : unité relative à la taille de l'élément parent
+    - `vw/vh` : unité relative à la largeur de la fenêtre _(ainsi que les variantes `lvh/lvw`, `svh/svw` et `dvh/dvw`)_
+- Les grid et flexbox _(pour organiser les éléments de manière flexible et adaptative)_
+
+Il est également possible d'utiliser des frameworks CSS, comme Tailwind CSS ou Bootstrap, qui proposent des composants et des classes prédéfinies pour faciliter la mise en place du responsive design.
+
+??? info "Le cas de Bootstrap"
+    Alors je vais faire le vieux râleur, mais Bootstrap c'est bien, mais c'est pas bien.
+
+    <iframe src="https://giphy.com/embed/26ufdipQqU2lhNA4g" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+    Mais alors, pourquoi ce n'est pas bien ?  
+    Pour faire simple : Bootstrap c'est lourd. Très lourd.
+
+    Il propose beaucoup de fonctionnalités, mais il est très rare de toutes les utiliser et derrière ça implique que le navigateur va charger du code inutile, ce qui va ralentir le chargement de la page.
+
+    Si tu veux utiliser un framework CSS, je te conseille plutôt de te tourner vers Tailwind CSS, qui propose une approche plus modulaire et plus légère.  
+    Tailwind CSS viendra te générer un fichier CSS final basé **uniquement** sur les classes que tu utilises, ce qui permet de réduire la taille du fichier final.
+
+    Comme ça, adieu les 200Ko de CSS pour un site qui n'en fait que 20 !
+
 ## 🔒 Déploiement et sécurité
 
 Dernière étape avant de pouvoir souffler un peu : le déploiement de ton site.
@@ -191,6 +223,8 @@ Si tu souhaites également rajouter le support du HTTPS, tu peux utiliser [Certb
 - [WebAim Contrast Checker](https://webaim.org/resources/contrastchecker/)
 - [Contrast Checker](https://contrastchecker.com/)
 - [Coolors - Contrast Checker](https://coolors.co/contrast-checker/112a46-acc8e5)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Bootstrap](https://getbootstrap.com/)
 
 ---
 
