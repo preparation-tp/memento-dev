@@ -121,7 +121,7 @@ On peut donc dire qu'au choix, on peut soit faire un <abbr title="Modèle Logiqu
 Mais si on a l'occasion de faire les deux, c'est encore mieux !
 
 ??? example "Exemple de MRD"
-    **employee**(<u style="text-decoration: underline;">id</u>, email, lastname, firstname, address, zip, city, password, birthdate, hiring_date, annual_gross_salary, _#employee_id_)  
+    **employee**(<u style="text-decoration: underline;">id</u>, **email**, lastname, firstname, address, zip, city, password, birthdate, hiring_date, annual_gross_salary, _#employee_id_)  
     **vacation**(<u style="text-decoration: underline;">id</u>, start_date, end_date, reason, _#employee_id_)
 
     D'un point de vue syntaxe, voici comment on réalise un <abbr title="Modèle Relationnel des Données">MRD</abbr> :
@@ -129,6 +129,7 @@ Mais si on a l'occasion de faire les deux, c'est encore mieux !
     - On commence par le nom de la table, suivi de ses propriétés entre parenthèses
     - Chaque propriété est séparée par une virgule
     - Les clés primaires sont soulignées, les clés étrangères sont précédées d'un `#` et sont en italique
+    - Les données uniques sont en gras
 
 ## 📦 Le <abbr title="Modèle Physique des Données">MPD</abbr>
 
@@ -156,8 +157,40 @@ On retrouvera tout de même des lignes fléchées pour illustrer nos relations d
 
 <abbr title="Unified Modeling Language">UML</abbr> est un excellent langage de modélisation, mais on y reviendra davantage dans le cursus <abbr title="Concepteur Développeur d'Applications">CDA</abbr> 😉
 
-??? example "Exemples de <abbr title="Modèle Physique des Données">MPD</abbr> _(textuel et graphique)_"
-    _Schémas en cours de création_
+??? info "Exemples de <abbr title="Modèle Physique des Données">MPD</abbr> _(script SQL et schéma graphique)_"
+    !!! example "Script SQL"
+        ```sql
+        CREATE TABLE employee(
+            id VARCHAR(50),
+            email VARCHAR(80),
+            lastname VARCHAR(30),
+            firstname VARCHAR(30),
+            address VARCHAR(60),
+            zip VARCHAR(9),
+            city VARCHAR(30),
+            password CHAR(80),
+            birthdate DATE,
+            hiring_date DATE,
+            annual_gross_salary DECIMAL(6,2),
+            employee_id VARCHAR(50),
+            PRIMARY KEY(id),
+            UNIQUE(email),
+            FOREIGN KEY(employee_id) REFERENCES employee(id)
+        );
+
+        CREATE TABLE vacation(
+            id VARCHAR(50),
+            start_date DATE,
+            end_date DATE,
+            reason VARCHAR(30),
+            employee_id VARCHAR(50) NOT NULL,
+            PRIMARY KEY(id),
+            FOREIGN KEY(employee_id) REFERENCES employee(id)
+        );
+        ```
+
+    !!! example "Schéma graphique"
+        _Ça arrive, promis !_
 
 ## 📝 Critères d'évaluation
 !!! abstract "Critères d'évaluation"
