@@ -193,6 +193,7 @@ On retrouvera tout de même des lignes fléchées pour illustrer nos relations d
         _Ça arrive, promis !_
 
 ## 📝 Critères d'évaluation
+
 !!! abstract "Critères d'évaluation"
     - Les données du schéma conceptuel et leurs relations sont identifiées et prises en compte
     - Le schéma physique est conforme aux besoins exprimés dans le dossier de conception et respecte les règles des bases de données relationnelles
@@ -202,6 +203,28 @@ On retrouvera tout de même des lignes fléchées pour illustrer nos relations d
     - Les utilisateurs sont créés avec leurs droits respectifs conformément au dossier de conception
     - La base de données créée est sauvegardée et elle peut être restaurée en cas d’incident
     - La documentation technique des bases de données est comprise, en langue française ou anglaise _(niveau B1 du CECRL pour l’anglais)_
+
+## 🤯 Aller plus loin _(hors référentiel)_
+
+Pas trop mal à la tête ? On continue un tout petit peu ? 😅  
+Tu as vu qu'on précise entre parenthèses la longueur des données, mais pourquoi on fait ça ?
+
+Tu n'es pas sans savoir que pour stocker des données et que pour les stocker, il nous faut de l'espace.  
+Et cet espace, on le définit en fonction de la longueur de nos données : on parle alors d'allocation.
+
+En précisant une valeur entre les parenthèses, on vient dire à notre <abbr title="Système de Gestion de Base de Données">SGBD</abbr> combien de place il doit réserver pour stocker nos données **au maximum**.  
+Dans le cas d'un `VARCHAR(30)`, on réserve 30 caractères pour stocker notre donnée, même si elle n'en fait que 5.  
+Dans le cas d'un `CHAR(30)`, on réserve également 30 caractères, mais cette fois-ci on complète notre donnée avec des espaces pour atteindre les 30 caractères.
+
+Si on ne précise pas de longueur, le <abbr title="Système de Gestion de Base de Données">SGBD</abbr> va réserver une place par défaut qui varie d'un <abbr title="Système de Gestion de Base de Données">SGBD</abbr> à l'autre.
+
+Pour optimiser l'espace occupé ainsi que les performances de notre base de données, il est recommandé de préciser la longueur des données en fonction de nos besoins.
+
+Par exemple, un email peut en théorie avoir au maximum 320 caractères, mais en pratique on ne voit que très rarement des emails aussi longs.  
+De manière générale on recommande de toujours prévoir le plus large possible pour éviter de bloquer l'accès à nos services, mais il ne faut pas non plus tomber dans l'excès.
+
+C'est la raison pour laquelle j'attends une donnée faisant 80 caractères pour une adresse email, sans quoi ma base de données pourrait être surdimensionnée pour rien.  
+_(Désolé les utilisateurs qui ont une adresse email dépassant les 80 caractères, mais vous êtes une minuscule minorité 😅)_
 
 ---
 
