@@ -88,6 +88,7 @@ Ce document est avant tout destiné à être compris par tout le monde, notammen
         - Un congé est posé par un et un seul salarié _(`Congé 1,1` - POSER - `Salarié 0,n`)_
 
     !!! question "Mais pourquoi il n'y a pas les ID dans le schéma ?"
+        Ni les clés étrangères d'ailleurs...  
         Tout simplement parce que les ID ne sont pas des données à proprement parler. Ce sont avant tout des identifiants qui permettent de différencier les entités entre elles, d'un point de vue technique.
 
         Sauf s'il s'agit d'une donnée concrète _(comme le numéro de badge de salarié, un numéro de sécurité sociale, etc.)_, on ne les fait pas apparaître dans le <abbr title="Modèle Conceptuel des Données">MCD</abbr>.
