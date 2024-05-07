@@ -105,7 +105,12 @@ Cette fois-ci, on va passer à la vitesse supérieure en représentant nos donn�
 Les termes techniques ont alors entièrement leur place dans ce document, puisqu'il est destiné aux développeurs qui vont mettre en place la base de données.
 
 ??? example "Exemple de MLD"
-    _Schéma en cours de création_
+    ![Exemple de MCD](../../assets/mld.webp "MLD relatif à un site de gestion de congés, selon le MCD précédent")
+
+    Et voilà un peu de changement ! Déjà, on peut dire au revoir aux entités et aux relations, et bonjour aux tables et aux clés étrangères 🎉  
+    On peut aussi voir que certaines de nos propriétés ont changé de nom, comme `code congé` qui est devenu `id` _(pour identifiant)_.
+
+    On peut également voir que nos relations ont été transformées en clés étrangères, qui permettent de lier nos tables entre elles.
 
 ## 📑 Le <abbr title="Modèle Relationnel des Données">MRD</abbr>
 
@@ -116,7 +121,14 @@ On peut donc dire qu'au choix, on peut soit faire un <abbr title="Modèle Logiqu
 Mais si on a l'occasion de faire les deux, c'est encore mieux !
 
 ??? example "Exemple de MRD"
-    _Schéma en cours de création_
+    **employee**(<u style="text-decoration: underline;">id</u>, email, lastname, firstname, address, zip, city, password, birthdate, hiring_date, annual_gross_salary, _#employee_id_)  
+    **vacation**(<u style="text-decoration: underline;">id</u>, start_date, end_date, reason, _#employee_id_)
+
+    D'un point de vue syntaxe, voici comment on réalise un <abbr title="Modèle Relationnel des Données">MRD</abbr> :
+
+    - On commence par le nom de la table, suivi de ses propriétés entre parenthèses
+    - Chaque propriété est séparée par une virgule
+    - Les clés primaires sont soulignées, les clés étrangères sont précédées d'un `#` et sont en italique
 
 ## 📦 Le <abbr title="Modèle Physique des Données">MPD</abbr>
 
