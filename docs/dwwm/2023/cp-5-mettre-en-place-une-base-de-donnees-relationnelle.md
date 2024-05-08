@@ -192,6 +192,81 @@ On retrouvera tout de même des lignes fléchées pour illustrer nos relations d
     !!! example "Schéma graphique"
         ![Exemple de MPD](../../assets/mpd.webp "MPD relatif à un site de gestion de congés, selon les MCD et MLD précédents")
 
+## 💾 Sauvegardes de la base de données
+
+C'est bien beau de créer une base de données, mais si on ne la sauvegarde pas, on risque de tout perdre en cas de problème...
+
+Certains hébergeurs permettent de faire des sauvegardes automatisées, mais dans le cas où tu dois toi-même sauvegarder ta base de données, il existe plusieurs solutions :
+
+- **Les sauvegardes manuelles** : qui consistent à exporter le contenu de ta base de données dans un fichier _(généralement au format SQL)_
+- **Les sauvegardes automatiques** : qui consistent à automatiser le processus de sauvegarde, généralement via un script ou un outil dédié
+
+On va se concentrer _(que très rapidement, ne t'inquiète pas !)_ sur la partie automatisée, puisqu'elle permet également de comprendre comment faire une sauvegarde manuellement.
+
+Pour mettre en place l'automatisation, on peut mettre en place une tâche planifiée : un processus qui va s'exécuter à intervalles réguliers pour sauvegarder notre base de données.  
+Sur Linux, on parlera d'un `cron job`.
+
+Sans rentrer dans les détails de configuration d'une tâche cron, on va devoir la créer en donnant plusieurs informations :
+
+- **Le chemin vers le script de sauvegarde** : qui va contenir les commandes pour sauvegarder notre base de données
+- **La fréquence d'exécution** : qui va déterminer à quelle fréquence notre tâche va s'exécuter _(toutes les heures, tous les jours, toutes les semaines, etc.)_
+- **Le compte utilisateur** : qui va exécuter la tâche, généralement le compte de l'utilisateur qui a les droits d'accès à la base de données
+
+??? example "Exemple de script `bash` pour sauvegarder une base de données PostgreSQL"
+    ```bash
+    #!/bin/bash
+
+    # Variables
+    DB_USER="user"
+    DB_NAME="database"
+    BACKUP_DIR="/path/to/backup"
+    DATE=$(date +"%Y%m%d%H%M%S")
+
+    # Création du répertoire de sauvegarde
+    mkdir -p $BACKUP_DIR
+
+    # Sauvegarde de la base de données
+    pg_dump -U $DB_USER $DB_NAME > $BACKUP_DIR/$DB_NAME-$DATE.sql
+    ```
+
+    Ce script va permettre de sauvegarder une base de données PostgreSQL en exportant son contenu dans un fichier SQL.  
+    Il est important de remplacer les variables `DB_USER`, `DB_NAME` et `BACKUP_DIR` par les informations de ta base de données.
+
+Une fois ce script créé, il suffira de le rendre exécutable et de le planifier dans une tâche cron pour automatiser la sauvegarde de ta base de données.
+
+??? example "Exemple de tâche cron pour automatiser la sauvegarde"
+    ```bash
+    # Ouvrir le fichier de tâches cron
+    crontab -e
+
+    # Ajouter la tâche de sauvegarde, toutes les nuits à minuit
+    0 * * * * /path/to/backup.sh
+    ```
+
+    Et voilà ! Ta base de données sera sauvegardée toutes les nuits à minuit, sans que tu aies besoin d'intervenir manuellement.
+
+## 🛡️ Sécurité et confidentialité des données
+
+On ne le répétera jamais assez, mais la sécurité et la confidentialité des données sont primordiales pour toute application.
+
+Pour garantir la sécurité de ta base de données, il est recommandé de mettre en place plusieurs mesures :
+
+- **Les sauvegardes régulières** : pour éviter de perdre des données en cas de problème
+- **Les mises à jour régulières** : pour corriger les failles de sécurité et les bugs
+- **Les accès restreints** : pour limiter l'accès à la base de données aux seules personnes autorisées
+- **Les mots de passe forts** : pour éviter les attaques par force brute
+- **Les connexions sécurisées** : pour éviter les interceptions de données
+
+Mais la sécurité ne s'arrête pas là, il est également important de garantir la confidentialité des données :
+
+- **Le chiffrement des données** : pour éviter que des tiers puissent lire les données stockées, en cas de fuite
+
+!!! warning "Identifiants de connexion"
+    Même en développement sur ta machine locale, prend l'habitude de ne **jamais** utiliser les identifiants par défaut de ta base de données _(comme `root` sans mot de passe par exemple)_.
+
+    L'objectif est de te mettre dans les conditions réelles d'un environnement de production, où la sécurité est primordiale.
+    Ça t'évitera de prendre de mauvaises habitudes qui pourraient te coûter cher par la suite.
+
 ## 📝 Critères d'évaluation
 
 !!! abstract "Critères d'évaluation"
