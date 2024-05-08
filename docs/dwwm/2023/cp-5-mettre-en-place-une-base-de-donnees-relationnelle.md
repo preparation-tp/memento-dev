@@ -235,7 +235,7 @@ Sans rentrer dans les détails de configuration d'une tâche cron, on va devoir 
 Une fois ce script créé, il suffira de le rendre exécutable et de le planifier dans une tâche cron pour automatiser la sauvegarde de ta base de données.
 
 ??? example "Exemple de tâche cron pour automatiser la sauvegarde"
-    ```bash
+    ```command-line
     # Ouvrir le fichier de tâches cron
     crontab -e
 

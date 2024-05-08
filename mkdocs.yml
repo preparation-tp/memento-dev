@@ -32,7 +32,12 @@ nav:
   - A propos: a-propos.md
 
 extra_css:
+  - prism.min.css
   - extra.css
+
+extra_javascript:
+  - prism.min.js
+  - extra.js
 
 site_url: http://localhost:8000
 
@@ -48,6 +53,7 @@ theme:
     - navigation.indexes
     - toc.integrate
     - navigation.top
+    - content.code.copy
   icon:
     repo: fontawesome/brands/github
     admonition:
@@ -71,9 +77,54 @@ theme:
         name: Passer en mode clair
 
 markdown_extensions:
+  - abbr
   - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      use_pygments: false
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: command-line
+          class: command-line language-bash
+          format: !!python/name:custom_format.custom_fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 repo_url: https://github.com/gauthierwebdev/memento-dev
 repo_name: gauthierwebdev/memento-dev
@@ -92,3 +143,8 @@ plugins:
       enable_creation_date: true
       type: timeago
       locale: fr
+  - minify:
+      minify_html: true
+
+hooks:
+  - hooks.py
