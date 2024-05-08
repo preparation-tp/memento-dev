@@ -105,7 +105,7 @@ Cette fois-ci, on va passer à la vitesse supérieure en représentant nos donn�
 Les termes techniques ont alors entièrement leur place dans ce document, puisqu'il est destiné aux développeurs qui vont mettre en place la base de données.
 
 ??? example "Exemple de MLD"
-    ![Exemple de MCD](../../assets/mld.webp "MLD relatif à un site de gestion de congés, selon le MCD précédent")
+    ![Exemple de MLD](../../assets/mld.webp "MLD relatif à un site de gestion de congés, selon le MCD précédent")
 
     Et voilà un peu de changement ! Déjà, on peut dire au revoir aux entités et aux relations, et bonjour aux tables et aux clés étrangères 🎉  
     On peut aussi voir que certaines de nos propriétés ont changé de nom, comme `code congé` qui est devenu `id` _(pour identifiant)_.
@@ -161,36 +161,36 @@ On retrouvera tout de même des lignes fléchées pour illustrer nos relations d
     !!! example "Script SQL"
         ```sql
         CREATE TABLE employee(
-            id VARCHAR(50),
-            email VARCHAR(80),
-            lastname VARCHAR(30),
-            firstname VARCHAR(30),
-            address VARCHAR(60),
-            zip VARCHAR(9),
-            city VARCHAR(30),
-            password CHAR(80),
-            birthdate DATE,
-            hiring_date DATE,
-            annual_gross_salary DECIMAL(6,2),
-            employee_id VARCHAR(50),
-            PRIMARY KEY(id),
-            UNIQUE(email),
-            FOREIGN KEY(employee_id) REFERENCES employee(id)
+            id VARCHAR(30),
+            email VARCHAR(80) NOT NULL,
+            lastname VARCHAR(30) NOT NULL,
+            firstname VARCHAR(30) NOT NULL,
+            address VARCHAR(60) NOT NULL,
+            zip VARCHAR(9) NOT NULL,
+            city VARCHAR(30) NOT NULL,
+            password CHAR(80) NOT NULL,
+            birthdate DATE NOT NULL,
+            hiring_date DATE NOT NULL,
+            annual_gross_salary NUMERIC(6,2) NOT NULL DEFAULT(0),
+            employee_id VARCHAR(30),
+            CONSTRAINT employee_PK PRIMARY KEY(id),
+            CONSTRAINT employee_AK UNIQUE(email),
+            CONSTRAINT employee_manager_id_FK FOREIGN KEY(employee_id) REFERENCES employee(id)
         );
 
         CREATE TABLE vacation(
-            id VARCHAR(50),
-            start_date DATE,
-            end_date DATE,
+            id SERIAL,
+            start_date DATE NOT NULL,
+            end_date DATE NOT NULL,
             reason VARCHAR(30),
-            employee_id VARCHAR(50) NOT NULL,
-            PRIMARY KEY(id),
-            FOREIGN KEY(employee_id) REFERENCES employee(id)
+            employee_id VARCHAR(30) NOT NULL,
+            CONSTRAINT vacation_PK PRIMARY KEY(id),
+            CONSTRAINT vacation_employee_FK FOREIGN KEY(employee_id) REFERENCES employee(id)
         );
         ```
 
     !!! example "Schéma graphique"
-        _Ça arrive, promis !_
+        ![Exemple de MPD](../../assets/mpd.webp "MPD relatif à un site de gestion de congés, selon les MCD et MLD précédents")
 
 ## 📝 Critères d'évaluation
 
