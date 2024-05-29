@@ -65,6 +65,10 @@ Dans un premier temps, on va installer Prisma et configurer notre base de donné
         }
         ```
 
+!!! question "Je fais mes requêtes SQL à la main, il faut que j'apprenne à utiliser un ORM/ODM ?"
+    Non ! D'un certain côté, c'est nettement plus intéressant de savoir réaliser les requêtes par toi-même, sans utiliser d'outils qui génèrent du SQL à ta place.  
+    En entreprise, tu vas certainement utiliser ces fameux outils, mais dès que l'on va chercher à avoir les requêtes les plus optimisées possibles, il va falloir mettre les mains dans le cambouis !
+
 Mais avant de vouloir manipuler nos données, on va s'assurer d'une chose primordiale : l'**intégrité des données**.
 
 ## 🔎 Intégrité des données
@@ -138,7 +142,51 @@ En prenant un exemple d'inscription d'utilisateur, voici ce que tu pourrais mett
     Si tu n'es pas à l'aise avec le code ci-dessus _(Node.js et/ou Typescript)_, pas de panique !  
     L'idée est de comprendre la logique derrière les vérifications à mettre en place pour garantir l'intégrité des données.
 
-## ➕ Informations complémentaires
+## 💼 Compétences attendues
+Si tu utilises un outil te générant du code SQL, il est important de savoir reproduire à la main les requêtes générées par cet outil.  
+
+??? example "Requête basique générée par Prisma"
+    ```typescript
+    const user = await prisma.user.findUnique({
+      where: { id: 1 },
+    });
+    ```
+
+    Ce qui donnera :
+    ```sql
+    SELECT "User".*
+    FROM "User"
+    WHERE "User"."id" = 1;
+    ```
+
+??? example "Requête avec jointure générée par Prisma"
+    ```typescript
+    const user = await prisma.user.findUnique({
+      select: {
+        id: true,
+        email: true,
+        posts: {
+          select: {
+            title: true,
+          },
+        },
+      },
+      include: {
+        posts: true,
+      },
+      where: { id: 1 },
+    });
+    ```
+
+    Ce qui donnera :
+    ```sql
+    SELECT u.id, u.email, p.title
+    FROM "User" u
+    INNER JOIN "Post" p ON p.userId = u.id
+    WHERE u.id = 1;
+    ```
+
+    _(Oui, c'est un exemple fictif et pas entièrement correspondant, mais tu as compris l'idée !)_
 
 ## 📝 Critères d'évaluation
 !!! abstract "Critères d'évaluation"
