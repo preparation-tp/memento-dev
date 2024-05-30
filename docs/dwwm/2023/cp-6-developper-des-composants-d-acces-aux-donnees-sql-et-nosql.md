@@ -270,6 +270,7 @@ Tu retrouveras des notions très bien expliquées et pertinentes pour t'amélior
 - [Dalibo - Formations](https://www.dalibo.com/formations)
 - [Chiffrement de César - Wikipédia](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage)
 - [bcrypt - Documentation](https://www.npmjs.com/package/bcrypt)
+- [argon2 - Documentation](https://www.npmjs.com/package/argon2)
 - [crypto - Documentation](https://nodejs.org/api/crypto.html)
 
 ---
