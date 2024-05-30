@@ -198,6 +198,20 @@ Si tu utilises un outil te générant du code SQL, il est important de savoir re
     - La démarche structurée de résolution de problème est adaptée en cas de dysfonctionnement
     - Le système de veille permet de suivre les évolutions technologiques et les problématiques de sécurité liées aux bases de données SQL et NoSQL
 
+## 🤯 Aller plus loin _(hors référentiel)_
+T'es encore là ? Tu aimes ça les <del>patates</del> bases de données, hein ? 😏  
+Alors dans ce cas, je te recommande chaudement de te pencher sur PostgreSQL qui est, à mon sens, l'une des seules **vraies** bases de données relationnelles.
+
+Je ne m'étalerai pas sur ce sujet, mais désolé MySQL/MariaDB de ne pas être au niveau... 😅
+
+Les ressources que je m'apprête à te recommander sont un peu plus avancées, mais ce sont d'excellentes portes d'entrées vers des métiers comme <abbr title="DataBase Administrator">DBA</abbr> par exemple.  
+Tu retrouveras des notions très bien expliquées et pertinentes pour t'améliorer sur le sujet dans les ressources de [Dalibo](https://www.dalibo.com/formations).
+
+!!! info "Gratuité des formations Dalibo"
+    Dalibo propose des formations, mais qui ne sont pas gratuites pour autant.  
+    Seuls les supports de cours sont disponibles gratuitement, aux formats EPUB et PDF.
+
+
 ---
 
 [⬅️ <abbr title="Compétence Professionnelle">CP</abbr> 5 - Mettre en place une base de données relationnelle](cp-5-mettre-en-place-une-base-de-donnees-relationnelle.md)  
