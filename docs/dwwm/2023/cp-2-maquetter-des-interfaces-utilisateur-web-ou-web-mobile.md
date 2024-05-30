@@ -19,6 +19,9 @@ Blague à part, on entend par cette <abbr title="Compétence Professionnelle">CP
 6. Mise en forme des maquettes à partir des wireframes et de la charte graphique
 7. Conception du prototype
 
+Alors bien entendu, toutes ces étapes ne sont pas des étapes "purement" maquettage, mais qui sont utilisées pour réaliser des maquettes sans se vautrer.  
+Il s'agit de l'ordre logique allant du tout début jusqu'à la réalisations des maquettes finales et du prototype.
+
 !!! quote "Mais je ne suis pas webdesigner ! 😱"
     Pas de panique ! Tu n'as pas besoin d'être un webdesigner pour réaliser des maquettes.  
     Évidemment, si tu as des compétences en design, c'est un plus car en général les développeurs ne sont pas tous réputés pour être de bons designers... 😅
