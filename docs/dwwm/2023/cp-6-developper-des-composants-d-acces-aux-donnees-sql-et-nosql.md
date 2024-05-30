@@ -188,6 +188,56 @@ Si tu utilises un outil te générant du code SQL, il est important de savoir re
 
     _(Oui, c'est un exemple fictif et pas entièrement correspondant, mais tu as compris l'idée !)_
 
+## 🔐 Confidentialité des données
+La plupart du temps, nos bases de données vont accueillir des données confidentielles, comme :
+- Des mots de passe
+- Des informations personnelles _(nom, prénom, adresse, etc.)_
+- Des données sensibles _(informations bancaires, médicales, etc.)_
+
+Bien que notre bases de données se doit d'être sécurisée dans son accès et ses permissions, dans le cas d'une fuite il est important de sécuriser ces données.
+
+Pour les mots de passe, on va les **hacher** avant de les stocker dans la base de données.
+
+??? question "C'est quoi le hachage d'un mot de passe ?"
+    Le hachage d'un mot de passe est une manière de le sécuriser en le transformant en une chaîne de caractères "aléatoire", appelée **hash**.  
+
+    Il est important de noter que le hachage est **unidirectionnel**, c'est-à-dire qu'il est impossible de retrouver le mot de passe d'origine à partir de son hash contrairement au **chiffrement**.
+
+??? question "Et le chiffrement, ça sert à quoi ?"
+    Comme le hachage, le chiffrement permet de sécuriser des données, il est **bidirectionnel**.  
+    C'est à dire que l'on peut retrouver les données d'origine à partir des données chiffrées.
+
+    Si tu as déjà eu l'occasion d'envoyer des "messages codés", c'est que tu as déjà utilisé le chiffrement sans pour autant le savoir !  
+    L'un des chiffrements les plus connus est le **chiffre de César**, qui consiste à décaler les lettres de l'alphabet d'un certain nombre de positions.
+
+    ??? example "Exemple de chiffrement de César"
+        ```plaintext
+        Message : "Bonjour"
+        Décalage : 3
+
+        Message chiffré : "Erqmrxu"
+        ```
+
+    !!! warning "Attention"
+        Le chiffrement n'est pas une solution de sécurité absolue, il est possible de retrouver les données d'origine à partir des données chiffrées.  
+        D'ailleurs le chiffre de César est un chiffrement très simple à casser, on ne va donc pas l'utiliser pour protéger les données sensibles !
+
+    On va privilégier un algorithme de chiffrement qui se base sur une **clé secrète**, qui sera la clé pour chiffrer et déchiffrer les données.  
+    C'est d'ailleurs plus ou moins ce qui est fait avec la célèbre machine Enigma utilisée par les allemands pendant la Seconde Guerre Mondiale pour chiffrer leurs messages et éviter qu'ils soient interceptés et compris par les alliés.
+
+Mais alors, comment on peut s'y prendre ?
+
+🥁🥁🥁
+
+Avec des bibliothèques, tout simplement ! 🙃  
+_(Ou si tu es un peu fou, tu peux essayer de le faire toi-même, mais attention à ce que ce soit **réellement** sécurisé derrière)_
+
+Tu as notamment une bibliothèque _(Node.js)_ qui est très utilisée pour hacher les mots de passe : `bcrypt` _(ou encore `argon2`)_ et une autre pour chiffrer les données : `crypto` _(native à Node.js en plus, si ça c'est pas la classe 😎)_.
+
+Je te laisse te plonger dans les documentations associées, que tu retrouveras _(presque)_ tout en bas de cette fiche.
+
+Et naturellement : **PERSONNE** ne doit avoir accès à ces données, à part les personnes autorisées/concernées bien entendu.
+
 ## 📝 Critères d'évaluation
 !!! abstract "Critères d'évaluation"
     - Les traitements relatifs aux manipulations des données répondent aux fonctionnalités décrites dans le dossier de conception
@@ -217,6 +267,9 @@ Tu retrouveras des notions très bien expliquées et pertinentes pour t'amélior
 - [Prisma - Documentation](https://www.prisma.io/docs/)
 - [Joi - Documentation](https://joi.dev/api/?v=17.13.0)
 - [Dalibo - Formations](https://www.dalibo.com/formations)
+- [Chiffrement de César - Wikipédia](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage)
+- [bcrypt - Documentation](https://www.npmjs.com/package/bcrypt)
+- [crypto - Documentation](https://nodejs.org/api/crypto.html)
 
 ---
 
