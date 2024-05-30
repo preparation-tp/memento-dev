@@ -288,6 +288,8 @@ L'objectif c'est de t'assurer que tu ne casses pas une fonctionnalité existante
     - Les tests de sécurité sont réalisés
     - La démarche structurée de résolution de problème est adaptée en cas de dysfonctionnement
 
+---
+
 ## 📚 Documentations
 - [Wikipédia - Design pattern <abbr title="Modèle-Vue-Contrôleur">MVC</abbr>](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur) _(Attention, le schéma présenté n'est pas forcément le plus adapté à tous les frameworks et architectures)_
 - [Wikipédia - Conventions de nommage](https://fr.wikipedia.org/wiki/Convention_de_nommage)

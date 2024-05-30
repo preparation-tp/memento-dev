@@ -262,6 +262,8 @@ Tu retrouveras des notions très bien expliquées et pertinentes pour t'amélior
     Dalibo propose des formations, mais qui ne sont pas gratuites pour autant.  
     Seuls les supports de cours sont disponibles gratuitement, aux formats EPUB et PDF.
 
+---
+
 ## 📚 Documentations
 
 - [SQL.sh - Cours et tutoriels SQL](https://sql.sh/)
