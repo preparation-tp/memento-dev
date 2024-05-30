@@ -190,6 +190,7 @@ Si tu utilises un outil te générant du code SQL, il est important de savoir re
 
 ## 🔐 Confidentialité des données
 La plupart du temps, nos bases de données vont accueillir des données confidentielles, comme :
+
 - Des mots de passe
 - Des informations personnelles _(nom, prénom, adresse, etc.)_
 - Des données sensibles _(informations bancaires, médicales, etc.)_
