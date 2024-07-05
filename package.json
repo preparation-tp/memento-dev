@@ -1,6 +1,6 @@
 {
-  "name": "temp",
-  "version": "0.0.0",
+  "name": "memento-dev",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@docusaurus/core": "3.4.0",
     "@docusaurus/preset-classic": "3.4.0",
+    "@docusaurus/theme-classic": "^3.4.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
@@ -27,6 +28,7 @@
     "@docusaurus/module-type-aliases": "3.4.0",
     "@docusaurus/tsconfig": "3.4.0",
     "@docusaurus/types": "3.4.0",
+    "@types/node": "^20.14.9",
     "typescript": "~5.2.2"
   },
   "browserslist": {
