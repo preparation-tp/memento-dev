@@ -6,7 +6,12 @@ module.exports = {
     "./docusaurus.config.ts",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Luciole", "sans-serif"],
+        code: ["Fira Code", "monospace"],
+      },
+    },
   },
   darkMode: ["class", "[data-theme='dark']"],
   plugins: [],

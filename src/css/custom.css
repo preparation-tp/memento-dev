@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Luciole";
+  font-weight: normal;
+  src: url("@site/static/fonts/Luciole/Luciole-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Luciole";
+  font-weight: bold;
+  src: url("@site/static/fonts/Luciole/Luciole-Bold.ttf") format("truetype");
+}
+
+:root {
+  --ifm-heading-font-family: "Luciole", sans-serif;
+}
+
+::selection {
+  @apply bg-violet-400 text-black;
+}
+
+.button {
+  @apply font-normal bg-violet-200 rounded-md text-violet-800 px-4 py-2 text-lg hover:no-underline hover:bg-violet-50 transition-colors hover:text-violet-950;
+}
+
 .footer__link-item,
 .navbar__brand,
 .navbar__item {

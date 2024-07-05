@@ -33,11 +33,8 @@ const HomepageHeader = () => {
           <p className="text-xl py-6 text-white">{siteConfig.tagline}</p>
 
           <div className="md:py-10">
-            <Link
-              className="bg-white rounded-md text-gray-500 px-4 py-2 text-lg"
-              to="/docs/intro"
-            >
-              Docusaurus Tutorial - 5 min ⏱️
+            <Link className="button" to="/docs/intro">
+              Accédez aux ressources 🚀
             </Link>
           </div>
         </div>
