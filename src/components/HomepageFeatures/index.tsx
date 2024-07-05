@@ -1,65 +1,54 @@
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
+import type { ComponentProps } from "react";
+
+import Heading from "@theme/Heading";
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Svg: React.ComponentType<ComponentProps<"svg">>;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: "Compétences clés",
+    Svg: require("@site/static/illustrations/coding.svg").default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Trouvez toutes les compétences essentielles à maîtriser pour vos
+        examens, soigneusement organisées pour que vous sachiez exactement quoi
+        apprendre.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: "Guides et ressources",
+    Svg: require("@site/static/illustrations/map.svg").default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Explorez des guides et des ressources partagés par la communauté.
+        Profitez de l'expertise collective pour réviser chaque sujet de manière
+        efficace.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: "Plateforme communautaire",
+    Svg: require("@site/static/illustrations/diversity.svg").default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Participez et contribuez à l'amélioration de cette ressource. Rejoignez
+        notre communauté open-source et aidez à créer une documentation encore
+        plus riche et complète.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+const HomepageFeatures = () => {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-}
-
-export default function HomepageFeatures(): JSX.Element {
-  return (
-    <section className={styles.features}>
+    <section className="flex items-center py-8 w-full">
       <div className="container">
-        <div className="row">
+        <div className="grid md:grid-cols-3 gap-8">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
@@ -67,4 +56,24 @@ export default function HomepageFeatures(): JSX.Element {
       </div>
     </section>
   );
-}
+};
+
+const Feature = (props: FeatureItem) => {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div className="text-center">
+        <props.Svg className="w-48 h-48" role="img" />
+      </div>
+
+      <div className="text-center">
+        <Heading as="h2" className="text-xl font-bold mb-2">
+          {props.title}
+        </Heading>
+
+        <p className="text-balance">{props.description}</p>
+      </div>
+    </div>
+  );
+};
+
+export default HomepageFeatures;
