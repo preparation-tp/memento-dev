@@ -61,3 +61,19 @@
 .markdown h2 {
   @apply text-2xl font-bold;
 }
+
+.markdown h3 {
+  @apply text-xl;
+}
+
+.markdown li {
+  @apply ml-4 list-inside;
+}
+
+.markdown ul li {
+  @apply list-disc;
+}
+
+.markdown ol li {
+  @apply list-decimal;
+}
