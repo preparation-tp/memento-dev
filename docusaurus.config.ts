@@ -80,9 +80,8 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutoriel",
+          label: "Documentation",
         },
-        { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/preparation-tp/memento-dev",
           label: "GitHub",
@@ -117,6 +116,10 @@ const config: Config = {
             {
               label: "Mentions légales",
               to: "/legal",
+            },
+            {
+              label: "Contribuer",
+              to: "/docs/contributing",
             },
             {
               label: "GitHub",
