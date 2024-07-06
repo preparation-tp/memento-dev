@@ -24,7 +24,7 @@ const HomepageHeader = () => {
 
   return (
     <header className="bg-violet-600">
-      <div className="container flex flex-col-reverse md:flex-row items-center gap-12 text-center md:text-left mx-auto max-w-5xl py-24">
+      <div className="container flex flex-col-reverse md:flex-row items-center gap-12 text-center md:text-left mx-auto max-w-5xl py-16">
         <div className="md:w-1/2">
           <Heading as="h1" className="text-5xl font-bold text-white">
             {siteConfig.title}

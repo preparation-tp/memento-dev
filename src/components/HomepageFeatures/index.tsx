@@ -36,7 +36,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require("@site/static/illustrations/diversity.svg").default,
     description: (
       <>
-        Participez et contribuez à l'amélioration de cette ressource. Rejoignez
+        Participez et contribuez à l'amélioration de la plateforme. Rejoignez
         notre communauté open-source et aidez à créer une documentation encore
         plus riche et complète.
       </>
@@ -46,7 +46,7 @@ const FeatureList: FeatureItem[] = [
 
 const HomepageFeatures = () => {
   return (
-    <section className="flex items-center py-8 w-full">
+    <section className="flex items-center py-24 w-full">
       <div className="container">
         <div className="grid md:grid-cols-3 gap-8">
           {FeatureList.map((props, idx) => (
