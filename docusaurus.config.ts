@@ -112,8 +112,12 @@ const config: Config = {
           ],
         },
         {
-          title: "Communauté",
+          title: "Memento Dev",
           items: [
+            {
+              label: "Mentions légales",
+              to: "/legal",
+            },
             {
               label: "GitHub",
               href: "https://github.com/preparation-tp/memento-dev",

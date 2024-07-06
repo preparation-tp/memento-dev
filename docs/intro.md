@@ -2,9 +2,11 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Préambule
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## Bienvenue !
+
+Toi qui vient d'arriver sur cette plateforme, sache que si tu cherches un coup de main pour ta préparation aux titres professionnels dans le développement, tu es tombé au bon endroit !
 
 ## Getting Started
 

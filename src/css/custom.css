@@ -16,6 +16,10 @@
 
 :root {
   --ifm-heading-font-family: "Luciole", sans-serif;
+  --ifm-breadcrumb-color-active: #8b5cf6;
+  --ifm-menu-color-active: #8b5cf6;
+  --ifm-link-hover-color: #8b5cf6;
+  --ifm-color-primary: #8b5cf6;
 }
 
 ::selection {
@@ -36,4 +40,20 @@
 .navbar__brand:hover,
 .navbar__item:hover {
   @apply text-white no-underline;
+}
+
+.breadcrumbs {
+  @apply text-sm text-gray-500 flex flex-wrap gap-2 items-center;
+}
+
+.breadcrumbs__item {
+  @apply flex items-center gap-1;
+}
+
+.markdown h1 {
+  @apply text-4xl font-bold;
+}
+
+.markdown h2 {
+  @apply text-2xl font-bold;
 }
