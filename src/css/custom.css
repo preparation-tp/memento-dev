@@ -66,18 +66,26 @@
   @apply text-xl;
 }
 
-.markdown li {
-  @apply ml-4 list-inside;
+.markdown ol,
+.markdown ul {
+  @apply ml-4;
 }
 
-.markdown ul li {
+.markdown ul {
   @apply list-disc;
 }
 
-.markdown ol li {
+.markdown ol {
   @apply list-decimal;
 }
 
-.markdown p + p {
+.markdown ol li,
+.markdown ul li {
+  @apply ml-4;
+}
+
+.markdown p + p,
+.markdown ul + *,
+.markdown ol + * {
   @apply mt-4;
 }
