@@ -48,6 +48,10 @@ Donc si tu réalises un dictionnaire de données après avoir fait ton MPD, c'es
 L'objectif du dictionnaire des données est de recenser toutes les données que l'on va stocker dans notre base de données.  
 L'idée est qu'il soit très simple et compréhensible par tout le monde, même par quelqu'un qui n'y connaît rien en base de données.
 
+<details>
+
+<summary>Exemple de dictionnaire de données</summary>
+
 | Nom de la donnée                   | Format de la données | Longueur maximale attendue | Description de la donnée        | Exemple de donnée      |
 | ---------------------------------- | -------------------- | -------------------------- | ------------------------------- | ---------------------- |
 | Numéro d'identification du salarié | Alphanumérique       | 30                         | -                               | -                      |
@@ -61,6 +65,8 @@ L'idée est qu'il soit très simple et compréhensible par tout le monde, même 
 
 ... et ainsi de suite pour toutes les données que tu vas stocker dans ta base de données.
 
+</details>
+
 On peut constater qu'on ne fait apparaître aucun terme technique, on se contente de décrire les données de manière simple et compréhensible.
 Grossièrement, voici les formats que l'on peut retrouver dans un dictionnaire des données :
 
@@ -70,7 +76,12 @@ Grossièrement, voici les formats que l'on peut retrouver dans un dictionnaire d
 - **Date** : pour les dates
 - **Vrai/Faux** : pour les données booléennes
 
-<Admonition type="tip" icon="🤔" title="Mais pourquoi le code postal est marqué en alphanumérique ?">
+<details>
+
+<summary>
+  Mais pourquoi le code postal est marqué en alphanumérique ? 🤔
+</summary>
+
 C'est une très bonne question figure-toi !
 
 En France, le code postal est composé de 5 chiffres, mais il peut arriver que certains codes postaux commencent par un zéro.  
@@ -104,7 +115,7 @@ Il te faudra donc stocker les numéros de téléphone avec 13 caractères _(ou p
 **Conclusion de ce pavé :**  
 Pensez à vous renseigner sur les pays que vous ciblez pour votre application, ça peut vous éviter des erreurs de conception 😉
 
-</Admonition>
+</details>
 
 ## 📊 Le MCD
 
@@ -113,20 +124,6 @@ On va également découper davantage nos données en les faisant apparaître dan
 
 On fera attention à ne pas être technique, comme pour le dictionnaire des données, et on va se contenter de représenter les données et leurs relations.
 Ce document est avant tout destiné à être compris par tout le monde, notamment le client final.
-
-<details>
-
-<summary>Exemple de MCD</summary>
-
-**The name comes from Objective-C and Swift-UI**: [method swizzling](https://pspdfkit.com/blog/2019/swizzling-in-swift/) is the process of changing the implementation of an existing selector (method).
-
-**For Docusaurus, component swizzling means providing an alternative component that takes precedence over the component provided by the theme.**
-
-You can think of it as [Monkey Patching](https://en.wikipedia.org/wiki/Monkey_patch) for React components, enabling you to override the default implementation. Gatsby has a similar concept called [theme shadowing](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/).
-
-To gain a deeper understanding of this, you have to understand [how theme components are resolved](./advanced/client.mdx#theme-aliases).
-
-</details>
 
 ## 🎯 Critères d'évaluation
 
