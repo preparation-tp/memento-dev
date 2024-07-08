@@ -40,7 +40,8 @@ Ne te focalise donc pas sur ce que fait l'API en arrière plan, concentre toi su
 
 </Admonition>
 
-<Admonition type="tip" title="Mon site est fait avec React/Angular/Vue.js, donc je valide automatiquement cette CP ?" icon="🤔">
+<Admonition type="type" icon="🤔" title="Mon site est fait avec React/Angular/Vue.js, donc je valide automatiquement cette CP ?">
+
 Pas si vite ! 😏  
 Effectivement, ton site répond _(en théorie)_ en tous points pour la compétence actuelle, mais il est important de montrer que tu sais comment fonctionne le Javascript "vanilla" _(c'est-à-dire sans framework ou bibliothèque)_.
 
@@ -177,7 +178,10 @@ Plus tôt, dans la CP 3, je t'ai parlé d'une astuce d'éco-conception pour diff
 
 On peut également différer le chargement des scripts Javascript avec l'attribut defer sur les balises `<script>`.
 
-<Admonition type="tip" title="`defer` sur les balises `<script>`">
+<details>
+
+<summary>`defer` sur les balises `<script>`</summary>
+
 Si ça te rassure, ça ne cassera pas ton site web et au contraire, ça peut même l'améliorer !
 L'intérêt premier de cet attribut est de différer l'exécution du script jusqu'à ce que le document HTML soit entièrement chargé.
 
@@ -188,12 +192,18 @@ Comme ça : pas de page blanche pendant le chargement du script, et le script se
 <script src="script.js" defer></script>
 ```
 
-</Admonition>
+</details>
 
 Maintenant, on sait qu'on peut charger de manière "asynchrone" nos images et nos scripts, mais ce n'est toujours pas terminé.. 😏
 
-Prenons l'exemple d'un site qui incorpore plusieurs dizaines de vidéos Youtube sur une seule page. On aura donc des `<iframe>` qui vont charger des vidéos Youtube, et ça, c'est pas très éco-responsable... 😕
+Prenons l'exemple d'un site qui incorpore plusieurs dizaines de vidéos Youtube sur une seule page. On aura donc des `<iframe>` qui vont charger des vidéos Youtube, et ça, c'est pas très éco-responsable... 😕  
 Mais on peut améliorer notre page en mettant en place une légère interaction Javascript pour charger l'iframe uniquement si l'utilisateur clique sur un bouton !
+
+<details>
+
+<summary>
+  Chargement d'un iframe Youtube uniquement au clic de l'utilisateur
+</summary>
 
 <Tabs>
 <TabItem value="HTML - 1ère étape">
@@ -245,8 +255,15 @@ document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonEle
 
 </TabItem>
 </Tabs>
+</details>
 
-<Admonition type="tip" icon="🤔" title="Mais ça fait beaucoup de code juste pour charger des iframes, c'est vraiment nécessaire ?">
+<details>
+
+<summary>
+  Mais ça fait beaucoup de code juste pour charger des iframes, c'est vraiment
+  nécessaire ?
+</summary>
+
 Pour être franc, il n'y a pas de solution idéale. Mais on peut améliorer les performances du site et gagner en sobriété numérique en ne chargeant pas des ressources lourdes inutilement.
 
 Est-ce que tu savais que le simple fait de charger un iframe d'une vidéo Youtube demande au navigateur de faire une dizaine de requêtes HTTP pour charger la vidéo, les scripts et les styles de Youtube ? Imagine si on mixe plusieurs sources pour nos iframes, comme Dailymotion, Vimeo, etc. 😱
@@ -254,7 +271,7 @@ Est-ce que tu savais que le simple fait de charger un iframe d'une vidéo Youtub
 Et le pire dans tout ça, c'est que le navigateur va charger ces ressources même si l'utilisateur ne comptait pas regarder la vidéo !
 Alors autant faire en sorte que notre site réponde au besoin de l'utilisateur, sans pour autant supprimer les fonctionnalités _(comme nos iframes)_ qui peuvent être utiles.
 
-</Admonition>
+</details>
 
 ---
 

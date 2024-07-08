@@ -41,19 +41,18 @@ Dans un premier temps, tu vas devoir parler du squelette de ton site, c'est-à-d
 Ensuite, tu vas devoir t'occuper de la mise en forme de ton site, c'est-à-dire du CSS.  
 N'oublie pas : le site **doit correspondre** aux maquettes que tu as réalisées, et donc respecter la charte graphique.
 
-<Admonition
-  type="tip"
-  icon="📝"
-  title="Petit rappel sur le CSS"
->
-  Le CSS est un langage de style utilisé pour décrire la présentation d'un document écrit en HTML.  
-  Il permet de définir la couleur, la police, la taille et l'espacement des éléments, mais aussi de les positionner sur la page.
+<details>
+
+<summary>Petit rappel sur le CSS</summary>
+
+Le CSS est un langage de style utilisé pour décrire la présentation d'un document écrit en HTML.  
+ Il permet de définir la couleur, la police, la taille et l'espacement des éléments, mais aussi de les positionner sur la page.
 
 Même si le navigateur stylise déjà certains éléments HTML, il ne faut pas se baser sur les styles par défaut, car ils peuvent varier d'un navigateur à un autre et surtout se casser d'une version à une autre.
 
 Pour éviter les mauvaises surprises, il est recommandé de réinitialiser les styles par défaut en début de feuille de style, en utilisant par exemple un fichier de réinitialisation comme [Normalize.css](https://necolas.github.io/normalize.css/) ou [Reset CSS de Eric Meyer](https://meyerweb.com/eric/tools/css/reset/).
 
-</Admonition>
+</details>
 
 Ensuite, tu vas devoir t'assurer que ton site est bien accessible à tous, rendre tes pages web responsives _(c'est-à-dire qu'elles s'adaptent à tous les types d'écrans)_ et enfin, publier ton site de manière sécurisée.
 
@@ -65,19 +64,18 @@ Dans la compétence précédente, je t'ai parlé de l'accessibilité et de l'imp
 
 Mais au delà de ces aspects, on va également pouvoir donner plus de précisions au navigateur sur le contenu de notre site, en utilisant des balises sémantiques ainsi que des attributs spécifiques : `alt` pour les images, `title` pour les liens, mais surtout `aria-*`.
 
-<Admonition
-  type="tip"
-  icon="📝"
-  title="Petit rappel sur les attributs `aria-*`"
->
-  Les attributs `aria-*` sont des attributs spécifiques qui permettent de donner des informations supplémentaires sur les éléments de la page.  
-  Ils sont particulièrement utiles pour les technologies d'assistance, comme les lecteurs d'écran, qui peuvent ainsi mieux comprendre le contenu de la page.
+<details>
+
+<summary>Petit rappel sur les attributs `aria-*`</summary>
+
+Les attributs `aria-*` sont des attributs spécifiques qui permettent de donner des informations supplémentaires sur les éléments de la page.  
+ Ils sont particulièrement utiles pour les technologies d'assistance, comme les lecteurs d'écran, qui peuvent ainsi mieux comprendre le contenu de la page.
 
 Par exemple, si tu as un bouton qui ouvre un menu, tu pourrais ajouter l'attribut `aria-expanded="false"` pour indiquer que le menu est fermé, puis le passer à `true` lorsque le menu est ouvert.
 
 Tu peux retrouver la liste complète des attributs `aria-*` sur le [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
 
-</Admonition>
+</details>
 
 ## 🌐 Le référencement naturel
 
@@ -120,18 +118,17 @@ Pour éviter ça, on va dans un premier temps réduire et compresser l'image et 
 Maintenant que nos images sont prêtes, il faut que je vous dise que ce n'est pas tout !  
 Il faut également penser au format de nos images. La plupart du temps, on croise des images en JPEG, PNG ou GIF, mais il existe un format plus récent et plus performant : le WebP. _(et non, ce n'est pas un Pokémon)_
 
-<Admonition
-  type="tip"
-  icon="🤔"
-  title="Et le format SVG ? Ce n'est pas bien ?"
->
+<details>
+
+<summary>Et le format SVG ? Ce n'est pas bien ?</summary>
+
 Si, si, le format SVG est très bien !
 
 C'est vrai que je ne l'évoque pas ici, mais le SVG est un format d'image vectorielle qui a l'avantage d'être léger et de s'adapter à toutes les tailles d'écran sans créer de flou ou pixélisation.
 
 Il est particulièrement adapté pour les icônes, logos et autres éléments graphiques simples.
 
-</Admonition>
+</details>
 
 Allez cette fois-ci, on ne touche plus aux images et leur format, par contre "comment peut-on les charger ?".  
 Celui qui répond "avec une simple balise `<img>` et son attribut `src`" a tout faux ! _(enfin non, pas tout faux, mais pas tout à fait juste)_
@@ -175,11 +172,11 @@ Pour cela, nous avons plusieurs possibilités :
 
 Il est également possible d'utiliser des frameworks CSS, comme Tailwind CSS ou Bootstrap, qui proposent des composants et des classes prédéfinies pour faciliter la mise en place du responsive design.
 
-<Admonition
-  type="tip"
-  title="Le cas de Bootstrap"
->
-  Alors je vais faire le vieux râleur, mais Bootstrap c'est bien, mais c'est pas bien.
+<details>
+
+<summary>Le cas de Bootstrap</summary>
+
+Alors je vais faire le vieux râleur, mais Bootstrap c'est bien, mais c'est pas bien.
 
 <iframe
   src="https://giphy.com/embed/26ufdipQqU2lhNA4g"
@@ -199,7 +196,7 @@ Tailwind CSS viendra te générer un fichier CSS final basé **uniquement** sur 
 
 Comme ça, adieu les 200Ko de CSS pour un site qui n'en fait que 20Ko ! 🚀
 
-</Admonition>
+</details>
 
 ## 🔒 Déploiement et sécurité
 
