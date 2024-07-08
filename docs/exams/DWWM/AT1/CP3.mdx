@@ -103,8 +103,7 @@ Mais pas aucun contrôle !
 L'action la plus primordiale sur les images, c'est dans un premier temps d'utiliser des ressources compressées, mais aussi de les dimensionner correctement.
 
 <Admonition
-  type="tip"
-  icon="🤔"
+  type="quote"
   title="En CSS, ça prend 2 secondes de redimensionner une image"
 >
   Effectivement, il est possible de redimensionner les images en leur appliquant une largeur et une hauteur.  
@@ -182,7 +181,6 @@ Alors je vais faire le vieux râleur, mais Bootstrap c'est bien, mais c'est pas 
   src="https://giphy.com/embed/26ufdipQqU2lhNA4g"
   width="480"
   height="480"
-  frameBorder="0"
   class="mx-auto my-4"
 ></iframe>
 
@@ -223,11 +221,11 @@ Tu peux également activer la compression Gzip pour réduire la taille des fichi
 
 ## 🎯 Critères d'évaluation
 
-- L’interface est conforme à la maquette et les besoins en éco-conception sont pris en compte
-- L’interface tient compte de l’expérience utilisateur, y compris pour les personnes en situation de handicap
-- L’interface respecte les recommandations de sécurité liées aux applications web ou web mobile
-- L’interface s’adapte au type d’utilisation de l‘application, et notamment à la taille, au type et à la disposition du support, y compris pour les équipements mobiles
-- La règlementation en vigueur est respectée, y compris celle relative à l’accessibilité
+- L'interface est conforme à la maquette et les besoins en éco-conception sont pris en compte
+- L'interface tient compte de l'expérience utilisateur, y compris pour les personnes en situation de handicap
+- L'interface respecte les recommandations de sécurité liées aux applications web ou web mobile
+- L'interface s'adapte au type d'utilisation de l'application, et notamment à la taille, au type et à la disposition du support, y compris pour les équipements mobiles
+- La règlementation en vigueur est respectée, y compris celle relative à l'accessibilité
 - Le site est publié de manière sécurisée
 - Le site est visible sur les moteurs de recherche et le référencement dépend du public
 
@@ -238,6 +236,7 @@ Pour ça il y a une merveilleuse technologie qui s'appelle le reverse proxy !
 
 Le reverse proxy, c'est un serveur qui va recevoir les requêtes HTTP et les rediriger vers le serveur qui héberge le site. Tu peux très bien faire la redirection sur le même serveur, c'est d'ailleurs ce qu'on va faire ici.
 
+<Admonition type="example" title="Exemple concret">
 Prenons un exemple concret, le cas d'une application qui tourne sur le port 3000, mais que l'on souhaite rendre accessible sur le port 80.
 
 Avec Nginx, on peut faire ça très simplement en créant un fichier de configuration dans `/etc/nginx/sites-available/`.
@@ -259,6 +258,7 @@ server {
 ... Tadaaa ! C'est tout !  
 Bien entendu, il va falloir activer ce site avec un lien symbolique dans `/etc/nginx/sites-enabled/` et redémarrer Nginx pour que les changements soient pris en compte.  
 Si tu souhaites également rajouter le support du HTTPS, tu peux utiliser [Certbot](https://certbot.eff.org/) pour générer un certificat Let's Encrypt.
+</Admonition>
 
 ---
 
