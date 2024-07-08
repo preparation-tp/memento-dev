@@ -72,6 +72,10 @@
   @apply leading-7;
 }
 
+.markdown ul.tabs {
+  @apply ml-0;
+}
+
 .markdown ol,
 .markdown ul {
   @apply ml-4;

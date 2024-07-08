@@ -51,7 +51,12 @@ Cependant il va potentiellement y avoir un défaut majeur sur ton projet : le r�
 
 </Admonition>
 
-<Admonition type="info" title="Référencement d'un site généré côté client _(comme React, Vue.js etc)_">
+<details>
+
+<summary>
+  Référencement d'un site généré côté client _(comme React, Vue.js etc)_
+</summary>
+
 Les sites web générés côté client _(ou "client-side rendering")_ ont un défaut majeur : ils ne sont pas très bien référencés par les moteurs de recherche.
 
 En effet, les moteurs de recherche ont du mal à lire le contenu d'un site généré côté client, car ils n'exécutent pas le Javascript.  
@@ -63,14 +68,17 @@ De mon côté, je recommande énormément de passer par le framework [Vike](http
 
 Tu as aussi la possibilité d'utiliser [Next.js](https://nextjs.org/) pour React, [Nuxt.js](https://nuxtjs.org/) pour Vue.js ou [SvelteKit](https://kit.svelte.dev/) pour Svelte qui permettent de faire du rendu côté serveur.
 
-</Admonition>
+</details>
 
 ## ➕ Informations complémentaires
 
 Je me permets également de lâcher une bombe sur une certaine techno JS : **jQuery**.  
 Bon sang, celui-là il me fait penser à un vieux pote qui a pris un coup de vieux... 😅
 
-<Admonition type="tip" icon="🤔" title="jQuery, c'est quoi ?">
+<details>
+
+<summary>jQuery, c'est quoi ?</summary>
+
 jQuery est une bibliothèque Javascript qui a été très populaire dans les années 2000 et 2010.
 Elle a été créée pour simplifier l'écriture de scripts Javascript et pour faciliter la manipulation du DOM.
 
@@ -79,15 +87,21 @@ Mais depuis l'arrivée des frameworks front-end comme React, Angular ou Vue.js, 
 
 Cependant, il est toujours bon de connaître jQuery, car il est possible que tu tombes sur un projet qui l'utilise encore, comme sur des templates Wordpress qui commencent à dater par exemple.
 
-</Admonition>
+</details>
 
 Mais alors, pourquoi je te parle de jQuery ?
 
 Eh bien.. pour faire simple, aujourd'hui jQuery est relativement obsolète et surtout très lourd pour ce que ça rajoute à un projet.  
 Dans la mesure du possible, il est recommandé de ne pas utiliser jQuery pour un nouveau projet, et de préférer Javascript "vanilla" ou un framework ou bibliothèque front-end comme React, Angular ou Vue.js _(attention, d'un point de vue éco-conception l'utilisation d'un framework n'est pas forcément la meilleure solution)_.
 
-<Admonition type="tip" icon="😱" title="Mais comment je vais faire pour mes consommations d'API, vu que j'utilisais `jQuery.ajax()` ?!">
-  Tout doux, tout doux, il existe une solution ! 😎
+<details>
+
+<summary>
+  Mais comment je vais faire pour mes consommations d'API, vu que j'utilisais
+  `jQuery.ajax()` ?!
+</summary>
+
+Tout doux, tout doux, il existe une solution ! 😎
 
 Si je te parle des requêtes XHR _(XMLHttpRequest)_ tu me dis... ?
 
@@ -103,7 +117,7 @@ Fetch est une API plus moderne et plus simple à utiliser que les requêtes XHR,
  Elle permet de faire des requêtes HTTP de manière asynchrone et de gérer les réponses de manière plus simple.
 
 <Tabs>
-  <TabItem value="XHR">
+  <TabItem value="🥉 XHR">
 
 ```javascript showLineNumbers
 const xhr = new XMLHttpRequest();
@@ -118,7 +132,7 @@ xhr.send();
 
   </TabItem>
 
-<TabItem value="jQuery">
+<TabItem value="🥈 jQuery">
 
 ```javascript showLineNumbers
 $.ajax({
@@ -132,7 +146,7 @@ $.ajax({
 
 </TabItem>
 
-<TabItem value="Fetch">
+<TabItem value="🥇🏆 Fetch">
 
 ```javascript showLineNumbers
 fetch("https://api.exemple.com/data")
@@ -145,7 +159,7 @@ fetch("https://api.exemple.com/data")
 
 Non seulement `fetch` est plus simple à utiliser et comprendre _(contrairement à XMLHttpRequest)_ mais elle est également plus légère que `jQuery.ajax()` puisqu'elle est native au navigateur ! Alors pourquoi s'en priver ? 😉
 
-</Admonition>
+</details>
 
 ## 🎯 Critères d'évaluation
 
