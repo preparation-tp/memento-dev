@@ -95,6 +95,7 @@
 }
 
 .markdown blockquote + p,
+.admonition + *,
 .markdown p + *,
 .markdown ul + *,
 .markdown ol + *,
@@ -109,4 +110,11 @@
 
 .theme-admonition > div:first-child {
   @apply flex items-center gap-1 mb-4;
+}
+
+.alert--quote {
+  --ifm-alert-background-color: #e5e7eb;
+  --ifm-alert-background-color-highlight: #8b5cf620;
+  --ifm-alert-foreground-color: #111827;
+  --ifm-alert-border-color: #4b5563;
 }

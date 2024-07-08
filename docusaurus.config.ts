@@ -57,6 +57,11 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/preparation-tp/memento-dev/tree/main/",
+
+          admonitions: {
+            keywords: ["quote"],
+            extendDefaults: true,
+          },
         },
         blog: {
           showReadingTime: true,
