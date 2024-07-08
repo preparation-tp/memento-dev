@@ -156,8 +156,8 @@ const config: Config = {
       </span>`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.oneLight,
+      darkTheme: prismThemes.oneDark,
       additionalLanguages: ["php", "nginx", "bash"],
     },
   } satisfies Preset.ThemeConfig,

@@ -16,12 +16,29 @@
 
 :root {
   --ifm-heading-font-family: "Luciole", sans-serif;
-  --ifm-breadcrumb-color-active: #8b5cf6;
-  --ifm-menu-color-active: #8b5cf6;
-  --ifm-link-hover-color: #8b5cf6;
-  --ifm-color-primary: #8b5cf6;
-  --docusaurus-highlighted-code-line-bg: #8b5cf620;
-  --ifm-hr-background-color: #8b5cf6;
+  --ifm-color-primary: #6d28d9;
+  --ifm-color-primary-dark: #6223c5;
+  --ifm-color-primary-darker: #5c21ba;
+  --ifm-color-primary-darkest: #4c1b99;
+  --ifm-color-primary-light: #7c3edd;
+  --ifm-color-primary-lighter: #8349df;
+  --ifm-color-primary-lightest: #996ae5;
+
+  --admonition-example-background: #f3e8ff;
+  --admonition-example-foreground: #23043b;
+}
+
+:root[data-theme="dark"] {
+  --ifm-color-primary: #a78bfa;
+  --ifm-color-primary-dark: #8b66f8;
+  --ifm-color-primary-darker: #7d53f8;
+  --ifm-color-primary-darkest: #dacefd;
+  --ifm-color-primary-light: #c3b0fc;
+  --ifm-color-primary-lighter: #d1c3fc;
+  --ifm-color-primary-lightest: #fcfbff;
+
+  --admonition-example-background: #5c21ba;
+  --admonition-example-foreground: #faf5ff;
 }
 
 ::selection {
@@ -119,7 +136,7 @@
 }
 
 .alert--example {
-  --ifm-alert-background-color: #f3e8ff;
-  --ifm-alert-foreground-color: #23043b;
+  --ifm-alert-background-color: var(--admonition-example-background);
+  --ifm-alert-foreground-color: var(--admonition-example-foreground);
   --ifm-alert-border-color: #9333ea;
 }
