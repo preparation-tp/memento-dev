@@ -14,16 +14,130 @@ import Admonition from "@theme/Admonition";
 
 ## 📋 En résumé
 
+Le front-end : c'est **fini** !  
+Mais avant de nous attaquer au back-end d'un point de vue code, on va voir ce qui est attendu dans cette CP qui parle de la mise en place d'une base de données relationnelle.
+
+<Admonition
+  type="tip"
+  icon="🤔"
+  title="Mais attend ! J'ai juste une base de données non relationnelle à mettre en place, c'est bon ?"
+>
+  J'aurai aimé te dire que oui, mais ça va être un poil trop léger pour cette
+  compétence... Mais garde sous la main ta base de données non relationnelles
+  pour la prochaine compétence, ça te servira 😉
+</Admonition>
+
+Commençons par le commencement : **comment créer une base de données relationnelle ?**
+
+Il y a pléthore de possibilités, mais ici on va s'attarder sur une méthodologie française _(cocorico 🐓)_ qui est la méthode **Merise**.  
+On va se baser sur différents schémas issus de cette méthode pour créer notre base de données relationnelle, à savoir :
+
+1. Le **dictionnaire des données** : qui va recenser toutes les données que l'on va stocker par la suite dans notre base de données
+2. Le **MCD** _(Modèle Conceptuel des Données)_ : qui va représenter les données et leurs relations, sous la forme d'entités et d'associations dans un schéma graphique
+3. Le **MLD** _(Modèle Logique des Données)_ : qui va représenter les données sous forme de tables et de relations, dans un schéma graphique
+4. Le **MRD** _(Modèle Relationnel des Données)_ : qui va représenter les mêmes informations que le MLD, mais cette fois-ci en format texte
+5. Le **MPD** _(Modèle Physique des Données)_ : qui va représenter les données sous forme de tables et de relations, en intégrant les types de données et les contraintes
+
+Tu remarqueras que j'y ai indiqué un ordre dans la liste ci-dessus.  
+Si je peux te donner un indice : ce n'est pas pour rien que c'est une liste ordonnée 😉
+
+Donc si tu réalises un dictionnaire de données après avoir fait ton MPD, c'est que tu n'as pas compris l'objectif du dictionnaire de données ! _(par exemple)_
+
+## 🗂️ Le dictionnaire des données
+
+L'objectif du dictionnaire des données est de recenser toutes les données que l'on va stocker dans notre base de données.  
+L'idée est qu'il soit très simple et compréhensible par tout le monde, même par quelqu'un qui n'y connaît rien en base de données.
+
+| Nom de la donnée                   | Format de la données | Longueur maximale attendue | Description de la donnée        | Exemple de donnée      |
+| ---------------------------------- | -------------------- | -------------------------- | ------------------------------- | ---------------------- |
+| Numéro d'identification du salarié | Alphanumérique       | 30                         | -                               | -                      |
+| Prénom du salarié                  | Alphabétique         | 30                         | -                               | Jean                   |
+| Nom du salarié                     | Alphabétique         | 30                         | -                               | Dupont                 |
+| Adresse email du salarié           | Alphanumérique       | 50                         | -                               | jean.dupont@exemple.fr |
+| Adresse postale du salarié         | Alphanumérique       | 60                         | -                               | 1 rue de la Paix       |
+| Code postal du salarié             | Alphanumérique       | 5                          | -                               | 75000                  |
+| Ville du salarié                   | Alphabétique         | 30                         | -                               | Paris                  |
+| Mot de passe du salarié            | Alphanumérique       | 80                         | Mot de passe sécurisé _(hashé)_ | -                      |
+
+... et ainsi de suite pour toutes les données que tu vas stocker dans ta base de données.
+
+On peut constater qu'on ne fait apparaître aucun terme technique, on se contente de décrire les données de manière simple et compréhensible.
+Grossièrement, voici les formats que l'on peut retrouver dans un dictionnaire des données :
+
+- **Alphabétique** : pour les chaînes de caractères contenant uniquement des lettres
+- **Alphanumérique** : pour les chaînes de caractères contenant des lettres et des chiffres
+- **Numérique** : pour les nombres
+- **Date** : pour les dates
+- **Vrai/Faux** : pour les données booléennes
+
+<Admonition type="tip" icon="🤔" title="Mais pourquoi le code postal est marqué en alphanumérique ?">
+C'est une très bonne question figure-toi !
+
+En France, le code postal est composé de 5 chiffres, mais il peut arriver que certains codes postaux commencent par un zéro.  
+Or, si on stocke le code postal en numérique, on risque de perdre ce zéro au début du code postal.
+
+Exemple :
+
+- `75000` -> `75000`
+- `01000` -> `1000` _(on a perdu le zéro au début)_
+
+On retrouve également ce cas de figure pour les numéros de téléphone, qui peuvent commencer par un zéro.
+
+Toutefois il faut également prendre en compte quelque chose... ici, l'exemple ne concerne que la France.  
+Si demain on te demande de prévoir le fait que ton application puisse être utilisée dans un autre pays, il faudra peut-être revoir ce choix de format pour le code postal.  
+Certains pays ont des codes postaux composés de lettres et de chiffres, d'autres vont avoir jusqu'à 9 caractères, etc.
+
+⬇️ **Cas de figure spécifique, et pourtant très important à connaître** ⬇️
+
+Prenons l'exemple où l'on fait une application pour la France **uniquement**.  
+En France, on considère que l'indicatif des numéros de téléphone est `+33`. On serait donc tenté de se dire :
+
+> "Pas besoin de stocker l'indicatif puisque je veux uniquement enregistrer des numéros de téléphones français."
+
+Hmm.. vraiment ?  
+Pourtant : la Réunion, la Guadeloupe, la Martinique, la Guyane et Mayotte sont bien des départements français, non ?
+
+En regardant de plus près, les numéros de téléphone de ces départements ne commencent pas par `+33` mais par `+262` pour la Réunion, `+590` pour la Guadeloupe, etc.
+
+Il te faudra donc stocker les numéros de téléphone avec 13 caractères _(ou plus)_ pour être sûr de ne pas perdre d'informations et t'assurer que ton application puisse être utilisée partout en France et/ou dans le monde selon les besoins !
+
+**Conclusion de ce pavé :**  
+Pensez à vous renseigner sur les pays que vous ciblez pour votre application, ça peut vous éviter des erreurs de conception 😉
+
+</Admonition>
+
+## 📊 Le MCD
+
+Tout comme le dictionnaire des données, le MCD a pour objectif de représenter les données et leurs relations, mais cette fois-ci sous forme graphique.
+On va également découper davantage nos données en les faisant apparaître dans des entités distinctes.
+
+On fera attention à ne pas être technique, comme pour le dictionnaire des données, et on va se contenter de représenter les données et leurs relations.
+Ce document est avant tout destiné à être compris par tout le monde, notamment le client final.
+
+<details>
+
+<summary>Exemple de MCD</summary>
+
+**The name comes from Objective-C and Swift-UI**: [method swizzling](https://pspdfkit.com/blog/2019/swizzling-in-swift/) is the process of changing the implementation of an existing selector (method).
+
+**For Docusaurus, component swizzling means providing an alternative component that takes precedence over the component provided by the theme.**
+
+You can think of it as [Monkey Patching](https://en.wikipedia.org/wiki/Monkey_patch) for React components, enabling you to override the default implementation. Gatsby has a similar concept called [theme shadowing](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/).
+
+To gain a deeper understanding of this, you have to understand [how theme components are resolved](./advanced/client.mdx#theme-aliases).
+
+</details>
+
 ## 🎯 Critères d'évaluation
 
 - Les données du schéma conceptuel et leurs relations sont identifiées et prises en compte
 - Le schéma physique est conforme aux besoins exprimés dans le dossier de conception et respecte les règles des bases de données relationnelles
 - Les règles de nommage sont respectées
-- La sécurité, l’intégrité et la confidentialité des données est assurée
+- La sécurité, l'intégrité et la confidentialité des données est assurée
 - La base de données de tests mise en place est conforme au schéma physique
 - Les utilisateurs sont créés avec leurs droits respectifs conformément au dossier de conception
-- La base de données créée est sauvegardée et elle peut être restaurée en cas d’incident
-- La documentation technique des bases de données est comprise, en langue française ou anglaise _(niveau B1 du CECRL pour l’anglais)_
+- La base de données créée est sauvegardée et elle peut être restaurée en cas d'incident
+- La documentation technique des bases de données est comprise, en langue française ou anglaise _(niveau B1 du CECRL pour l'anglais)_
 
 ## 🤯 Aller plus loin _(hors référentiel)_
 
