@@ -67,6 +67,10 @@
   @apply text-xl;
 }
 
+.markdown p {
+  @apply leading-7;
+}
+
 .markdown ol,
 .markdown ul {
   @apply ml-4;

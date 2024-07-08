@@ -158,3 +158,68 @@ De cette manière, nos images ne seront chargées que si elles sont visibles à 
 </Admonition>
 
 Allez, arrêtons-nous là pour l'éco-conception !
+
+## 📱 Le responsive design
+
+Maintenant que notre site est éco-conçu, accessible et optimisé pour le référencement, il est temps de s'attaquer à la partie responsive design. Tu connais certainement déjà le principe, mais pour les autres, le responsive design c'est le fait de rendre un site web adaptatif et lisible sur tous les types d'écrans, que ce soit un ordinateur, une tablette ou un smartphone.
+
+Pour cela, nous avons plusieurs possibilités :
+
+    - Les media queries _(pour adapter le style en fonction de la taille de l'écran et du type de support)_
+    - Les unités relatives _(pour adapter la taille des éléments en fonction de la taille de la police ou d'un élément parent)_
+      -  `em` : unité relative à la taille de la police de l'élément parent
+      -  `rem` : unité relative à la taille de la police de l'élément racine
+      -  `%` : unité relative à la taille de l'élément parent
+      -  `vw/vh` : unité relative à la largeur de la fenêtre _(ainsi que les variantes `lvh/lvw`, `svh/svw` et `dvh/dvw`)_
+    - Les grid et flexbox _(pour organiser les éléments de manière flexible et adaptative)_
+
+Il est également possible d'utiliser des frameworks CSS, comme Tailwind CSS ou Bootstrap, qui proposent des composants et des classes prédéfinies pour faciliter la mise en place du responsive design.
+
+<Admonition
+  type="tip"
+  title="Le cas de Bootstrap"
+>
+  Alors je vais faire le vieux râleur, mais Bootstrap c'est bien, mais c'est pas bien.
+
+<iframe
+  src="https://giphy.com/embed/26ufdipQqU2lhNA4g"
+  width="480"
+  height="480"
+  frameBorder="0"
+  class="pointer-events-none mx-auto my-4"
+></iframe>
+
+Mais alors, pourquoi ce n'est pas bien ?  
+Pour faire simple : Bootstrap c'est lourd. Très lourd.
+
+Il propose beaucoup de fonctionnalités, mais il est très rare de toutes les utiliser et derrière ça implique que le navigateur va charger du code inutile, ce qui va ralentir le chargement de la page.
+
+Si tu veux utiliser un framework CSS, je te conseille plutôt de te tourner vers Tailwind CSS, qui propose une approche plus modulaire et plus légère.
+Tailwind CSS viendra te générer un fichier CSS final basé **uniquement** sur les classes que tu utilises, ce qui permet de réduire la taille du fichier final.
+
+Comme ça, adieu les 200Ko de CSS pour un site qui n'en fait que 20Ko ! 🚀
+
+</Admonition>
+
+## 🔒 Déploiement et sécurité
+
+Dernière étape avant de pouvoir souffler un peu : le déploiement de ton site.
+
+Pour déployer ton site, tu vas devoir choisir un hébergeur, un nom de domaine, configurer un serveur, transférer tes fichiers, etc.  
+Tu peux totalement utiliser des services "gratuits", comme Netlify ou Vercel, mais assure-toi que le service que tu choisis respecte les normes de sécurité, les normes de respect sur les données personnelles, mais surtout que tu sois en mesure de déployer ton site sans ces outils !
+
+Enfin, n'oublie pas de sécuriser ton site, en utilisant un certificat SSL par exemple.
+
+<Admonition
+  type="tip"
+  icon="🤔"
+  title="Un certificat quoi ?"
+>
+Un certificat SSL est un fichier de données qui sécurise les échanges de données entre un serveur et un navigateur en cryptant les données transmises. Il garantit que les données sont sécurisées et ne peuvent pas être interceptées.
+
+Tu peux en générer un gratuitement avec [Let's Encrypt](https://letsencrypt.org/), mais il faudra le renouveler tous les 3 mois.
+
+</Admonition>
+
+Si tu as la main sur la configuration du serveur, tu pourras également mettre en place des règles de sécurité, comme le CSP _(Content Security Policy)_, qui permet de limiter les risques de failles XSS _(Cross-Site Scripting)_.  
+Tu peux également activer la compression Gzip pour réduire la taille des fichiers envoyés au navigateur afin d'accélérer le chargement du site et de répondre davantage aux critères d'éco-conception.
