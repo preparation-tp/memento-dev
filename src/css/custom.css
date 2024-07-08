@@ -89,9 +89,12 @@
   @apply ml-4;
 }
 
+.markdown blockquote + p,
 .markdown p + p,
 .markdown ul + *,
-.markdown ol + * {
+.markdown ol + *,
+.markdown * + .tabs-container,
+.markdown * + .theme-code-block {
   @apply mt-4;
 }
 

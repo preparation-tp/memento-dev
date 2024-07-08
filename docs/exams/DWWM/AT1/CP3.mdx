@@ -186,7 +186,7 @@ Il est également possible d'utiliser des frameworks CSS, comme Tailwind CSS ou 
   width="480"
   height="480"
   frameBorder="0"
-  class="pointer-events-none mx-auto my-4"
+  class="mx-auto my-4"
 ></iframe>
 
 Mais alors, pourquoi ce n'est pas bien ?  
@@ -223,3 +223,61 @@ Tu peux en générer un gratuitement avec [Let's Encrypt](https://letsencrypt.or
 
 Si tu as la main sur la configuration du serveur, tu pourras également mettre en place des règles de sécurité, comme le CSP _(Content Security Policy)_, qui permet de limiter les risques de failles XSS _(Cross-Site Scripting)_.  
 Tu peux également activer la compression Gzip pour réduire la taille des fichiers envoyés au navigateur afin d'accélérer le chargement du site et de répondre davantage aux critères d'éco-conception.
+
+## 🎯 Critères d'évaluation
+
+- L’interface est conforme à la maquette et les besoins en éco-conception sont pris en compte
+- L’interface tient compte de l’expérience utilisateur, y compris pour les personnes en situation de handicap
+- L’interface respecte les recommandations de sécurité liées aux applications web ou web mobile
+- L’interface s’adapte au type d’utilisation de l‘application, et notamment à la taille, au type et à la disposition du support, y compris pour les équipements mobiles
+- La règlementation en vigueur est respectée, y compris celle relative à l’accessibilité
+- Le site est publié de manière sécurisée
+- Le site est visible sur les moteurs de recherche et le référencement dépend du public
+
+## 🤯 Aller plus loin _(hors référentiel)_
+
+Tu utilises un site qui tourne sur un port spécifique, mais tu aimerais bien que ton site soit accessible sur les ports 80 _(HTTP)_ et 443 _(HTTPS)_ ?  
+Pour ça il y a une merveilleuse technologie qui s'appelle le reverse proxy !
+
+Le reverse proxy, c'est un serveur qui va recevoir les requêtes HTTP et les rediriger vers le serveur qui héberge le site. Tu peux très bien faire la redirection sur le même serveur, c'est d'ailleurs ce qu'on va faire ici.
+
+Prenons un exemple concret, le cas d'une application qui tourne sur le port 3000, mais que l'on souhaite rendre accessible sur le port 80.
+
+Avec Nginx, on peut faire ça très simplement en créant un fichier de configuration dans `/etc/nginx/sites-available/`.
+
+```nginx showLineNumbers
+server {
+    listen 80;
+    listen [::]:80;
+    server_name monsite.fr;
+
+    location / {
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for ; # On transmet l'adresse IP du client
+        proxy_set_header    Host $host; # On transmet le nom de domaine
+        proxy_pass          http://localhost:3000; # On redirige les requêtes vers le port 3000, où tourne notre application
+    }
+}
+```
+
+... Tadaaa ! C'est tout !  
+Bien entendu, il va falloir activer ce site avec un lien symbolique dans `/etc/nginx/sites-enabled/` et redémarrer Nginx pour que les changements soient pris en compte.  
+Si tu souhaites également rajouter le support du HTTPS, tu peux utiliser [Certbot](https://certbot.eff.org/) pour générer un certificat Let's Encrypt.
+
+---
+
+## 🧠 Documentations
+
+- [Wikipédia - Accessibilité web](https://fr.wikipedia.org/wiki/Accessibilit%C3%A9_du_web)
+- [Wikipédia - Référencement naturel](https://fr.wikipedia.org/wiki/R%C3%A9f%C3%A9rencement_naturel)
+- [Wikipédia - Éco-conception numérique](https://fr.wikipedia.org/wiki/%C3%89coconception)
+- [MDN - Accessible Rich Internet Applications _(ARIA)_](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+- [Let's Encrypt](https://letsencrypt.org/)
+
+## 🛠️ Outils
+
+- [Certbot](https://certbot.eff.org/)
+- [WebAim Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [Contrast Checker](https://contrastchecker.com/)
+- [Coolors - Contrast Checker](https://coolors.co/contrast-checker/112a46-acc8e5)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Bootstrap](https://getbootstrap.com/)
