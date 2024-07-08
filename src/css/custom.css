@@ -114,7 +114,12 @@
 
 .alert--quote {
   --ifm-alert-background-color: #e5e7eb;
-  --ifm-alert-background-color-highlight: #8b5cf620;
   --ifm-alert-foreground-color: #111827;
   --ifm-alert-border-color: #4b5563;
+}
+
+.alert--example {
+  --ifm-alert-background-color: #f3e8ff;
+  --ifm-alert-foreground-color: #23043b;
+  --ifm-alert-border-color: #9333ea;
 }

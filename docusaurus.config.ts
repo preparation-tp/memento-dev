@@ -59,7 +59,7 @@ const config: Config = {
           editUrl: "https://github.com/preparation-tp/memento-dev/tree/main/",
 
           admonitions: {
-            keywords: ["quote"],
+            keywords: ["quote", "example"],
             extendDefaults: true,
           },
         },
