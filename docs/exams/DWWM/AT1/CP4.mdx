@@ -87,7 +87,7 @@ Eh bien.. pour faire simple, aujourd'hui jQuery est relativement obsolète et su
 Dans la mesure du possible, il est recommandé de ne pas utiliser jQuery pour un nouveau projet, et de préférer Javascript "vanilla" ou un framework ou bibliothèque front-end comme React, Angular ou Vue.js _(attention, d'un point de vue éco-conception l'utilisation d'un framework n'est pas forcément la meilleure solution)_.
 
 <Admonition type="tip" icon="😱" title="Mais comment je vais faire pour mes consommations d'API, vu que j'utilisais `jQuery.ajax()` ?!">
-Tout doux, tout doux, il existe une solution ! 😎
+  Tout doux, tout doux, il existe une solution ! 😎
 
 Si je te parle des requêtes XHR _(XMLHttpRequest)_ tu me dis... ?
 
@@ -100,39 +100,47 @@ Et tu as raison, mais si maintenant je te dis qu'il y a une autre solution, nati
 **Et sinon, pour faire simple :**
 
 Fetch est une API plus moderne et plus simple à utiliser que les requêtes XHR, et elle est supportée par tous les navigateurs modernes.  
-Elle permet de faire des requêtes HTTP de manière asynchrone et de gérer les réponses de manière plus simple.
+ Elle permet de faire des requêtes HTTP de manière asynchrone et de gérer les réponses de manière plus simple.
 
 <Tabs>
   <TabItem value="XHR">
-  ```javascript showLineNumbers
+
+```javascript showLineNumbers
 const xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://api.exemple.com/data', true);
-xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(JSON.parse(xhr.responseText));
-    }
+xhr.open("GET", "https://api.exemple.com/data", true);
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log(JSON.parse(xhr.responseText));
+  }
 };
 xhr.send();
-    ```
+```
+
   </TabItem>
-  <TabItem value="jQuery">
-  ```javascript showLineNumbers
+
+<TabItem value="jQuery">
+
+```javascript showLineNumbers
 $.ajax({
-    url: 'https://api.exemple.com/data',
-    method: 'GET',
-    success: function(data) {
-        console.log(data);
-    }
+  url: "https://api.exemple.com/data",
+  method: "GET",
+  success: function (data) {
+    console.log(data);
+  },
 });
-    ```
-  </TabItem>
-  <TabItem value="Fetch">
-  ```javascript showLineNumbers
-fetch('https://api.exemple.com/data')
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-    ```
-  </TabItem>
+```
+
+</TabItem>
+
+<TabItem value="Fetch">
+
+```javascript showLineNumbers
+fetch("https://api.exemple.com/data")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+```
+
+</TabItem>
 </Tabs>
 
 Non seulement `fetch` est plus simple à utiliser et comprendre _(contrairement à XMLHttpRequest)_ mais elle est également plus légère que `jQuery.ajax()` puisqu'elle est native au navigateur ! Alors pourquoi s'en priver ? 😉
@@ -174,51 +182,54 @@ Prenons l'exemple d'un site qui incorpore plusieurs dizaines de vidéos Youtube 
 Mais on peut améliorer notre page en mettant en place une légère interaction Javascript pour charger l'iframe uniquement si l'utilisateur clique sur un bouton !
 
 <Tabs>
-  <TabItem value="HTML - 1ère étape">
-  ```html showLineNumbers
-  <div
-    class="iframe-container"
-    data-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    data-width="1280"
-    data-height="720"
+<TabItem value="HTML - 1ère étape">
+```html showLineNumbers
+<div
+class="iframe-container"
+data-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+data-width="1280"
+data-height="720"
 >
-    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" loading="lazy">
-    <button type="button" class="iframe-loader">Charger la vidéo</button>
+  <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" loading="lazy">
+  <button type="button" class="iframe-loader">Charger la vidéo</button>
 </div>
-  ```
-  </TabItem>
-  <TabItem value="Javascript - 2ème étape">
-  ```javascript showLineNumbers
-  document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonElement) => {
-    // Pour chaque bouton qui doit charger un iframe, on écoute le clic dessus
-    button.addEventListener('click', () => {
-        // On récupère le container de l'iframe, qui dans notre exemple est la balise parente du bouton
-        const container: HTMLElement | null = button.closest('.iframe-container');
+```
+</TabItem>
 
-        // Si le container n'existe pas, on arrête l'exécution de la fonction pour éviter un plantage
-        if (!container) return;
+<TabItem value="Javascript - 2ème étape">
 
-        const { src, width, height } = container.dataset as {
-            src: string,
-            width: string,
-            height: string
-        };
+```javascript showLineNumbers
+document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonElement) => {
+  // Pour chaque bouton qui doit charger un iframe, on écoute le clic dessus
+  button.addEventListener('click', () => {
+      // On récupère le container de l'iframe, qui dans notre exemple est la balise parente du bouton
+      const container: HTMLElement | null = button.closest('.iframe-container');
 
-        // On prépare notre iframe avec les données stockées dans le container
-        const iframe = document.createElement('iframe');
-        iframe.setAttribute('src', src);
-        iframe.setAttribute('width', width);
-        iframe.setAttribute('height', height);
+      // Si le container n'existe pas, on arrête l'exécution de la fonction pour éviter un plantage
+      if (!container) return;
 
-        // On supprime le contenu du container pour y ajouter notre iframe
-        container.innerHTML = '';
-        container.appendChild(iframe);
-    });
+      const { src, width, height } = container.dataset as {
+          src: string,
+          width: string,
+          height: string
+      };
+
+      // On prépare notre iframe avec les données stockées dans le container
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('src', src);
+      iframe.setAttribute('width', width);
+      iframe.setAttribute('height', height);
+
+      // On supprime le contenu du container pour y ajouter notre iframe
+      container.innerHTML = '';
+      container.appendChild(iframe);
+  });
 
 });
 
 ```
-  </TabItem>
+
+</TabItem>
 </Tabs>
 
 <Admonition type="tip" icon="🤔" title="Mais ça fait beaucoup de code juste pour charger des iframes, c'est vraiment nécessaire ?">
@@ -228,11 +239,22 @@ Est-ce que tu savais que le simple fait de charger un iframe d'une vidéo Youtub
 
 Et le pire dans tout ça, c'est que le navigateur va charger ces ressources même si l'utilisateur ne comptait pas regarder la vidéo !
 Alors autant faire en sorte que notre site réponde au besoin de l'utilisateur, sans pour autant supprimer les fonctionnalités _(comme nos iframes)_ qui peuvent être utiles.
+
 </Admonition>
 
 ---
 
 ## 🧠 Documentations
 
+- [MDN Web Docs - Attribut `loading` sur les balises `<img>`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/img#loading)
+- [MDN Web Docs - Attribut `defer` sur les balises `<script>`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/script#defer)
+- [MDN Web Docs - Attribut `data-*`](https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/data-*)
+- [MDN Web Docs - `fetch`](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API)
+- [Wikipédia - API](https://fr.wikipedia.org/wiki/Interface_de_programmation)
+
 ## 🛠️ Outils
-```
+
+- [Vike - Framework front-end pour un rendu côté serveur et côté client](https://vike.dev/)
+- [Next.js - Framework pour React avec rendu côté serveur](https://nextjs.org/)
+- [Nuxt.js - Framework pour Vue.js avec rendu côté serveur](https://nuxtjs.org/)
+- [SvelteKit - Framework pour Svelte avec rendu côté serveur](https://kit.svelte.dev/)
