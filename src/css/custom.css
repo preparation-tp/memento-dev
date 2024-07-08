@@ -125,7 +125,8 @@
   @apply h-px;
 }
 
-.theme-admonition > div:first-child {
+.theme-admonition > div:first-child,
+.admonition-heading {
   @apply flex items-center gap-1 mb-4;
 }
 
