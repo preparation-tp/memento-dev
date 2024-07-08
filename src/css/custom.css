@@ -95,7 +95,7 @@
 }
 
 .markdown blockquote + p,
-.markdown p + p,
+.markdown p + *,
 .markdown ul + *,
 .markdown ol + *,
 .markdown * + .tabs-container,
