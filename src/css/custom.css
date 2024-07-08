@@ -21,6 +21,7 @@
   --ifm-link-hover-color: #8b5cf6;
   --ifm-color-primary: #8b5cf6;
   --docusaurus-highlighted-code-line-bg: #8b5cf620;
+  --ifm-hr-background-color: #8b5cf6;
 }
 
 ::selection {
@@ -96,6 +97,10 @@
 .markdown * + .tabs-container,
 .markdown * + .theme-code-block {
   @apply mt-4;
+}
+
+.markdown hr {
+  @apply h-px;
 }
 
 .theme-admonition > div:first-child {

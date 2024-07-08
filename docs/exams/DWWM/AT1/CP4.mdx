@@ -168,8 +168,71 @@ Comme ça : pas de page blanche pendant le chargement du script, et le script se
 
 </Admonition>
 
+Maintenant, on sait qu'on peut charger de manière "asynchrone" nos images et nos scripts, mais ce n'est toujours pas terminé.. 😏
+
+Prenons l'exemple d'un site qui incorpore plusieurs dizaines de vidéos Youtube sur une seule page. On aura donc des `<iframe>` qui vont charger des vidéos Youtube, et ça, c'est pas très éco-responsable... 😕
+Mais on peut améliorer notre page en mettant en place une légère interaction Javascript pour charger l'iframe uniquement si l'utilisateur clique sur un bouton !
+
+<Tabs>
+  <TabItem value="HTML - 1ère étape">
+  ```html showLineNumbers
+  <div
+    class="iframe-container"
+    data-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    data-width="1280"
+    data-height="720"
+>
+    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" loading="lazy">
+    <button type="button" class="iframe-loader">Charger la vidéo</button>
+</div>
+  ```
+  </TabItem>
+  <TabItem value="Javascript - 2ème étape">
+  ```javascript showLineNumbers
+  document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonElement) => {
+    // Pour chaque bouton qui doit charger un iframe, on écoute le clic dessus
+    button.addEventListener('click', () => {
+        // On récupère le container de l'iframe, qui dans notre exemple est la balise parente du bouton
+        const container: HTMLElement | null = button.closest('.iframe-container');
+
+        // Si le container n'existe pas, on arrête l'exécution de la fonction pour éviter un plantage
+        if (!container) return;
+
+        const { src, width, height } = container.dataset as {
+            src: string,
+            width: string,
+            height: string
+        };
+
+        // On prépare notre iframe avec les données stockées dans le container
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', src);
+        iframe.setAttribute('width', width);
+        iframe.setAttribute('height', height);
+
+        // On supprime le contenu du container pour y ajouter notre iframe
+        container.innerHTML = '';
+        container.appendChild(iframe);
+    });
+
+});
+
+```
+  </TabItem>
+</Tabs>
+
+<Admonition type="tip" icon="🤔" title="Mais ça fait beaucoup de code juste pour charger des iframes, c'est vraiment nécessaire ?">
+Pour être franc, il n'y a pas de solution idéale. Mais on peut améliorer les performances du site et gagner en sobriété numérique en ne chargeant pas des ressources lourdes inutilement.
+
+Est-ce que tu savais que le simple fait de charger un iframe d'une vidéo Youtube demande au navigateur de faire une dizaine de requêtes HTTP pour charger la vidéo, les scripts et les styles de Youtube ? Imagine si on mixe plusieurs sources pour nos iframes, comme Dailymotion, Vimeo, etc. 😱
+
+Et le pire dans tout ça, c'est que le navigateur va charger ces ressources même si l'utilisateur ne comptait pas regarder la vidéo !
+Alors autant faire en sorte que notre site réponde au besoin de l'utilisateur, sans pour autant supprimer les fonctionnalités _(comme nos iframes)_ qui peuvent être utiles.
+</Admonition>
+
 ---
 
 ## 🧠 Documentations
 
 ## 🛠️ Outils
+```
