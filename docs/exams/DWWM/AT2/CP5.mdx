@@ -422,7 +422,7 @@ Dans le cas d'un `CHAR(30)`, on réserve également 30 caractères, mais cette f
 
 Si on ne précise pas de longueur, le SGBD va réserver une place par défaut qui varie d'un SGBD à l'autre.  
 Donc ce n'est pas parce que tu te dis : "255 caractères c'est très bien pour mon `VARCHAR`, pas besoin de le préciser puisque c'est la valeur par défaut !" que tu as raison... 😅  
-Si demain la norme change et que le `VARCHAR` par défaut passe à 100 caractères, tu risques de te retrouver avec des données tronquées !
+Si demain la norme change et que l'allocation par défaut pour les types `VARCHAR` passe à 100 caractères au lieu de 255 caractères, tu risques de te retrouver avec des données tronquées !
 
 ---
 
