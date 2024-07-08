@@ -1,0 +1,160 @@
+---
+sidebar_position: 3
+title: "CP 3"
+---
+
+import Admonition from "@theme/Admonition";
+
+# Réaliser des interfaces utilisateur statiques web ou web mobile
+
+## 📚 Références
+
+- REAC _(mise à jour du 03/07/2024)_, pages 19 et 20
+- RE _(mise à jour du 03/07/2024)_, page 10
+
+## 📋 En résumé
+
+Pfiou, les maquettes sont terminées et tu as survécu à mes pavés d'explications ! 💪  
+Eh bien... c'est reparti pour un tour, car maintenant tu vas devoir réaliser les interfaces statiques web ou web mobile à partir de ces maquettes.
+
+<Admonition
+  type="tip"
+  icon="🤔"
+  title="Mais qu'est-ce que interface statique ?"
+>
+  Une interface statique, c'est une interface qui ne bouge pas, qui n'a pas
+  d'interactions avec l'utilisateur autre que les différents liens qui peuvent
+  être présents.
+</Admonition>
+
+Pour réaliser ces interfaces, tu vas devoir respecter les maquettes que tu as réalisées précédemment, tout en prenant en compte les besoins en éco-conception et en accessibilité. _(je radote, mais c'est important !)_
+
+On va rentrer directement dans le vif du sujet, avec pour commencer... les technologies à utiliser !  
+Puisqu'on ne parle pas de dynamique mais de statique, tu vas devoir te tourner vers des technologies front-end, comme le HTML et le CSS. Le Javascript sera également de la partie, mais qu'à partir de la CP 4 😉
+
+Dans un premier temps, tu vas devoir parler du squelette de ton site, c'est-à-dire de la structure HTML. On retrouvera par ailleurs des notions essentielles comme :
+
+- Les balises sémantiques (pour une meilleure accessibilité et un meilleur référencement)
+- Les médias (images, vidéos, sons, etc.)
+- Les liens (pour naviguer d'une page à une autre)
+
+Ensuite, tu vas devoir t'occuper de la mise en forme de ton site, c'est-à-dire du CSS.  
+N'oublie pas : le site **doit correspondre** aux maquettes que tu as réalisées, et donc respecter la charte graphique.
+
+<Admonition
+  type="tip"
+  icon="📝"
+  title="Petit rappel sur le CSS"
+>
+  Le CSS est un langage de style utilisé pour décrire la présentation d'un document écrit en HTML.  
+  Il permet de définir la couleur, la police, la taille et l'espacement des éléments, mais aussi de les positionner sur la page.
+
+Même si le navigateur stylise déjà certains éléments HTML, il ne faut pas se baser sur les styles par défaut, car ils peuvent varier d'un navigateur à un autre et surtout se casser d'une version à une autre.
+
+Pour éviter les mauvaises surprises, il est recommandé de réinitialiser les styles par défaut en début de feuille de style, en utilisant par exemple un fichier de réinitialisation comme [Normalize.css](https://necolas.github.io/normalize.css/) ou [Reset CSS de Eric Meyer](https://meyerweb.com/eric/tools/css/reset/).
+
+</Admonition>
+
+Ensuite, tu vas devoir t'assurer que ton site est bien accessible à tous, rendre tes pages web responsives _(c'est-à-dire qu'elles s'adaptent à tous les types d'écrans)_ et enfin, publier ton site de manière sécurisée.
+
+La partie éco-conception sera également à prendre en compte, en veillant à ne pas surcharger ton site en médias inutiles ou trop lourds.
+
+## 👓 L'accessibilité
+
+Dans la compétence précédente, je t'ai parlé de l'accessibilité et de l'importance de rendre un site accessible à tous. On a notamment vu qu'il est important de maîtriser le contraste, la taille de police, le choix de la police et les intitulés des liens et boutons.
+
+Mais au delà de ces aspects, on va également pouvoir donner plus de précisions au navigateur sur le contenu de notre site, en utilisant des balises sémantiques ainsi que des attributs spécifiques : `alt` pour les images, `title` pour les liens, mais surtout `aria-*`.
+
+<Admonition
+  type="tip"
+  icon="📝"
+  title="Petit rappel sur les attributs `aria-*`"
+>
+  Les attributs `aria-*` sont des attributs spécifiques qui permettent de donner des informations supplémentaires sur les éléments de la page.  
+  Ils sont particulièrement utiles pour les technologies d'assistance, comme les lecteurs d'écran, qui peuvent ainsi mieux comprendre le contenu de la page.
+
+Par exemple, si tu as un bouton qui ouvre un menu, tu pourrais ajouter l'attribut `aria-expanded="false"` pour indiquer que le menu est fermé, puis le passer à `true` lorsque le menu est ouvert.
+
+Tu peux retrouver la liste complète des attributs `aria-*` sur le [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
+
+</Admonition>
+
+## 🌐 Le référencement naturel
+
+J'entends déjà l'un de mes chers collègues juré s'impatienter : "Et le référencement, on en parle ?"  
+La réponse : bien sûr que ~non~ oui !
+
+Le référencement naturel, ou SEO _(pour Search Engine Optimization)_, est un ensemble de techniques visant à améliorer la visibilité d'un site web dans les moteurs de recherche.  
+On parlera dans un premier temps de l'optimisation du contenu, avec des balises `<title>`, `<meta>`, `<h1>`, `<h2>`, etc., mais aussi de l'optimisation technique, avec la vitesse de chargement, la compatibilité mobile, les balises sémantiques, etc.
+
+On retrouvera également des notions de netlinking _(liens entrants et sortants)_, de maillage interne, de balises `<a>` et `<img>`, de sitemap, de robots.txt, etc.
+
+Ça fait beaucoup, non ? 😅  
+Disons que c'est un vaste sujet et qui, même s'il ne fait pas toujours rêver, est indispensable pour que ton site soit visible sur les moteurs de recherche.
+
+Difficile de dire au client "Désolé, votre site n'apparaît pas sur Google et je m'en fiche" !
+
+## 🌳 L'éco-conception
+
+On sait déjà que l'éco-conception c'est l'art de concevoir un site web de manière à réduire son impact environnemental, et que pour cela, il faut éviter d'intégrer beaucoup d'images et autres médias.  
+Mais est-ce que ça veut pour autant dire que tu dois te contenter de sites tout moches et tout gris ? Non !
+
+En HTML, au delà de l'import des médias, on ne va pas avoir beaucoup de contrôle sur la consommation énergétique.  
+Mais pas aucun contrôle !
+
+L'action la plus primordiale sur les images, c'est dans un premier temps d'utiliser des ressources compressées, mais aussi de les dimensionner correctement.
+
+<Admonition
+  type="tip"
+  icon="🤔"
+  title="En CSS, ça prend 2 secondes de redimensionner une image"
+>
+  Effectivement, il est possible de redimensionner les images en leur appliquant une largeur et une hauteur.  
+  Mais l'image reste chargée en entier, même si elle n'est pas affichée dans sa totalité.  
+  Ça voudrait donc dire imposer au navigateur de télécharger une image en haute résolution pour l'afficher en miniature : pas terrible.
+
+Pour éviter ça, on va dans un premier temps réduire et compresser l'image et on peut également utiliser l'attribut `srcset` qui permet de charger une image en fonction de la taille de l'écran.
+
+</Admonition>
+
+Maintenant que nos images sont prêtes, il faut que je vous dise que ce n'est pas tout !  
+Il faut également penser au format de nos images. La plupart du temps, on croise des images en JPEG, PNG ou GIF, mais il existe un format plus récent et plus performant : le WebP. _(et non, ce n'est pas un Pokémon)_
+
+<Admonition
+  type="tip"
+  icon="🤔"
+  title="Et le format SVG ? Ce n'est pas bien ?"
+>
+Si, si, le format SVG est très bien !
+
+C'est vrai que je ne l'évoque pas ici, mais le SVG est un format d'image vectorielle qui a l'avantage d'être léger et de s'adapter à toutes les tailles d'écran sans créer de flou ou pixélisation.
+
+Il est particulièrement adapté pour les icônes, logos et autres éléments graphiques simples.
+
+</Admonition>
+
+Allez cette fois-ci, on ne touche plus aux images et leur format, par contre "comment peut-on les charger ?".  
+Celui qui répond "avec une simple balise `<img>` et son attribut `src`" a tout faux ! _(enfin non, pas tout faux, mais pas tout à fait juste)_
+
+On va évidemment utiliser une balise `<img>`, mais on va également utiliser des techniques de chargement différé, comme le **lazy loading**, qui permet de charger les images uniquement lorsqu'elles sont visibles à l'écran.
+
+En tant que juré, j'ai souvent vu des projets qui exploitent un script JS pour faire du lazy loading, mais il existe un attribut HTML qui permet de faire ça très simplement : `loading="lazy"`.  
+De cette manière, nos images ne seront chargées que si elles sont visibles à l'écran, ce qui permet de réduire la consommation de bande passante et donc l'impact environnemental.
+
+<Admonition
+  type="tip"
+  icon="🧪"
+  title="Voici un exemple concret de ce qu'on vient de voir"
+>
+```html {3-4,6} showLineNumbers
+<img
+    src="clairiere.jpg"
+    srcset="clairiere-480w.webp 480w, clairiere-800w.webp 800w"
+    sizes="(max-width: 600px) 480px, 800px"
+    alt="Une clairière verdoyante"
+    loading="lazy"
+>
+```
+</Admonition>
+
+Allez, arrêtons-nous là pour l'éco-conception !
