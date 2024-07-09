@@ -112,7 +112,7 @@ const config: Config = {
           title: "Ressources",
           items: [
             {
-              label: "Tutoriel",
+              label: "Préambule",
               to: "/docs/intro",
             },
           ],
