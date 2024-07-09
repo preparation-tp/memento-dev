@@ -1,0 +1,8 @@
+{
+  "label": "🗃️ Archives",
+  "position": 500,
+  "link": {
+    "type": "generated-index",
+    "description": "Archives des différents référentiels arrivés à expiration."
+  }
+}
