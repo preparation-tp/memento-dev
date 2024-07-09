@@ -170,9 +170,7 @@ Et si le client final est francophone, il est donc plus simple de lui présenter
 
 ### Le Modèle Logique de Données _(MLD)_
 
-À partir de maintenant, on "abandonne" le client et on dit bonjour à la technique ! ⚙️  
-Par contre je préviens, pour ne pas perdre les novices je me permets de maintenir les mêmes termes _(en français et non-techniques)_
-pour les attributs qui deviennent des colonnes.
+À partir de maintenant, on "abandonne" le client et on dit bonjour à la technique ! ⚙️
 
 Le **Modèle Logique de Données** est une étape intermédiaire entre le MCD et le MPD.  
 Il se base de manière directe sur le MCD, mais il ajoute des éléments techniques qui vont permettre de nous assurer **avant** de faire
@@ -189,14 +187,14 @@ De manière générale, on y retrouvera le terme `id` pour les clés primaires m
 <Admonition type="quote" title="Où qu'elles sont les relations ?">
   Bien vu ! Elles sont totalement disparues... enfin presque.
 
-  Si tu regardes de plus près, tu peux voir que la table nommée `Entité_1` s'est vue ajouter une colonne `code_entité_2`.
+  Si tu regardes de plus près, tu peux voir que la table nommée `table_1` s'est vue ajouter une colonne `table_2_id`.
   Mais qu'est-ce que c'est ?
 
-  Il s'agit d'une référence vers la table `Entité_2` : c'est ce qu'on appelle une **clé étrangère**.  
+  Il s'agit d'une référence vers la table `table_2` : c'est ce qu'on appelle une **clé étrangère**.  
   Le but des clés étrangères est de lier les tables entre elles, et donc de recréer les relations que l'on avait dans le MCD.
 
   Une clé étrangère pointe systématiquement vers une clé primaire d'une autre table _(ou de la même table dans le cas d'une relation réflexive)_.
-  Dans cet exemple, la clé étrangère `code_entité_2` de la table `Entité_1` est une référence à la clé primaire `code_entité_2` de la table `Entité_2`.
+  Dans cet exemple, la clé étrangère `table_2_id` de la table `table_1` est une référence à la clé primaire `id` de la table `table_2`.
 </Admonition>
 
 Maintenant, j'ai une question pour vous... est-ce que vous savez ce qu'il se passe quand dans notre MCD,
@@ -223,15 +221,72 @@ Pas besoin donc de schéma, juste une liste de tables avec leurs colonnes !
 
 Et toujours à partir de notre exemple, voici le MRD correspondant.
 
-> **Entité_1**(<u className='font-bold'>code_entité_1</u>, attribut_2, attribut_3, attribut_4, <i className="italic">#code_entité_2</i>)  
-> **Entité_2**(<u className='font-bold'>code_entité_2</u>, attribut_2, attribut_3)
+> **table_1**(<u className='font-bold'>id</u>, colonne_2, colonne_3, colonne_4, <i className="italic">#table_2_id</i>)  
+> **table_2**(<u className='font-bold'>id</u>, colonne_2, colonne_3)
 
 Tu as vu ? Rien de bien méchant !
 
 On vient reprendre une partie de l'écriture que l'on retrouve dans le MLD, mais on ajoute des symboles pour indiquer les clés étrangères.
 
-`#` est utilisé comme symbole pour indiquer une clé étrangère, en préfixe du nom de la colonne.
+Le symbole `#` est utilisé pour indiquer une clé étrangère, en préfixe du nom de la colonne.
+
+Tu sais maintenant ce qu'il manque comme ajout majeur pour passer du MRD au MPD ?  
+Je te le donne en mille : les **types de données** et leurs **contraintes** !
 
 ### Le Modèle Physique de Données _(MPD)_
 
-## Conclusion
+Avant toute chose, permet moins de t'imposer _(tel le manitou que je suis 😆)_ une petite révision des types de données que l'on retrouve en SQL.  
+Et comme je ne suis pas méchant, voici une liste des types selon les SGBD les plus utilisés :
+
+- [**PostgreSQL**](https://www.postgresql.org/docs/current/datatype.html)
+- [**MySQL**](https://dev.mysql.com/doc/refman/9.0/en/data-types.html)
+- [**SQL Server**](https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver15)
+- [**SQLite**](https://www.sqlite.org/datatype3.html)
+- [**Oracle**](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/Data-Types.html)
+
+_(Désolé pour les autres SGBD, mais je ne peux pas tout mettre 😅)_
+
+<Admonition type="quote" title="Mais pourquoi il me bassine avec les types de données ?">
+  Parce que c'est important !  
+  Les types de données permettent de définir le format des données que l'on va stocker dans notre base de données.
+
+  Chaque SGBD fixe ses propres types de données, mais on retrouve des similitudes entre eux.  
+  On peut d'ailleurs retrouver quelque chose de très différent du côté de
+  [**MongoDB**](https://docs.mongodb.com/manual/reference/bson-types/) qui est une base de données NoSQL.
+</Admonition>
+
+Maintenant que tu as révisé, on peut réellement passer au **Modèle Physique de Données** !
+
+Le but du MPD est de se baser sur le MLD et d'y ajouter les types de données et les contraintes _(comme les clés primaires par exemple)_.  
+Bien que c'était déjà le cas dans le MLD, le MPD est plus précis et plus technique.
+
+Le MPD peut se représenter de deux manières différentes :
+
+- Un script pour créer la base de données
+- Un schéma visuel _(encore un..)_ de la base de données
+
+Je ne vais pas m'attarder sur le schéma visuel, car il est très similaire au MLD avec uniquement les types de données et les contraintes en plus.
+
+Par contre, je vais te montrer un exemple de script pour créer une base de données à partir de notre MLD.
+
+```sql title="MPD sous forme de script SQL" showLineNumbers
+CREATE TABLE IF NOT EXISTS table_1(
+   id INT PRIMARY KEY,
+   colonne_2 VARCHAR(50) NOT NULL,
+   colonne_3 VARCHAR(80),
+   colonne_4 TINYINT DEFAULT 0,
+   table_2_id INT
+);
+
+CREATE TABLE IF NOT EXISTS table_2(
+   id INT PRIMARY KEY,
+   colonne_2 VARCHAR(50) NOT NULL,
+   colonne_3 DATE
+);
+
+ALTER TABLE table_1
+ADD FOREIGN KEY (table_2_id) REFERENCES table_2(id);
+```
+
+Et voilà !  
+Bien sûr, ce script est un exemple très simple, mais il te montre comment on peut passer d'un MLD à un MPD.
