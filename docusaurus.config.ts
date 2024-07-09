@@ -139,7 +139,7 @@ const config: Config = {
             },
             {
               label: "Contribuer",
-              to: "/docs/contributing",
+              to: "/docs/contribuer",
             },
             {
               label: "GitHub",
