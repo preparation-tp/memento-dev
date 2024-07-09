@@ -121,8 +121,12 @@ const config: Config = {
           title: "Référentiels",
           items: [
             {
-              label: "Tutoriel",
-              to: "/docs/intro",
+              label: "DWWM",
+              to: "/docs/exams/DWWM/intro",
+            },
+            {
+              label: "Archives",
+              to: "/docs/category/%EF%B8%8F-archives",
             },
           ],
         },
