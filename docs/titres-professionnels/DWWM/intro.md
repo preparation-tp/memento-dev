@@ -22,17 +22,17 @@ Code millésime : `04`
 
 ### 📚 Activité type 1 - Développer la partie front-end d'une application web ou web mobile sécurisée
 
-- [CP 1 - Installer et configurer son environnement de travail en fonction du projet web ou web mobile](/docs/titres-professionnels/DWWM/AT1/CP1)
-- [CP 2 - Maquetter des interfaces utilisateur web ou web mobile](/docs/titres-professionnels/DWWM/AT1/CP2)
-- [CP 3 - Réaliser des interfaces utilisateur statiques web ou web mobile](/docs/titres-professionnels/DWWM/AT1/CP3)
-- [CP 4 - Développer la partie dynamique des interfaces utilisateur web ou web mobile](/docs/titres-professionnels/DWWM/AT1/CP4)
+- [CP 1 - Installer et configurer son environnement de travail en fonction du projet web ou web mobile](./AT1/CP1)
+- [CP 2 - Maquetter des interfaces utilisateur web ou web mobile](./AT1/CP2)
+- [CP 3 - Réaliser des interfaces utilisateur statiques web ou web mobile](./AT1/CP3)
+- [CP 4 - Développer la partie dynamique des interfaces utilisateur web ou web mobile](./AT1/CP4)
 
 ### 📚 Activité type 2 - Développer la partie back-end d'une application web ou web mobile sécurisée
 
-- [CP 5 - Mettre en place une base de données relationnelle](/docs/titres-professionnels/DWWM/AT2/CP5)
-- [CP 6 - Développer des composants d’accès aux données SQL et NoSQL](/docs/titres-professionnels/DWWM/AT2/CP6)
-- [CP 7 - Développer des composants métier coté serveur](/docs/titres-professionnels/DWWM/AT2/CP7)
-- [CP 8 - Documenter le déploiement d’une application dynamique web ou web mobile](/docs/titres-professionnels/DWWM/AT2/CP8)
+- [CP 5 - Mettre en place une base de données relationnelle](./AT2/CP5)
+- [CP 6 - Développer des composants d’accès aux données SQL et NoSQL](./AT2/CP6)
+- [CP 7 - Développer des composants métier coté serveur](./AT2/CP7)
+- [CP 8 - Documenter le déploiement d’une application dynamique web ou web mobile](./AT2/CP8)
 
 ## Compétences transverses
 
