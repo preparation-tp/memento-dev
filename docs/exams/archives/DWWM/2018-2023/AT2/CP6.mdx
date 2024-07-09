@@ -1,0 +1,110 @@
+---
+sidebar_position: 6
+title: "CP 6"
+---
+
+import Admonition from '@theme/Admonition';
+
+# Développer les composants d'accès aux données
+
+## 📚 Références
+
+- REAC _(mise à jour du 27/04/2018)_, pages 23 et 24
+- RC _(mise à jour du 19/04/2018)_, page 11
+
+## 🚀 Contexte
+
+Maintenant que tu connais la structure de ta base de données et qu'elle est créée, il va falloir expliquer comment ton application pourra accéder aux données stockées.
+
+En PHP, tu connais certainement `PDO`, mais tu as peut-être également utilisé un <abbr title="Object-Relational Mapping">ORM</abbr>
+comme [Eloquent](https://laravel.com/docs/11.x/eloquent) ou encore [Doctrine](https://symfony.com/doc/current/doctrine.html).
+
+Pour NodeJS, tu as peut-être utilisé les pilotes [mysql](https://www.npmjs.com/package/mysql), [pg](https://www.npmjs.com/package/pg) ou
+[sqlite](https://www.npmjs.com/package/sqlite) pour accéder à ta base de données ou encore un <abbr title="Object-Relational Mapping">ORM</abbr>
+comme [Prisma](https://www.npmjs.com/package/prisma) ou [Sequelize](https://www.npmjs.com/package/sequelize).
+
+L'idée ici est d'expliquer comment le back va se connecter à la base de données **ET** comment le back est structuré pour accéder aux données.
+
+Tu vas donc avoir très certainement avoir besoin de parler des services et des modèles qui permettent d'accéder aux données et de les altérer.
+
+Comme cette <abbr title="Compétence Professionnelle">CP</abbr> _(et les suivantes)_ parlent de sécurité,
+c'est l'occasion de parler de ton fichier `.env` et du `.gitignore` afin de ne pas avoir de fichiers sensibles dans le repository de ton projet,
+dont les informations de connexion à la base de données.
+
+<Admonition type="warning" title="Utilisation d'ORM/query builder">
+Si tu utilises un <abbr title="Object-Relational Mapping">ORM</abbr> ou un query builder, il est important de bien expliquer comment tu l'as configuré et comment tu l'utilises.  
+En plus d'expliquer comment cet outil a été paramétré, tu dois être en mesure d'expliquer la construction SQL générée par cet outil.
+
+Par exemple avec Prisma :
+```javascript showLineNumbers
+const user = await prisma.user.findUnique({
+    select: {
+    id: true,
+    name: true,
+    email: true,
+    posts: {
+        select: {
+        title: true,
+        },
+    },
+    },
+    include: {
+    posts: true,
+    },
+    where: {
+    id: 1,
+    },
+});
+```
+
+Ce qui donnera :
+```sql
+SELECT u.id, u.name, u.email, p.title -- Sélection des colonnes
+FROM "User" u -- Table principale
+INNER JOIN "Post" p ON p.userId = u.id -- Jointure avec la table "Post"
+WHERE u.id = 1; -- Condition de sélection
+```
+
+_(Oui, c'est un exemple fictif et pas entièrement correspondant, mais tu as compris l'idée !)_
+</Admonition> 
+
+On est d'accord : cette <abbr title="Compétence Professionnelle">CP</abbr> est un gros morceau,
+mais c'est un passage obligé pour bien comprendre comment ton application va interagir avec la base de données !
+
+## 🎯 Critères d'évaluation
+
+- Les traitements relatifs aux manipulations des données répondent aux fonctionnalités décrites dans le dossier de conception technique
+- Un test unitaire est associé à chaque composant, avec une double approche fonctionnelle et sécurité
+- Les composants d'accès à la base de données suivent les règles de sécurisation reconnues
+- La démarche de recherche permet de résoudre un problème technique ou de mettre en œuvre une nouvelle fonctionnalité
+- La veille sur les vulnérabilités connues permet d'identifier des failles potentielles
+- La documentation technique liée aux technologies associées, rédigée en langue anglaise, est comprise _(sans contre-sens, ...)_
+
+## 🤯 Aller plus loin _(hors référentiel)_
+
+### 🛡️ Sécurisation des données
+
+J'imagine que dans ton application tu as des données sensibles, comme des informations personnelles ou encore des mots de passe.  
+En ce qui concerne les mots de passe, il est essentiel que ces derniers soient stockés de manière sécurisée, c'est-à-dire **hashés**.  
+Pour cela, tu peux utiliser des fonctions de hachage comme [bcrypt](https://www.npmjs.com/package/bcrypt) avec NodeJS ou encore [password_hash](https://www.php.net/manual/fr/function.password-hash.php) en PHP.
+
+Pour les informations personnelles, tu as également la possibilité de les sécuriser en les chiffrant !  
+Tu peux très bien te baser sur un algorithme maison ou encore utiliser des bibliothèques comme [crypto-js](https://www.npmjs.com/package/crypto-js) en NodeJS ou encore [openssl](https://www.php.net/manual/en/book.openssl.php) en PHP.
+
+### 🗑️ Suppression des données
+
+<Admonition type="quote" title="Un peu de ménage ne fait jamais de mal !">
+On est d'accord ! Cependant, la suppression de données est une opération délicate.  
+Se dire "il suffit de faire un `DELETE FROM table WHERE id = 1`" peut potentiellement poser des problèmes.
+</Admonition>
+
+En effet, il est important de bien réfléchir à la suppression de données, notamment pour les données liées à d'autres données _(les fameux `ON DELETE CASCADE` par exemple)_.
+
+Puisque l'erreur est humaine, permettre la suppression aussi simplement que via un bouton "Supprimer" peut être risqué, même si ce dernier est protégé par un message de confirmation.
+
+On va préférer d'une suppression logique, c'est-à-dire qu'on va "désactiver" la donnée plutôt que de la supprimer définitivement.  
+C'est ce qu'on appelle plus communément le **"soft delete"**, là où la suppression définitive est appelée **"hard delete"**.
+
+Il est également important de maintenir un certain état des données stockées, notamment pour des raisons légales ou encore pour des raisons de traçabilité.  
+Bien entendu, lorsque l'utilisateur souhaite supprimer définitivement ses données _(<abbr title="Règlement Général sur la Protection des Données">RGPD</abbr>)_,
+il est important de bien l'informer des conséquences de cette action et des délais de suppression dans la politique de confidentialité de ton application.
