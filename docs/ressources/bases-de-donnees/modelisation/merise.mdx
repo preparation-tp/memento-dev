@@ -92,22 +92,57 @@ Ce modèle nous indique plusieurs choses :
         - `code entité 2` _(discriminant)_
         - `attribut 2`
         - `attribut 3`
+
+    <Admonition type="quote" title="Pourquoi il n'y a pas d'ID dans le schéma ?">
+      Avant d'expliquer **pourquoi** il n'y a pas d'ID, je me permets de faire un petit écart pour expliquer **ce qu'est** un ID.
+
+      `ID`, c'est le nom qu'on donne pour parler de l'identifiant qui se doit d'être unique afin d'identifier facilement une ressource d'une autre.  
+      
+      Il s'agit, en réalité, d'une technique purement technique.  
+      Après tout, c'est pas le client final qui va s'intéresser à l'ID de ses données, n'est-ce pas ?
+
+      Comme le MCD se doit d'être **non-technique**, le terme `ID` n'est donc pas pertinent et surtout : n'a pas sa place.
+
+      En reprenant le schéma ci-dessus, on peut dire que le `code entité 1` et le `code entité 2` sont les déterminants de leurs entités respectives.  
+      Une fois qu'on fera nos schémas techniques _(MLD, MRD, MPD)_, on pourra alors utiliser le terme `ID` !
+    </Admonition>
+  </TabItem>
+
+  <TabItem value="relations" label="Relations et cardinalités">
+    - Une relation :
+        - Entre `Entité 1` et `Entité 2`
+    - Cardinalité :
+        - `Entité 1` peut posséder de 1 à 1 occurrence de `Entité 2`
+        - `Entité 2` peut être possédée par 0 à n occurrences de `Entité 1`
+    - Verbe :
+        - `POSSÉDER`
+        
+    Si on revient à la déclaration faite plus tôt, on remarque qu'il est effectivement à l'**infinitif**.  
+    Mais alors, pourquoi c'est important ?
+
+    En fait, le verbe à l'infinitif permet de faciliter la compréhension des relations et ce, dans les deux sens.  
+    
+    Mais parlons des cardinalités parce qu'on y retrouve quelque chose de bizarre : `n`.  
+    C'est quoi `n` ?
+
+    `n` est une valeur qui signifie que l'entité peut être possédée par un nombre indéfini d'occurrences de l'autre entité.
+    C'est une notation que l'on retrouvera très fréquemment, puisque la majorité du temps on ne peut pas déterminer le nombre exact d'occurrences.
+
+    <Admonition type="quote" label="Mais est-il possible d'indiquer une valeur définie, comme `42` par exemple ?">
+      Oui ! Si tu connais à l'avance le nombre maximal d'occurrences et que ce nombre est fixe _(peu importe le contexte)_, tu peux tout à fait le spécifier.
+
+      Par exemple : demain on te demande de modéliser une base de données avec deux entités `Année` et `Mois`.
+
+      Tu peux donc représenter la relation de cette manière :
+      
+      > `Année 1,12 - POSSÉDER - 1,1 Mois`  
+      > `Année` possède de 1 à 12 occurrences de `Mois`  
+      > `Mois` est possédée par une seule occurrence de `Année`
+
+      C'est un exemple simple, mais qui montre bien que c'est possible !
+    </Admonition>
   </TabItem>
 </Tabs>
-
-<Admonition type="quote" title="Pourquoi il n'y a pas d'ID dans le schéma ?">
-  Avant d'expliquer **pourquoi** il n'y a pas d'ID, je me permets de faire un petit écart pour expliquer **ce qu'est** un ID.
-
-  `ID`, c'est le nom qu'on donne pour parler de l'identifiant qui se doit d'être unique afin d'identifier facilement une ressource d'une autre.  
-  
-  Il s'agit, en réalité, d'une technique purement technique.  
-  Après tout, c'est pas le client final qui va s'intéresser à l'ID de ses données, n'est-ce pas ?
-
-  Comme le MCD se doit d'être **non-technique**, le terme `ID` n'est donc pas pertinent et surtout : n'a pas sa place.
-
-  En reprenant le schéma ci-dessus, on peut dire que le `code entité 1` et le `code entité 2` sont les déterminants de leurs entités respectives.  
-  Une fois qu'on fera nos schémas techniques _(MLD, MRD, MPD)_, on pourra alors utiliser le terme `ID` !
-</Admonition>
 
 #### Le Modèle Logique de Données _(MLD)_
 
