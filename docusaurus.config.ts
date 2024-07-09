@@ -62,6 +62,8 @@ const config: Config = {
             keywords: ["quote", "example"],
             extendDefaults: true,
           },
+
+          tagsBasePath: "tags",
         },
         blog: {
           showReadingTime: true,
