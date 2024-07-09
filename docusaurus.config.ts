@@ -122,7 +122,7 @@ const config: Config = {
           items: [
             {
               label: "DWWM",
-              to: "/docs/exams/DWWM/intro",
+              to: "/docs/titres-professionnels/DWWM/intro",
             },
             {
               label: "Archives",
