@@ -11,6 +11,7 @@ tags:
   - Modèle Logique de Données (MLD)
   - Modèle Relationnel de Données (MRD)
   - Modèle Physique de Données (MPD)
+  - DWWM
 ---
 
 import Admonition from '@theme/Admonition';
@@ -39,7 +40,7 @@ Pour faire plus simple que c'est première phrase toute droit sortie de Wikipéd
 Même si dans cette documentation on va parler uniquement de la conception qui concerne la base de données,
 je t'ai fait un court résumé des différentes étapes principale de la méthode Merise.
 
-### Les différentes étapes principales
+## Les différentes étapes principales
 
 1. **L'analyse des besoins** : On commence par recueillir les besoins du client pour notre cahier des charges.
 2. **La conception** : On modélise la base de données en utilisant les différents outils de Merise.
@@ -47,9 +48,9 @@ je t'ai fait un court résumé des différentes étapes principale de la méthod
 4. **La mise en service** : On met en service l'application et on la teste.
 5. **La maintenance** : On assure la maintenance de l'application.
 
-### Les différents modèles
+## Les différents modèles
 
-#### Le Modèle Conceptuel de Données _(MCD)_
+### Le Modèle Conceptuel de Données _(MCD)_
 
 Ce modèle a pour objectif de représenter sous forme graphique les données et les relations entre ces données.  
 Avant le MCD, nous sommes en théorie en possession du dictionnaire de données
@@ -75,7 +76,7 @@ Les relations entre les entités sont représentées par trois éléments :
 </Admonition>
 
 C'est pas clair ? Prenons alors ce modèle !
-![Modèle Conceptuel de Données, MCD](@site/static/merise/mcd-guide.webp)
+![Modèle Conceptuel de Données, MCD](./img/mcd-guide.webp)
 
 Ce modèle nous indique plusieurs choses :
 
@@ -144,10 +145,93 @@ Ce modèle nous indique plusieurs choses :
   </TabItem>
 </Tabs>
 
-#### Le Modèle Logique de Données _(MLD)_
+Tiens d'ailleurs, autre sujet important pour le **MCD** !
 
-#### Le Modèle Relationnel de Données _(MRD)_
+On a vu que certains termes ne sont pas employés _(comme `ID`, mais également `tables`, `clé primaire` ou encore `clé étrangère`)_
+pour respecter la nature du document qui se veut non-technique.  
+Mais il y a autre chose qui peut nous sauter aux yeux : c'est écrit en français !
 
-#### Le Modèle Physique de Données _(MPD)_
+La raison est identique à ce que j'ai pu rabâcher plus tôt : le document doit être compris par tout le monde.  
+Et si le client final est francophone, il est donc plus simple de lui présenter un document dans sa langue maternelle.
+
+<Admonition type="quote" title="Mouais, toujours pas convaincu par le MCD">
+  Tant pis pour toi ! 😜  
+  Si je devais te donner un argument majeur, ce serait celui-ci. Après j'abandonne, promis !
+
+  Ton client est un spécialiste dans son domaine, mais toi tu n'y connais rien.  
+  Il te parle de certaines données, tu arrives à peu près à comprendre comment ça fonctionne, mais tu n'as pas toutes les informations.
+
+  D'une part, le dictionnaire de données t'en donne la nature et "qui" _(l'entité)_ possède ces données.  
+  Par contre, comme le MCD te permet de quantifier et de qualifier les relations entre les entités, tu as une vision plus claire de ce que le client veut.
+
+  Et si le client comprend et valide le MCD, c'est que tu as bien compris ses besoins et que tu peux donc passer à la suite du projet sans foncer dans le mur,
+  ce qui t'obligerai de déconstruire et de reconstruire une partie de ton application.
+</Admonition>
+
+### Le Modèle Logique de Données _(MLD)_
+
+À partir de maintenant, on "abandonne" le client et on dit bonjour à la technique ! ⚙️  
+Par contre je préviens, pour ne pas perdre les novices je me permets de maintenir les mêmes termes _(en français et non-techniques)_
+pour les attributs qui deviennent des colonnes.
+
+Le **Modèle Logique de Données** est une étape intermédiaire entre le MCD et le MPD.  
+Il se base de manière directe sur le MCD, mais il ajoute des éléments techniques qui vont permettre de nous assurer **avant** de faire
+la base de données que tout est correct.
+
+En reprenant l'exemple donné pour le MCD, voici le MLD correspondant.
+
+![Modèle Logique de Données, MLD](./img/mld-guide.webp)
+
+Ici, on ne parle plus d'entités, mais de tables.  
+Et ce qui était souligné avant _(les déterminants)_ devient des clés primaires.
+De manière générale, on y retrouvera le terme `id` pour les clés primaires même si ce n'est pas une obligation.
+
+<Admonition type="quote" title="Où qu'elles sont les relations ?">
+  Bien vu ! Elles sont totalement disparues... enfin presque.
+
+  Si tu regardes de plus près, tu peux voir que la table nommée `Entité_1` s'est vue ajouter une colonne `code_entité_2`.
+  Mais qu'est-ce que c'est ?
+
+  Il s'agit d'une référence vers la table `Entité_2` : c'est ce qu'on appelle une **clé étrangère**.  
+  Le but des clés étrangères est de lier les tables entre elles, et donc de recréer les relations que l'on avait dans le MCD.
+
+  Une clé étrangère pointe systématiquement vers une clé primaire d'une autre table _(ou de la même table dans le cas d'une relation réflexive)_.
+  Dans cet exemple, la clé étrangère `code_entité_2` de la table `Entité_1` est une référence à la clé primaire `code_entité_2` de la table `Entité_2`.
+</Admonition>
+
+Maintenant, j'ai une question pour vous... est-ce que vous savez ce qu'il se passe quand dans notre MCD,
+une relation à une cardinalité avec un `n` pour le maximum des deux côtés ? _(`0,n` ou `1,n` par exemple)_
+
+Eh bien... on se retrouve avec une table intermédiaire !  
+Cette table peut se nommer de différentes manières.
+Pour ma part, j'appelle ça une "table pivot" même si on peut également parler de "table de liaison"
+ou encore de "table de jointure" _(et sans doute d'autres termes !)_.
+
+<Admonition type="quote" title="Table pivot ? Kézako ?">
+  Le but d'une table pivot est de permettre de lier deux tables entre elles lorsque la relation entre ces deux tables est de type `n`.
+  
+  Cette table va stocker **uniquement** _(sauf besoin spécifique)_ la valeur des clés primaires des deux tables qu'elle relie.
+  Et si tu as bien suivi, ces deux colonnes seront des clés étrangères qui pointeront vers les clés primaires des tables qu'elles relient 😉
+</Admonition>
+
+### Le Modèle Relationnel de Données _(MRD)_
+
+Souffle un coup, parce qu'on vient de voir était quand même déjà pas mal costaud ! 🥵
+
+C'est le moment détente, parce que le **Modèle Relationnel de Données** est en fait une simple représentation textuelle de notre MLD.  
+Pas besoin donc de schéma, juste une liste de tables avec leurs colonnes !
+
+Et toujours à partir de notre exemple, voici le MRD correspondant.
+
+> **Entité_1**(<u className='font-bold'>code_entité_1</u>, attribut_2, attribut_3, attribut_4, <i className="italic">#code_entité_2</i>)  
+> **Entité_2**(<u className='font-bold'>code_entité_2</u>, attribut_2, attribut_3)
+
+Tu as vu ? Rien de bien méchant !
+
+On vient reprendre une partie de l'écriture que l'on retrouve dans le MLD, mais on ajoute des symboles pour indiquer les clés étrangères.
+
+`#` est utilisé comme symbole pour indiquer une clé étrangère, en préfixe du nom de la colonne.
+
+### Le Modèle Physique de Données _(MPD)_
 
 ## Conclusion
