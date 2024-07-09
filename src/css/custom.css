@@ -85,6 +85,10 @@
   @apply text-xl font-bold;
 }
 
+.markdown h4 {
+  @apply font-bold;
+}
+
 .markdown p {
   @apply leading-7;
 }
