@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 title: "Résumé"
+tags:
+  - DWWM
 ---
 
 # Contenu du titre professionnel DWWM
