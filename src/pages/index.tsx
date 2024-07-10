@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <Layout
       title={`Synthèses et ressources pour développeurs`}
-      description="Description will go into a meta tag in <head />"
+      description="Découvrez des synthèses et ressources open-source dans le développement informatique, rédigées par une communauté de développeurs."
     >
       <HomepageHeader />
       <main>
