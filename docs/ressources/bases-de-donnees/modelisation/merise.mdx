@@ -14,6 +14,7 @@ tags:
   - DWWM
 ---
 
+import ICalLink from '@site/src/components/ICalLink';
 import Admonition from '@theme/Admonition';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
@@ -48,7 +49,63 @@ je t'ai fait un court résumé des différentes étapes principale de la méthod
 4. **La mise en service** : On met en service l'application et on la teste.
 5. **La maintenance** : On assure la maintenance de l'application.
 
-## Les différents modèles
+## Les différents documents
+
+En ce qui concerne les différents documents, on va en retrouver cinq principaux :
+
+- **Le Dictionnaire de Données** : Il contient toutes les informations sur les données qui vont être stockées.
+- **Le Modèle Conceptuel de Données _(MCD)_** : Il représente les données et les relations entre ces données.
+- **Le Modèle Logique de Données _(MLD)_** : Il ajoute des éléments techniques au MCD.
+- **Le Modèle Relationnel de Données _(MRD)_** : Il est une représentation textuelle du MLD.
+- **Le Modèle Physique de Données _(MPD)_** : Il ajoute les types de données et les contraintes au MLD.
+
+Bien sûr, il est possible de rajouter d'autres documents en fonction des besoins du projet !  
+Mais pour l'instant, on va se concentrer sur ces cinq-là.
+
+### Le Dictionnaire de Données
+
+Le **Dictionnaire de Données** est un document qui contient toutes les informations sur les données qui vont être stockées dans la base de données.
+
+Ici, on ne va pas parler de tables, de colonnes ou de relations, mais uniquement de données. Ces informations nous sont données par le client,
+et il est important que le dictionnaire reste compréhensible par le client !
+
+Voici un exemple de dictionnaire de données, à partir des informations données par le client :
+
+<Tabs>
+  <TabItem value="employee" label="Salarié">
+    | Nom de la donnée     | Type de donnée | Description                                                   | Taille attendue | Taille fixe ? | Exemple(s) de valeur     |
+    |----------------------|----------------|---------------------------------------------------------------|-----------------|---------------|--------------------------|
+    | adresse email        | Date           | -                                                             | N/A             | N/A           | elodie.martin@exemple.fr |
+    | prénom               | Alphabétique   | -                                                             | 50 caractères   | Variable      | Élodie, Christophe       |
+    | nom                  | Alphabétique   | -                                                             | 50 caractères   | Variable      | Martin, Dupont           |
+    | adresse postale      | Alphanumérique | Numéro de rue, type de voie et nom de la voie                 | N/A             | N/A           | 1 rue de la Paix         |
+    | code postal          | Numérique      | -                                                             | 5 caractères    | Fixe          | 75000, 01000             |
+    | ville                | Alphabétique   | -                                                             | 50 caractères   | Variable      | Paris, Lyon              |
+    | mot de passe         | Alphanumérique | Mot de passé sécurisé _(haché)_                               | 80 caractères   | Variable      | -                        |
+    | manager de l'employé | Liaison        | Liaison vers le manager du salarié                            | N/A             | N/A           | N/A                      |
+    | employés managés     | Liaison        | Liste des salariés gérés par ce manager _(également salarié)_ | N/A             | N/A           | N/A                      |
+  </TabItem>
+
+  <TabItem value="task" label="Tâche">
+    | Nom de la donnée          | Type de donnée | Description                             | Taille attendue | Taille fixe ? | Exemple(s) de valeur |
+    |---------------------------|----------------|-----------------------------------------|-----------------|---------------|----------------------|
+    | nom                       | Alphanumérique | -                                       | 255 caractères  | Variable      | -                    |
+    | est réalisée ?            | Vrai/Faux      | Indique si la tâche est réalisée ou non | N/A             | N/A           | Vrai, Faux           |
+    | projet                    | Liaison        | Projet auquel la tâche est rattachée    | N/A             | N/A           | N/A                  |
+  </TabItem>
+
+  <TabItem value="project" label="Projet">
+    | Nom de la donnée | Type de donnée | Description                          | Taille attendue | Taille fixe ? | Exemple(s) de valeur |
+    |------------------|----------------|--------------------------------------|-----------------|---------------|----------------------|
+    | nom              | Alphanumérique | -                                    | 255 caractères  | Variable      | Mon super projet     |
+    | tâches           | Liaison        | Liste des tâches associées au projet | N/A             | N/A           | N/A                  |
+  </TabItem>
+</Tabs>
+
+Comme tu peux voir, il n'y a aucun terme technique dans ce document 😉  
+Cet exemple, on va le mettre de côté car en vrai, il présente quelques notions intermédiaires qui pourraient être déroutantes pour une entrée en matière.
+
+Mais on y reviendra une fois toutes les étapes expliquées, comme ça tu auras un exemple un poil plus concret pour te représenter le lien entre les étapes !
 
 ### Le Modèle Conceptuel de Données _(MCD)_
 
@@ -61,7 +118,6 @@ car ce modèle doit être compris par tout le monde : y compris le client final.
 
 Chaque regroupement de données est appelé une entité, et chaque entité est composée d'attributs.  
 Les relations entre les entités sont représentées par trois éléments :
-
 - Un trait reliant les entités _(ou la même entité dans le cas d'une relation réflexive)_
 - Un verbe qui décrit la relation à l'**infinitif**
 - Une cardinalité pour quantifier la relation entre les entités
@@ -76,7 +132,7 @@ Les relations entre les entités sont représentées par trois éléments :
 </Admonition>
 
 C'est pas clair ? Prenons alors ce modèle !
-![Modèle Conceptuel de Données, MCD](./img/mcd-guide.webp)
+![Modèle Conceptuel de Données, MCD, Merise](./img/mcd-guide.webp)
 
 Ce modèle nous indique plusieurs choses :
 
@@ -178,7 +234,7 @@ la base de données que tout est correct.
 
 En reprenant l'exemple donné pour le MCD, voici le MLD correspondant.
 
-![Modèle Logique de Données, MLD](./img/mld-guide.webp)
+![Modèle Logique de Données, MLD, Merise](./img/mld-guide.webp)
 
 Ici, on ne parle plus d'entités, mais de tables.  
 Et ce qui était souligné avant _(les déterminants)_ devient des clés primaires.
@@ -221,8 +277,8 @@ Pas besoin donc de schéma, juste une liste de tables avec leurs colonnes !
 
 Et toujours à partir de notre exemple, voici le MRD correspondant.
 
-> **table_1**(<u className='font-bold'>id</u>, colonne_2, colonne_3, colonne_4, <i className="italic">#table_2_id</i>)  
-> **table_2**(<u className='font-bold'>id</u>, colonne_2, colonne_3)
+> table_1(<u className='font-bold'>id</u>, colonne_2, colonne_3, colonne_4, <i className="italic">#table_2_id</i>)  
+> table_2(<u className='font-bold'>id</u>, colonne_2, colonne_3)
 
 Tu as vu ? Rien de bien méchant !
 
@@ -290,3 +346,145 @@ ADD FOREIGN KEY (table_2_id) REFERENCES table_2(id);
 
 Et voilà !  
 Bien sûr, ce script est un exemple très simple, mais il te montre comment on peut passer d'un MLD à un MPD.
+
+## Exemple concret
+
+Tu te souviens du dictionnaire de données que je t'avais montré plus tôt ? Je t'avais dit qu'on y reviendrai plus tard : **c'est l'heure** !
+
+Reprenons donc le dictionnaire de données précédent _(que je te remet juste ici, ce sera plus simple 😉)_ et voyons commen t tout s'articule au niveau des étapes et modèles de conception.
+
+<Tabs>
+  <TabItem value="employee" label="Salarié">
+    | Nom de la donnée     | Type de donnée | Description                                                   | Taille attendue | Taille fixe ? | Exemple(s) de valeur     |
+    |----------------------|----------------|---------------------------------------------------------------|-----------------|---------------|--------------------------|
+    | adresse email        | Date           | -                                                             | N/A             | N/A           | elodie.martin@exemple.fr |
+    | prénom               | Alphabétique   | -                                                             | 50 caractères   | Variable      | Élodie, Christophe       |
+    | nom                  | Alphabétique   | -                                                             | 50 caractères   | Variable      | Martin, Dupont           |
+    | adresse postale      | Alphanumérique | Numéro de rue, type de voie et nom de la voie                 | N/A             | N/A           | 1 rue de la Paix         |
+    | code postal          | Numérique      | -                                                             | 5 caractères    | Fixe          | 75000, 01000             |
+    | ville                | Alphabétique   | -                                                             | 50 caractères   | Variable      | Paris, Lyon              |
+    | mot de passe         | Alphanumérique | Mot de passé sécurisé _(haché)_                               | 80 caractères   | Variable      | -                        |
+    | manager de l'employé | Liaison        | Liaison vers le manager du salarié                            | N/A             | N/A           | N/A                      |
+    | employés managés     | Liaison        | Liste des salariés gérés par ce manager _(également salarié)_ | N/A             | N/A           | N/A                      |
+  </TabItem>
+
+  <TabItem value="task" label="Tâche">
+    | Nom de la donnée          | Type de donnée | Description                             | Taille attendue | Taille fixe ? | Exemple(s) de valeur |
+    |---------------------------|----------------|-----------------------------------------|-----------------|---------------|----------------------|
+    | nom                       | Alphanumérique | -                                       | 255 caractères  | Variable      | -                    |
+    | est réalisée ?            | Vrai/Faux      | Indique si la tâche est réalisée ou non | N/A             | N/A           | Vrai, Faux           |
+    | projet                    | Liaison        | Projet auquel la tâche est rattachée    | N/A             | N/A           | N/A                  |
+  </TabItem>
+
+  <TabItem value="project" label="Projet">
+    | Nom de la donnée | Type de donnée | Description                          | Taille attendue | Taille fixe ? | Exemple(s) de valeur |
+    |------------------|----------------|--------------------------------------|-----------------|---------------|----------------------|
+    | nom              | Alphanumérique | -                                    | 255 caractères  | Variable      | Mon super projet     |
+    | tâches           | Liaison        | Liste des tâches associées au projet | N/A             | N/A           | N/A                  |
+  </TabItem>
+</Tabs>
+
+Dans le MCD, on retrouvera donc trois entités : `Salarié`, `Tâche` et `Projet`.  
+Et biensûr, on n'oubliera pas les attributs de ces entités !
+
+![Modèle Conceptuel de Données, MCD, Merise](./img/mcd-exemple.webp)
+
+Ici on va remarquer trois relations, dont une réflexive _(le manager de l'employé)_.  
+Sur le papier, voici comment on peut parler de ces relations :
+
+- `Salarié` 0,n - GÉRER - 0,1 `Salarié`
+    - Un salarié peut gérer plusieurs salariés
+    - Un salarié peut être géré par aucun ou un seul salarié
+- `Salarié` 0,n - RÉALISER - 1,n `Tâche`
+    - Un salarié peut réaliser plusieurs tâches
+    - Une tâche doit être réalisée par au moins un salarié
+- `Tâche` 1,1 - ATTRIBUER - 0,n `Projet`
+    - Une tâche est attribuée à un seul projet
+    - Un projet peut avoir aucune ou plusieurs tâches attribuées
+
+On peut donc en déduire que l'on va avoir une table pivot entre `Salarié` et `Tâche` pour la relation `RÉALISER` car des deux côtés on retrouve le fameux `n` qui indique qu'il peut y avoir plusieurs occurrences.
+
+Ensuite, on passe au MLD, où l'on va transformer nos entités en tables et nos attributs en colonnes.
+
+![Modèle Logique de Données, MLD, Merise](./img/mld-exemple.webp)
+
+Et là, magie ! On retrouve bien une table pivot entre l'entité `Salarié` _(devenue `employee`)_ et l'entité `Tâche` _(devenue `task`)_ pour la relation `RÉALISER`, qui se nomme `employee_has_task`.  
+Dedans, on y retrouve deux clés étrangères : `employee_id` et `task_id`.
+
+On peut également constater que pour la relation `GÉRER`, on a une clé étrangère `manager_id` dans la table `employee`.  
+Cette clé étrangère pointera vers la clé primaire `id` de la table `employee`, mais on verra ça plus facilement à partir du MPD avec un script SQL !
+
+Pour le MRD, voici à quoi ça ressemble :
+
+> employee(<u class="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i class="italic">#manager_id</i>);  
+> project(<u class="font-bold underline">id</u>, name);  
+> task(<u class="font-bold underline">id</u>, name, is_done, <i class="italic">#project_id</i>);  
+> employee_has_task(<i class="italic">#employee_id</i>, <i class="italic">#task_id</i>);
+
+Et pour finir... 🥁  
+Le MPD !
+
+
+```sql showLineNumbers
+CREATE TABLE employee(
+   id CHAR(30),
+   email VARCHAR(320),
+   firstname VARCHAR(30),
+   lastname VARCHAR(30),
+   postal_address VARCHAR(60),
+   postal_code CHAR(5),
+   city VARCHAR(30),
+   password CHAR(80),
+   manager_id CHAR(30),
+   CONSTRAINT employee_pk PRIMARY KEY (id),
+   CONSTRAINT employee_ak UNIQUE (email),
+   CONSTRAINT employee_manager_fk FOREIGN KEY (manager_id) REFERENCES employee(id)
+);
+
+CREATE TABLE project(
+   id CHAR(30),
+   name VARCHAR(255),
+   CONSTRAINT project_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE task(
+   id CHAR(30),
+   name VARCHAR(255),
+   is_done BOOLEAN,
+   project_id CHAR(30),
+   CONSTRAINT task_pk PRIMARY KEY (id),
+   CONSTRAINT task_project_fk FOREIGN KEY (project_id) REFERENCES project(id)
+);
+
+CREATE TABLE employee_has_task(
+   employee_id CHAR(30),
+   task_id CHAR(30),
+   CONSTRAINT employee_has_task_pk PRIMARY KEY (employee_id, task_id),
+   CONSTRAINT employee_has_task_employee_fk FOREIGN KEY (employee_id) REFERENCES employee(id),
+   CONSTRAINT employee_has_task_task_fk FOREIGN KEY (task_id) REFERENCES task(id)
+);
+```
+
+## Conclusion
+
+On est d'accord, c'est pas la partie la plus fun de la conception d'une application.  
+Mais sans ces étapes, il y a fort à parier que tu vas te retrouver à coder dans le vide et à devoir tout recommencer.
+
+Et si tu souhaites aller encore plus loin dans ces notions, je ne peux que te recommander de consulter un certain livre :  
+[**Merise - Guide pratique (3e édition)**](https://www.editions-eni.fr/livre/merise-guide-pratique-3e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-9782409015342)
+écrit par [**Jean-Luc Baptiste**](https://www.editions-eni.fr/jean-luc-baptiste) que tu peux retrouver aux [Éditions ENI](https://www.editions-eni.fr/) !
+
+C'est une vraie mine d'or, il s'agit de **la référence** en ce qui concerne Merise.
+
+D'ailleurs, au moment de la rédaction je vois que la
+[4ème édition](https://www.editions-eni.fr/livre/merise-guide-pratique-4e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-conception-d-une-application-mobile-android-ou-ios-9782409046667)
+est prévue pour le 9 octobre 2024... Comme on dit :
+
+<ICalLink
+  date="2024-10-09"
+  title='Parution du livre "Guide pratique (4e édition)" aux Éditions ENI, de Jean-Luc Baptiste'
+  description='<a href="https://www.editions-eni.fr/livre/merise-guide-pratique-4e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-conception-d-une-application-mobile-android-ou-ios-9782409046667">Lien vers la page du produit</a>'
+  className='px-4 py-2 bg-violet-100 dark:bg-violet-800 rounded-md'
+>
+  Save the date !
+</ICalLink>

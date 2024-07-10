@@ -26,6 +26,9 @@
 
   --admonition-example-background: #f3e8ff;
   --admonition-example-foreground: #23043b;
+
+  --admonition-quote-background: #e5e7eb;
+  --admonition-quote-foreground: #111827;
 }
 
 :root[data-theme="dark"] {
@@ -39,6 +42,9 @@
 
   --admonition-example-background: #290544;
   --admonition-example-foreground: #faf5ff;
+
+  --admonition-quote-background: #21242b;
+  --admonition-quote-foreground: #e5e7eb;
 }
 
 ::selection {
@@ -135,8 +141,8 @@
 }
 
 .alert--quote {
-  --ifm-alert-background-color: #e5e7eb;
-  --ifm-alert-foreground-color: #111827;
+  --ifm-alert-background-color: var(--admonition-quote-background);
+  --ifm-alert-foreground-color: var(--admonition-quote-foreground);
   --ifm-alert-border-color: #4b5563;
 }
 
