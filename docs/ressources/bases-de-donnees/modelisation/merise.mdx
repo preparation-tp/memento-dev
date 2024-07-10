@@ -14,6 +14,7 @@ tags:
   - DWWM
 ---
 
+import ICalLink from '@site/src/components/ICalLink';
 import Admonition from '@theme/Admonition';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
@@ -418,4 +419,72 @@ Pour le MRD, voici à quoi ça ressemble :
 > employee(<u class="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i class="italic">#manager_id</i>);  
 > project(<u class="font-bold underline">id</u>, name);  
 > task(<u class="font-bold underline">id</u>, name, is_done, <i class="italic">#project_id</i>);  
-> employee_has_task(#employee_id, <i class="italic">#task_id</i>);
+> employee_has_task(<i class="italic">#employee_id</i>, <i class="italic">#task_id</i>);
+
+Et pour finir... 🥁  
+Le MPD !
+
+
+```sql showLineNumbers
+CREATE TABLE employee(
+   id CHAR(30),
+   email VARCHAR(320),
+   firstname VARCHAR(30),
+   lastname VARCHAR(30),
+   postal_address VARCHAR(60),
+   postal_code CHAR(5),
+   city VARCHAR(30),
+   password CHAR(80),
+   manager_id CHAR(30),
+   CONSTRAINT employee_pk PRIMARY KEY (id),
+   CONSTRAINT employee_ak UNIQUE (email),
+   CONSTRAINT employee_manager_fk FOREIGN KEY (manager_id) REFERENCES employee(id)
+);
+
+CREATE TABLE project(
+   id CHAR(30),
+   name VARCHAR(255),
+   CONSTRAINT project_pk PRIMARY KEY (id)
+);
+
+CREATE TABLE task(
+   id CHAR(30),
+   name VARCHAR(255),
+   is_done BOOLEAN,
+   project_id CHAR(30),
+   CONSTRAINT task_pk PRIMARY KEY (id),
+   CONSTRAINT task_project_fk FOREIGN KEY (project_id) REFERENCES project(id)
+);
+
+CREATE TABLE employee_has_task(
+   employee_id CHAR(30),
+   task_id CHAR(30),
+   CONSTRAINT employee_has_task_pk PRIMARY KEY (employee_id, task_id),
+   CONSTRAINT employee_has_task_employee_fk FOREIGN KEY (employee_id) REFERENCES employee(id),
+   CONSTRAINT employee_has_task_task_fk FOREIGN KEY (task_id) REFERENCES task(id)
+);
+```
+
+## Conclusion
+
+On est d'accord, c'est pas la partie la plus fun de la conception d'une application.  
+Mais sans ces étapes, il y a fort à parier que tu vas te retrouver à coder dans le vide et à devoir tout recommencer.
+
+Et si tu souhaites aller encore plus loin dans ces notions, je ne peux que te recommander de consulter un certain livre :  
+[**Merise - Guide pratique (3e édition)](https://www.editions-eni.fr/livre/merise-guide-pratique-3e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-9782409015342)
+écrit par [**Jean-Luc Baptiste**](https://www.editions-eni.fr/jean-luc-baptiste) que tu peux retrouver aux [Éditions ENI](https://www.editions-eni.fr/) !
+
+C'est une vraie mine d'or, il s'agit de **la référence** en ce qui concerne Merise.
+
+D'ailleurs, au moment de la rédaction je vois que la
+[4ème édition](https://www.editions-eni.fr/livre/merise-guide-pratique-4e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-conception-d-une-application-mobile-android-ou-ios-9782409046667)
+est prévue pour le 9 octobre 2024... Comme on dit :
+
+<ICalLink
+  date="2024-10-09"
+  title='Parution du livre "Guide pratique (4e édition)" aux Éditions ENI, de Jean-Luc Baptiste'
+  description='<a href="https://www.editions-eni.fr/livre/merise-guide-pratique-4e-edition-modelisation-des-donnees-et-des-traitements-manipulations-avec-le-langage-sql-conception-d-une-application-mobile-android-ou-ios-9782409046667">Lien vers la page du produit</a>'
+  className='px-4 py-2 bg-violet-100 dark:bg-violet-800 rounded-md'
+>
+  Save the date !
+</ICalLink>
