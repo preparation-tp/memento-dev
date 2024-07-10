@@ -17,4 +17,4 @@ Toi qui vient d'arriver sur cette plateforme, sache que si tu cherches un coup d
 Tout le monde ! Si tu as des connaissances que tu souhaites partager, tu es évidemment le bienvenu !  
 Que tu sois auto-didacte, étudiant, formateur ou que sais-je encore : tu as ta place ici.
 
-Si tu es intéressé pour contribuer, tu peux consulter la page [Contribuer](/docs/contribuer) pour en savoir plus.
+Si tu es intéressé pour contribuer, tu peux consulter la page [Contribuer](/contribuer) pour en savoir plus.

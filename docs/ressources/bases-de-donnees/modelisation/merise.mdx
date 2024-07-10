@@ -4,6 +4,7 @@ title: "Modélisation avec Merise"
 description: "Voyons ensemble comment on peut modéliser une base de données avec Merise !"
 tags:
   - Conception
+  - Modélisation
   - Base de données
   - Merise
   - Dictionnaire de Données
@@ -11,6 +12,7 @@ tags:
   - Modèle Logique de Données (MLD)
   - Modèle Relationnel de Données (MRD)
   - Modèle Physique de Données (MPD)
+  - SQL
   - DWWM
 ---
 
@@ -416,10 +418,10 @@ Cette clé étrangère pointera vers la clé primaire `id` de la table `employee
 
 Pour le MRD, voici à quoi ça ressemble :
 
-> employee(<u class="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i class="italic">#manager_id</i>);  
-> project(<u class="font-bold underline">id</u>, name);  
-> task(<u class="font-bold underline">id</u>, name, is_done, <i class="italic">#project_id</i>);  
-> employee_has_task(<i class="italic">#employee_id</i>, <i class="italic">#task_id</i>);
+> employee(<u className="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i className="italic">#manager_id</i>);  
+> project(<u className="font-bold underline">id</u>, name);  
+> task(<u className="font-bold underline">id</u>, name, is_done, <i className="italic">#project_id</i>);  
+> employee_has_task(<i className="italic">#employee_id</i>, <i className="italic">#task_id</i>);
 
 Et pour finir... 🥁  
 Le MPD !

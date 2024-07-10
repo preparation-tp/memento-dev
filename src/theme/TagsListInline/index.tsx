@@ -8,7 +8,7 @@ export default function TagsListInline({ tags }: Props): JSX.Element {
       {tags.map((tag) => (
         <li
           key={tag.permalink}
-          className="border border-violet-400 bg-violet-100 dark:bg-violet-950 transition-colors rounded-md hover:bg-transparent hover:dark:bg-violet-950/20 text-sm"
+          className="transition-colors rounded-md text-sm"
         >
           <Tag {...tag} />
         </li>

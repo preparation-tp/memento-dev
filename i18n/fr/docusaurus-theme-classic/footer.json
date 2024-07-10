@@ -1,0 +1,46 @@
+{
+  "link.title.Ressources": {
+    "message": "Ressources",
+    "description": "The title of the footer links column with title=Ressources in the footer"
+  },
+  "link.title.Titres professionnels": {
+    "message": "Titres professionnels",
+    "description": "The title of the footer links column with title=Titres professionnels in the footer"
+  },
+  "link.title.Memento Dev": {
+    "message": "Memento Dev",
+    "description": "The title of the footer links column with title=Memento Dev in the footer"
+  },
+  "link.item.label.Préambule": {
+    "message": "Préambule",
+    "description": "The label of footer link with label=Préambule linking to /intro"
+  },
+  "link.item.label.Bases de données": {
+    "message": "Bases de données",
+    "description": "The label of footer link with label=Bases de données linking to /category/-bases-de-données"
+  },
+  "link.item.label.DWWM": {
+    "message": "DWWM",
+    "description": "The label of footer link with label=DWWM linking to /titres-professionnels/DWWM/intro"
+  },
+  "link.item.label.Archives": {
+    "message": "Archives",
+    "description": "The label of footer link with label=Archives linking to /category/%EF%B8%8F-archives"
+  },
+  "link.item.label.Mentions légales": {
+    "message": "Mentions légales",
+    "description": "The label of footer link with label=Mentions légales linking to /legal"
+  },
+  "link.item.label.Contribuer": {
+    "message": "Contribuer",
+    "description": "The label of footer link with label=Contribuer linking to /contribuer"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/preparation-tp/memento-dev"
+  },
+  "copyright": {
+    "message": "<span className=\"text-white/70\">\n        Créé avec ❤️ par\n        <a\n          className=\"transition-colors hover:text-white hover:no-underline\"\n          href=\"https://gauthierdaniels.fr\"\n          target=\"_blank\"\n        >\n          Gauthier Daniels\n        </a>\n      </span>",
+    "description": "The footer copyright"
+  }
+}

@@ -47,6 +47,7 @@ const config: Config = {
         },
       };
     },
+    [require.resolve("docusaurus-lunr-search"), { languages: ["fr"] }],
   ],
 
   presets: [
@@ -63,13 +64,10 @@ const config: Config = {
             extendDefaults: true,
           },
 
+          routeBasePath: "/",
           tagsBasePath: "tags",
         },
-        blog: {
-          showReadingTime: true,
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/preparation-tp/memento-dev/tree/main/",
-        },
+        blog: false,
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -101,6 +99,34 @@ const config: Config = {
           label: "Documentation",
         },
         {
+          position: "left",
+          label: "Ressources",
+          items: [
+            {
+              label: "Préambule",
+              to: "/intro",
+            },
+            {
+              label: "Bases de données",
+              to: "/category/-bases-de-données",
+            },
+          ],
+        },
+        {
+          position: "left",
+          label: "Titres professionnels",
+          items: [
+            {
+              label: "DWWM",
+              to: "/titres-professionnels/DWWM/intro",
+            },
+            {
+              label: "Archives",
+              to: "/category/%EF%B8%8F-archives",
+            },
+          ],
+        },
+        {
           href: "https://github.com/preparation-tp/memento-dev",
           label: "GitHub",
           position: "right",
@@ -115,24 +141,24 @@ const config: Config = {
           items: [
             {
               label: "Préambule",
-              to: "/docs/intro",
+              to: "/intro",
             },
             {
               label: "Bases de données",
-              to: "/docs/category/-bases-de-données",
+              to: "/category/-bases-de-données",
             },
           ],
         },
         {
-          title: "Référentiels",
+          title: "Titres professionnels",
           items: [
             {
               label: "DWWM",
-              to: "/docs/titres-professionnels/DWWM/intro",
+              to: "/titres-professionnels/DWWM/intro",
             },
             {
               label: "Archives",
-              to: "/docs/category/%EF%B8%8F-archives",
+              to: "/category/%EF%B8%8F-archives",
             },
           ],
         },
@@ -145,7 +171,7 @@ const config: Config = {
             },
             {
               label: "Contribuer",
-              to: "/docs/contribuer",
+              to: "/contribuer",
             },
             {
               label: "GitHub",
@@ -154,10 +180,10 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `<span class="text-white/70">
+      copyright: `<span className="text-white/70">
         Créé avec ❤️ par
         <a
-          class="transition-colors hover:text-white hover:no-underline"
+          className="transition-colors hover:text-white hover:no-underline"
           href="https://gauthierdaniels.fr"
           target="_blank"
         >

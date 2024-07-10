@@ -15,7 +15,7 @@ const QuoteAdmonition = (props: QuoteAdmonitionProps) => {
         <svg
           stroke="currentColor"
           fill="currentColor"
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 24 24"
           className="inline-block w-4 mr-2"
           xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ const ExampleAdmonition = (props: QuoteAdmonitionProps) => {
         <svg
           stroke="currentColor"
           fill="currentColor"
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 256 256"
           className="inline-block w-4 mr-2"
           xmlns="http://www.w3.org/2000/svg"
