@@ -31,7 +31,7 @@ const DocItem = (props: { doc: Props["tag"]["items"][number] }) => {
         <svg
           stroke="currentColor"
           fill="currentColor"
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 256 256"
           xmlns="http://www.w3.org/2000/svg"
           width="1.25em"

@@ -33,7 +33,7 @@ const HomepageHeader = () => {
           <p className="text-xl py-6 text-white">{siteConfig.tagline}</p>
 
           <div className="md:py-10">
-            <Link className="button" to="/docs/intro">
+            <Link className="button" to="/intro">
               Accédez aux ressources 🚀
             </Link>
           </div>

@@ -219,16 +219,16 @@ Mais si tu as l'occasion de faire les deux, c'est encore mieux !
 
 <summary>Exemple de MRD</summary>
 
-employee(<u class="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i class="italic">#manager_id</i>);  
-project(<u class="font-bold underline">id</u>, name);  
-task(<u class="font-bold underline">id</u>, name, is_done, <i class="italic">#project_id</i>);  
-employee_has_task(#employee_id, <i class="italic">#task_id</i>);
+employee(<u className="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i className="italic">#manager_id</i>);  
+project(<u className="font-bold underline">id</u>, name);  
+task(<u className="font-bold underline">id</u>, name, is_done, <i className="italic">#project_id</i>);  
+employee_has_task(#employee_id, <i className="italic">#task_id</i>);
 
 </details>
 
 Si tu veux comprendre pourquoi certains éléments sont en gras, en italique ou soulignés, voici un court résumé :
 
-- <u class="underline">Sous-ligné</u> : Clé primaire _(en gras également car unique,
+- <u className="underline">Sous-ligné</u> : Clé primaire _(en gras également car unique,
   voir ci-dessous)_
 - **Gras** : Donnée unique au sein de la table
 - _Italique_ : Clé étrangère
