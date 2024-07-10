@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "Memento Dev",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo Memento Dev",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Documentation": {
+    "message": "Documentation",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Ressources": {
+    "message": "Ressources",
+    "description": "Navbar item with label Ressources"
+  },
+  "item.label.Titres professionnels": {
+    "message": "Titres professionnels",
+    "description": "Navbar item with label Titres professionnels"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.Préambule": {
+    "message": "Préambule",
+    "description": "Navbar item with label Préambule"
+  },
+  "item.label.Bases de données": {
+    "message": "Bases de données",
+    "description": "Navbar item with label Bases de données"
+  },
+  "item.label.DWWM": {
+    "message": "DWWM",
+    "description": "Navbar item with label DWWM"
+  },
+  "item.label.Archives": {
+    "message": "Archives",
+    "description": "Navbar item with label Archives"
+  }
+}

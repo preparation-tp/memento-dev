@@ -1,0 +1,66 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.📖 Glossaires": {
+    "message": "📖 Glossaires",
+    "description": "The label for category 📖 Glossaires in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.🎓 Titres professionnels": {
+    "message": "🎓 Titres professionnels",
+    "description": "The label for category 🎓 Titres professionnels in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.🎓 Titres professionnels.link.generated-index.description": {
+    "message": "Tu retrouveras ici l'ensemble des titres professionnels couverts par la plateforme Memento Dev.",
+    "description": "The generated-index page description for category 🎓 Titres professionnels in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.🧑‍💻 DWWM": {
+    "message": "🧑‍💻 DWWM",
+    "description": "The label for category 🧑‍💻 DWWM in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Activité Type 1": {
+    "message": "Activité Type 1",
+    "description": "The label for category Activité Type 1 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Activité Type 2": {
+    "message": "Activité Type 2",
+    "description": "The label for category Activité Type 2 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.🗃️ Archives": {
+    "message": "🗃️ Archives",
+    "description": "The label for category 🗃️ Archives in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.🗃️ Archives.link.generated-index.description": {
+    "message": "Archives des différents référentiels arrivés à expiration.",
+    "description": "The generated-index page description for category 🗃️ Archives in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.DWWM": {
+    "message": "DWWM",
+    "description": "The label for category DWWM in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.2018-2023": {
+    "message": "2018-2023",
+    "description": "The label for category 2018-2023 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.AT1": {
+    "message": "AT1",
+    "description": "The label for category AT1 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.AT2": {
+    "message": "AT2",
+    "description": "The label for category AT2 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.📁 Ressources": {
+    "message": "📁 Ressources",
+    "description": "The label for category 📁 Ressources in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.💽 Bases de données": {
+    "message": "💽 Bases de données",
+    "description": "The label for category 💽 Bases de données in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Modélisation": {
+    "message": "Modélisation",
+    "description": "The label for category Modélisation in sidebar tutorialSidebar"
+  }
+}

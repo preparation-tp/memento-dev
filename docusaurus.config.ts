@@ -25,15 +25,7 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: [
-    "@docusaurus/theme-mermaid",
-    [
-      require.resolve("@cmfcmf/docusaurus-search-local"),
-      {
-        language: "fr",
-      },
-    ],
-  ],
+  themes: ["@docusaurus/theme-mermaid"],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -55,6 +47,7 @@ const config: Config = {
         },
       };
     },
+    [require.resolve("docusaurus-lunr-search"), { languages: ["fr"] }],
   ],
 
   presets: [
