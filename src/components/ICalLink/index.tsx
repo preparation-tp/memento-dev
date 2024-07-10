@@ -18,7 +18,7 @@ const ICalLink = (props: ICalLinkProps) => {
     const endDate = new Date(props.date)
       .toISOString()
       .replace(/-|:|\.\d+/g, "");
-      
+
     const descriptionEncoded = encodeURIComponent(props.description || "");
     const titleEncoded = encodeURIComponent(props.title);
 
@@ -26,7 +26,7 @@ const ICalLink = (props: ICalLinkProps) => {
   };
 
   const handleClick = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.preventDefault();
     const link = createGoogleCalendarLink();
@@ -34,20 +34,20 @@ const ICalLink = (props: ICalLinkProps) => {
   };
 
   return (
-    <Link
-      href="#"
+    <button
       onClick={handleClick}
       className={clsx(
         "font-bold",
         "inline-flex",
         "gap-2",
         "items-center",
-        "hover:no-underline",
+        "transition-colors",
+        "hover:text-violet-300",
         props.className
       )}
     >
       📅 {props.children} 📅
-    </Link>
+    </button>
   );
 };
 
