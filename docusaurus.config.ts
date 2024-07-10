@@ -167,7 +167,7 @@ const config: Config = {
           items: [
             {
               label: "Mentions légales",
-              to: "/legal",
+              to: "/mentions-legales",
             },
             {
               label: "Contribuer",

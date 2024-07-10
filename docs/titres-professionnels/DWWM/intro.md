@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: "Résumé"
+description: "Résumé du titre professionnel Développeur Web et Web Mobile (DWWM TP-01280m04, actif depuis septembre 2023)."
 tags:
   - DWWM
 ---

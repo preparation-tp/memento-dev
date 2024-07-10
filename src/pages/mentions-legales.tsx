@@ -5,7 +5,7 @@ const Legal = () => {
   return (
     <Layout
       title={`Mentions légales`}
-      description="Description will go into a meta tag in <head />"
+      description="Mentions légales du site Memento Dev"
     >
       <main className="container py-16 flex flex-col gap-8">
         <Heading as="h1" className="text-4xl font-bold uppercase">
