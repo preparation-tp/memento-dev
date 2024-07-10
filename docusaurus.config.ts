@@ -63,13 +63,10 @@ const config: Config = {
             extendDefaults: true,
           },
 
+          routeBasePath: "/",
           tagsBasePath: "tags",
         },
-        blog: {
-          showReadingTime: true,
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/preparation-tp/memento-dev/tree/main/",
-        },
+        blog: false,
         theme: {
           customCss: "./src/css/custom.css",
         },
