@@ -42,7 +42,8 @@ const ICalLink = (props: ICalLinkProps) => {
         "gap-2",
         "items-center",
         "transition-colors",
-        "hover:text-violet-300",
+        "hover:bg-violet-200",
+        "hover:dark:text-violet-300",
         props.className
       )}
     >
