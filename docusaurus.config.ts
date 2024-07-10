@@ -47,6 +47,7 @@ const config: Config = {
         },
       };
     },
+    [require.resolve("docusaurus-lunr-search"), { languages: ["fr"] }],
   ],
 
   presets: [
@@ -98,6 +99,34 @@ const config: Config = {
           label: "Documentation",
         },
         {
+          position: "left",
+          label: "Ressources",
+          items: [
+            {
+              label: "Préambule",
+              to: "/intro",
+            },
+            {
+              label: "Bases de données",
+              to: "/category/-bases-de-données",
+            },
+          ],
+        },
+        {
+          position: "left",
+          label: "Titres professionnels",
+          items: [
+            {
+              label: "DWWM",
+              to: "/titres-professionnels/DWWM/intro",
+            },
+            {
+              label: "Archives",
+              to: "/category/%EF%B8%8F-archives",
+            },
+          ],
+        },
+        {
           href: "https://github.com/preparation-tp/memento-dev",
           label: "GitHub",
           position: "right",
@@ -121,7 +150,7 @@ const config: Config = {
           ],
         },
         {
-          title: "Référentiels",
+          title: "Titres professionnels",
           items: [
             {
               label: "DWWM",

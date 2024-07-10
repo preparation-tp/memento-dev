@@ -59,14 +59,24 @@
   @apply font-normal bg-violet-200 rounded-md text-violet-800 px-4 py-2 text-lg hover:no-underline hover:bg-violet-50 transition-colors hover:text-violet-950;
 }
 
+.navbar__link::after {
+  @apply !top-[5px];
+}
+
+.navbar__item .dropdown__menu {
+  @apply w-full;
+}
+
 .footer__link-item,
 .navbar__brand,
+.navbar__link,
 .navbar__item {
   @apply inline-flex gap-1 items-center text-white/80 transition-colors;
 }
 
 .footer__link-item:hover,
 .navbar__brand:hover,
+.navbar__link:hover,
 .navbar__item:hover {
   @apply text-white no-underline;
 }
