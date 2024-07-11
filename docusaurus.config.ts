@@ -1,7 +1,16 @@
+import type {
+  CreateSitemapItemsParams,
+  CreateSitemapItemsFn,
+} from "@docusaurus/plugin-sitemap/lib/types";
+
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 
 import { themes as prismThemes } from "prism-react-renderer";
+
+type CreateSitemapParams = CreateSitemapItemsParams & {
+  defaultCreateSitemapItems: CreateSitemapItemsFn;
+};
 
 const resourcesLinks = [
   {
@@ -74,6 +83,22 @@ const config: Config = {
       };
     },
     [require.resolve("docusaurus-lunr-search"), { languages: ["fr"] }],
+    [
+      "@docusaurus/plugin-sitemap",
+      {
+        lastmod: "date",
+        changefreq: "weekly",
+        priority: 0.5,
+        ignorePatterns: ["/tags/**"],
+        filename: "sitemap.xml",
+        async createSitemapItems(params: CreateSitemapParams) {
+          const { defaultCreateSitemapItems, ...rest } = params;
+          const items = await defaultCreateSitemapItems(rest);
+
+          return items.filter((item) => !item.url.includes("/page/"));
+        },
+      },
+    ],
   ],
 
   presets: [
