@@ -156,12 +156,12 @@ Dans la mesure du possible, il est recommandé de ne pas utiliser jQuery pour un
 
 ## 🎯 Critères d'évaluation
 
-- L’interface utilisateur est conforme au dossier de conception
-- L’interface est dynamique et l’expérience utilisateur est améliorée, y compris pour les personnes en situation de handicap
+- L'interface utilisateur est conforme au dossier de conception
+- L'interface est dynamique et l'expérience utilisateur est améliorée, y compris pour les personnes en situation de handicap
 - Les recommandations de sécurité liées aux applications web et web mobile sont respectées
-- La règlementation en vigueur sont respectées, y compris celle relative à l’accessibilité
-- Le code est documenté, y compris en anglais _(niveau B1 CECRL pour l’anglais)_
-- Le jeu d’essai fonctionnel est complet et les tests unitaires sont réalisés pour les composants concernés
+- La règlementation en vigueur sont respectées, y compris celle relative à l'accessibilité
+- Le code est documenté, y compris en anglais _(niveau B1 CECRL pour l'anglais)_
+- Le jeu d'essai fonctionnel est complet et les tests unitaires sont réalisés pour les composants concernés
 - Les tests de sécurité sont réalisés
 
 ## 🤯 Aller plus loin _(hors référentiel)_
@@ -199,10 +199,10 @@ Mais on peut améliorer notre page en mettant en place une légère interaction 
     <TabItem value="HTML - 1ère étape">
       ```html showLineNumbers
       <div
-      className="iframe-container"
-      data-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-      data-width="1280"
-      data-height="720"
+        className="iframe-container"
+        data-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        data-width="1280"
+        data-height="720"
       >
         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" loading="lazy">
         <button type="button" className="iframe-loader">Charger la vidéo</button>
@@ -215,27 +215,27 @@ Mais on peut améliorer notre page en mettant en place une légère interaction 
       document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonElement) => {
         // Pour chaque bouton qui doit charger un iframe, on écoute le clic dessus
         button.addEventListener('click', () => {
-            // On récupère le container de l'iframe, qui dans notre exemple est la balise parente du bouton
-            const container: HTMLElement | null = button.closest('.iframe-container');
+          // On récupère le container de l'iframe, qui dans notre exemple est la balise parente du bouton
+          const container: HTMLElement | null = button.closest('.iframe-container');
 
-            // Si le container n'existe pas, on arrête l'exécution de la fonction pour éviter un plantage
-            if (!container) return;
+          // Si le container n'existe pas, on arrête l'exécution de la fonction pour éviter un plantage
+          if (!container) return;
 
-            const { src, width, height } = container.dataset as {
-                src: string,
-                width: string,
-                height: string
-            };
+          const { src, width, height } = container.dataset as {
+            src: string,
+            width: string,
+            height: string
+          };
 
-            // On prépare notre iframe avec les données stockées dans le container
-            const iframe = document.createElement('iframe');
-            iframe.setAttribute('src', src);
-            iframe.setAttribute('width', width);
-            iframe.setAttribute('height', height);
+          // On prépare notre iframe avec les données stockées dans le container
+          const iframe = document.createElement('iframe');
+          iframe.setAttribute('src', src);
+          iframe.setAttribute('width', width);
+          iframe.setAttribute('height', height);
 
-            // On supprime le contenu du container pour y ajouter notre iframe
-            container.innerHTML = '';
-            container.appendChild(iframe);
+          // On supprime le contenu du container pour y ajouter notre iframe
+          container.innerHTML = '';
+          container.appendChild(iframe);
         });
       });
       ```
