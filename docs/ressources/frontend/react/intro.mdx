@@ -36,7 +36,7 @@ Mais on peut aussi y noter des points faibles bien entendu, car tout n'est pas r
 - **Taille du bundle** : React est relativement lourd en termes de taille de bundle, ce qui peut affecter les performances de l'application en terme de chargement initial.
 - **GAFAM** : Comme d'autres bibliothèques/frameworks, React n'échappe pas à la critique de la part de certains développeurs qui ne souhaitent pas utiliser des technologies développées par des géants du web.
 
-## Pourquoi une bibliothèque et pas un framework ?
+## 🤔 Pourquoi une bibliothèque et pas un framework ?
 
 Très grand débat que voilà ! Vraiment.. il y a des guerres qui se sont déclarées pour moins que ça 😅
 
@@ -64,7 +64,7 @@ Et si tu connais déjà React, je te vois venir avec tes grands sabots... !
   Mais concentrons-nous sur React en tant que bibliothèque, et non en tant que framework 😉
 </Admonition>
 
-## JSX
+## 📝 JSX
 
 Ce qui peut être déroutant au premier abord avec React, c'est le **JSX**.  
 On serait tenté de dire que c'est du HTML, mais en fait : **pas du tout** !
@@ -74,7 +74,7 @@ Le JSX est un sucre syntaxique _(syntactic sugar)_ qui permet d'écrire du code 
 L'avantage de JSX c'est que le code devient beaucoup plus lisible et plus proche de ce que tu connais déjà avec HTML.  
 Mais il s'agit bien de JavaScript, et non de HTML !
 
-## Composants
+## 🧩 Composants
 
 React est basé sur le concept de **composants**. Un composant est une partie réutilisable de l'interface utilisateur _(UI)_ qui peut être affichée à l'écran.
 
@@ -87,24 +87,22 @@ En fait, on joue avec des Lego, mais en version code 👷
 Mais si on veut vraiment montrer le potentiel de React, parlons maintenant... 🥁  
 Des **states**, **cycles de vie** et des **props** !
 
-## States, Cycles de vie et Props
-
-Ouh là, je me calme tout de suite !
+## 🛠️ States, Cycles de vie et Props
 
 T'assomer aussi vite avec ces termes qui ne te parlent peut-être pas, c'est pas cool de ma part...
-Pardon pour les gros mots 🙈
+Pardon pour les gros mots, je me calme tout de suite ! 🙈
 
 Si ça te rassure, je vais très rapidement évoquer ce qu'il se cache derrière ces termes barbares,
 je réserve les détails pour des articles dédiés 😉
 
-### States
+### 🗄️ States
 
 ... ou également appelés **états** en français.
 
 Le but du state, c'est de stocker des données qui vont être **observées** par React.  
 À chaque fois que le state va être modifié, React va **réagir** et mettre à jour l'interface utilisateur _(UI)_ en conséquence afin d'afficher les nouvelles données.
 
-### Cycles de vie
+### 🔄 Cycles de vie
 
 Les **cycles de vie** _(lifecycle)_ sont des méthodes qui sont appelées à des moments précis dans le cycle de vie d'un composant React.
 
@@ -120,7 +118,7 @@ Un composant sur React va avoir un cycle de vie, caractérisé par trois phases 
 
 Ces différentes phases vont nous permettre d'interagir avec le composant à des moments précis, et d'effectuer des actions en conséquence.
 
-### Props
+### 📦 Props
 
 Et pour finir, les **props** _(properties)_ !
 
@@ -129,7 +127,7 @@ Il s'agit ni plus ni moins que des **arguments** que tu vas passer à un composa
 Cependant il faut noter une chose : On transmet les props à un composant précis, qui sera donc un composant **enfant**.  
 Un composant enfant ne pourra pas transmettre des props à un composant parent, c'est unidirectionnel _(mais on verra comment on peut faire autrement 😉)_.
 
-## Une petite démo ?
+## 🖥️ Une petite démo ?
 
 OK, mais vraiment petite !
 
@@ -139,71 +137,71 @@ _(OK, utiliser React pour ça c'est abusé, mais c'est pour l'exemple 😅)_
 <Tabs>
   <TabItem value="demo-app" label="App.tsx">
     ```tsx showLineNumbers
-      import TodoList from './TodoList';
-      import React from 'react';
+    import TodoList from './TodoList';
+    import React from 'react';
 
-      const App = () => {
-        return (
-          <div>
-            <h1>TodoList</h1>
+    const App = () => {
+      return (
+        <div>
+          <h1>TodoList</h1>
 
-            <TodoList />
-          </div>
-        );
-      };
+          <TodoList />
+        </div>
+      );
+    };
     ```
   </TabItem>
 
   <TabItem value="demo-todolist" label="TodoList.tsx">
     ```tsx showLineNumbers
-      import TodoListItem from './TodoListItem';
-      import React from 'react';
+    import TodoListItem from './TodoListItem';
+    import React from 'react';
 
-      const TodoList = () => {
-        const [items, setItems] = React.useState<string[]>([]);
-        const [inputValue, setInputValue] = React.useState<string>("");
+    const TodoList = () => {
+      const [items, setItems] = React.useState<string[]>([]);
+      const [inputValue, setInputValue] = React.useState<string>("");
 
-        const handleInputValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-          setInputValue(event.target.value);
-        };
-
-        const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-          // On empêche le comportement par défaut du formulaire
-          event.preventDefault();
-
-          // On ajoute un nouvel élément à la liste des tâches
-          setItems([...items, inputValue]);
-
-          // On réinitialise la valeur de l'input
-          setInputValue("");
-        };
-
-        return (
-          <div>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="todolist-input">
-              </label>
-
-              <input
-                id="todolist-input"
-                type="text"
-                value={inputValue}
-                onChange={handleInputValueChange}
-              />
-            </form>
-
-            <ul>
-              {items.map((item, index) => (
-                <li key={index}>
-                  <TodoListItem item={item} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
+      const handleInputValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
       };
 
-      export default TodoList;
+      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        // On empêche le comportement par défaut du formulaire
+        event.preventDefault();
+
+        // On ajoute un nouvel élément à la liste des tâches
+        setItems([...items, inputValue]);
+
+        // On réinitialise la valeur de l'input
+        setInputValue("");
+      };
+
+      return (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="todolist-input">
+            </label>
+
+            <input
+              id="todolist-input"
+              type="text"
+              value={inputValue}
+              onChange={handleInputValueChange}
+            />
+          </form>
+
+          <ul>
+            {items.map((item, index) => (
+              <li key={index}>
+                <TodoListItem item={item} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    };
+
+    export default TodoList;
     ```
   </TabItem>
 
