@@ -9,7 +9,7 @@ import Admonition from '@theme/Admonition';
 # Développer une interface utilisateur web dynamique
 
 <Admonition type="warning" title="Attention, tu es en train de consulter un référentiel expiré !">
-[Aller sur le contenu du nouveau référentiel en vigueur](/titres-professionnels/DWWM/intro)
+  [Aller sur le contenu du nouveau référentiel en vigueur](/titres-professionnels/DWWM/intro)
 </Admonition>
 
 ## 📚 Références
@@ -22,76 +22,76 @@ import Admonition from '@theme/Admonition';
 Et maintenant que tout est fait pour la partie statique, il va falloir mettre en place une partie dynamique !
 
 <Admonition type="quote" title="Mais... comment je peux faire ET du statique, ET du dynamique ?">
-Pas de panique, c'est très simple !
+  Pas de panique, c'est très simple !
 
-En réalité, toutes les pages peuvent avoir du JavaScript sans souci, mais il est important de ne pas parler de JavaScript dans la partie statique.  
-Par contre, vu qu'ici on parle de la <abbr title="Compétence Professionnelle">CP</abbr> 3 et donc de contenu dynamique, JavaScript prend toute son importance ! Tu peux tout à fait te baser sur la même page que la précédente et parler maintenant des interactions utilisateurs 😉
+  En réalité, toutes les pages peuvent avoir du JavaScript sans souci, mais il est important de ne pas parler de JavaScript dans la partie statique.  
+  Par contre, vu qu'ici on parle de la <abbr title="Compétence Professionnelle">CP</abbr> 3 et donc de contenu dynamique, JavaScript prend toute son importance ! Tu peux tout à fait te baser sur la même page que la précédente et parler maintenant des interactions utilisateurs 😉
 </Admonition>
 
 <Admonition type="info" title="Petit rappel">
-En dehors de l'aspect statique, la <abbr title="Compétence Professionnelle">CP</abbr> 3 se base sur tous les points de la <abbr title="Compétence Professionnelle">CP</abbr> 2, donc référencement et responsive !
+  En dehors de l'aspect statique, la <abbr title="Compétence Professionnelle">CP</abbr> 3 se base sur tous les points de la <abbr title="Compétence Professionnelle">CP</abbr> 2, donc référencement et responsive !
 </Admonition>
 
 Si tu as utilisé des requêtes AJAX pour récupérer des données, c'est le moment de les mettre en avant avec des extraits de code commentés pour expliquer leur fonctionnement !
 
 <Admonition type="example" title="Exemple de connexion avec React">
-```tsx showLineNumbers
-import React, { useState } from 'react';
+  ```tsx showLineNumbers
+  import React, { useState } from 'react';
 
-// On crée un état initial pour notre formulaire
-const initialState = {
-  email: '',
-  password: '',
-};
-
-const LoginForm = () => {
-  const [form, setForm] = useState(initialState);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // On récupère le nom et la valeur de l'input qui a déclenché l'événement
-    const { name, value } = event.target;
-    setForm({ ...form, [name]: value });
+  // On crée un état initial pour notre formulaire
+  const initialState = {
+    email: '',
+    password: '',
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    // On empêche le formulaire de se soumettre et donc de recharger la page
-    event.preventDefault();
-    
-    // On peut maintenant envoyer les données du formulaire à notre API
-    const response = await fetch('/api/login', { method: 'POST', body: JSON.stringify(form) });
-    const data = await response.json();
+  const LoginForm = () => {
+    const [form, setForm] = useState(initialState);
 
-    // On peut ensuite traiter la réponse de l'API
-    // ...
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      // On récupère le nom et la valeur de l'input qui a déclenché l'événement
+      const { name, value } = event.target;
+      setForm({ ...form, [name]: value });
+    };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      // On empêche le formulaire de se soumettre et donc de recharger la page
+      event.preventDefault();
+      
+      // On peut maintenant envoyer les données du formulaire à notre API
+      const response = await fetch('/api/login', { method: 'POST', body: JSON.stringify(form) });
+      const data = await response.json();
+
+      // On peut ensuite traiter la réponse de l'API
+      // ...
+    };
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="jean.dupont@exemple.fr"
+        />
+
+        <label htmlFor="password">Mot de passe</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={handleChange}
+          placeholder="********"
+        />
+
+        <button type="submit">Se connecter</button>
+      </form>
+    );
   };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        name="email"
-        value={form.email}
-        onChange={handleChange}
-        placeholder="jean.dupont@exemple.fr"
-      />
-
-      <label htmlFor="password">Mot de passe</label>
-      <input
-        id="password"
-        type="password"
-        name="password"
-        value={form.password}
-        onChange={handleChange}
-        placeholder="********"
-      />
-
-      <button type="submit">Se connecter</button>
-    </form>
-  );
-};
-```
+  ```
 </Admonition>
 
 ## 🎯 Critères d'évaluation

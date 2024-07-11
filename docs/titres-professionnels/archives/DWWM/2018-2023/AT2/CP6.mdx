@@ -9,7 +9,7 @@ import Admonition from '@theme/Admonition';
 # Développer les composants d'accès aux données
 
 <Admonition type="warning" title="Attention, tu es en train de consulter un référentiel expiré !">
-[Aller sur le contenu du nouveau référentiel en vigueur](/titres-professionnels/DWWM/intro)
+  [Aller sur le contenu du nouveau référentiel en vigueur](/titres-professionnels/DWWM/intro)
 </Admonition>
 
 ## 📚 Références
@@ -37,40 +37,40 @@ c'est l'occasion de parler de ton fichier `.env` et du `.gitignore` afin de ne p
 dont les informations de connexion à la base de données.
 
 <Admonition type="warning" title="Utilisation d'ORM/query builder">
-Si tu utilises un <abbr title="Object-Relational Mapping">ORM</abbr> ou un query builder, il est important de bien expliquer comment tu l'as configuré et comment tu l'utilises.  
-En plus d'expliquer comment cet outil a été paramétré, tu dois être en mesure d'expliquer la construction SQL générée par cet outil.
+  Si tu utilises un <abbr title="Object-Relational Mapping">ORM</abbr> ou un query builder, il est important de bien expliquer comment tu l'as configuré et comment tu l'utilises.  
+  En plus d'expliquer comment cet outil a été paramétré, tu dois être en mesure d'expliquer la construction SQL générée par cet outil.
 
-Par exemple avec Prisma :
-```javascript showLineNumbers
-const user = await prisma.user.findUnique({
-    select: {
-    id: true,
-    name: true,
-    email: true,
-    posts: {
-        select: {
-        title: true,
-        },
-    },
-    },
-    include: {
-    posts: true,
-    },
-    where: {
-    id: 1,
-    },
-});
-```
+  Par exemple avec Prisma :
+  ```javascript showLineNumbers
+  const user = await prisma.user.findUnique({
+      select: {
+      id: true,
+      name: true,
+      email: true,
+      posts: {
+          select: {
+          title: true,
+          },
+      },
+      },
+      include: {
+      posts: true,
+      },
+      where: {
+      id: 1,
+      },
+  });
+  ```
 
-Ce qui donnera :
-```sql
-SELECT u.id, u.name, u.email, p.title -- Sélection des colonnes
-FROM "User" u -- Table principale
-INNER JOIN "Post" p ON p.userId = u.id -- Jointure avec la table "Post"
-WHERE u.id = 1; -- Condition de sélection
-```
+  Ce qui donnera :
+  ```sql
+  SELECT u.id, u.name, u.email, p.title -- Sélection des colonnes
+  FROM "User" u -- Table principale
+  INNER JOIN "Post" p ON p.userId = u.id -- Jointure avec la table "Post"
+  WHERE u.id = 1; -- Condition de sélection
+  ```
 
-_(Oui, c'est un exemple fictif et pas entièrement correspondant, mais tu as compris l'idée !)_
+  _(Oui, c'est un exemple fictif et pas entièrement correspondant, mais tu as compris l'idée !)_
 </Admonition> 
 
 On est d'accord : cette <abbr title="Compétence Professionnelle">CP</abbr> est un gros morceau,
@@ -99,8 +99,8 @@ Tu peux très bien te baser sur un algorithme maison ou encore utiliser des bibl
 ### 🗑️ Suppression des données
 
 <Admonition type="quote" title="Un peu de ménage ne fait jamais de mal !">
-On est d'accord ! Cependant, la suppression de données est une opération délicate.  
-Se dire "il suffit de faire un `DELETE FROM table WHERE id = 1`" peut potentiellement poser des problèmes.
+  On est d'accord ! Cependant, la suppression de données est une opération délicate.  
+  Se dire "il suffit de faire un `DELETE FROM table WHERE id = 1`" peut potentiellement poser des problèmes.
 </Admonition>
 
 En effet, il est important de bien réfléchir à la suppression de données, notamment pour les données liées à d'autres données _(les fameux `ON DELETE CASCADE` par exemple)_.
