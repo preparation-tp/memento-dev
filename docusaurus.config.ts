@@ -91,6 +91,7 @@ const config: Config = {
         priority: 0.5,
         ignorePatterns: ["/tags/**"],
         filename: "sitemap.xml",
+        id: "sitemap",
         async createSitemapItems(params: CreateSitemapParams) {
           const { defaultCreateSitemapItems, ...rest } = params;
           const items = await defaultCreateSitemapItems(rest);
