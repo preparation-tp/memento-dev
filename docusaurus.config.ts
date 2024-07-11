@@ -144,6 +144,10 @@ const config: Config = {
               to: "/intro",
             },
             {
+              label: "Front-end",
+              to: "/category/-frontend",
+            },
+            {
               label: "Bases de données",
               to: "/category/-bases-de-données",
             },
