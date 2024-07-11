@@ -64,22 +64,20 @@ L'objectif du dictionnaire des données est de recenser toutes les données que 
 L'idée est qu'il soit très simple et compréhensible par tout le monde, même par quelqu'un qui n'y connaît rien en base de données.
 
 <details>
+  <summary>Exemple de dictionnaire de données</summary>
 
-<summary>Exemple de dictionnaire de données</summary>
+  | Nom de la donnée                   | Format de la données | Longueur maximale attendue | Description de la donnée        | Exemple de donnée      |
+  | ---------------------------------- | -------------------- | -------------------------- | ------------------------------- | ---------------------- |
+  | Numéro d'identification du salarié | Alphanumérique       | 30                         | -                               | -                      |
+  | Prénom du salarié                  | Alphabétique         | 30                         | -                               | Jean                   |
+  | Nom du salarié                     | Alphabétique         | 30                         | -                               | Dupont                 |
+  | Adresse email du salarié           | Alphanumérique       | 50                         | -                               | jean.dupont@exemple.fr |
+  | Adresse postale du salarié         | Alphanumérique       | 60                         | -                               | 1 rue de la Paix       |
+  | Code postal du salarié             | Alphanumérique       | 5                          | -                               | 75000                  |
+  | Ville du salarié                   | Alphabétique         | 30                         | -                               | Paris                  |
+  | Mot de passe du salarié            | Alphanumérique       | 80                         | Mot de passe sécurisé _(hashé)_ | -                      |
 
-| Nom de la donnée                   | Format de la données | Longueur maximale attendue | Description de la donnée        | Exemple de donnée      |
-| ---------------------------------- | -------------------- | -------------------------- | ------------------------------- | ---------------------- |
-| Numéro d'identification du salarié | Alphanumérique       | 30                         | -                               | -                      |
-| Prénom du salarié                  | Alphabétique         | 30                         | -                               | Jean                   |
-| Nom du salarié                     | Alphabétique         | 30                         | -                               | Dupont                 |
-| Adresse email du salarié           | Alphanumérique       | 50                         | -                               | jean.dupont@exemple.fr |
-| Adresse postale du salarié         | Alphanumérique       | 60                         | -                               | 1 rue de la Paix       |
-| Code postal du salarié             | Alphanumérique       | 5                          | -                               | 75000                  |
-| Ville du salarié                   | Alphabétique         | 30                         | -                               | Paris                  |
-| Mot de passe du salarié            | Alphanumérique       | 80                         | Mot de passe sécurisé _(hashé)_ | -                      |
-
-... et ainsi de suite pour toutes les données que tu vas stocker dans ta base de données.
-
+  ... et ainsi de suite pour toutes les données que tu vas stocker dans ta base de données.
 </details>
 
 On peut constater qu'on ne fait apparaître aucun terme technique, on se contente de décrire les données de manière simple et compréhensible.
@@ -92,44 +90,42 @@ Grossièrement, voici les formats que l'on peut retrouver dans un dictionnaire d
 - **Vrai/Faux** : pour les données booléennes
 
 <details>
+  <summary>
+    Mais pourquoi le code postal est marqué en alphanumérique ? 🤔
+  </summary>
 
-<summary>
-  Mais pourquoi le code postal est marqué en alphanumérique ? 🤔
-</summary>
+  C'est une très bonne question figure-toi !
 
-C'est une très bonne question figure-toi !
+  En France, le code postal est composé de 5 chiffres, mais il peut arriver que certains codes postaux commencent par un zéro.  
+  Or, si on stocke le code postal en numérique, on risque de perdre ce zéro au début du code postal.
 
-En France, le code postal est composé de 5 chiffres, mais il peut arriver que certains codes postaux commencent par un zéro.  
-Or, si on stocke le code postal en numérique, on risque de perdre ce zéro au début du code postal.
+  Exemple :
 
-Exemple :
+  - `75000` -> `75000`
+  - `01000` -> `1000` _(on a perdu le zéro au début)_
 
-- `75000` -> `75000`
-- `01000` -> `1000` _(on a perdu le zéro au début)_
+  On retrouve également ce cas de figure pour les numéros de téléphone, qui peuvent commencer par un zéro.
 
-On retrouve également ce cas de figure pour les numéros de téléphone, qui peuvent commencer par un zéro.
+  Toutefois il faut également prendre en compte quelque chose... ici, l'exemple ne concerne que la France.  
+  Si demain on te demande de prévoir le fait que ton application puisse être utilisée dans un autre pays, il faudra peut-être revoir ce choix de format pour le code postal.  
+  Certains pays ont des codes postaux composés de lettres et de chiffres, d'autres vont avoir jusqu'à 9 caractères, etc.
 
-Toutefois il faut également prendre en compte quelque chose... ici, l'exemple ne concerne que la France.  
-Si demain on te demande de prévoir le fait que ton application puisse être utilisée dans un autre pays, il faudra peut-être revoir ce choix de format pour le code postal.  
-Certains pays ont des codes postaux composés de lettres et de chiffres, d'autres vont avoir jusqu'à 9 caractères, etc.
+  ⬇️ **Cas de figure spécifique, et pourtant très important à connaître** ⬇️
 
-⬇️ **Cas de figure spécifique, et pourtant très important à connaître** ⬇️
+  Prenons l'exemple où l'on fait une application pour la France **uniquement**.  
+  En France, on considère que l'indicatif des numéros de téléphone est `+33`. On serait donc tenté de se dire :
 
-Prenons l'exemple où l'on fait une application pour la France **uniquement**.  
-En France, on considère que l'indicatif des numéros de téléphone est `+33`. On serait donc tenté de se dire :
+  > "Pas besoin de stocker l'indicatif puisque je veux uniquement enregistrer des numéros de téléphones français."
 
-> "Pas besoin de stocker l'indicatif puisque je veux uniquement enregistrer des numéros de téléphones français."
+  Hmm.. vraiment ?  
+  Pourtant : la Réunion, la Guadeloupe, la Martinique, la Guyane et Mayotte sont bien des départements français, non ?
 
-Hmm.. vraiment ?  
-Pourtant : la Réunion, la Guadeloupe, la Martinique, la Guyane et Mayotte sont bien des départements français, non ?
+  En regardant de plus près, les numéros de téléphone de ces départements ne commencent pas par `+33` mais par `+262` pour la Réunion, `+590` pour la Guadeloupe, etc.
 
-En regardant de plus près, les numéros de téléphone de ces départements ne commencent pas par `+33` mais par `+262` pour la Réunion, `+590` pour la Guadeloupe, etc.
+  Il te faudra donc stocker les numéros de téléphone avec 13 caractères _(ou plus)_ pour être sûr de ne pas perdre d'informations et t'assurer que ton application puisse être utilisée partout en France et/ou dans le monde selon les besoins !
 
-Il te faudra donc stocker les numéros de téléphone avec 13 caractères _(ou plus)_ pour être sûr de ne pas perdre d'informations et t'assurer que ton application puisse être utilisée partout en France et/ou dans le monde selon les besoins !
-
-**Conclusion de ce pavé :**  
-Pensez à vous renseigner sur les pays que vous ciblez pour votre application, ça peut vous éviter des erreurs de conception 😉
-
+  **Conclusion de ce pavé :**  
+  Pensez à vous renseigner sur les pays que vous ciblez pour votre application, ça peut vous éviter des erreurs de conception 😉
 </details>
 
 ### 📊 Le MCD
@@ -141,11 +137,9 @@ On fera attention à ne pas être technique, comme pour le dictionnaire des donn
 Ce document est avant tout destiné à être compris par tout le monde, notamment le client final.
 
 <details>
+  <summary>Exemple de MCD</summary>
 
-<summary>Exemple de MCD</summary>
-
-![Exemple de MCD, modèle conceptuel de données, Merise](@site/static/merise/mcd.webp)
-
+  ![Exemple de MCD, modèle conceptuel de données, Merise](@site/static/merise/mcd.webp)
 </details>
 
 Sur ce schéma, on peut distinguer deux entités : `Salarié` et `Congé`. Elles sont représentées par des rectangles et contiennent leurs différentes propriétés.  
@@ -166,14 +160,15 @@ Ce schéma nous apprend donc que :
   - Un projet peut contenir plusieurs tâches _(`Projet` 0,n - ATTRIBUER - `Tâche` 1,1)_
 
 <details>
+  <summary>Mais pourquoi il n'y a pas les ID dans le schéma ? 🤔</summary>
 
-<summary>Mais pourquoi il n'y a pas les ID dans le schéma ? 🤔</summary>
+  Ni les clés étrangères d'ailleurs...  
+  Tout simplement parce que les ID ne sont pas des données à proprement parler.
+  Ce sont avant tout des identifiants qui permettent de différencier les entités entre elles, d'un point de vue technique.
 
-Ni les clés étrangères d'ailleurs...  
-Tout simplement parce que les ID ne sont pas des données à proprement parler. Ce sont avant tout des identifiants qui permettent de différencier les entités entre elles, d'un point de vue technique.
-
-Sauf s'il s'agit d'une donnée concrète _(comme le numéro de badge de salarié, un numéro de sécurité sociale, un ISBN pour un livre, etc.)_, on ne les fait pas apparaître dans le MCD. Cependant, on peut noter que ce n'est pas pour autant que nous n'avons pas de discriminant dans nos entités ! On peut très bien voir la propriété `adresse email` dans l'entité `Salarié` qui pourrait servir de discriminant, puisque chaque salarié a une adresse email unique.
-
+  Sauf s'il s'agit d'une donnée concrète _(comme le numéro de badge de salarié, un numéro de sécurité sociale, un ISBN pour un livre, etc.)_,
+  on ne les fait pas apparaître dans le MCD. Cependant, on peut noter que ce n'est pas pour autant que nous n'avons pas de discriminant dans nos entités !
+  On peut très bien voir la propriété `adresse email` dans l'entité `Salarié` qui pourrait servir de discriminant, puisque chaque salarié a une adresse email unique.
 </details>
 
 Ce document peut être réalisé à l'aide de divers outils, mais je vous recommande chaudement le logiciel [Looping](https://www.looping.fr/) qui est gratuit et très simple d'utilisation.  
@@ -189,11 +184,9 @@ Cette fois-ci, on va passer à la vitesse supérieure en représentant nos donn�
 Les termes techniques ont alors entièrement leur place dans ce document, puisqu'il est destiné aux développeurs qui vont mettre en place la base de données.
 
 <details>
+  <summary>Exemple de MLD</summary>
 
-<summary>Exemple de MLD</summary>
-
-![Exemple de MLD, modèle logique de données, Merise](@site/static/merise/mld.webp)
-
+  ![Exemple de MLD, modèle logique de données, Merise](@site/static/merise/mld.webp)
 </details>
 
 Et voilà un peu de changement !
@@ -206,17 +199,16 @@ On peut également voir que nos relations ont été transformées en clés étra
 Et pour finir : tous les termes ont été traduits du français vers l'anglais.
 
 <Admonition type="warning" title="Langue utilisée dans la base de données">
-De manière simple : il n'y a pas de règle. Cependant, il est recommandé d'utiliser une seule langue pour nommer les tables, les colonnes, les clés, etc dans une base de données.  
-Pour choisir cette langue, il est recommandé de se baser sur la langue de travail de l'entreprise ou de l'équipe de développement.
+  De manière simple : il n'y a pas de règle. Cependant, il est recommandé d'utiliser une seule langue pour nommer les tables, les colonnes, les clés, etc dans une base de données.  
+  Pour choisir cette langue, il est recommandé de se baser sur la langue de travail de l'entreprise ou de l'équipe de développement.
 
-Si tu travailles exclusivement avec des francophones : tu as bien évidemment le droit de nommer tes tables et colonnes en français.  
-Cependant, si au moindre moment tu as besoin de travailler avec des anglophones ou des personnes qui ne sont pas francophones : Shakespeare sera ton ami 📜
+  Si tu travailles exclusivement avec des francophones : tu as bien évidemment le droit de nommer tes tables et colonnes en français.  
+  Cependant, si au moindre moment tu as besoin de travailler avec des anglophones ou des personnes qui ne sont pas francophones : Shakespeare sera ton ami 📜
 
-_(Bon, si tu travailles dans une entreprise espagnole, tu peux aussi opter pour l'espagnol à contrario du français... mais tu as compris l'idée)_
+  _(Bon, si tu travailles dans une entreprise espagnole, tu peux aussi opter pour l'espagnol à contrario du français... mais tu as compris l'idée)_
 
-Le plus important dans l'histoire, c'est d'être **cohérent** dans le choix de la langue utilisée.  
-Tu as commencé par utiliser de l'anglais pour parler des éléments techniques ? Alors tu te dois de tout faire en anglais.
-
+  Le plus important dans l'histoire, c'est d'être **cohérent** dans le choix de la langue utilisée.  
+  Tu as commencé par utiliser de l'anglais pour parler des éléments techniques ? Alors tu te dois de tout faire en anglais.
 </Admonition>
 
 ### 📑 Le MRD
@@ -230,14 +222,12 @@ On peut donc dire qu'au choix, on peut soit faire un MLD sous forme de schéma, 
 Mais si tu as l'occasion de faire les deux, c'est encore mieux !
 
 <details>
+  <summary>Exemple de MRD</summary>
 
-<summary>Exemple de MRD</summary>
-
-employee(<u className="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i className="italic">#manager_id</i>);  
-project(<u className="font-bold underline">id</u>, name);  
-task(<u className="font-bold underline">id</u>, name, is_done, <i className="italic">#project_id</i>);  
-employee_has_task(#employee_id, <i className="italic">#task_id</i>);
-
+  employee(<u className="font-bold underline">id</u>, **email**, firstname, lastname, postal_address, postal_code, city, password, <i className="italic">#manager_id</i>);  
+  project(<u className="font-bold underline">id</u>, name);  
+  task(<u className="font-bold underline">id</u>, name, is_done, <i className="italic">#project_id</i>);  
+  employee_has_task(#employee_id, <i className="italic">#task_id</i>);
 </details>
 
 Si tu veux comprendre pourquoi certains éléments sont en gras, en italique ou soulignés, voici un court résumé :
@@ -276,49 +266,47 @@ On retrouvera tout de même des lignes fléchées pour illustrer nos relations d
 UML est un excellent langage de modélisation, mais on y reviendra davantage dans le cursus CDA 😉
 
 <details>
+  <summary>Exemple de MPD _(SQL)_</summary>
 
-<summary>Exemple de MPD _(SQL)_</summary>
+  ```sql showLineNumbers
+  CREATE TABLE employee(
+    id CHAR(30),
+    email VARCHAR(320),
+    firstname VARCHAR(30),
+    lastname VARCHAR(30),
+    postal_address VARCHAR(60),
+    postal_code CHAR(5),
+    city VARCHAR(30),
+    password CHAR(80),
+    manager_id CHAR(30),
+    CONSTRAINT employee_pk PRIMARY KEY (id),
+    CONSTRAINT employee_ak UNIQUE (email),
+    CONSTRAINT employee_manager_fk FOREIGN KEY (manager_id) REFERENCES employee(id)
+  );
 
-```sql showLineNumbers
-CREATE TABLE employee(
-   id CHAR(30),
-   email VARCHAR(320),
-   firstname VARCHAR(30),
-   lastname VARCHAR(30),
-   postal_address VARCHAR(60),
-   postal_code CHAR(5),
-   city VARCHAR(30),
-   password CHAR(80),
-   manager_id CHAR(30),
-   CONSTRAINT employee_pk PRIMARY KEY (id),
-   CONSTRAINT employee_ak UNIQUE (email),
-   CONSTRAINT employee_manager_fk FOREIGN KEY (manager_id) REFERENCES employee(id)
-);
+  CREATE TABLE project(
+    id CHAR(30),
+    name VARCHAR(255),
+    CONSTRAINT project_pk PRIMARY KEY (id)
+  );
 
-CREATE TABLE project(
-   id CHAR(30),
-   name VARCHAR(255),
-   CONSTRAINT project_pk PRIMARY KEY (id)
-);
+  CREATE TABLE task(
+    id CHAR(30),
+    name VARCHAR(255),
+    is_done BOOLEAN,
+    project_id CHAR(30),
+    CONSTRAINT task_pk PRIMARY KEY (id),
+    CONSTRAINT task_project_fk FOREIGN KEY (project_id) REFERENCES project(id)
+  );
 
-CREATE TABLE task(
-   id CHAR(30),
-   name VARCHAR(255),
-   is_done BOOLEAN,
-   project_id CHAR(30),
-   CONSTRAINT task_pk PRIMARY KEY (id),
-   CONSTRAINT task_project_fk FOREIGN KEY (project_id) REFERENCES project(id)
-);
-
-CREATE TABLE employee_has_task(
-   employee_id CHAR(30),
-   task_id CHAR(30),
-   CONSTRAINT employee_has_task_pk PRIMARY KEY (employee_id, task_id),
-   CONSTRAINT employee_has_task_employee_fk FOREIGN KEY (employee_id) REFERENCES employee(id),
-   CONSTRAINT employee_has_task_task_fk FOREIGN KEY (task_id) REFERENCES task(id)
-);
-```
-
+  CREATE TABLE employee_has_task(
+    employee_id CHAR(30),
+    task_id CHAR(30),
+    CONSTRAINT employee_has_task_pk PRIMARY KEY (employee_id, task_id),
+    CONSTRAINT employee_has_task_employee_fk FOREIGN KEY (employee_id) REFERENCES employee(id),
+    CONSTRAINT employee_has_task_task_fk FOREIGN KEY (task_id) REFERENCES task(id)
+  );
+  ```
 </details>
 
 ## 💾 Sauvegardes de la base de données
@@ -342,48 +330,44 @@ Sans rentrer dans les détails de configuration d'une tâche cron, on va devoir 
 - **Le compte utilisateur** : qui va exécuter la tâche, généralement le compte de l'utilisateur qui a les droits d'accès à la base de données
 
 <details>
+  <summary>
+    Exemple de script `bash` pour sauvegarder une base de données PostgreSQL
+  </summary>
 
-<summary>
-  Exemple de script `bash` pour sauvegarder une base de données PostgreSQL
-</summary>
+  ```bash showLineNumbers
+  #!/bin/bash
 
-```bash showLineNumbers
-#!/bin/bash
+  # Variables
+  DB_USER="user"
+  DB_NAME="database"
+  BACKUP_DIR="/path/to/backup"
+  DATE=$(date +"%Y%m%d%H%M%S")
 
-# Variables
-DB_USER="user"
-DB_NAME="database"
-BACKUP_DIR="/path/to/backup"
-DATE=$(date +"%Y%m%d%H%M%S")
+  # Création du répertoire de sauvegarde
+  mkdir -p $BACKUP_DIR
 
-# Création du répertoire de sauvegarde
-mkdir -p $BACKUP_DIR
+  # Sauvegarde de la base de données
+  pg_dump -U $DB_USER $DB_NAME > $BACKUP_DIR/$DB_NAME-$DATE.sql
+  ```
 
-# Sauvegarde de la base de données
-pg_dump -U $DB_USER $DB_NAME > $BACKUP_DIR/$DB_NAME-$DATE.sql
-```
-
-Ce script va permettre de sauvegarder une base de données PostgreSQL en exportant son contenu dans un fichier SQL.  
-Il est important de remplacer les variables `DB_USER`, `DB_NAME` et `BACKUP_DIR` par les informations de ta base de données.
-
+  Ce script va permettre de sauvegarder une base de données PostgreSQL en exportant son contenu dans un fichier SQL.  
+  Il est important de remplacer les variables `DB_USER`, `DB_NAME` et `BACKUP_DIR` par les informations de ta base de données.
 </details>
 
 Une fois ce script créé, il suffira de le rendre exécutable et de le planifier dans une tâche cron pour automatiser la sauvegarde de ta base de données.
 
 <details>
+  <summary>Exemple de tâche cron pour automatiser la sauvegarde</summary>
 
-<summary>Exemple de tâche cron pour automatiser la sauvegarde</summary>
+  ```shell
+  # Ouvrir le fichier de tâches cron
+  crontab -e
 
-```shell
-# Ouvrir le fichier de tâches cron
-crontab -e
+  # Ajouter la tâche de sauvegarde, toutes les nuits à minuit
+  0 * * * * /path/to/backup.sh
+  ```
 
-# Ajouter la tâche de sauvegarde, toutes les nuits à minuit
-0 * * * * /path/to/backup.sh
-```
-
-Et voilà ! Ta base de données sera sauvegardée toutes les nuits à minuit, sans que tu aies besoin d'intervenir manuellement.
-
+  Et voilà ! Ta base de données sera sauvegardée toutes les nuits à minuit, sans que tu aies besoin d'intervenir manuellement.
 </details>
 
 ## 🛡️ Sécurité et confidentialité des données
@@ -403,10 +387,9 @@ Mais la sécurité ne s'arrête pas là, il est également important de garantir
 - **Le chiffrement des données** : pour éviter que des tiers puissent lire les données stockées, en cas de fuite
 
 <Admonition type="warning" title="Identifiants de connexion">
-Même en développement sur ta machine locale, prend l'habitude de ne jamais utiliser les identifiants par défaut de ta base de données _(comme `root` sans mot de passe par exemple)_.
+  Même en développement sur ta machine locale, prend l'habitude de ne jamais utiliser les identifiants par défaut de ta base de données _(comme `root` sans mot de passe par exemple)_.
 
-L'objectif est de te mettre dans les conditions réelles d'un environnement de production, où la sécurité est primordiale. Ça t'évitera de prendre de mauvaises habitudes qui pourraient te coûter cher par la suite.
-
+  L'objectif est de te mettre dans les conditions réelles d'un environnement de production, où la sécurité est primordiale. Ça t'évitera de prendre de mauvaises habitudes qui pourraient te coûter cher par la suite.
 </Admonition>
 
 ## 🎯 Critères d'évaluation

@@ -56,16 +56,14 @@ Ensuite, tu vas devoir t'occuper de la mise en forme de ton site, c'est-à-dire 
 N'oublie pas : le site **doit correspondre** aux maquettes que tu as réalisées, et donc respecter la charte graphique.
 
 <details>
+  <summary>Petit rappel sur le CSS</summary>
 
-<summary>Petit rappel sur le CSS</summary>
+  Le CSS est un langage de style utilisé pour décrire la présentation d'un document écrit en HTML.  
+  Il permet de définir la couleur, la police, la taille et l'espacement des éléments, mais aussi de les positionner sur la page.
 
-Le CSS est un langage de style utilisé pour décrire la présentation d'un document écrit en HTML.  
- Il permet de définir la couleur, la police, la taille et l'espacement des éléments, mais aussi de les positionner sur la page.
+  Même si le navigateur stylise déjà certains éléments HTML, il ne faut pas se baser sur les styles par défaut, car ils peuvent varier d'un navigateur à un autre et surtout se casser d'une version à une autre.
 
-Même si le navigateur stylise déjà certains éléments HTML, il ne faut pas se baser sur les styles par défaut, car ils peuvent varier d'un navigateur à un autre et surtout se casser d'une version à une autre.
-
-Pour éviter les mauvaises surprises, il est recommandé de réinitialiser les styles par défaut en début de feuille de style, en utilisant par exemple un fichier de réinitialisation comme [Normalize.css](https://necolas.github.io/normalize.css/) ou [Reset CSS de Eric Meyer](https://meyerweb.com/eric/tools/css/reset/).
-
+  Pour éviter les mauvaises surprises, il est recommandé de réinitialiser les styles par défaut en début de feuille de style, en utilisant par exemple un fichier de réinitialisation comme [Normalize.css](https://necolas.github.io/normalize.css/) ou [Reset CSS de Eric Meyer](https://meyerweb.com/eric/tools/css/reset/).
 </details>
 
 Ensuite, tu vas devoir t'assurer que ton site est bien accessible à tous, rendre tes pages web responsives _(c'est-à-dire qu'elles s'adaptent à tous les types d'écrans)_ et enfin, publier ton site de manière sécurisée.
@@ -79,16 +77,14 @@ Dans la compétence précédente, je t'ai parlé de l'accessibilité et de l'imp
 Mais au delà de ces aspects, on va également pouvoir donner plus de précisions au navigateur sur le contenu de notre site, en utilisant des balises sémantiques ainsi que des attributs spécifiques : `alt` pour les images, `title` pour les liens, mais surtout `aria-*`.
 
 <details>
+  <summary>Petit rappel sur les attributs `aria-*`</summary>
 
-<summary>Petit rappel sur les attributs `aria-*`</summary>
+  Les attributs `aria-*` sont des attributs spécifiques qui permettent de donner des informations supplémentaires sur les éléments de la page.  
+  Ils sont particulièrement utiles pour les technologies d'assistance, comme les lecteurs d'écran, qui peuvent ainsi mieux comprendre le contenu de la page.
 
-Les attributs `aria-*` sont des attributs spécifiques qui permettent de donner des informations supplémentaires sur les éléments de la page.  
- Ils sont particulièrement utiles pour les technologies d'assistance, comme les lecteurs d'écran, qui peuvent ainsi mieux comprendre le contenu de la page.
+  Par exemple, si tu as un bouton qui ouvre un menu, tu pourrais ajouter l'attribut `aria-expanded="false"` pour indiquer que le menu est fermé, puis le passer à `true` lorsque le menu est ouvert.
 
-Par exemple, si tu as un bouton qui ouvre un menu, tu pourrais ajouter l'attribut `aria-expanded="false"` pour indiquer que le menu est fermé, puis le passer à `true` lorsque le menu est ouvert.
-
-Tu peux retrouver la liste complète des attributs `aria-*` sur le [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
-
+  Tu peux retrouver la liste complète des attributs `aria-*` sur le [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
 </details>
 
 ## 🌐 Le référencement naturel
@@ -124,7 +120,7 @@ L'action la plus primordiale sur les images, c'est dans un premier temps d'utili
   Mais l'image reste chargée en entier, même si elle n'est pas affichée dans sa totalité.  
   Ça voudrait donc dire imposer au navigateur de télécharger une image en haute résolution pour l'afficher en miniature : pas terrible.
 
-Pour éviter ça, on va dans un premier temps réduire et compresser l'image et on peut également utiliser l'attribut `srcset` qui permet de charger une image en fonction de la taille de l'écran.
+  Pour éviter ça, on va dans un premier temps réduire et compresser l'image et on peut également utiliser l'attribut `srcset` qui permet de charger une image en fonction de la taille de l'écran.
 
 </Admonition>
 
@@ -132,15 +128,13 @@ Maintenant que nos images sont prêtes, il faut que je vous dise que ce n'est pa
 Il faut également penser au format de nos images. La plupart du temps, on croise des images en JPEG, PNG ou GIF, mais il existe un format plus récent et plus performant : le WebP. _(et non, ce n'est pas un Pokémon)_
 
 <details>
+  <summary>Et le format SVG ? Ce n'est pas bien ?</summary>
 
-<summary>Et le format SVG ? Ce n'est pas bien ?</summary>
+  Si, si, le format SVG est très bien !
 
-Si, si, le format SVG est très bien !
+  C'est vrai que je ne l'évoque pas ici, mais le SVG est un format d'image vectorielle qui a l'avantage d'être léger et de s'adapter à toutes les tailles d'écran sans créer de flou ou pixélisation.
 
-C'est vrai que je ne l'évoque pas ici, mais le SVG est un format d'image vectorielle qui a l'avantage d'être léger et de s'adapter à toutes les tailles d'écran sans créer de flou ou pixélisation.
-
-Il est particulièrement adapté pour les icônes, logos et autres éléments graphiques simples.
-
+  Il est particulièrement adapté pour les icônes, logos et autres éléments graphiques simples.
 </details>
 
 Allez cette fois-ci, on ne touche plus aux images et leur format, par contre "comment peut-on les charger ?".  
@@ -156,15 +150,15 @@ De cette manière, nos images ne seront chargées que si elles sont visibles à 
   icon="🧪"
   title="Voici un exemple concret de ce qu'on vient de voir"
 >
-```html {3-4,6} showLineNumbers
-<img
-    src="clairiere.jpg"
-    srcset="clairiere-480w.webp 480w, clairiere-800w.webp 800w"
-    sizes="(max-width: 600px) 480px, 800px"
-    alt="Une clairière verdoyante"
-    loading="lazy"
->
-```
+  ```html {3-4,6}
+  <img
+      src="clairiere.jpg"
+      srcset="clairiere-480w.webp 480w, clairiere-800w.webp 800w"
+      sizes="(max-width: 600px) 480px, 800px"
+      alt="Une clairière verdoyante"
+      loading="lazy"
+  >
+  ```
 </Admonition>
 
 Allez, arrêtons-nous là pour l'éco-conception !
@@ -186,28 +180,26 @@ Pour cela, nous avons plusieurs possibilités :
 Il est également possible d'utiliser des frameworks CSS, comme Tailwind CSS ou Bootstrap, qui proposent des composants et des classes prédéfinies pour faciliter la mise en place du responsive design.
 
 <details>
+  <summary>Le cas de Bootstrap</summary>
 
-<summary>Le cas de Bootstrap</summary>
+  Alors je vais faire le vieux râleur, mais Bootstrap c'est bien, mais c'est pas bien.
 
-Alors je vais faire le vieux râleur, mais Bootstrap c'est bien, mais c'est pas bien.
+  <iframe
+    src="https://giphy.com/embed/26ufdipQqU2lhNA4g"
+    width="480"
+    height="480"
+    className="mx-auto my-4"
+  ></iframe>
 
-<iframe
-  src="https://giphy.com/embed/26ufdipQqU2lhNA4g"
-  width="480"
-  height="480"
-  className="mx-auto my-4"
-></iframe>
+  Mais alors, pourquoi ce n'est pas bien ?  
+  Pour faire simple : Bootstrap c'est lourd. Très lourd.
 
-Mais alors, pourquoi ce n'est pas bien ?  
-Pour faire simple : Bootstrap c'est lourd. Très lourd.
+  Il propose beaucoup de fonctionnalités, mais il est très rare de toutes les utiliser et derrière ça implique que le navigateur va charger du code inutile, ce qui va ralentir le chargement de la page.
 
-Il propose beaucoup de fonctionnalités, mais il est très rare de toutes les utiliser et derrière ça implique que le navigateur va charger du code inutile, ce qui va ralentir le chargement de la page.
+  Si tu veux utiliser un framework CSS, je te conseille plutôt de te tourner vers Tailwind CSS, qui propose une approche plus modulaire et plus légère.
+  Tailwind CSS viendra te générer un fichier CSS final basé **uniquement** sur les classes que tu utilises, ce qui permet de réduire la taille du fichier final.
 
-Si tu veux utiliser un framework CSS, je te conseille plutôt de te tourner vers Tailwind CSS, qui propose une approche plus modulaire et plus légère.
-Tailwind CSS viendra te générer un fichier CSS final basé **uniquement** sur les classes que tu utilises, ce qui permet de réduire la taille du fichier final.
-
-Comme ça, adieu les 200Ko de CSS pour un site qui n'en fait que 20Ko ! 🚀
-
+  Comme ça, adieu les 200Ko de CSS pour un site qui n'en fait que 20Ko ! 🚀
 </details>
 
 ## 🔒 Déploiement et sécurité
@@ -251,27 +243,27 @@ Pour ça il y a une merveilleuse technologie qui s'appelle le reverse proxy !
 Le reverse proxy, c'est un serveur qui va recevoir les requêtes HTTP et les rediriger vers le serveur qui héberge le site. Tu peux très bien faire la redirection sur le même serveur, c'est d'ailleurs ce qu'on va faire ici.
 
 <Admonition type="example" title="Exemple concret">
-Prenons un exemple concret, le cas d'une application qui tourne sur le port 3000, mais que l'on souhaite rendre accessible sur le port 80.
+  Prenons un exemple concret, le cas d'une application qui tourne sur le port 3000, mais que l'on souhaite rendre accessible sur le port 80.
 
-Avec Nginx, on peut faire ça très simplement en créant un fichier de configuration dans `/etc/nginx/sites-available/`.
+  Avec Nginx, on peut faire ça très simplement en créant un fichier de configuration dans `/etc/nginx/sites-available/`.
 
-```nginx showLineNumbers
-server {
-    listen 80;
-    listen [::]:80;
-    server_name monsite.fr;
+  ```nginx showLineNumbers
+  server {
+      listen 80;
+      listen [::]:80;
+      server_name monsite.fr;
 
-    location / {
-        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for ; # On transmet l'adresse IP du client
-        proxy_set_header    Host $host; # On transmet le nom de domaine
-        proxy_pass          http://localhost:3000; # On redirige les requêtes vers le port 3000, où tourne notre application
-    }
-}
-```
+      location / {
+          proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for ; # On transmet l'adresse IP du client
+          proxy_set_header    Host $host; # On transmet le nom de domaine
+          proxy_pass          http://localhost:3000; # On redirige les requêtes vers le port 3000, où tourne notre application
+      }
+  }
+  ```
 
-... Tadaaa ! C'est tout !  
-Bien entendu, il va falloir activer ce site avec un lien symbolique dans `/etc/nginx/sites-enabled/` et redémarrer Nginx pour que les changements soient pris en compte.  
-Si tu souhaites également rajouter le support du HTTPS, tu peux utiliser [Certbot](https://certbot.eff.org/) pour générer un certificat Let's Encrypt.
+  ... Tadaaa ! C'est tout !  
+  Bien entendu, il va falloir activer ce site avec un lien symbolique dans `/etc/nginx/sites-enabled/` et redémarrer Nginx pour que les changements soient pris en compte.  
+  Si tu souhaites également rajouter le support du HTTPS, tu peux utiliser [Certbot](https://certbot.eff.org/) pour générer un certificat Let's Encrypt.
 </Admonition>
 
 ---
