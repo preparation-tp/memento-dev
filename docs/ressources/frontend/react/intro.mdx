@@ -160,19 +160,42 @@ _(OK, utiliser React pour ça c'est abusé, mais c'est pour l'exemple 😅)_
       import React from 'react';
 
       const TodoList = () => {
-        const [items, setItems] = React.useState<{ label: string; done: boolean; }[]>([]);
+        const [items, setItems] = React.useState<string[]>([]);
         const [inputValue, setInputValue] = React.useState<string>("");
 
+        const handleInputValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+          setInputValue(event.target.value);
+        };
+
         const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+          // On empêche le comportement par défaut du formulaire
           event.preventDefault();
 
-          console.log(inputValue);
+          // On ajoute un nouvel élément à la liste des tâches
+          setItems([...items, inputValue]);
+
+          // On réinitialise la valeur de l'input
+          setInputValue("");
         };
 
         return (
-          <form>
+          <div className="todolist">
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="todolist-input">
+              </label>
 
-          </form>
+              <input
+                id="todolist-input"
+                type="text"
+                value={inputValue}
+                onChange={handleInputValueChange}
+              />
+            </form>
+
+            {items.map((item, index) => (
+              <TodoListItem key={index} item={item} />
+            ))}
+          </div>
         );
       };
 
@@ -182,7 +205,15 @@ _(OK, utiliser React pour ça c'est abusé, mais c'est pour l'exemple 😅)_
 
   <TabItem value="demo-todolistitem" label="TodoListItem.tsx">
     ```tsx showLineNumbers
+    import React from 'react';
 
+    interface TodoListItemProps {
+      item: string;
+    }
+
+    const TodoListItem = (props: TodoListItemProps) => {};
+
+    export default TodoListItem;
     ```
   </TabItem>
 </Tabs>
