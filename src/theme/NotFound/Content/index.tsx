@@ -42,10 +42,7 @@ export default function NotFoundContent({ className }: Props): JSX.Element {
           </Translate>
         </p>
 
-        <Link
-          to="/"
-          className="self-center mt-8 px-4 py-2 bg-violet-200 rounded-md hover:no-underline"
-        >
+        <Link to="/" className="self-center mt-8 button">
           Retourner à la page d'accueil
         </Link>
       </div>
