@@ -179,7 +179,7 @@ _(OK, utiliser React pour ça c'est abusé, mais c'est pour l'exemple 😅)_
         };
 
         return (
-          <div className="todolist">
+          <div>
             <form onSubmit={handleSubmit}>
               <label htmlFor="todolist-input">
               </label>
@@ -192,9 +192,13 @@ _(OK, utiliser React pour ça c'est abusé, mais c'est pour l'exemple 😅)_
               />
             </form>
 
-            {items.map((item, index) => (
-              <TodoListItem key={index} item={item} />
-            ))}
+            <ul>
+              {items.map((item, index) => (
+                <li key={index}>
+                  <TodoListItem item={item} />
+                </li>
+              ))}
+            </ul>
           </div>
         );
       };
@@ -211,12 +215,24 @@ _(OK, utiliser React pour ça c'est abusé, mais c'est pour l'exemple 😅)_
       item: string;
     }
 
-    const TodoListItem = (props: TodoListItemProps) => {};
+    const TodoListItem = (props: TodoListItemProps) => {
+      return <span>{props.item}</span>;
+    };
 
     export default TodoListItem;
     ```
   </TabItem>
 </Tabs>
+
+On peut très bien imaginer des améliorations à cette application, comme par exemple :
+
+- Supprimer une tâche
+- Réinitialiser la liste des tâches
+- Marquer une tâche comme terminée _(et inversement)_
+- Ordonner les tâches pour afficher en priorité les tâches non terminées
+- Enregistrer les tâches dans le navigateur pour les retrouver après un rafraîchissement de la page
+
+Et si on se gardait ça pour la suite ? 😉  
 
 ## Conclusion
 
