@@ -41,41 +41,36 @@ C'est le meilleur moment pour parler de nombreuses fonctionnalités implémenté
 - Les appels à des services web _(API REST, etc.)_
 
 <Admonition type="warning" title="Consommation d'API">
-Bien que j'ai mentionné le fait que faire des appels à des services web corresponde entièrement à cette CP, il est important de noter que la consommation d'API est une compétence à part entière, qui sera abordée dans la CP 7 qui correspond à la mise en place de services web et composants métier.
+  Bien que j'ai mentionné le fait que faire des appels à des services web corresponde entièrement à cette CP, il est important de noter que la consommation d'API est une compétence à part entière, qui sera abordée dans la CP 7 qui correspond à la mise en place de services web et composants métier.
 
-Ne te focalise donc pas sur ce que fait l'API en arrière plan, concentre toi sur comment configurer tes requêtes et comment traiter les réponses obtenues !
-
+  Ne te focalise donc pas sur ce que fait l'API en arrière plan, concentre toi sur comment configurer tes requêtes et comment traiter les réponses obtenues !
 </Admonition>
 
-<Admonition type="type" icon="🤔" title="Mon site est fait avec React/Angular/Vue.js, donc je valide automatiquement cette CP ?">
+<Admonition type="quote" icon="🤔" title="Mon site est fait avec React/Angular/Vue.js, donc je valide automatiquement cette CP ?">
+  Pas si vite ! 😏  
+  Effectivement, ton site répond _(en théorie)_ en tous points pour la compétence actuelle, mais il est important de montrer que tu sais comment fonctionne le JavaScript "vanilla" _(c'est-à-dire sans framework ou bibliothèque)_.
 
-Pas si vite ! 😏  
-Effectivement, ton site répond _(en théorie)_ en tous points pour la compétence actuelle, mais il est important de montrer que tu sais comment fonctionne le JavaScript "vanilla" _(c'est-à-dire sans framework ou bibliothèque)_.
+  Si tu as utilisé un framework, tu peux tout à fait montrer des extraits de code en JavaScript pur pour montrer que tu sais comment ça fonctionne "sous le capot" !
 
-Si tu as utilisé un framework, tu peux tout à fait montrer des extraits de code en JavaScript pur pour montrer que tu sais comment ça fonctionne "sous le capot" !
-
-Mais on ne va pas se le cacher, si tu as réussi à réaliser un projet avec un framework, c'est déjà un très bon point pour toi qui permet de démontrer que tu as de bonnes connaissances en JavaScript.  
-Cependant il va potentiellement y avoir un défaut majeur sur ton projet : le référencement naturel _(SEO)_.
-
+  Mais on ne va pas se le cacher, si tu as réussi à réaliser un projet avec un framework, c'est déjà un très bon point pour toi qui permet de démontrer que tu as de bonnes connaissances en JavaScript.  
+  Cependant il va potentiellement y avoir un défaut majeur sur ton projet : le référencement naturel _(SEO)_.
 </Admonition>
 
 <details>
+  <summary>
+    Référencement d'un site généré côté client _(comme React, Vue.js etc)_
+  </summary>
 
-<summary>
-  Référencement d'un site généré côté client _(comme React, Vue.js etc)_
-</summary>
+  Les sites web générés côté client _(ou "client-side rendering")_ ont un défaut majeur : ils ne sont pas très bien référencés par les moteurs de recherche.
 
-Les sites web générés côté client _(ou "client-side rendering")_ ont un défaut majeur : ils ne sont pas très bien référencés par les moteurs de recherche.
+  En effet, les moteurs de recherche ont du mal à lire le contenu d'un site généré côté client, car ils n'exécutent pas le JavaScript.  
+  C'est pour cela qu'il est recommandé de mettre en place un rendu côté serveur _(ou "server-side rendering")_ pour améliorer le référencement naturel de ton site.
 
-En effet, les moteurs de recherche ont du mal à lire le contenu d'un site généré côté client, car ils n'exécutent pas le JavaScript.  
-C'est pour cela qu'il est recommandé de mettre en place un rendu côté serveur _(ou "server-side rendering")_ pour améliorer le référencement naturel de ton site.
+  Si tu veux en savoir plus sur le sujet, tu peux consulter [cet article de Google](https://web.dev/articles/rendering-on-the-web?hl=fr#rendering-terminology).
 
-Si tu veux en savoir plus sur le sujet, tu peux consulter [cet article de Google](https://web.dev/articles/rendering-on-the-web?hl=fr#rendering-terminology).
+  De mon côté, je recommande énormément de passer par le framework [Vike](https://vike.dev/) qui permet de générer des sites web ultra-rapides avec un rendu côté serveur et un rendu côté client, le tout en utilisant Vue.js, React ou (presque) n'importe quel autre framework front-end JavaScript !
 
-De mon côté, je recommande énormément de passer par le framework [Vike](https://vike.dev/) qui permet de générer des sites web ultra-rapides avec un rendu côté serveur et un rendu côté client, le tout en utilisant Vue.js, React ou (presque) n'importe quel autre framework front-end JavaScript !
-
-Tu as aussi la possibilité d'utiliser [Next.js](https://nextjs.org/) pour React, [Nuxt.js](https://nuxtjs.org/) pour Vue.js ou [SvelteKit](https://kit.svelte.dev/) pour Svelte qui permettent de faire du rendu côté serveur.
-
+  Tu as aussi la possibilité d'utiliser [Next.js](https://nextjs.org/) pour React, [Nuxt.js](https://nuxtjs.org/) pour Vue.js ou [SvelteKit](https://kit.svelte.dev/) pour Svelte qui permettent de faire du rendu côté serveur.
 </details>
 
 ## ➕ Informations complémentaires
@@ -84,17 +79,15 @@ Je me permets également de lâcher une bombe sur une certaine techno JS : **jQu
 Bon sang, celui-là il me fait penser à un vieux pote qui a pris un coup de vieux... 😅
 
 <details>
+  <summary>jQuery, c'est quoi ?</summary>
 
-<summary>jQuery, c'est quoi ?</summary>
+  jQuery est une bibliothèque JavaScript qui a été très populaire dans les années 2000 et 2010.
+  Elle a été créée pour simplifier l'écriture de scripts JavaScript et pour faciliter la manipulation du DOM.
 
-jQuery est une bibliothèque JavaScript qui a été très populaire dans les années 2000 et 2010.
-Elle a été créée pour simplifier l'écriture de scripts JavaScript et pour faciliter la manipulation du DOM.
+  jQuery a été très utilisée pour les animations, les requêtes AJAX, la manipulation du DOM, etc.
+  Mais depuis l'arrivée des frameworks front-end comme React, Angular ou Vue.js, jQuery a perdu de sa superbe et est de moins en moins utilisée.
 
-jQuery a été très utilisée pour les animations, les requêtes AJAX, la manipulation du DOM, etc.
-Mais depuis l'arrivée des frameworks front-end comme React, Angular ou Vue.js, jQuery a perdu de sa superbe et est de moins en moins utilisée.
-
-Cependant, il est toujours bon de connaître jQuery, car il est possible que tu tombes sur un projet qui l'utilise encore, comme sur des templates Wordpress qui commencent à dater par exemple.
-
+  Cependant, il est toujours bon de connaître jQuery, car il est possible que tu tombes sur un projet qui l'utilise encore, comme sur des templates Wordpress qui commencent à dater par exemple.
 </details>
 
 Mais alors, pourquoi je te parle de jQuery ?
@@ -103,80 +96,71 @@ Eh bien.. pour faire simple, aujourd'hui jQuery est relativement obsolète et su
 Dans la mesure du possible, il est recommandé de ne pas utiliser jQuery pour un nouveau projet, et de préférer JavaScript "vanilla" ou un framework ou bibliothèque front-end comme React, Angular ou Vue.js _(attention, d'un point de vue éco-conception l'utilisation d'un framework n'est pas forcément la meilleure solution)_.
 
 <details>
+  <summary>
+    Mais comment je vais faire pour mes consommations d'API, vu que j'utilisais `jQuery.ajax()` ?!
+  </summary>
 
-<summary>
-  Mais comment je vais faire pour mes consommations d'API, vu que j'utilisais
-  `jQuery.ajax()` ?!
-</summary>
+  Tout doux, tout doux, il existe une solution ! 😎
 
-Tout doux, tout doux, il existe une solution ! 😎
+  Si je te parle des requêtes XHR _(XMLHttpRequest)_ tu me dis... ?
 
-Si je te parle des requêtes XHR _(XMLHttpRequest)_ tu me dis... ?
+  > "Mais c'est vieux ça, c'est pas du tout à la mode !"
 
-> "Mais c'est vieux ça, c'est pas du tout à la mode !"
+  Et tu as raison, mais si maintenant je te dis qu'il y a une autre solution, native, plus moderne et plus performante, tu me dis... ?
 
-Et tu as raison, mais si maintenant je te dis qu'il y a une autre solution, native, plus moderne et plus performante, tu me dis... ?
+  > "Fetch !"
 
-> "Fetch !"
+  **Et sinon, pour faire simple :**
 
-**Et sinon, pour faire simple :**
+  Fetch est une API plus moderne et plus simple à utiliser que les requêtes XHR, et elle est supportée par tous les navigateurs modernes.  
+  Elle permet de faire des requêtes HTTP de manière asynchrone et de gérer les réponses de manière plus simple.
 
-Fetch est une API plus moderne et plus simple à utiliser que les requêtes XHR, et elle est supportée par tous les navigateurs modernes.  
- Elle permet de faire des requêtes HTTP de manière asynchrone et de gérer les réponses de manière plus simple.
+  <Tabs>
+    <TabItem value="🥉 XHR">
+      ```javascript showLineNumbers
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://api.exemple.com/data", true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(JSON.parse(xhr.responseText));
+        }
+      };
+      xhr.send();
+      ```
+    </TabItem>
 
-<Tabs>
-  <TabItem value="🥉 XHR">
+    <TabItem value="🥈 jQuery">
+      ```javascript showLineNumbers
+      $.ajax({
+        url: "https://api.exemple.com/data",
+        method: "GET",
+        success: function (data) {
+          console.log(data);
+        },
+      });
+      ```
+    </TabItem>
 
-```javascript showLineNumbers
-const xhr = new XMLHttpRequest();
-xhr.open("GET", "https://api.exemple.com/data", true);
-xhr.onreadystatechange = function () {
-  if (xhr.readyState === 4 && xhr.status === 200) {
-    console.log(JSON.parse(xhr.responseText));
-  }
-};
-xhr.send();
-```
+    <TabItem value="🥇🏆 Fetch">
+    ```javascript showLineNumbers
+    fetch("https://api.exemple.com/data")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    ```
+    </TabItem>
+  </Tabs>
 
-  </TabItem>
-
-<TabItem value="🥈 jQuery">
-
-```javascript showLineNumbers
-$.ajax({
-  url: "https://api.exemple.com/data",
-  method: "GET",
-  success: function (data) {
-    console.log(data);
-  },
-});
-```
-
-</TabItem>
-
-<TabItem value="🥇🏆 Fetch">
-
-```javascript showLineNumbers
-fetch("https://api.exemple.com/data")
-  .then((response) => response.json())
-  .then((data) => console.log(data));
-```
-
-</TabItem>
-</Tabs>
-
-Non seulement `fetch` est plus simple à utiliser et comprendre _(contrairement à XMLHttpRequest)_ mais elle est également plus légère que `jQuery.ajax()` puisqu'elle est native au navigateur ! Alors pourquoi s'en priver ? 😉
-
+  Non seulement `fetch` est plus simple à utiliser et comprendre _(contrairement à XMLHttpRequest)_ mais elle est également plus légère que `jQuery.ajax()` puisqu'elle est native au navigateur ! Alors pourquoi s'en priver ? 😉
 </details>
 
 ## 🎯 Critères d'évaluation
 
-- L’interface utilisateur est conforme au dossier de conception
-- L’interface est dynamique et l’expérience utilisateur est améliorée, y compris pour les personnes en situation de handicap
+- L'interface utilisateur est conforme au dossier de conception
+- L'interface est dynamique et l'expérience utilisateur est améliorée, y compris pour les personnes en situation de handicap
 - Les recommandations de sécurité liées aux applications web et web mobile sont respectées
-- La règlementation en vigueur sont respectées, y compris celle relative à l’accessibilité
-- Le code est documenté, y compris en anglais _(niveau B1 CECRL pour l’anglais)_
-- Le jeu d’essai fonctionnel est complet et les tests unitaires sont réalisés pour les composants concernés
+- La règlementation en vigueur sont respectées, y compris celle relative à l'accessibilité
+- Le code est documenté, y compris en anglais _(niveau B1 CECRL pour l'anglais)_
+- Le jeu d'essai fonctionnel est complet et les tests unitaires sont réalisés pour les composants concernés
 - Les tests de sécurité sont réalisés
 
 ## 🤯 Aller plus loin _(hors référentiel)_
@@ -186,19 +170,17 @@ Plus tôt, dans la CP 3, je t'ai parlé d'une astuce d'éco-conception pour diff
 On peut également différer le chargement des scripts JavaScript avec l'attribut defer sur les balises `<script>`.
 
 <details>
+  <summary>`defer` sur les balises `<script>`</summary>
 
-<summary>`defer` sur les balises `<script>`</summary>
+  Si ça te rassure, ça ne cassera pas ton site web et au contraire, ça peut même l'améliorer !
+  L'intérêt premier de cet attribut est de différer l'exécution du script jusqu'à ce que le document HTML soit entièrement chargé.
 
-Si ça te rassure, ça ne cassera pas ton site web et au contraire, ça peut même l'améliorer !
-L'intérêt premier de cet attribut est de différer l'exécution du script jusqu'à ce que le document HTML soit entièrement chargé.
+  L'avantage de cette technique est qu'on va demander au navigateur de charger le script en parallèle du reste du contenu, sans bloquer le chargement de la page.
+  Comme ça : pas de page blanche pendant le chargement du script, et le script sera exécuté une fois que le navigateur aura fini de charger le reste de la page !
 
-L'avantage de cette technique est qu'on va demander au navigateur de charger le script en parallèle du reste du contenu, sans bloquer le chargement de la page.
-Comme ça : pas de page blanche pendant le chargement du script, et le script sera exécuté une fois que le navigateur aura fini de charger le reste de la page !
-
-```html
-<script src="script.js" defer></script>
-```
-
+  ```html
+  <script src="script.js" defer></script>
+  ```
 </details>
 
 Maintenant, on sait qu'on peut charger de manière "asynchrone" nos images et nos scripts, mais ce n'est toujours pas terminé.. 😏
@@ -208,76 +190,70 @@ Mais on peut améliorer notre page en mettant en place une légère interaction 
 
 <details>
 
-<summary>
-  Chargement d'un iframe Youtube uniquement au clic de l'utilisateur
-</summary>
+  <summary>
+    Chargement d'un iframe Youtube uniquement au clic de l'utilisateur
+  </summary>
 
-<Tabs>
-<TabItem value="HTML - 1ère étape">
-```html showLineNumbers
-<div
-className="iframe-container"
-data-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-data-width="1280"
-data-height="720"
->
-  <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" loading="lazy">
-  <button type="button" className="iframe-loader">Charger la vidéo</button>
-</div>
-```
-</TabItem>
+  <Tabs>
+    <TabItem value="HTML - 1ère étape">
+      ```html showLineNumbers
+      <div
+        className="iframe-container"
+        data-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        data-width="1280"
+        data-height="720"
+      >
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" loading="lazy">
+        <button type="button" className="iframe-loader">Charger la vidéo</button>
+      </div>
+      ```
+    </TabItem>
 
-<TabItem value="JavaScript - 2ème étape">
+    <TabItem value="JavaScript - 2ème étape">
+      ```javascript showLineNumbers
+      document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonElement) => {
+        // Pour chaque bouton qui doit charger un iframe, on écoute le clic dessus
+        button.addEventListener('click', () => {
+          // On récupère le container de l'iframe, qui dans notre exemple est la balise parente du bouton
+          const container: HTMLElement | null = button.closest('.iframe-container');
 
-```javascript showLineNumbers
-document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonElement) => {
-  // Pour chaque bouton qui doit charger un iframe, on écoute le clic dessus
-  button.addEventListener('click', () => {
-      // On récupère le container de l'iframe, qui dans notre exemple est la balise parente du bouton
-      const container: HTMLElement | null = button.closest('.iframe-container');
+          // Si le container n'existe pas, on arrête l'exécution de la fonction pour éviter un plantage
+          if (!container) return;
 
-      // Si le container n'existe pas, on arrête l'exécution de la fonction pour éviter un plantage
-      if (!container) return;
+          const { src, width, height } = container.dataset as {
+            src: string,
+            width: string,
+            height: string
+          };
 
-      const { src, width, height } = container.dataset as {
-          src: string,
-          width: string,
-          height: string
-      };
+          // On prépare notre iframe avec les données stockées dans le container
+          const iframe = document.createElement('iframe');
+          iframe.setAttribute('src', src);
+          iframe.setAttribute('width', width);
+          iframe.setAttribute('height', height);
 
-      // On prépare notre iframe avec les données stockées dans le container
-      const iframe = document.createElement('iframe');
-      iframe.setAttribute('src', src);
-      iframe.setAttribute('width', width);
-      iframe.setAttribute('height', height);
-
-      // On supprime le contenu du container pour y ajouter notre iframe
-      container.innerHTML = '';
-      container.appendChild(iframe);
-  });
-
-});
-
-```
-
-</TabItem>
-</Tabs>
+          // On supprime le contenu du container pour y ajouter notre iframe
+          container.innerHTML = '';
+          container.appendChild(iframe);
+        });
+      });
+      ```
+    </TabItem>
+  </Tabs>
 </details>
 
 <details>
+  <summary>
+    Mais ça fait beaucoup de code juste pour charger des iframes, c'est vraiment
+    nécessaire ?
+  </summary>
 
-<summary>
-  Mais ça fait beaucoup de code juste pour charger des iframes, c'est vraiment
-  nécessaire ?
-</summary>
+  Pour être franc, il n'y a pas de solution idéale. Mais on peut améliorer les performances du site et gagner en sobriété numérique en ne chargeant pas des ressources lourdes inutilement.
 
-Pour être franc, il n'y a pas de solution idéale. Mais on peut améliorer les performances du site et gagner en sobriété numérique en ne chargeant pas des ressources lourdes inutilement.
+  Est-ce que tu savais que le simple fait de charger un iframe d'une vidéo Youtube demande au navigateur de faire une dizaine de requêtes HTTP pour charger la vidéo, les scripts et les styles de Youtube ? Imagine si on mixe plusieurs sources pour nos iframes, comme Dailymotion, Vimeo, etc. 😱
 
-Est-ce que tu savais que le simple fait de charger un iframe d'une vidéo Youtube demande au navigateur de faire une dizaine de requêtes HTTP pour charger la vidéo, les scripts et les styles de Youtube ? Imagine si on mixe plusieurs sources pour nos iframes, comme Dailymotion, Vimeo, etc. 😱
-
-Et le pire dans tout ça, c'est que le navigateur va charger ces ressources même si l'utilisateur ne comptait pas regarder la vidéo !
-Alors autant faire en sorte que notre site réponde au besoin de l'utilisateur, sans pour autant supprimer les fonctionnalités _(comme nos iframes)_ qui peuvent être utiles.
-
+  Et le pire dans tout ça, c'est que le navigateur va charger ces ressources même si l'utilisateur ne comptait pas regarder la vidéo !
+  Alors autant faire en sorte que notre site réponde au besoin de l'utilisateur, sans pour autant supprimer les fonctionnalités _(comme nos iframes)_ qui peuvent être utiles.
 </details>
 
 ---

@@ -32,16 +32,14 @@ On va pouvoir souffler un coup en parlant maintenant de l'accès à ces bases de
 Et tu sais quoi, comme tout ce qu'on a vu jusqu'à maintenant, on va alléger un peu les choses en parlant de merveilleux outils comme les **ORM** et les **ODM** !
 
 <details>
+  <summary>C'est quoi un ORM et ODM ? Quelles sont les différences ?</summary>
 
-<summary>C'est quoi un ORM et ODM ? Quelles sont les différences ?</summary>
+  Les ORM _(Object-Relational Mapping)_ et les ODM _(Object-Document Mapper)_ sont des outils qui permettent de faire le lien entre les bases de données et les langages de programmation.
 
-Les ORM _(Object-Relational Mapping)_ et les ODM _(Object-Document Mapper)_ sont des outils qui permettent de faire le lien entre les bases de données et les langages de programmation.
+  - Les ORM sont utilisés pour les bases de données relationnelles, comme MySQL, PostgreSQL ou SQLite. Ils permettent de manipuler les données de la base de données sous forme d'objets, ce qui facilite leur utilisation dans le code.
+  - Les ODM sont utilisés pour les bases de données NoSQL, comme MongoDB. Ils fonctionnent de la même manière que les ORM, mais pour les bases de données NoSQL.
 
-- Les ORM sont utilisés pour les bases de données relationnelles, comme MySQL, PostgreSQL ou SQLite. Ils permettent de manipuler les données de la base de données sous forme d'objets, ce qui facilite leur utilisation dans le code.
-- Les ODM sont utilisés pour les bases de données NoSQL, comme MongoDB. Ils fonctionnent de la même manière que les ORM, mais pour les bases de données NoSQL.
-
-En gros, les ORM et les ODM permettent de simplifier la manipulation des données dans le code, en évitant d'avoir à écrire des requêtes à la main.
-
+  En gros, les ORM et les ODM permettent de simplifier la manipulation des données dans le code, en évitant d'avoir à écrire des requêtes à la main.
 </details>
 
 Alleeeez, on va voir ça de plus près ! 😎
@@ -49,90 +47,83 @@ Alleeeez, on va voir ça de plus près ! 😎
 ## ⚙️ Configuration d'un ORM
 
 <Tabs>
+  <TabItem value="Prisma" label="NodeJS + Prisma">
+    Pour ce qui est de l'ORM, on va parler de Prisma ! Bien entendu, mis à part la
+    syntaxe, les principes restent les mêmes pour les autres ORM.
 
-<TabItem value="Prisma" label="NodeJS + Prisma">
-  Pour ce qui est de l'ORM, on va parler de Prisma ! Bien entendu, mis à part la
-  syntaxe, les principes restent les mêmes pour les autres ORM.
+    <details>
+      <summary>C'est quoi Prisma ?</summary>
 
-<details>
-<summary>C'est quoi Prisma ?</summary>
+      Prisma est un ORM qui permet de simplifier la manipulation des bases de données relationnelles. Il permet de générer du code à partir du schéma de la base de données, ce qui facilite la manipulation des données dans le code.
 
-Prisma est un ORM qui permet de simplifier la manipulation des bases de données relationnelles. Il permet de générer du code à partir du schéma de la base de données, ce qui facilite la manipulation des données dans le code.
+      Prisma est compatible avec plusieurs bases de données relationnelles, comme MySQL, PostgreSQL ou SQLite ainsi que MongoDB pour les bases de données NoSQL.
+    </details>
 
-Prisma est compatible avec plusieurs bases de données relationnelles, comme MySQL, PostgreSQL ou SQLite ainsi que MongoDB pour les bases de données NoSQL.
+    Dans un premier temps, on va installer Prisma et configurer notre base de données.
 
-</details>
+    <details>
+      <summary>Installation de Prisma</summary>
 
-Dans un premier temps, on va installer Prisma et configurer notre base de données.
+      ```bash
+      npm install prisma --save-dev # Installation de Prisma
+      npx prisma init # Initialisation de Prisma dans le projet
+      ```
 
-<details>
-<summary>Installation de Prisma</summary>
+      Une fois Prisma installé et initialisé, on va pouvoir le configurer _(ce qui correspond en partie à la CP 5)_ :
 
-```bash
-npm install prisma --save-dev # Installation de Prisma
-npx prisma init # Initialisation de Prisma dans le projet
-```
+      - Modifier le fichier `.env` à la racine du projet pour y ajouter les informations de connexion à la base de données
+      - Créer les modèles de données dans le dossier `prisma/schema.prisma`
 
-Une fois Prisma installé et initialisé, on va pouvoir le configurer _(ce qui correspond en partie à la CP 5)_ :
+      <Tabs>
+        <TabItem value="prisma-.env" label="Fichier .env">
+          ```env
+          DATABASE_URL="postgresql://username:password@localhost:5432/database?schema=public"
+          ```
+        </TabItem>
 
-- Modifier le fichier `.env` à la racine du projet pour y ajouter les informations de connexion à la base de données
-- Créer les modèles de données dans le dossier `prisma/schema.prisma`
+        <TabItem value="prisma-prisma.schema" label="Fichier prisma.schema">
+          ```prisma
+          datasource db {
+            provider = "postgresql"
+            url      = env("DATABASE_URL")
+          }
 
-<Tabs>
-<TabItem value="prisma-.env" label="Fichier .env">
-```env
-DATABASE_URL="postgresql://username:password@localhost:5432/database?schema=public"
-```
-</TabItem>
+          generator client {
+            provider = "prisma-client-js"
+          }
 
-<TabItem value="prisma-prisma.schema" label="Fichier prisma.schema">
-```prisma
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+          model User {
+            id Int @id @default(autoincrement())
+            email String @unique
+            password String
+          }
+          ```
+        </TabItem>
+      </Tabs>
+    </details>
+  </TabItem>
 
-generator client {
-  provider = "prisma-client-js"
-}
+  <TabItem value="Laravel" label="PHP + Laravel">
+    Rédaction à faire
 
-model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  password String
-}
-```
-</TabItem>
-</Tabs>
+    Voir la documentation officielle de Laravel, pour la création de migrations et de modèles avec [Eloquent](https://laravel.com/docs/master/eloquent).
+  </TabItem>
 
-</details>
+  <TabItem value="Symfony" label="PHP + Symfony">
+    Rédaction à faire
 
-</TabItem>
-
-<TabItem value="Laravel" label="PHP + Laravel">
-  Rédaction à faire
-
-  Voir la documentation officielle de Laravel, pour la création de migrations et de modèles avec [Eloquent](https://laravel.com/docs/master/eloquent).
-</TabItem>
-
-<TabItem value="Symfony" label="PHP + Symfony">
-  Rédaction à faire
-
-  Voir la documentation officielle de Symfony, pour la création de migrations et de modèles avec [Doctrine](https://symfony.com/doc/current/doctrine.html).
-</TabItem>
-
+    Voir la documentation officielle de Symfony, pour la création de migrations et de modèles avec [Doctrine](https://symfony.com/doc/current/doctrine.html).
+  </TabItem>
 </Tabs>
 
 <details>
+  <summary>Je fais mes requêtes SQL à la main, il faut que j'apprenne à utiliser un ORM/ODM ?</summary>
 
-<summary>Je fais mes requêtes SQL à la main, il faut que j'apprenne à utiliser un ORM/ODM ?</summary>
+  **Non** !
 
-**Non** !
+  D'un certain côté, c'est nettement plus intéressant de savoir réaliser les requêtes par toi-même, sans utiliser d'outils qui génèrent du SQL à ta place.
 
-D'un certain côté, c'est nettement plus intéressant de savoir réaliser les requêtes par toi-même, sans utiliser d'outils qui génèrent du SQL à ta place.
-
-En entreprise, tu vas certainement utiliser ces fameux outils, mais dès que l'on va chercher à avoir les requêtes les plus optimisées possibles, il va falloir mettre les mains dans le cambouis !
-
+  En entreprise, tu vas certainement utiliser ces fameux outils, mais dès que l'on va chercher à avoir les requêtes les plus optimisées possibles, il va falloir mettre les mains dans le cambouis !
 </details>
 
 Mais avant de vouloir manipuler nos données, on va s'assurer d'une chose primordiale : l'**intégrité des données**.
@@ -150,74 +141,74 @@ Tu t'attends à avoir une adresse email dans un champ ?
 Alors tu vas vérifier que l'adresse email est bien une adresse email, et non pas une chaîne de caractères lambda.
 
 <Tabs>
-<TabItem value="node-joi" label="JOI (Node.js)">
-  ```typescript
-  import type { Request, Response } from 'express';
+  <TabItem value="node-joi" label="JOI (Node.js)">
+    ```typescript
+    import type { Request, Response } from 'express';
 
-  import { user } from '@/services';
-  import Joi from 'joi';
+    import { user } from '@/services';
+    import Joi from 'joi';
 
-  const userController = {
-    // ...
-
-    async updateEmail(req: Request, res: Response) {
-      const schema = Joi.object({
-        email: Joi.string().email().required(),
-      });
-
-      const { error } = schema.validate(req.body);
-
-      if (error) {
-        // L'email n'est pas valide :
-        // On retourne une erreur 400 avec le message d'erreur généré par JOI
-        return res.status(400).json({ error: error.details[0].message });
-      }
-
-      // L'email est valide :
-      // 1. On modifie l'email de l'utilisateur actuellement connecté (ID stocké en session) via notre service `user`
-      await user.updateEmail(req.session.userId, req.body.email);
-
-      // 2. On retourne une réponse 200 avec un message de succès
-      return res.status(200).json({ message: 'Email mis à jour' });
-    },
-  };
-  ```
-</TabItem>
-
-<TabItem value="php-laravel" label="Laravel (PHP)">
-  ```php
-  namespace App\Http\Controllers;
-
-  use Illuminate\Http\Request;
-  use App\Models\User;
-  use Validator;
-
-  class UserController extends Controller
-  {
+    const userController = {
       // ...
 
-      public function updateEmail(Request $request)
-      {
-          $validator = Validator::make($request->all(), [
-              'email' => 'required|email',
-          ]);
+      async updateEmail(req: Request, res: Response) {
+        const schema = Joi.object({
+          email: Joi.string().email().required(),
+        });
 
-          if ($validator->fails()) {
-              // L'email n'est pas valide :
-              // On retourne une erreur 400 avec les erreurs de validation
-              return response()->json($validator->errors(), 400);
-          }
+        const { error } = schema.validate(req.body);
 
-          // L'email est valide :
-          // 1. On modifie l'email de l'utilisateur via notre modèle `User`
-          User::where('id', auth()->id())->update(['email' => $request->email]);
+        if (error) {
+          // L'email n'est pas valide :
+          // On retourne une erreur 400 avec le message d'erreur généré par JOI
+          return res.status(400).json({ error: error.details[0].message });
+        }
 
-          // 2. On retourne une réponse 200 avec un message de succès
-          return response()->json(['message' => 'Email mis à jour'], 200);
-      }
-  }
-  ```
-</TabItem>
+        // L'email est valide :
+        // 1. On modifie l'email de l'utilisateur actuellement connecté (ID stocké en session) via notre service `user`
+        await user.updateEmail(req.session.userId, req.body.email);
+
+        // 2. On retourne une réponse 200 avec un message de succès
+        return res.status(200).json({ message: 'Email mis à jour' });
+      },
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="php-laravel" label="Laravel (PHP)">
+    ```php
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+    use App\Models\User;
+    use Validator;
+
+    class UserController extends Controller
+    {
+        // ...
+
+        public function updateEmail(Request $request)
+        {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+            ]);
+
+            if ($validator->fails()) {
+                // L'email n'est pas valide :
+                // On retourne une erreur 400 avec les erreurs de validation
+                return response()->json($validator->errors(), 400);
+            }
+
+            // L'email est valide :
+            // 1. On modifie l'email de l'utilisateur via notre modèle `User`
+            User::where('id', auth()->id())->update(['email' => $request->email]);
+
+            // 2. On retourne une réponse 200 avec un message de succès
+            return response()->json(['message' => 'Email mis à jour'], 200);
+        }
+    }
+    ```
+  </TabItem>
 </Tabs>
 
 ## 💼 Compétences attendues
@@ -228,32 +219,30 @@ Cet outil n'a que l'objectif de te faciliter la tâche, mais il ne doit pas te d
 À toi de montrer à ton jury que ce qu'il se passe derrière n'est pas pure magie ! 😄
 
 <details>
+  <summary>Voici ce que ~peut~ **va** faire ton jury en cas de doute</summary>
 
-<summary>Voici ce que ~peut~ **va** faire ton jury en cas de doute</summary>
+  Si pour ton jury, il reste un doute sur ta compréhension des requêtes : il peut être amené à tes poser des questions supplémentaires et parfois te demander de reproduire une requête SQL de tête.
 
-Si pour ton jury, il reste un doute sur ta compréhension des requêtes : il peut être amené à tes poser des questions supplémentaires et parfois te demander de reproduire une requête SQL de tête.
+  Oui, une requête SQL de tête ! _(Même si tu as utilisé MongoDB ou une autre base de données NoSQL)_  
+  Alors ne t'inquiète pas, de tête c'est un sacré challenge et ton jury ne va pas t'en vouloir si tu t'emmêles les pinceaux.
 
-Oui, une requête SQL de tête ! _(Même si tu as utilisé MongoDB ou une autre base de données NoSQL)_  
-Alors ne t'inquiète pas, de tête c'est un sacré challenge et ton jury ne va pas t'en vouloir si tu t'emmêles les pinceaux.
+  De manière général, on évite d'aller trop loin et on cherche **uniquemment** la compréhension et le placement des mots clés pour une requête avec jointure.
 
-De manière général, on évite d'aller trop loin et on cherche **uniquemment** la compréhension et le placement des mots clés pour une requête avec jointure.
+  Par exemple :
+  > "Pouvez-vous nous donner la requête SQL pour récupérer les pseudos d'utilisateur ayant posté au minimum 3 articles ?"
 
-Par exemple :
-> "Pouvez-vous nous donner la requête SQL pour récupérer les pseudos d'utilisateur ayant posté au minimum 3 articles ?"
+  Réponse possible :
+  ```sql
+  SELECT u.pseudo -- Sélectionne la colonne `pseudo` de la table `utilisateur` (aliasée `u` dans le `FROM`)
+  FROM utilisateur u -- Récupération de la table `utilisateur`, aliasée `u`
+  JOIN article a ON u.id = a.utilisateur_id -- Jointure entre `utilisateur` et `article` (aliasée `a`) sur la colonne `id` de `utilisateur` et `utilisateur_id` de `article`
+  GROUP BY u.pseudo -- Regroupe les résultats par `pseudo`
+  WHERE COUNT(a.id) >= 3; -- Compte le nombre d'articles par utilisateur et filtre sur ceux ayant posté au moins 3 articles
+  ```
 
-Réponse possible :
-```sql
-SELECT u.pseudo -- Sélectionne la colonne `pseudo` de la table `utilisateur` (aliasée `u` dans le `FROM`)
-FROM utilisateur u -- Récupération de la table `utilisateur`, aliasée `u`
-JOIN article a ON u.id = a.utilisateur_id -- Jointure entre `utilisateur` et `article` (aliasée `a`) sur la colonne `id` de `utilisateur` et `utilisateur_id` de `article`
-GROUP BY u.pseudo -- Regroupe les résultats par `pseudo`
-WHERE COUNT(a.id) >= 3; -- Compte le nombre d'articles par utilisateur et filtre sur ceux ayant posté au moins 3 articles
-```
+  ... Bon, OK.. cette requête, elle pique un peu plus qu'un simple jointure, à cause de l'utilisation du `GROUP BY` et du `COUNT`... mais tu vois l'idée ! 😅
 
-... Bon, OK.. cette requête, elle pique un peu plus qu'un simple jointure, à cause de l'utilisation du `GROUP BY` et du `COUNT`... mais tu vois l'idée ! 😅
-
-Dans tous les cas, on ne va pas te demander de reproduire une requête complexe ou d'avoir le niveau d'un DBA _(administrateur de base de données)_ !
-
+  Dans tous les cas, on ne va pas te demander de reproduire une requête complexe ou d'avoir le niveau d'un DBA _(administrateur de base de données)_ !
 </details>
 
 ## 🔐 Confidentialité des données
@@ -269,42 +258,38 @@ Bien que notre bases de données se doit d'être sécurisée dans son accès et 
 Pour les mots de passe, on va les hacher avant de les stocker dans la base de données.
 
 <details>
+  <summary>C'est quoi le hachage d'un mot de passe ?</summary>
 
-<summary>C'est quoi le hachage d'un mot de passe ?</summary>
+  Le hachage d'un mot de passe est une manière de le sécuriser en le transformant en une chaîne de caractères "aléatoire", appelée **hash**.
 
-Le hachage d'un mot de passe est une manière de le sécuriser en le transformant en une chaîne de caractères "aléatoire", appelée **hash**.
-
-Il est important de noter que le hachage est **unidirectionnel**, c'est-à-dire qu'il est impossible de retrouver le mot de passe d'origine à partir de son hash contrairement au **chiffrement**.
-
+  Il est important de noter que le hachage est **unidirectionnel**, c'est-à-dire qu'il est impossible de retrouver le mot de passe d'origine à partir de son hash contrairement au **chiffrement**.
 </details>
 
 <details>
+  <summary>Et le chiffrement, ça sert à quoi ?</summary>
 
-<summary>Et le chiffrement, ça sert à quoi ?</summary>
+  Comme le hachage, le chiffrement permet de sécuriser des données. Cependant : le chiffrement est **bidirectionnel**.  
+  C'est à dire que l'on peut retrouver les données d'origine à partir des données chiffrées.
 
-Comme le hachage, le chiffrement permet de sécuriser des données. Cependant : le chiffrement est **bidirectionnel**.  
-C'est à dire que l'on peut retrouver les données d'origine à partir des données chiffrées.
+  Si tu as déjà eu l'occasion d'envoyer des "messages codés", c'est que tu as déjà utilisé le chiffrement sans pour autant le savoir !
+  L'un des chiffrements les plus connus est le **chiffre de César**, qui consiste à décaler les lettres de l'alphabet d'un certain nombre de positions.
 
-Si tu as déjà eu l'occasion d'envoyer des "messages codés", c'est que tu as déjà utilisé le chiffrement sans pour autant le savoir !
-L'un des chiffrements les plus connus est le **chiffre de César**, qui consiste à décaler les lettres de l'alphabet d'un certain nombre de positions.
+  Par exemple :
 
-Par exemple :
+  ```
+  Message : "Bonjour"
+  Décalage : 3
 
-```
-Message : "Bonjour"
-Décalage : 3
+  Message chiffré : "Erqmrxu"
+  ```
 
-Message chiffré : "Erqmrxu"
-```
+  <Admonition type="warning">
+    Le chiffrement n'est pas une solution de sécurité absolue, il est possible de retrouver les données d'origine à partir des données chiffrées.  
+    D'ailleurs le chiffre de César est un chiffrement très simple à casser, on ne va donc pas l'utiliser pour protéger les données sensibles !
+  </Admonition>
 
-<Admonition type="warning">
-Le chiffrement n'est pas une solution de sécurité absolue, il est possible de retrouver les données d'origine à partir des données chiffrées.  
-D'ailleurs le chiffre de César est un chiffrement très simple à casser, on ne va donc pas l'utiliser pour protéger les données sensibles !
-</Admonition>
-
-On va privilégier un algorithme de chiffrement qui se base sur une **clé secrète**, qui sera la clé pour chiffrer et déchiffrer les données.  
-C'est d'ailleurs plus ou moins ce qui est fait avec la célèbre [machine Enigma](https://fr.wikipedia.org/wiki/Enigma_(machine)) utilisée par les allemands pendant la Seconde Guerre Mondiale pour chiffrer leurs messages et éviter qu'ils soient interceptés et compris par les alliés.
-
+  On va privilégier un algorithme de chiffrement qui se base sur une **clé secrète**, qui sera la clé pour chiffrer et déchiffrer les données.  
+  C'est d'ailleurs plus ou moins ce qui est fait avec la célèbre [machine Enigma](https://fr.wikipedia.org/wiki/Enigma_(machine)) utilisée par les allemands pendant la Seconde Guerre Mondiale pour chiffrer leurs messages et éviter qu'ils soient interceptés et compris par les alliés.
 </details>
 
 Mais alors, comment on peut s'y prendre ?
@@ -342,11 +327,11 @@ Je ne m'étalerai pas sur ce sujet, mais désolé MySQL/MariaDB de ne pas être 
 Les ressources que je m'apprête à te recommander sont un peu plus avancées, mais ce sont d'excellentes portes d'entrées vers des métiers comme DBA par exemple.
 Tu retrouveras des notions très bien expliquées et pertinentes pour t'améliorer sur le sujet dans les ressources de [Dalibo](https://www.dalibo.com/formations).
 
-<Admonition title="Gratuité des formations Dalibo">
-Dalibo propose des formations, mais qui ne sont pas gratuites pour autant.  
-Seuls les supports de cours sont disponibles gratuitement, aux formats EPUB et PDF.
+<Admonition type="info" title="Gratuité des formations Dalibo">
+  Dalibo propose des formations, mais qui ne sont pas gratuites pour autant.  
+  Seuls les supports de cours sont disponibles gratuitement, aux formats EPUB et PDF.
 
-Tu peux retrouver ces supports sur la page [Formations](https://www.dalibo.com/formations) du site de Dalibo.
+  Tu peux retrouver ces supports sur la page [Formations](https://www.dalibo.com/formations) du site de Dalibo.
 </Admonition>
 
 ---

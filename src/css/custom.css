@@ -24,6 +24,8 @@
   --ifm-color-primary-lighter: #8349df;
   --ifm-color-primary-lightest: #996ae5;
 
+  --ifm-alert-background-color-highlight: #ffffff;
+
   --docusaurus-highlighted-code-line-bg: #f3e8ff;
 
   --admonition-example-background: #f3e8ff;
@@ -42,9 +44,11 @@
   --ifm-color-primary-lighter: #d1c3fc;
   --ifm-color-primary-lightest: #fcfbff;
 
+  --ifm-alert-background-color-highlight: #2f2f30;
+
   --docusaurus-highlighted-code-line-bg: #26212e;
 
-  --admonition-example-background: #290544;
+  --admonition-example-background: #21102e;
   --admonition-example-foreground: #faf5ff;
 
   --admonition-quote-background: #21242b;
@@ -117,7 +121,7 @@
 }
 
 .markdown ul.tabs {
-  @apply ml-0 relative p-2;
+  @apply ml-0 relative p-2 z-10;
 }
 .markdown ul.tabs .tabs__item {
   @apply bg-white dark:bg-gray-700 shadow-md rounded-md overflow-hidden px-4 py-2;
@@ -135,7 +139,7 @@
   @apply bg-violet-100 dark:bg-violet-950 dark:text-white;
 }
 .markdown ul.tabs + * {
-  @apply relative p-4 !mt-0;
+  @apply relative p-4 !mt-0 z-0;
 }
 .markdown ul.tabs + * > * {
   @apply !mt-0;
@@ -166,12 +170,16 @@
   @apply mt-2;
 }
 
-.markdown * + *:not(br) {
-  @apply mt-4;
+.markdown *:not(summary, .tabs__item, .tabs, .tabs + * > *) + *:not(br) {
+  @apply !mt-4;
 }
 .token-line,
 .token-line * {
   @apply !mt-0;
+}
+
+.tabs-container {
+  @apply !mb-0;
 }
 
 .markdown hr {
