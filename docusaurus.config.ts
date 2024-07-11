@@ -3,6 +3,32 @@ import type { Config } from "@docusaurus/types";
 
 import { themes as prismThemes } from "prism-react-renderer";
 
+const resourcesLinks = [
+  {
+    label: "Préambule",
+    to: "/intro",
+  },
+  {
+    label: "Front-end",
+    to: "/category/-frontend",
+  },
+  {
+    label: "Bases de données",
+    to: "/category/-bases-de-données",
+  },
+];
+
+const examsLinks = [
+  {
+    label: "DWWM",
+    to: "/titres-professionnels/DWWM/intro",
+  },
+  {
+    label: "Archives",
+    to: "/category/%EF%B8%8F-archives",
+  },
+];
+
 const config: Config = {
   title: "Memento Dev",
   tagline: "Souviens-toi que tu développeras.",
@@ -101,30 +127,12 @@ const config: Config = {
         {
           position: "left",
           label: "Ressources",
-          items: [
-            {
-              label: "Préambule",
-              to: "/intro",
-            },
-            {
-              label: "Bases de données",
-              to: "/category/-bases-de-données",
-            },
-          ],
+          items: resourcesLinks,
         },
         {
           position: "left",
           label: "Titres professionnels",
-          items: [
-            {
-              label: "DWWM",
-              to: "/titres-professionnels/DWWM/intro",
-            },
-            {
-              label: "Archives",
-              to: "/category/%EF%B8%8F-archives",
-            },
-          ],
+          items: examsLinks,
         },
         {
           href: "https://github.com/preparation-tp/memento-dev",
@@ -138,33 +146,11 @@ const config: Config = {
       links: [
         {
           title: "Ressources",
-          items: [
-            {
-              label: "Préambule",
-              to: "/intro",
-            },
-            {
-              label: "Front-end",
-              to: "/category/-frontend",
-            },
-            {
-              label: "Bases de données",
-              to: "/category/-bases-de-données",
-            },
-          ],
+          items: resourcesLinks,
         },
         {
           title: "Titres professionnels",
-          items: [
-            {
-              label: "DWWM",
-              to: "/titres-professionnels/DWWM/intro",
-            },
-            {
-              label: "Archives",
-              to: "/category/%EF%B8%8F-archives",
-            },
-          ],
+          items: examsLinks,
         },
         {
           title: "Memento Dev",
