@@ -132,7 +132,7 @@
   @apply ml-2;
 }
 .markdown ul.tabs .tabs__item--active {
-  @apply bg-violet-100 dark:bg-violet-950;
+  @apply bg-violet-100 dark:bg-violet-950 dark:text-white;
 }
 .markdown ul.tabs + * {
   @apply relative p-4 !mt-0;
