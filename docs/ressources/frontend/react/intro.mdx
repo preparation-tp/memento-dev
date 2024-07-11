@@ -133,6 +133,60 @@ Un composant enfant ne pourra pas transmettre des props à un composant parent, 
 
 OK, mais vraiment petite !
 
+Prenons l'exemple d'une application qui servira **uniquement** à afficher une liste de tâches _(une todolist donc !)_.  
+_(OK, utiliser React pour ça c'est abusé, mais c'est pour l'exemple 😅)_
+
+<Tabs>
+  <TabItem value="demo-app" label="App.tsx">
+    ```tsx showLineNumbers
+      import TodoList from './TodoList';
+      import React from 'react';
+
+      const App = () => {
+        return (
+          <div>
+            <h1>TodoList</h1>
+
+            <TodoList />
+          </div>
+        );
+      };
+    ```
+  </TabItem>
+
+  <TabItem value="demo-todolist" label="TodoList.tsx">
+    ```tsx showLineNumbers
+      import TodoListItem from './TodoListItem';
+      import React from 'react';
+
+      const TodoList = () => {
+        const [items, setItems] = React.useState<{ label: string; done: boolean; }[]>([]);
+        const [inputValue, setInputValue] = React.useState<string>("");
+
+        const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+          event.preventDefault();
+
+          console.log(inputValue);
+        };
+
+        return (
+          <form>
+
+          </form>
+        );
+      };
+
+      export default TodoList;
+    ```
+  </TabItem>
+
+  <TabItem value="demo-todolistitem" label="TodoListItem.tsx">
+    ```tsx showLineNumbers
+
+    ```
+  </TabItem>
+</Tabs>
+
 ## Conclusion
 
 Tu l'auras compris, React permet de résoudre un certain nombre de problématiques que l'on peut rencontrer lors du développement d'une application web.

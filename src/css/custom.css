@@ -120,7 +120,7 @@
   @apply ml-0 relative p-2;
 }
 .markdown ul.tabs .tabs__item {
-  @apply bg-white dark:bg-gray-700 shadow rounded-md overflow-hidden px-4 py-2;
+  @apply bg-white dark:bg-gray-700 shadow-md rounded-md overflow-hidden px-4 py-2;
 }
 .markdown ul.tabs .tabs__item:not(.tabs__item--active):hover {
   @apply bg-gray-200 dark:bg-gray-600;
