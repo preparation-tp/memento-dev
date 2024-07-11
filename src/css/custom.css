@@ -97,6 +97,9 @@
   @apply text-4xl font-bold;
 }
 
+.markdown * + h2 {
+  @apply !mt-10;
+}
 .markdown h2 {
   @apply text-2xl font-bold;
 }
@@ -114,7 +117,31 @@
 }
 
 .markdown ul.tabs {
+  @apply ml-0 relative p-2;
+}
+.markdown ul.tabs .tabs__item {
+  @apply bg-white dark:bg-gray-700 shadow-md rounded-md overflow-hidden px-4 py-2;
+}
+.markdown ul.tabs .tabs__item:not(.tabs__item--active):hover {
+  @apply bg-gray-200 dark:bg-gray-600;
+}
+.markdown ul.tabs .tabs__item:first-of-type {
   @apply ml-0;
+}
+.markdown ul.tabs .tabs__item {
+  @apply ml-2;
+}
+.markdown ul.tabs .tabs__item--active {
+  @apply bg-violet-100 dark:bg-violet-950 dark:text-white;
+}
+.markdown ul.tabs + * {
+  @apply relative p-4 !mt-0;
+}
+.markdown ul.tabs + * > * {
+  @apply !mt-0;
+}
+.markdown ul.tabs + *::before {
+  @apply absolute -z-10 content-[''] w-full bg-violet-50 dark:bg-gray-50/5 h-[calc(100%+2em)] bottom-0 left-0 rounded-md;
 }
 
 .markdown ol,
@@ -134,15 +161,17 @@
 .markdown ul li {
   @apply ml-4;
 }
+.markdown ol li + li,
+.markdown ul li + li {
+  @apply mt-2;
+}
 
-.markdown blockquote + p,
-.admonition + *,
-.markdown p + *,
-.markdown ul + *,
-.markdown ol + *,
-.markdown * + .tabs-container,
-.markdown * + .theme-code-block {
+.markdown * + *:not(br) {
   @apply mt-4;
+}
+.token-line,
+.token-line * {
+  @apply !mt-0;
 }
 
 .markdown hr {
@@ -152,6 +181,13 @@
 .theme-admonition > div:first-child,
 .admonition-heading {
   @apply flex items-center gap-1 mb-4;
+}
+
+.theme-code-block {
+  @apply !m-0;
+}
+.theme-code-block + * {
+  @apply !mt-4;
 }
 
 .alert--quote {

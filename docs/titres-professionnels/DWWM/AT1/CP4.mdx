@@ -4,7 +4,7 @@ title: "CP 4"
 description: "Synthèse de la CP 4 \"Développer la partie dynamique des interfaces utilisateur web ou web mobile\" du titre professionnel Développeur Web et Web Mobile (DWWM TP-01280m04)."
 tags:
   - DWWM
-  - Javascript
+  - JavaScript/TypeScript
   - Front-end
   - Eco-conception
   - Accessibilité
@@ -33,7 +33,7 @@ import Tabs from "@theme/Tabs";
   className="mx-auto my-4"
 ></iframe>
 
-C'est le meilleur moment pour parler de nombreuses fonctionnalités implémentées sur ton application avec Javascript, comme :
+C'est le meilleur moment pour parler de nombreuses fonctionnalités implémentées sur ton application avec JavaScript, comme :
 
 - Les formulaires dynamiques _(ajout/suppression de champs, vérification des données, etc.)_
 - Les animations _(chargement d'un témoin de chargement, apparition/disparition d'éléments, etc.)_
@@ -50,11 +50,11 @@ Ne te focalise donc pas sur ce que fait l'API en arrière plan, concentre toi su
 <Admonition type="type" icon="🤔" title="Mon site est fait avec React/Angular/Vue.js, donc je valide automatiquement cette CP ?">
 
 Pas si vite ! 😏  
-Effectivement, ton site répond _(en théorie)_ en tous points pour la compétence actuelle, mais il est important de montrer que tu sais comment fonctionne le Javascript "vanilla" _(c'est-à-dire sans framework ou bibliothèque)_.
+Effectivement, ton site répond _(en théorie)_ en tous points pour la compétence actuelle, mais il est important de montrer que tu sais comment fonctionne le JavaScript "vanilla" _(c'est-à-dire sans framework ou bibliothèque)_.
 
-Si tu as utilisé un framework, tu peux tout à fait montrer des extraits de code en Javascript pur pour montrer que tu sais comment ça fonctionne "sous le capot" !
+Si tu as utilisé un framework, tu peux tout à fait montrer des extraits de code en JavaScript pur pour montrer que tu sais comment ça fonctionne "sous le capot" !
 
-Mais on ne va pas se le cacher, si tu as réussi à réaliser un projet avec un framework, c'est déjà un très bon point pour toi qui permet de démontrer que tu as de bonnes connaissances en Javascript.  
+Mais on ne va pas se le cacher, si tu as réussi à réaliser un projet avec un framework, c'est déjà un très bon point pour toi qui permet de démontrer que tu as de bonnes connaissances en JavaScript.  
 Cependant il va potentiellement y avoir un défaut majeur sur ton projet : le référencement naturel _(SEO)_.
 
 </Admonition>
@@ -67,12 +67,12 @@ Cependant il va potentiellement y avoir un défaut majeur sur ton projet : le r�
 
 Les sites web générés côté client _(ou "client-side rendering")_ ont un défaut majeur : ils ne sont pas très bien référencés par les moteurs de recherche.
 
-En effet, les moteurs de recherche ont du mal à lire le contenu d'un site généré côté client, car ils n'exécutent pas le Javascript.  
+En effet, les moteurs de recherche ont du mal à lire le contenu d'un site généré côté client, car ils n'exécutent pas le JavaScript.  
 C'est pour cela qu'il est recommandé de mettre en place un rendu côté serveur _(ou "server-side rendering")_ pour améliorer le référencement naturel de ton site.
 
 Si tu veux en savoir plus sur le sujet, tu peux consulter [cet article de Google](https://web.dev/articles/rendering-on-the-web?hl=fr#rendering-terminology).
 
-De mon côté, je recommande énormément de passer par le framework [Vike](https://vike.dev/) qui permet de générer des sites web ultra-rapides avec un rendu côté serveur et un rendu côté client, le tout en utilisant Vue.js, React ou (presque) n'importe quel autre framework front-end Javascript !
+De mon côté, je recommande énormément de passer par le framework [Vike](https://vike.dev/) qui permet de générer des sites web ultra-rapides avec un rendu côté serveur et un rendu côté client, le tout en utilisant Vue.js, React ou (presque) n'importe quel autre framework front-end JavaScript !
 
 Tu as aussi la possibilité d'utiliser [Next.js](https://nextjs.org/) pour React, [Nuxt.js](https://nuxtjs.org/) pour Vue.js ou [SvelteKit](https://kit.svelte.dev/) pour Svelte qui permettent de faire du rendu côté serveur.
 
@@ -87,8 +87,8 @@ Bon sang, celui-là il me fait penser à un vieux pote qui a pris un coup de vie
 
 <summary>jQuery, c'est quoi ?</summary>
 
-jQuery est une bibliothèque Javascript qui a été très populaire dans les années 2000 et 2010.
-Elle a été créée pour simplifier l'écriture de scripts Javascript et pour faciliter la manipulation du DOM.
+jQuery est une bibliothèque JavaScript qui a été très populaire dans les années 2000 et 2010.
+Elle a été créée pour simplifier l'écriture de scripts JavaScript et pour faciliter la manipulation du DOM.
 
 jQuery a été très utilisée pour les animations, les requêtes AJAX, la manipulation du DOM, etc.
 Mais depuis l'arrivée des frameworks front-end comme React, Angular ou Vue.js, jQuery a perdu de sa superbe et est de moins en moins utilisée.
@@ -100,7 +100,7 @@ Cependant, il est toujours bon de connaître jQuery, car il est possible que tu 
 Mais alors, pourquoi je te parle de jQuery ?
 
 Eh bien.. pour faire simple, aujourd'hui jQuery est relativement obsolète et surtout très lourd pour ce que ça rajoute à un projet.  
-Dans la mesure du possible, il est recommandé de ne pas utiliser jQuery pour un nouveau projet, et de préférer Javascript "vanilla" ou un framework ou bibliothèque front-end comme React, Angular ou Vue.js _(attention, d'un point de vue éco-conception l'utilisation d'un framework n'est pas forcément la meilleure solution)_.
+Dans la mesure du possible, il est recommandé de ne pas utiliser jQuery pour un nouveau projet, et de préférer JavaScript "vanilla" ou un framework ou bibliothèque front-end comme React, Angular ou Vue.js _(attention, d'un point de vue éco-conception l'utilisation d'un framework n'est pas forcément la meilleure solution)_.
 
 <details>
 
@@ -183,7 +183,7 @@ Non seulement `fetch` est plus simple à utiliser et comprendre _(contrairement 
 
 Plus tôt, dans la CP 3, je t'ai parlé d'une astuce d'éco-conception pour différer le chargement des images avec l'attribut `loading="lazy"` sur les balises `<img>`. Mais on peut aller encore plus loin que simplement différer le chargement des images !
 
-On peut également différer le chargement des scripts Javascript avec l'attribut defer sur les balises `<script>`.
+On peut également différer le chargement des scripts JavaScript avec l'attribut defer sur les balises `<script>`.
 
 <details>
 
@@ -204,7 +204,7 @@ Comme ça : pas de page blanche pendant le chargement du script, et le script se
 Maintenant, on sait qu'on peut charger de manière "asynchrone" nos images et nos scripts, mais ce n'est toujours pas terminé.. 😏
 
 Prenons l'exemple d'un site qui incorpore plusieurs dizaines de vidéos Youtube sur une seule page. On aura donc des `<iframe>` qui vont charger des vidéos Youtube, et ça, c'est pas très éco-responsable... 😕  
-Mais on peut améliorer notre page en mettant en place une légère interaction Javascript pour charger l'iframe uniquement si l'utilisateur clique sur un bouton !
+Mais on peut améliorer notre page en mettant en place une légère interaction JavaScript pour charger l'iframe uniquement si l'utilisateur clique sur un bouton !
 
 <details>
 
@@ -227,7 +227,7 @@ data-height="720"
 ```
 </TabItem>
 
-<TabItem value="Javascript - 2ème étape">
+<TabItem value="JavaScript - 2ème étape">
 
 ```javascript showLineNumbers
 document.querySelectorAll('button.iframe-loader').forEach((button: HTMLButtonElement) => {
