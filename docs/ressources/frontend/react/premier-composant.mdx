@@ -1,0 +1,65 @@
+---
+position: 3
+title: "Premier composant"
+description: "Voyons ensemble comment notre premier composant React !"
+tags:
+  - Frontend
+  - React
+  - JavaScript/TypeScript
+  - Bibliothèque
+  - Interface utilisateur (UI)
+---
+
+import Admonition from '@theme/Admonition';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+# Premier composant React
+
+## Introduction
+
+Rentrons maintenant dans le vif du sujet en créant notre premier composant React !  
+Dans cet article, on va faire un composant très simple : un **dumb component** qui sera tout simplement un bouton.
+
+<Admonition type="quote" title="Un... dumb component ?">
+  Un **dumb component** est un composant React qui ne contient pas de logique.  
+  Enfin si, il peut en contenir _(mais rien de foufou)_, son rôle est de simplement afficher des données.
+
+  En gros :
+  - Il ne fait que de l'affichage
+  - Il ne fait pas de calculs
+  - Il ne fait pas de requêtes HTTP
+</Admonition>
+
+## Syntaxes pour créer un composant
+
+Il existe plusieurs façons de créer un composant React.
+
+La plus simple est de créer une fonction qui retourne du JSX, mais il est aussi possible de créer une classe qui étend `React.Component`.
+
+Cependant, on ne va pas s'attarder sur la déclaration de composants dans des classes.
+
+Pourquoi ? Déjà parce que la [documentation officielle](https://react.dev/reference/react/Component) recommande désormais de définir des composants en tant que fonctions, mais surtout parce que c'est plus simple et plus lisible ! 🚀
+
+## Création du composant
+
+Allez c'est parti, occupons-nous de notre premier composant React !
+
+```tsx title="Button.tsx" showLineNumbers
+import React from 'react';
+
+export const Button = () => {
+  return <button>Click me</button>;
+};
+```
+
+... et c'est tout ! 🎉  
+On a créé notre premier composant React, c'est pas beau ça ?
+
+Bon évidemment, il reste extrêmement sommaire et n'a pas d'intérêt à l'heure actuelle, mais c'est un bon début !
+
+Avant d'aller plus loin, décortiquons un peu ce code :
+
+- On importe `React` depuis la librairie React _(ligne 1)_
+- On crée une fonction fléchée `Button` _(lignes 3 à 5)_
+  - Cette fonction retourne un élément JSX `<button>Click me</button>`
