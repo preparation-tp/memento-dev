@@ -131,7 +131,18 @@ const QuizAnswer = (props: QuizAnswerProps) => {
 };
 
 const QuizResult = (props: QuizResultProps) => {
-  return null;
+  if (!props.selectedAnswer) return null;
+
+  return (
+    <div className="mt-4 flex flex-col gap-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
+      <p className="font-bold text-lg">
+        {props.selectedAnswer === props.correctAnswer
+          ? "Correct !"
+          : "Incorrect !"}
+      </p>
+      {props.children}
+    </div>
+  );
 };
 
 const QuizAnswers = (props: QuizAnswersProps) => {
