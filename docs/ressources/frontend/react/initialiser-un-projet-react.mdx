@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: "Initialisation"
-description: "Initialisons un nouveau projet React, avec Vite !"
+description: "Initialisons un nouveau projet React, avec ou sans TypeScript."
 tags:
   - Frontend
   - React
@@ -11,9 +11,35 @@ tags:
 ---
 
 import Admonition from '@theme/Admonition';
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
 
 # Initialiser un projet React
 
 ## Introduction
+
+Allez, on se lance dans la création d'un projet React ! 🚀
+
+L'article sera très court, car il n'y a pas grand chose à dire sur la création d'un projet React.  
+Tu vas voir à quel point c'est simple !
+
+## Ancienne méthode _(CRA)_
+
+<Admonition type="warning" title="Dépréciation de `create-react-app`">
+  Ici on va parler d'une méthode qui est dépréciée.  
+  Ne l'utilise donc **pas** pour créer de nouveaux projets !
+</Admonition>
+
+Il y a encore quelques mois/années, on passait régulièrement par le CRA, ou `create-react-app`, pour initialiser un projet React.  
+L'avantage que proposait cette méthode était de nous fournir un projet prêt à l'emploi, avec une structure de fichiers déjà en place, et des dépendances déjà installées.
+
+Cependant, cette méthode est désormais dépréciée. Au delà d'être dépréciée, cette méthode a même été **totalement** retirée de la nouvelle documentation officielle de React.
+
+À la place, la documentation nous propose plutôt d'utiliser :
+
+- [Next.js](https://react.dev/learn/start-a-new-react-project#nextjs-pages-router)
+- [Remix](https://react.dev/learn/start-a-new-react-project#remix)
+- [Gatsby](https://react.dev/learn/start-a-new-react-project#gatsby)
+- [Expo _(pour les applications natives iOS, Android et web)_](https://react.dev/learn/start-a-new-react-project#expo)
+
+Mais dans cet article, je vais plutôt te montrer comment initialiser un projet React avec `Vite` et plus particulièrement : [**Vike**](https://vike.dev/).
+
+Et si tu te demandes "pourquoi" _(à juste titre !)_, c'est tout simplement car il s'agit d'une solution plus légère, plus flexible et qui est en constante amélioration par la communauté !
