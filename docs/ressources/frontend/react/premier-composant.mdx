@@ -31,7 +31,7 @@ Dans cet article, on va faire un composant très simple : un **dumb component** 
   - Il ne fait pas de requêtes HTTP
 </Admonition>
 
-## Syntaxes pour créer un composant
+## ⚙️ Syntaxes pour créer un composant
 
 Il existe plusieurs façons de créer un composant React.
 
@@ -41,7 +41,7 @@ Cependant, on ne va pas s'attarder sur la déclaration de composants dans des cl
 
 Pourquoi ? Déjà parce que la [documentation officielle](https://react.dev/reference/react/Component) recommande désormais de définir des composants en tant que fonctions, mais surtout parce que c'est plus simple et plus lisible ! 🚀
 
-## Création du composant
+## 👷 Création du composant
 
 Allez c'est parti, occupons-nous de notre premier composant React !
 
@@ -63,3 +63,108 @@ Avant d'aller plus loin, décortiquons un peu ce code :
 - On importe `React` depuis la librairie React _(ligne 1)_
 - On crée une fonction fléchée `Button` _(lignes 3 à 5)_
   - Cette fonction retourne un élément JSX `<button>Click me</button>`
+
+## 🧩 Utilisation du composant
+
+C'est bien beau d'avoir un composant, mais maintenant il faut l'utiliser !
+
+```tsx title="App.tsx" {3,9} showLineNumbers
+import React from 'react';
+
+import { Button } from './Button';
+
+export const App = () => {
+  return (
+    <div>
+      <h1>Mon premier composant React</h1>
+      <Button />
+    </div>
+  );
+};
+```
+
+On importe notre composant `Button` _(ligne 3)_ et on l'utilise dans notre composant `App` _(ligne 9)_.
+
+Rien de bien sorcier, n'est-ce pas ? 😊
+
+Mais maintenant, on va vouloir donner un peu plus de vie à notre bouton...  
+Parce que là pour le coup, il est inutile. 😅
+
+## 📦 Props
+
+Les **props** _(pour properties)_ sont des arguments que l'on peut passer à un composant React.  
+Il s'agit en quelque sorte des paramètres d'une fonction.
+
+Imaginons ici que l'on veut rajouter :
+
+- Un texte au bouton
+- Une action à effectuer lorsqu'on clique dessus
+
+Avant de t'expliquer **comment** faire, je vais te montrer **ce que** ça donne pour son utilisation :
+
+```tsx title="App.tsx" {3,6,11-13} showLineNumbers
+import React from 'react';
+
+import { Button } from './Button';
+
+export const App = () => {
+  const handleClick = () => console.log('Je suis cliqué !');
+
+  return (
+    <div>
+      <h1>Mon premier composant React</h1>
+      <Button onClick={handleClick}>
+        Clique-moi !
+      </Button>
+    </div>
+  );
+};
+```
+
+Voyons un peu ce qui change !
+
+- Fonction `handleClick` qui affiche un message dans la console _(ligne 6)_
+- On passe la fonction `handleClick` en tant que prop `onClick` à notre composant `Button` _(ligne 11)_
+- On passe le texte `Clique-moi !` entre la balise ouvrante et fermante de notre composant `Button` _(ligne 12)_
+
+Mais alors, comment on fait pour récupérer ces props dans notre composant `Button` ?
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```tsx title="Button.tsx" showLineNumbers
+    import React from 'react';
+
+    export const Button = (props) => {
+      return <button onClick={props.onClick}>{props.children}</button>;
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="Button.tsx" showLineNumbers
+    import React from 'react';
+
+    type ButtonProps = {
+      onClick: () => void;
+      children: React.ReactNode;
+    };
+
+    export const Button = (props: ButtonProps) => {
+      return <button onClick={props.onClick}>{props.children}</button>;
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+Comme tu peux voir, on récupère les props passées à notre composant `Button` en tant que paramètre de la fonction.
+
+Mais tu peux également remarquer qu'il y a une propriété `children` qui n'est pas passée de la même manière que `onClick`.
+
+C'est totalement normal ! `children` est une prop spéciale qui contient tout ce qui se trouve entre les balises ouvrante et fermante du composant.
+
+<Admonition type="quote" title="Le JavaScript inline, c'est pas bien !">
+  Tu as totalement raison ! On recommande effectivement de ne pas faire du JS inline dans notre HTML et de privilégier un fichier distinct pour notre JavaScript.  
+  Et donc tu sais déjà qu'on va préférer l'utilisation des `addEventListener` 😏
+
+  ... cependant ici, **on ne fait pas du HTML** mais du JSX, et c'est une autre histoire ! 
+</Admonition>
