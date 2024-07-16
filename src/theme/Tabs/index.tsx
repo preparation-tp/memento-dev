@@ -46,14 +46,9 @@ const TabList = ({
         tabRight - tabsHolder.offsetWidth + paddingWidth + spaceBetweenTabs,
     };
 
-    if (tabLeft < scrollLeft) {
+    if (tabLeft < scrollLeft || tabRight > scrollRight) {
       tabsHolder.scrollTo({
-        left: scrollOptions.left,
-        behavior: "smooth",
-      });
-    } else if (tabRight > scrollRight) {
-      tabsHolder.scrollTo({
-        left: scrollOptions.right,
+        left: tabLeft < scrollLeft ? scrollOptions.left : scrollOptions.right,
         behavior: "smooth",
       });
     }
