@@ -8,6 +8,11 @@ tags:
   - JavaScript/TypeScript
   - Bibliothèque
   - Interface utilisateur (UI)
+  - Vite
+  - Vike
+  - SSR
+  - SSG
+  - CSR
 ---
 
 import Admonition from '@theme/Admonition';
@@ -59,7 +64,7 @@ Beaucoup moins "usine à gaz", beaucoup plus "plug-and-play".
 Et si on voyait comment initialiser un projet React avec Vite ?  
 C'est parti ! 🚀
 
-## 👷 Initialisation
+### 👷 Initialisation
 
 Avant de commencer, assure-toi d'avoir Node.js installé sur ta machine.  
 Si ce n'est pas le cas, tu peux le télécharger [ici](https://nodejs.org/).
@@ -94,7 +99,7 @@ Je te laisse la liberté de répondre comme tu veux à ces questions, mais pour 
 Et voilà, c'est tout !  
 ... oui j'ai menti, c'était vraiment pas difficile. 😅
 
-## 🚀 Lancement
+### 🚀 Lancement
 
 Une fois que tu as répondu à toutes les questions, tu vas devoir te rendre dans le dossier de ton projet, et lancer le serveur de développement :
 
@@ -132,3 +137,138 @@ Tu auras ensuite un message dans ton terminal qui t'indiquera l'adresse à laque
 En général, il s'agit de `http://localhost:3000` _(le port peut varier)_.
 
 Et voilà, tu as maintenant un projet React initialisé avec Vite ! 🎉
+
+Par contre je préfère te prévenir, avec cette solution on va davantage s'orienter sur des applications **CSR** _(Client-Side Rendering)_, mais on pourra également voir comment faire du **SSR** _(Server-Side Rendering)_ ou du **SSG** _(Static Site Generation)_ avec Vike.
+
+## 💪 Vike
+
+**Vike**, ou anciennement **vite-plugin-ssr**, est un **framework** basé sur Vite qui va nous permettre de créer des applications web avec presque n'importe quelle bibliothèque _(React, Vue, Svelte, etc.)_.
+
+Dans notre cas, on s'en servira comme alternative au géant du SSR React : Next.js.
+
+L'énorme avantage de Vike au delà de pouvoir utiliser n'importe quel framework/bibliothèque UI _(et même un framework maison ou du vanilla JS !)_, c'est que tout comme Vite, il est **extrêmement plus léger** et **flexible**.
+
+Au niveau des fonctionnalités natives, on va retrouver un peu la même chose que Next.js, avec notamment :
+
+- De quoi gérer le rendu à effectuer _(SSR, SSG, CSR)_
+- Un système de layouts
+- Un système de routage
+- Un système pour séparer la logique front et la logique back
+
+Et bien d'autres !
+
+Maintenant, si on voyait comment initialiser un projet React avec Vike ? 😉
+
+### 👷 Initialisation
+
+Pour initialiser un projet React avec Vike, c'est très similaire à Vite !  
+
+Tu vas devoir ouvrir ton terminal, et taper la commande suivante :
+
+<Tabs>
+  <TabItem value="npm" label="NPM">
+    ```bash
+    npm create vike@latest
+    ```
+  </TabItem>
+
+  <TabItem value="yarn" label="Yarn">
+    ```bash
+    yarn create vike
+    ```
+  </TabItem>
+
+  <TabItem value="pnpm" label="PNPM">
+    ```bash
+    pnpm create vike
+    ```
+  </TabItem>
+</Tabs>
+
+Et là, comme avec Vite : ton nouveau projet vient d'être créé ! 🎉
+
+Mais si je te disais qu'on peut aller encore plus loin dans cette initialisation ?  
+Comme rajouter des choses précises comme...
+
+<Tabs>
+  <TabItem value="framework" label="Framework/Bibliothèque UI">
+    **Choix unique** :
+
+    - [React](https://fr.react.dev/)
+    - [Vue](https://vuejs.org/)
+    - [SolidJS](https://www.solidjs.com/)
+  </TabItem>
+
+  <TabItem value="css" label="CSS">
+    **Choix unique** :
+
+    - [Tailwind CSS](https://tailwindcss.com/)
+    - [daisyUI](https://daisyui.com/)
+    - [Compiled](https://compiledcssinjs.com/) _(uniquement pour React)_
+  </TabItem>
+
+  <TabItem value="hosting" label="Hébergement">
+    **Choix unique** :
+
+    - [Cloudflare](https://www.cloudflare.com/)
+    - [Vercel](https://vercel.com/)
+    - [Netlify](https://www.netlify.com/) _(indisponible à l'heure actuelle - 16/07/2024)_
+  </TabItem>
+
+  <TabItem value="auth" label="Authentification">
+    **Choix unique** :
+
+    - [Auth.js](https://authjs.dev/)
+    - [Auth0](https://auth0.com/)
+    - [Firebase](https://firebase.google.com/)
+  </TabItem>
+
+  <TabItem value="data-fetching" label="Data fetching">
+    **Choix unique** :
+
+    - [Telefunc](https://telefunc.com/)
+    - [tRPC](https://trpc.io/)
+    - [ts-rest](https://ts-rest.com/)
+  </TabItem>
+
+  <TabItem value="server" label="Framework Node.js">
+    **Choix unique** :
+
+    - [Hono](https://hono.dev/)
+    - [h3](https://h3.unjs.io/)
+    - [Express](https://expressjs.com/)
+    - [Fastify](https://www.fastify.io/)
+    - [HatTip](https://hattipjs.org/)
+  </TabItem>
+
+  <TabItem value="db" label="Base de données">
+    **Choix unique** :
+
+    - [Prisma](https://www.prisma.io/)
+    - [EdgeDB](https://edgedb.com/)
+    - [Drizzle](https://orm.drizzle.team/)
+  </TabItem>
+
+  <TabItem value="linter" label="Linters/formatters">
+    **Choix multiple** :
+
+    - [ESLint](https://eslint.org/)
+    - [Prettier](https://prettier.io/)
+    - [Biome](https://biomejs.dev/)
+  </TabItem>
+
+  <TabItem value="analytics" label="Analytics">
+    **Choix unique** :
+
+    - [Plausible.io](https://plausible.io/)
+    - [Google Analytics](https://analytics.google.com/)
+    - [Segment](https://segment.com/) _(indisponible à l'heure actuelle - 16/07/2024)_
+  </TabItem>
+
+  <TabItem value="error-tracking" label="Error tracking">
+    **Choix indisponibles à l'heure actuelle** _(16/07/2024)_ :
+
+    - [Sentry](https://sentry.io/)
+    - [Logrocket](https://logrocket.com/)
+  </TabItem>
+</Tabs>
