@@ -138,13 +138,13 @@
 .markdown ul.tabs .tabs__item--active {
   @apply bg-violet-100 dark:bg-violet-950 dark:text-white;
 }
-.markdown ul.tabs + * {
+.markdown .tabs-holder + * {
   @apply relative p-4 !mt-0 z-0;
 }
-.markdown ul.tabs + * > * {
+.markdown .tabs-holder + * > * {
   @apply !mt-0;
 }
-.markdown ul.tabs + *::before {
+.markdown .tabs-holder + *::before {
   @apply absolute -z-10 content-[''] w-full bg-violet-50 dark:bg-gray-50/5 h-[calc(100%+2em)] bottom-0 left-0 rounded-md;
 }
 
