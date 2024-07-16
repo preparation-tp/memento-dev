@@ -170,7 +170,9 @@
   @apply mt-2;
 }
 
-.markdown *:not(summary, .tabs__item, .tabs, .tab-content *) + *:not(br) {
+.markdown
+  *:not(summary, .tabs__item, .tabs, .tab-content *, .no-mt, .no-mt *)
+  + *:not(br) {
   @apply !mt-4;
 }
 .token-line,

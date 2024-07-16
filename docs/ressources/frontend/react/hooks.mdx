@@ -10,6 +10,7 @@ tags:
   - Interface utilisateur (UI)
 ---
 
+import Quiz from '@site/src/components/Quiz';
 import Admonition from '@theme/Admonition';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
@@ -327,18 +328,16 @@ export const MyComponent = () => {
 
 Voici les possibilités :
 
-- **A** : `2`, `4`, `1`, `3`
-- **B** : `2`, `4`, `3`, `1`
-- **C** : `4`, `2`, `1`, `3`
-- **D** : `4`, `2`, `3`, `1`
-
-Alors, tu as trouvé ?
-
-<details>
-  <summary>Réponse</summary>
-
-  La réponse est **A** : `2`, `4`, `1`, `3`.
-
+<Quiz
+  question="Dans quel ordre les messages s'affichent-ils dans la console ?"
+  answers={[
+    { label: 'A', value: '2, 4, 1, 3' },
+    { label: 'B', value: '2, 4, 3, 1' },
+    { label: 'C', value: '4, 2, 1, 3' },
+    { label: 'D', value: '4, 2, 3, 1' },
+  ]}
+  correctAnswer='A'
+>
   Assez contre-intuitif, n'est-ce pas ? 😅
 
   - `2` est affiché en premier.  
@@ -349,4 +348,4 @@ Alors, tu as trouvé ?
     - Ce code est exécuté **après** le rendu du composant _(dans le premier `useEffect`)_.
   - `3` est affiché en dernier.
     - Ce code est exécuté **après** le rendu du composant _(dans le deuxième `useEffect`)_.
-</details>
+</Quiz>
