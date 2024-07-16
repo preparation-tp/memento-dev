@@ -1,0 +1,203 @@
+---
+sidebar_position: 4
+title: "State et cycle de vie"
+description: "Voyons ensemble comment gérer le state et le cycle de vie d'un composant React !"
+tags:
+  - Frontend
+  - React
+  - JavaScript/TypeScript
+  - Bibliothèque
+  - Interface utilisateur (UI)
+---
+
+import Admonition from '@theme/Admonition';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+# State et cycle de vie
+
+## Introduction
+
+Dans le précédent article, nous avons vu comment créer notre premier composant React avec notamment le concept de **props**.
+
+Voyons maintenant comment gérer le **state** et le **cycle de vie** d'un composant React !  
+Commençons tranquillement avec le **cycle de vie** d'un composant, puisqu'il est indispensable pour comprendre le **state**.
+
+<Admonition type="info" title="Rappel">
+  Dans cet article, on va utiliser des composants fonctionnels _(fonctions)_ plutôt que des composants de classe _(classes)_ pour déclarer nos composants React.  
+  Pour rappel, les composants déclarés avec des classes ne sont plus recommandés par la [documentation officielle](https://react.dev/reference/react/Component).
+</Admonition>
+
+## 🔄 Cycle de vie
+
+Le **cycle de vie** d'un composant React est une série d'étapes que traverse un composant, de sa création _(montage)_ à sa destruction _(démontage)_.
+
+Voici les trois différentes étapes du cycle de vie d'un composant React :
+
+1. **Montage** _(Mounting)_ : le composant est créé et inséré dans le DOM
+2. **Mise à jour** _(Updating)_ : le composant est mis à jour suite à un changement de **props** ou de **state**
+3. **Démontage** _(Unmounting)_ : le composant est retiré du DOM
+
+On verra un peu plus en détail ces étapes dans l'article suivant qui traitera un certain hook de React : `useEffect`.
+
+<Admonition type="quote" title="Hook.. comme le capitaine ? 🦜🏴‍☠️">
+  Haha, non !
+
+  Un hook en React, est une fonction qui permet d'exploiter les fonctionnalités de React dans un composant fonctionnel _(fonction)_.
+
+  Bon... c'est un peu du charabia, mais on verra ça plus en détail dans le prochain article car il y a beaucoup à dire sur les hooks !
+</Admonition>
+
+Mais pour le moment, restons en à une vue d'ensemble du cycle de vie !
+
+## 🧠 State
+
+Le **state** est un objet qui contient les données internes d'un composant.  
+Il est propre à chaque composant et peut être modifié par ce dernier _(à ne pas confondre avec les **props** qui elles sont immuables)_.
+
+Mais alors, pourquoi utiliser un state alors qu'on pourrait tout simplement déclarer une variable dans notre composant ?
+
+Prenons cet exemple :
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx title="Counter.jsx" showLineNumbers
+    import React from 'react';
+
+    export const Counter = () => {
+      let count = 0;
+
+      const increment = () => {
+        count += 1;
+        console.log("Increment", count);
+      };
+
+      return (
+        <button onClick={increment}>{count}</button>
+      );
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="Counter.tsx" showLineNumbers
+    import React from 'react';
+
+    export const Counter = () => {
+      let count: number = 0;
+
+      const increment = () => {
+        count += 1;
+        console.log("Increment", count);
+      };
+
+      return (
+        <button onClick={increment}>{count}</button>
+      );
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+On serait tentés de croire que ce code fonctionne. Après tout, en vanilla JS _(JavaScript pur)_, on pourrait tout à fait faire ça !  
+Et maintenant tu t'en doutes _(sinon pourquoi j'en parlerai ?)_, ce code ne fonctionne pas.
+
+Pourtant, si on regarde la console du navigateur on voit bien que la variable `count` est bien incrémentée !
+
+La raison est très simple : React ne sait pas que la variable `count` a été modifiée.  
+Pour être plus précis, React ne sait pas qu'il doit mettre à jour l'interface utilisateur _(UI)_ suite à la modification de `count`.
+
+C'est là qu'intervient le **state** !  
+Le state est **réactif** et permet à React de savoir quand il doit mettre à jour l'interface utilisateur _(UI)_.
+
+### 📝 Déclaration du state
+
+Pour déclarer un **state**, on utilise le hook `useState` de React.  
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx
+    const [count, setCount] = React.useState(0);
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx
+    const [count, setCount] = React.useState<number>(0);
+    ```
+  </TabItem>
+</Tabs>
+
+Et là tu vas peut-être te demander une chose...
+
+<Admonition type="quote" title="Ouh là... pourquoi on a deux assignements ?">
+  Bien vu ! Effectivement on va avoir deux assignements pour déclarer un **state** :
+  - `count` : la valeur du **state**
+  - `setCount` : la fonction qui permet de modifier la valeur du **state**
+
+  Si tu as déjà fait de la POO, le principe de **getter** et **setter** te sera familier puisque c'est un peu le même principe !
+
+  Le hook `useState` prend en paramètre la valeur initiale du **state** _(ici `0`)_ et retourne un tableau avec la valeur du **state** et la fonction pour le modifier.
+</Admonition>
+
+### 🔄 Utilisation du state
+
+Maintenant que notre **state** est déclaré, on peut l'utiliser dans notre composant.
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx title="Counter.jsx" showLineNumbers
+    import React from 'react';
+
+    export const Counter = () => {
+      const [count, setCount] = React.useState(0);
+
+      const increment = () => setCount(count + 1);
+
+      return (
+        <button onClick={increment}>{count}</button>
+      );
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="Counter.tsx" showLineNumbers
+    import React from 'react';
+
+    export const Counter = () => {
+      const [count, setCount] = React.useState<number>(0);
+
+      const increment = () => setCount(count + 1);
+
+      return (
+        <button onClick={increment}>{count}</button>
+      );
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+Et voilà ! Pas besoin de plus pour gérer un **state** en React 😉
+
+Mais qu'est-ce qu'il se passe sous le capot ?  
+C'est un peu plus complexe que ça, mais pour faire simple :
+
+#### ⚙️ Montage du composant _(Mounting)_
+On vient prévenir React que notre composant va avoir un **state** et on lui donne une valeur initiale _(ici `0`)_.
+
+#### 🔧 Mise à jour du composant _(Updating)_
+Ce state, à chaque modification, va déclencher un nouveau rendu du composant.
+
+#### 🗑️ Démontage du composant _(Unmounting)_
+Et enfin, quand le composant est retiré du DOM, le state est détruit avec lui.
+
+Ce fonctionnement est identique pour les props donnés à un composant d'ailleurs !  
+React est vraiment bien fait pour ça 😊
+
+## Conclusion
+
+Plutôt simple, non ?  
+Alors maintenant que tu sais comment gérer le **state** et le **cycle de vie** d'un composant React, tu es prêt à te pencher sur la prochaine étape _(et pas des moindres)_ : les **hooks** !
+
+Mais pour l'heure, je te laisse jouer avec les **states** et les **props** pour bien comprendre comment tout ça fonctionne.

@@ -150,7 +150,7 @@ const TabContent = ({
     return cloneElement(selectedTabItem, { className: "margin-top--md" });
   }
   return (
-    <div className="margin-top--md">
+    <div className="tab-content">
       {childTabs.map((tabItem, i) =>
         cloneElement(tabItem, {
           key: i,
