@@ -11,6 +11,8 @@ tags:
 ---
 
 import Admonition from '@theme/Admonition';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
 
 # Initialiser un projet React
 
@@ -21,7 +23,7 @@ Allez, on se lance dans la création d'un projet React ! 🚀
 L'article sera très court, car il n'y a pas grand chose à dire sur la création d'un projet React.  
 Tu vas voir à quel point c'est simple !
 
-## Ancienne méthode _(CRA)_
+## 👴 Ancienne méthode _(CRA)_
 
 <Admonition type="warning" title="Dépréciation de `create-react-app`">
   Ici on va parler d'une méthode qui est dépréciée.  
@@ -40,6 +42,93 @@ Cependant, cette méthode est désormais dépréciée. Au delà d'être dépréc
 - [Gatsby](https://react.dev/learn/start-a-new-react-project#gatsby)
 - [Expo _(pour les applications natives iOS, Android et web)_](https://react.dev/learn/start-a-new-react-project#expo)
 
-Mais dans cet article, je vais plutôt te montrer comment initialiser un projet React avec `Vite` et plus particulièrement : [**Vike**](https://vike.dev/).
+Mais dans cet article, je vais plutôt te montrer comment initialiser un projet React avec `Vite` et par la suite : [**Vike**](https://vike.dev/).
 
 Et si tu te demandes "pourquoi" _(à juste titre !)_, c'est tout simplement car il s'agit d'une solution plus légère, plus flexible et qui est en constante amélioration par la communauté !
+
+## 🏃 Vite
+
+Vite est un outil de développement web _(frontend)_ créé par [**Evan You**](https://evanyou.me/), le créateur de Vue.js.  
+Et si tu connais Vue.js, tu sais déjà qu'on parle d'un outil de qualité !
+
+L'objectif principal derrière Vite, c'est d'améliorer considérablement la rapidité de développement de nos applications web, avec notamment un serveur de développement ultra-rapide, et une compilation de production optimisée.
+
+On peut notamment comparer Vite à Webpack, Grunt ou encore Gulp, mais en beaucoup plus rapide et plus simple à utiliser.  
+Beaucoup moins "usine à gaz", beaucoup plus "plug-and-play".
+
+Et si on voyait comment initialiser un projet React avec Vite ?  
+C'est parti ! 🚀
+
+## 👷 Initialisation
+
+Avant de commencer, assure-toi d'avoir Node.js installé sur ta machine.  
+Si ce n'est pas le cas, tu peux le télécharger [ici](https://nodejs.org/).
+
+Prépare toi maintenant pour la partie la plus difficile de cet article...  
+Ouvre ton terminal, et tape la commande suivante :
+
+<Tabs>
+  <TabItem value="npm" label="NPM">
+    ```bash
+    npm init vite
+    ```
+  </TabItem>
+
+  <TabItem value="yarn" label="Yarn">
+    ```bash
+    yarn create vite
+    ```
+  </TabItem>
+
+  <TabItem value="pnpm" label="PNPM">
+    ```bash
+    pnpm create vite
+    ```
+  </TabItem>
+</Tabs>
+
+Tu vas ensuite devoir répondre à quelques questions, notamment le nom de ton projet, le template que tu souhaites utiliser _(React, Vue, Vanilla, etc.)_, et si tu souhaites utiliser TypeScript.
+
+Je te laisse la liberté de répondre comme tu veux à ces questions, mais pour un projet React, tu vas devoir choisir le template `react` _(logique non ?)_.
+
+Et voilà, c'est tout !  
+... oui j'ai menti, c'était vraiment pas difficile. 😅
+
+## 🚀 Lancement
+
+Une fois que tu as répondu à toutes les questions, tu vas devoir te rendre dans le dossier de ton projet, et lancer le serveur de développement :
+
+<Tabs>
+  <TabItem value="npm" label="NPM">
+    ```bash
+    cd mon-projet # Se rendre dans le dossier du projet
+    npm install # Installer les dépendances
+    npm run dev # Lancer le serveur de développement
+    ```
+  </TabItem>
+
+  <TabItem value="yarn" label="Yarn">
+    ```bash
+    cd mon-projet # Se rendre dans le dossier du projet
+    yarn install # Installer les dépendances
+    yarn dev # Lancer le serveur de développement
+    ```
+  </TabItem>
+
+  <TabItem value="pnpm" label="PNPM">
+    ```bash
+    cd mon-projet # Se rendre dans le dossier du projet
+    pnpm install # Installer les dépendances
+    pnpm dev # Lancer le serveur de développement
+    ```
+  </TabItem>
+</Tabs>
+
+<Admonition type="warning" title="Dépendances">
+  Pense à installer les dépendances de ton projet avant de lancer le moindre script _(comme `dev`, `build` etc)_, sinon ça ne va pas très bien se passer !
+</Admonition>
+
+Tu auras ensuite un message dans ton terminal qui t'indiquera l'adresse à laquelle tu pourras accéder à ton application.  
+En général, il s'agit de `http://localhost:3000` _(le port peut varier)_.
+
+Et voilà, tu as maintenant un projet React initialisé avec Vite ! 🎉
