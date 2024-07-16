@@ -45,7 +45,7 @@ Pourquoi ? Déjà parce que la [documentation officielle](https://react.dev/refe
 
 Allez c'est parti, occupons-nous de notre premier composant React !
 
-```tsx title="Button.tsx" showLineNumbers
+```jsx title="Button.jsx" showLineNumbers
 import React from 'react';
 
 export const Button = () => {
@@ -68,7 +68,7 @@ Avant d'aller plus loin, décortiquons un peu ce code :
 
 C'est bien beau d'avoir un composant, mais maintenant il faut l'utiliser !
 
-```tsx title="App.tsx" {3,9} showLineNumbers
+```jsx title="App.jsx" {3,9} showLineNumbers
 import React from 'react';
 
 import { Button } from './Button';
@@ -102,7 +102,7 @@ Imaginons ici que l'on veut rajouter :
 
 Avant de t'expliquer **comment** faire, je vais te montrer **ce que** ça donne pour son utilisation :
 
-```tsx title="App.tsx" {3,6,11-13} showLineNumbers
+```jsx title="App.jsx" {3,6,11-13} showLineNumbers
 import React from 'react';
 
 import { Button } from './Button';
@@ -131,7 +131,7 @@ Mais alors, comment on fait pour récupérer ces props dans notre composant `But
 
 <Tabs>
   <TabItem value="js" label="JavaScript">
-    ```tsx title="Button.tsx" showLineNumbers
+    ```jsx title="Button.jsx" showLineNumbers
     import React from 'react';
 
     export const Button = (props) => {
@@ -168,3 +168,73 @@ C'est totalement normal ! `children` est une prop spéciale qui contient tout ce
 
   ... cependant ici, **on ne fait pas du HTML** mais du JSX, et c'est une autre histoire ! 
 </Admonition>
+
+## 🖇️ Les différentes props
+
+Il existe plusieurs props que l'on peut passer à un composant React :
+
+- `children` : Contient tout ce qui se trouve entre les balises ouvrante et fermante du composant
+- les autres props : Tout ce qui est passé en dehors des balises ouvrante et fermante du composant
+
+Alors évidemment, cette explication est très réductrice, mais on va s'en contenter pour le moment.
+
+Mais tu te doutes bien qu'il existe des props spécifiques à certains éléments HTML qui peuvent être passées à un composant React.
+
+### 🔒 Mots clés protégés
+
+En HTML, il existe des attributs qui sont utilisés dans certains éléments HTML. Cependant, comme ici on ne fait pas du HTML mais du JSX, on ne va pas pouvoir les utiliser tels quels.
+
+Pour te donner un exemple concret, si tu veux ajouter une classe CSS à un élément, tu ne pourras pas utiliser l'attribut `class` mais `className`.
+
+Mais alors, pourquoi ?
+
+Comme le JSX reste avant tout du JavaScript, on ne peut pas utiliser des mots-clés réservés comme `class`, `for`, `default`, etc.
+
+<details>
+  <summary>Plus d'informations sur les mots-clés protégés</summary>
+
+  React comprendra ces mots clés au sein des composants, cependant il va générer un avertissement dans la console du navigateur pour te prévenir que tu utilises un mot-clé protégé qui est "ambigu".
+
+  Cependant, certaines bibliothèques qui utilisent le JSX, comme [SolidJS](https://www.solidjs.com/) par exemple, utilisent ces mots-clés protégés au sein des composants. Ca ne veut pas dire que c'est "bien" ou "pas bien", mais qu'il faut être conscient de ce que l'on fait et de comment est interprété notre code par la bibliothèque 😉
+</details>
+
+On va donc utiliser des noms d'attributs qui sont similaires à ceux du HTML, mais qui sont adaptés pour le JSX.
+
+- `class` devient `className` _(pour les classes CSS)_
+- `for` devient `htmlFor` _(pour les labels)_
+- `default` devient `defaultValue` _(pour les champs de formulaire)_
+
+Et il en existe bien d'autres, mais on va s'arrêter là pour le moment ! 😊
+
+### 👂 Écouteurs d'événements
+
+Il existe également des attributs spécifiques pour les écouteurs d'événements.  
+Tu as notamment pu déjà faire la rencontre de `onClick`, mais il en existe bien d'autres !
+
+Il s'agit de la syntaxe à adopter avec React pour ajouter des écouteurs d'événements à des composants JSX, et non pas d'utiliser `addEventListener` directement dans le JavaScript 😉
+
+J'aimerai beaucoup pouvoir te donner une liste d'exemples d'écouteurs d'événements, mais il y en a tellement que je ne pourrais pas tous les citer ici.  
+La forme étant toujours la même, tu peux facilement savoir comment les écrire !
+
+La forme est simple :
+- Préfixe : `on`
+- Événement : nom de l'événement en camelCase
+
+Par exemple :
+- `click` => `onClick`
+- `change` => `onChange`
+- `submit` => `onSubmit`
+- `mouseenter` => `onMouseEnter`
+- `mouseleave` => `onMouseLeave`
+
+Et si tu cherches une liste complète des écouteurs d'événements, je t'invite à tout simplement consulter le [MDN Web Docs](https://developer.mozilla.org/fr/docs/Web/Events) qui est une mine d'or pour tout ce qui est lié au développement web !
+
+Au début, on peut trouver ça un peu déroutant puisqu'on va naturellement les associer à du HTML, mais il faut se rappeler qu'on est dans du JSX _(oui, j'insiste beaucoup là-dessus !)_.
+
+## 📚 Conclusion
+
+Et voilà, on a créé notre premier composant React !  
+On a même rapidement vu comment passer des props à un composant et comment les récupérer.
+
+Et si pour le prochain article, on parle un peu des states ?  
+Parce que c'est déjà cool ce qu'on a pu faire, mais on peut faire tellement plus avec React ! 🚀
