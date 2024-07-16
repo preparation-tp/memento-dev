@@ -303,28 +303,50 @@ On revient sur le cycle de vie d'un composant maintenant qu'on a vu `useEffect` 
 
 Je vais te donner un exemple de code supplémentaire et tu vas devoir deviner l'ordre d'apparition des messages dans la console.
 
-```jsx title="App.jsx" {3,6,11-13} showLineNumbers
+```jsx title="MyComponent.jsx" {5,8,11,16} showLineNumbers
 import React from 'react';
 
-export const Counter = () => {
-  const [count, setCount] = React.useState(0);
-
+export const MyComponent = () => {
   React.useEffect(() => {
-    console.log('Component mounted');
-
-    return () => {
-      console.log('Component unmounted');
-    };
-  }, []);
-
-  React.useEffect(() => {
-    console.log('Component updated');
+    console.log('1');
   });
 
-  const increment = () => setCount(count + 1);
+  console.log('2');
+
+  React.useEffect(() => {
+    console.log('3');
+  }, []);
 
   return (
-    <button onClick={increment}>{count}</button>
+    <div>
+      {console.log('4')}
+    </div>
   );
 };
 ```
+
+Voici les possibilités :
+
+- **A** : `2`, `4`, `1`, `3`
+- **B** : `2`, `4`, `3`, `1`
+- **C** : `4`, `2`, `1`, `3`
+- **D** : `4`, `2`, `3`, `1`
+
+Alors, tu as trouvé ?
+
+<details>
+  <summary>Réponse</summary>
+
+  La réponse est **A** : `2`, `4`, `1`, `3`.
+
+  Assez contre-intuitif, n'est-ce pas ? 😅
+
+  - `2` est affiché en premier.  
+    - Ce code est exécuté **avant** le rendu du composant _(logique puisqu'on n'a pas encore atteint le `return`, non ?)_.
+  - `4` est affiché en deuxième.
+    - Ce code est exécuté **pendant** le rendu du composant _(dans le `return`)_.
+  - `1` est affiché en troisième.
+    - Ce code est exécuté **après** le rendu du composant _(dans le premier `useEffect`)_.
+  - `3` est affiché en dernier.
+    - Ce code est exécuté **après** le rendu du composant _(dans le deuxième `useEffect`)_.
+</details>
