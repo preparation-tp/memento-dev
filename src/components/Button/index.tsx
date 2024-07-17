@@ -27,6 +27,8 @@ const Button = (props: ButtonProps) => {
       className={clsx(buttonClassNames, props.className)}
       href={props.href}
       onClick={props.onClick}
+      target={props.href ? "_blank" : undefined}
+      rel={props.href ? "noopener noreferrer" : undefined}
     >
       {props.children}
     </Component>
