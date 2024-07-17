@@ -16,4 +16,132 @@ import Tabs from '@theme/Tabs';
 
 # Syntaxe JSX
 
-Rédaction en cours, merci de revenir plus tard ! 🚧
+## Introduction
+
+Avant de commencer à parler des composants React, découvrons tranquillement la syntaxe **JSX**.
+
+Le **JSX** est un sucre syntaxique _(une syntaxe plus lisible et plus simple que le JavaScript pur)_ qui permet de décrire l'interface utilisateur _(UI)_ de notre application.  
+Le sigle en lui-même signifie **JavaScript XML**, dans le sens où l'on va retrouver une syntaxe proche du **XML** _(eXtensible Markup Language)_ qui est un langage de balisage _(comme le **HTML**)_.
+
+## 🔍 Différences entre HTML et JSX
+
+Et oui, le **JSX** ressemble beaucoup au **HTML** et c'est normal !  
+C'est l'objectif premier de **React** : rendre la création d'interfaces utilisateur _(UI)_ plus simple et plus intuitive.
+
+Cependant il ne faut pas oublier que le **JSX** n'est pas du **HTML**, mais du JavaScript.
+
+Pour faire plus simple, voici un élément **HTML** et son équivalent avec React _(avec et sans JSX)_ :
+
+<Tabs>
+  <TabItem value="html" label="HTML">
+    ```html
+    <button class="button">Clique moi !</button>
+    ```
+  </TabItem>
+
+  <TabItem value="react-no-jsx" label="React sans JSX">
+    ```jsx
+    React.createElement('button', { className: 'button' }, 'Clique moi !');
+    ```
+  </TabItem>
+
+  <TabItem value="react-jsx" label="React avec JSX">
+    ```jsx
+    <button className="button">Clique moi !</button>
+    ```
+  </TabItem>
+</Tabs>
+
+Comme tu peux le constater, la différence entre le **JSX** et le **HTML** est minime.  
+Il y a toutefois des différences, comme certains mots réservés _(comme `class` qui devient `className`)_ ou encore la manière de déclarer des événements _(comme `onclick` qui devient `onClick`)_.
+
+Par contre si on regarde la différence entre le **JSX** et le JavaScript pur _(en utilisant React quand même)_, on voit bien que le **JSX** est beaucoup plus lisible et plus simple à écrire.
+
+Là où c'est encore plus flagrant, c'est quand on commence à imbriquer des éléments _(comme des composants React par exemple)_ !
+
+<Tabs>
+  <TabItem value="react-no-jsx" label="React sans JSX">
+    ```jsx showLineNumbers
+    React.createElement(React.Fragment, null,
+      React.createElement('h2', null, 'Formulaire de contact'),
+      React.createElement('form', { onSubmit: handleSubmit },
+        React.createElement('fieldset', null,
+          React.createElement('label', { htmlFor: 'lastname' }, 'Nom'),
+          React.createElement('input', { type: 'text', name: 'lastname', id: 'lastname', required: true })
+        ),
+        React.createElement('fieldset', null,
+          React.createElement('label', { htmlFor: 'email' }, 'Email'),
+          React.createElement('input', { type: 'email', name: 'email', id: 'email', required: true })
+        ),
+        React.createElement('fieldset', null,
+          React.createElement('label', { htmlFor: 'message' }, 'Message'),
+          React.createElement('textarea', { name: 'message', id: 'message', required: true })
+        ),
+        React.createElement('fieldset', null,
+          React.createElement('label', { htmlFor: 'gdpr' },
+            React.createElement('input', { type: 'checkbox', name: 'gdpr', id: 'gdpr', required: true }),
+            'J\'accepte que mes données soient utilisées pour me recontacter'
+          )
+        ),
+        React.createElement('button', { type: 'submit' }, 'Envoyer')
+      )
+    );
+    ```
+  </TabItem>
+
+  <TabItem value="react-jsx" label="React avec JSX">
+    ```jsx showLineNumbers
+    <React.Fragment>
+      <h2>Formulaire de contact</h2>
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <label htmlFor="lastname">Nom</label>
+          <input type="text" name="lastname" id="lastname" required>
+        </fieldset>
+        
+        <fieldset>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required>
+        </fieldset>
+        
+        <fieldset>
+          <label for="message">Message</label>
+          <textarea name="message" id="message" required></textarea>
+        </fieldset>
+
+        <fieldset>
+          <label for="gdpr">
+            <input type="checkbox" name="gdpr" id="gdpr" required>
+            J'accepte que mes données soient utilisées pour me recontacter
+          </label>
+        </fieldset>
+
+        <button type="submit">Envoyer</button>
+      </form>
+    </React.Fragment>
+    ```
+  </TabItem>
+</Tabs>
+
+Pas mal la lisibilité apportée par le **JSX** non ? 😄
+
+<Admonition type="warning" title="Importation de React et de ses exports">
+  Au sein de ses pages, tu verras **toujours** que j'importe le contenu de **React** en intégralité _(comme `import React from 'react';`)_.
+
+  Dans la réalité, on va destructurer les exports de **React** pour n'importer que ce dont on a besoin _(comme `import { useState } from 'react';` si on souhaite importer le hook `useState`)_.  
+  Cependant, pour te donner l'information d'où provient chaque élément, je préfère importer **React** en intégralité et que tu puisses visualiser les éléments de **React** utilisés avec leur provenance.
+
+  En reprenant l'exemple du `useState`, cela donnerait :
+  ```jsx
+  import React from 'react';
+
+  const [count, setCount] = React.useState(0);
+  ```
+
+  Au lieu de :
+  ```jsx
+  import { useState } from 'react';
+
+  const [count, setCount] = useState(0);
+  ```
+</Admonition>
