@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: "Les hooks de React"
 description: "Découvre les hooks de React, une fonctionnalité qui te permet de gérer le state et le cycle de vie de tes composants fonctionnels."
 tags:
@@ -10,6 +10,7 @@ tags:
   - Interface utilisateur (UI)
 ---
 
+import Button from '@site/src/components/Button';
 import Quiz from '@site/src/components/Quiz';
 import Admonition from '@theme/Admonition';
 import TabItem from '@theme/TabItem';
@@ -317,10 +318,15 @@ export const MyComponent = () => {
   React.useEffect(() => {
     console.log('3');
   }, []);
+  
+  const logInRender = () => {
+    console.log('4');
+    return null;
+  };
 
   return (
     <div>
-      {console.log('4')}
+      {logInRender()}
     </div>
   );
 };
@@ -331,12 +337,12 @@ Voici les possibilités :
 <Quiz
   question="Dans quel ordre les messages s'affichent-ils dans la console ?"
   answers={[
-    { label: 'A', value: '2, 4, 1, 3' },
-    { label: 'B', value: '2, 4, 3, 1' },
-    { label: 'C', value: '4, 2, 1, 3' },
+    { label: 'A', value: '4, 2, 1, 3' },
+    { label: 'B', value: '2, 4, 1, 3' },
+    { label: 'C', value: '1, 2, 3, 4' },
     { label: 'D', value: 'La réponse D' },
   ]}
-  correctAnswer='A'
+  correctAnswer='B'
 >
   Assez contre-intuitif, n'est-ce pas ? 😅
 
@@ -348,6 +354,10 @@ Voici les possibilités :
     - Ce code est exécuté **après** le rendu du composant _(dans le premier `useEffect`)_.
   - `3` est affiché en dernier.
     - Ce code est exécuté **après** le rendu du composant _(dans le deuxième `useEffect`)_.
+
+  <Button href="https://playcode.io/1940712">
+    🕹️ Voir l'exemple sur PlayCode
+  </Button>
 </Quiz>
 
 ## 🧩 Les autres hooks

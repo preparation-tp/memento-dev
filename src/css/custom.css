@@ -171,8 +171,8 @@
 }
 
 .markdown
-  *:not(summary, .tabs__item, .tabs, .tab-content *, .no-mt, .no-mt *)
-  + *:not(br) {
+  *:not(summary, .tabs__item, .tabs, .tab-content *, .no-mt, .no-mt *, p, li *)
+  + *:not(br, ul, ol) {
   @apply !mt-4;
 }
 .token-line,
