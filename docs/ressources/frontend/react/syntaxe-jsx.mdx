@@ -10,6 +10,7 @@ tags:
   - Interface utilisateur (UI)
 ---
 
+import Button from '@site/src/components/Button';
 import Admonition from '@theme/Admonition';
 import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
@@ -154,3 +155,145 @@ Pas mal la lisibilité apportée par le **JSX** non ? 😄
 ## 🧩 Intégration de JavaScript dans le JSX
 
 Mais l'un des autres avantages du **JSX** est la possibilité d'ajouter du JavaScript directement dans le code !
+
+Pour pouvoir ajouter du JavaScript dans le **JSX**, il suffit d'entourer le code JavaScript avec des accolades `{}`.  
+C'est un peu comme si on "ouvrait un portail" pour insérer du JavaScript dans notre code **JSX**.
+
+### 📦 Variables et fonctions
+
+Par exemple, si tu veux afficher une variable dans ton **JSX**, tu peux le faire directement :
+
+```jsx
+const name = 'Jean Dupont';
+
+return <h1>Bonjour {name} !</h1>;
+```
+
+Et si tu veux appeler une fonction, c'est tout aussi simple :
+
+```jsx
+const sayHello = () => 'Bonjour !';
+
+return <p>{sayHello()}</p>;
+```
+
+### 📝 Expressions
+
+Tu peux également ajouter des expressions _(comme des conditions ternaires par exemple)_ :
+
+```jsx
+const age = 18;
+
+return <p>{age >= 18 ? 'Majeur' : 'Mineur'}</p>;
+```
+
+Mais tu peux aussi faire un **affichage conditionnel** de manière très simple :
+
+```jsx
+
+const isLogged = false;
+
+return (
+  <div>
+    {isLogged && <p>Bienvenue sur notre site !</p>}
+    {!isLogged && <p>Connectez-vous pour accéder à notre site</p>}
+  </div>
+);
+```
+
+### 🔄️ Boucles
+
+Maintenant imagine que tu souhaites créer une interface qui liste des éléments provenant d'un tableau.
+
+```js
+const fruits = ['pomme', 'banane', 'fraise'];
+```
+
+Dans un premier temps, on va revoir très rapidement comment on peut parser un tableau en JavaScript :
+
+- `for` :
+  ```js
+  for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+  }
+  ```
+- `forEach` :
+  ```js
+  fruits.forEach((fruit) => console.log(fruit));
+  ```
+- `map` :
+  ```js
+  fruits.map((fruit) => console.log(fruit));
+  ```
+- et bien d'autres encore...
+
+En soit, toutes ces méthodes sont très bien et font ce qu'on leur demande sans souci.  
+Cependant, React ne va pas forcément aimer ça sauf pour `map`.
+
+La raison est simple :  
+React a besoin qu'on lui **retourne un élément** _(ou un tableau d'éléments)_ pour pouvoir les afficher.
+
+Alors avec des `console.log` on ne va pas aller loin, mais si au lieu de retourner un `console.log` on retournait un élément **JSX** ? 🤔
+
+```jsx
+const fruits = ['pomme', 'banane', 'fraise'];
+
+return (
+  <ul>
+    {fruits.map((fruit) => <li key={fruit}>{fruit}</li>)}
+  </ul>
+);
+```
+
+<Button href="https://playcode.io/1940876">
+  🕹️ Voir l'exemple sur PlayCode
+</Button>
+
+Et là : **BAM** ! Tu viens de créer une liste de fruits en utilisant un tableau de fruits.
+
+Mais par contre...
+
+<Admonition type="quote" title={`C'est quoi ce "key" qui vient d'apparaître ?`}>
+  La `key` est une propriété spéciale que React utilise pour identifier chaque élément de manière unique.  
+  Cela permet à React de savoir quel élément a été ajouté, modifié ou supprimé.
+
+  Il est **obligatoire** d'avoir une `key` unique pour chaque élément d'une liste.  
+  Si tu listes des éléments qui ont un identifiant unique _(comme l'`id` qu'on aura dans nos données stockées dans une base de données par exemple)_, tu peux utiliser cet identifiant comme `key`.
+</Admonition>
+
+## 📦 Les props
+
+Les **props** _(ou propriétés)_ sont des arguments que l'on peut passer à un composant React.  
+Je ne vais pas trop rentrer dans les détails ici, car on va les voir dans l'article d'après !
+
+Mais pour te donner un aperçu, voici comment on peut passer des **props** à un composant :
+
+<Tabs>
+  <TabItem value="jsx" label="JSX">
+    ```jsx
+    const Button = (props) => {
+      return <button onClick={props.onClick}>{props.children}</button>;
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="tsx" label="TSX">
+    ```tsx
+    type ButtonProps = {
+      onClick: () => void;
+      children: React.ReactNode;
+    };
+
+    const Button = (props: ButtonProps) => {
+      return <button onClick={props.onClick}>{props.children}</button>;
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+Ici, on a un composant `Button` qui prend deux **props** : `onClick` et `children`.  
+`onClick` est une fonction qui sera appelée lorsqu'on cliquera sur le bouton, et `children` est tout ce qui se trouve entre les balises ouvrante et fermante du composant.
+
+## Conclusion
+
+Alors, pas mal le JSX non ? 😏
