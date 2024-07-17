@@ -128,10 +128,11 @@ Pas mal la lisibilité apportée par le **JSX** non ? 😄
 <Admonition type="warning" title="Importation de React et de ses exports">
   Au sein de ses pages, tu verras **toujours** que j'importe le contenu de **React** en intégralité _(comme `import React from 'react';`)_.
 
-  Dans la réalité, on va destructurer les exports de **React** pour n'importer que ce dont on a besoin _(comme `import { useState } from 'react';` si on souhaite importer le hook `useState`)_.  
+  Dans la réalité, on va destructurer les exports de **React** pour n'importer que ce dont on a besoin.
+
   Cependant, pour te donner l'information d'où provient chaque élément, je préfère importer **React** en intégralité et que tu puisses visualiser les éléments de **React** utilisés avec leur provenance.
 
-  En reprenant l'exemple du `useState`, cela donnerait :
+  Par exemple, cela donnerait :
   ```jsx
   import React from 'react';
 
@@ -144,4 +145,12 @@ Pas mal la lisibilité apportée par le **JSX** non ? 😄
 
   const [count, setCount] = useState(0);
   ```
+
+  Pour tes projets, privilégies la seconde méthode pour ne pas surcharger ton code inutilement et surtout importer **seulement** ce dont tu as besoin !
+
+  J'espère que tu comprends mieux pourquoi je fais comme ça pour ces ressources 😉
 </Admonition>
+
+## 🧩 Intégration de JavaScript dans le JSX
+
+Mais l'un des autres avantages du **JSX** est la possibilité d'ajouter du JavaScript directement dans le code !
