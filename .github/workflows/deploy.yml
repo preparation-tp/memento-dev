@@ -43,7 +43,7 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
         run: |
-          rsync -avz --info=ERROR --delete -e "ssh -i ~/.ssh/id_ed25519" ./ $VPS_USER@$VPS_HOST:$VPS_DEPLOY_PATH --exclude=node_module --exclude=.git
+          rsync -avz -q --delete -e "ssh -i ~/.ssh/id_ed25519" ./ $VPS_USER@$VPS_HOST:$VPS_DEPLOY_PATH --exclude=node_module --exclude=.git
 
       - name: Install dependencies on server
         env:
