@@ -33,6 +33,10 @@ const examsLinks = [
     to: "/titres-professionnels/DWWM/intro",
   },
   {
+    label: "Se préparer",
+    to: "/titres-professionnels/se-preparer",
+  },
+  {
     label: "Archives",
     to: "/category/%EF%B8%8F-archives",
   },
