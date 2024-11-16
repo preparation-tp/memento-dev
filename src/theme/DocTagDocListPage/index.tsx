@@ -8,7 +8,7 @@ import {
 
 import SearchMetadata from "@theme/SearchMetadata";
 import Translate from "@docusaurus/Translate";
-import Unlisted from "@theme/Unlisted";
+// import Unlisted from "@theme/Unlisted";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
@@ -62,7 +62,8 @@ const DocTagDocListPageContent = (props: Props & { title: string }) => {
       <div className="container margin-vert--lg">
         <div className="row">
           <main className="col col--8 col--offset-2">
-            {props.tag.unlisted && <Unlisted />}
+            {/* {props.tag.unlisted && <Unlisted />} */}
+            {props.tag.unlisted && <p>Non listé</p>}
 
             <header className="mb-8">
               <Heading as="h1" className="font-bold text-4xl mb-2">
@@ -77,7 +78,7 @@ const DocTagDocListPageContent = (props: Props & { title: string }) => {
                   id="theme.tags.tagsPageLink"
                   description="The label of the link targeting the tag list page"
                 >
-                  View All Tags
+                  Voir tous les tags
                 </Translate>
               </Link>
             </header>
