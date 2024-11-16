@@ -144,10 +144,13 @@
   @apply bg-violet-100 dark:bg-violet-950 dark:text-white;
 }
 .markdown .tabs-holder + * {
-  @apply relative p-4 !mt-0 z-0;
+  /* @apply relative p-4 !mt-0 z-0; */
 }
 .markdown .tabs-holder + * > * {
   @apply !mt-0;
+}
+.markdown .tabs-holder + * > * > * + .admonition {
+  @apply mt-4;
 }
 .markdown .tabs-holder + *::before {
   @apply absolute -z-10 content-[''] w-full bg-violet-50 dark:bg-gray-50/5 h-[calc(100%+2em)] bottom-0 left-0 rounded-md;
@@ -217,13 +220,13 @@
   --ifm-alert-border-color: #9333ea;
 }
 
-table {
-  @apply table w-full;
-}
-
 nav.navbar.navbar--dark {
   --ifm-navbar-background-color: #1f1c23;
 }
 footer.footer.footer--dark {
   --ifm-footer-background-color: #211e25;
+}
+
+button.button.button--primary {
+  @apply bg-violet-800 text-violet-200 hover:bg-violet-900;
 }

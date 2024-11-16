@@ -1,21 +1,25 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import HeaderIllustration from "@site/static/illustrations/notes.svg";
+import PwaBanner from "../components/PwaBanner";
 import Heading from "@theme/Heading";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 
 const Home = () => {
   return (
-    <Layout
-      title={`Synthèses et ressources pour développeurs`}
-      description="Découvrez des synthèses et ressources open-source dans le développement informatique, rédigées par une communauté de développeurs."
-    >
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
-    </Layout>
+    <>
+      <Layout
+        title={`Synthèses et ressources pour développeurs`}
+        description="Découvrez des synthèses et ressources open-source dans le développement informatique, rédigées par une communauté de développeurs."
+      >
+        <HomepageHeader />
+        <main>
+          <HomepageFeatures />
+        </main>
+      </Layout>
+      <PwaBanner />
+    </>
   );
 };
 
