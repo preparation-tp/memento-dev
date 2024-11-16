@@ -50,7 +50,7 @@ jobs:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |          
-          ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "cd $VPS_DEPLOY_PATH && pnpm install"
+          ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && cd $VPS_DEPLOY_PATH && pnpm install"
           
       - name: Restart Docusaurus server
         env:
