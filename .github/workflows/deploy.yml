@@ -43,12 +43,13 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
         run: |
-          rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519" ./ $VPS_USER@$VPS_HOST:$VPS_DEPLOY_PATH --exclude=node_module --exclude=.git
+          rsync -avz --info=ERROR --delete -e "ssh -i ~/.ssh/id_ed25519" ./ $VPS_USER@$VPS_HOST:$VPS_DEPLOY_PATH --exclude=node_module --exclude=.git
 
       - name: Install dependencies on server
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
         run: |          
           ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && cd $VPS_DEPLOY_PATH && pnpm install"
           
