@@ -98,7 +98,7 @@
 }
 
 .markdown h1 {
-  @apply text-4xl font-bold;
+  @apply text-4xl font-bold mt-4;
 }
 
 .markdown * + h2 {
@@ -171,12 +171,12 @@
 }
 .markdown ol li + li,
 .markdown ul li + li {
-  @apply mt-2;
+  @apply !mt-1;
 }
 
 .markdown
   *:not(summary, .tabs__item, .tabs, .tab-content *, .no-mt, .no-mt *, p, li *)
-  + *:not(br, ul, ol) {
+  + *:not(br, ul, ol, h1, h2, h3, h4, h5, h6, li) {
   @apply !mt-4;
 }
 .token-line,
@@ -214,4 +214,12 @@
   --ifm-alert-background-color: var(--admonition-example-background);
   --ifm-alert-foreground-color: var(--admonition-example-foreground);
   --ifm-alert-border-color: #9333ea;
+}
+
+table {
+  @apply table w-full;
+}
+
+table thead {
+  @apply w-full;
 }
