@@ -18,7 +18,7 @@ const Home = () => {
           <HomepageFeatures />
         </main>
       </Layout>
-      <PwaBanner />
+      {/* <PwaBanner /> */}
     </>
   );
 };
