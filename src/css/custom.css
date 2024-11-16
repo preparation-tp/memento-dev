@@ -219,7 +219,3 @@
 table {
   @apply table w-full;
 }
-
-table thead {
-  @apply w-full;
-}
