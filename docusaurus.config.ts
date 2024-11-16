@@ -75,6 +75,65 @@ const config: Config = {
   },
 
   plugins: [
+    [
+      "@docusaurus/plugin-pwa",
+      {
+        debug: false,
+        offlineModeActivationStrategies: [
+          "appInstalled",
+          "standalone",
+          "queryString",
+        ],
+        pwaHead: [
+          {
+            tagName: "link",
+            rel: "icon",
+            href: "/img/favicon.webp",
+          },
+          {
+            tagName: "link",
+            rel: "manifest",
+            href: "/manifest.json",
+          },
+          {
+            tagName: "meta",
+            name: "theme-color",
+            content: "#7c3aed",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-capable",
+            content: "yes",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-status-bar-style",
+            content: "#242526",
+          },
+          {
+            tagName: "link",
+            rel: "apple-touch-icon",
+            href: "/img/favicon.webp",
+          },
+          {
+            tagName: "link",
+            rel: "mask-icon",
+            href: "/img/favicon.webp",
+            color: "#7c3aed",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileImage",
+            content: "/img/favicon.webp",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileColor",
+            content: "#7c3aed",
+          },
+        ],
+      },
+    ],
     async function tailwind() {
       return {
         name: "docusaurus-tailwindcss",

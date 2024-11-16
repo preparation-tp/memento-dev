@@ -25,6 +25,7 @@
   --ifm-color-primary-lightest: #996ae5;
 
   --ifm-alert-background-color-highlight: #ffffff;
+  --ifm-background-color: #f8f6fb;
 
   --docusaurus-highlighted-code-line-bg: #f3e8ff;
 
@@ -218,4 +219,11 @@
 
 table {
   @apply table w-full;
+}
+
+nav.navbar.navbar--dark {
+  --ifm-navbar-background-color: #1f1c23;
+}
+footer.footer.footer--dark {
+  --ifm-footer-background-color: #211e25;
 }
