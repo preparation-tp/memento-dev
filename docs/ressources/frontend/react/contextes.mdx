@@ -81,6 +81,8 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 ```
 
+## Fournir un contexte
+
 Maintenant on peut le dire : notre contexte est prêt à être utilisé !  
 Il ne reste plus qu'à le fournir à notre arborescence de composants en lui créant un `Provider`.
 
@@ -157,3 +159,137 @@ const App = () => {
   );
 };
 ```
+
+## Utilisation d'un contexte
+
+C'est bien beau de créer un contexte, mais comment l'utiliser ?  
+Tu te souviens peut-être du `Consumer` que l'on a évoqué plus tôt, non ?
+
+Et bien, il est temps de le mettre en pratique ! 😁
+
+Pour commencer, nous allons avoir besoin du fameux hook `useContext` de React.  
+Ce hook va nous permettre de récupérer les données du contexte, et ce, directement dans nos composants.
+  
+```tsx title="C.tsx"
+import { useContext } from 'react';
+```
+
+Ensuite, on pensera à importer le contexte que l'on souhaite utiliser :
+
+```tsx title="C.tsx"
+import { ThemeContext } from './ThemeContext';
+```
+
+Et enfin, on va pouvoir utiliser le hook `useContext` pour récupérer les données du contexte :
+
+```tsx title="C.tsx"
+const C = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  return (
+    <>
+      {/** JSX */}
+    </>
+  );
+};
+```
+
+Pas mal, non ? 😉  
+Fini l'arborscence de composants à rallonge, on peut maintenant récupérer les données du contexte directement dans nos composants !
+
+## Les défauts des contextes
+
+Seulement... Un grand pouvoir implique de grandes responsabilités. 🕷️
+
+Bien que les contextes soient très pratiques, il faut prendre en compte quelques points :
+
+- On ne peut pas utiliser les contextes pour tout et n'importe quoi.  
+  Ils sont plutôt adaptés pour diffuser des données qui sont utilisées par plusieurs composants.
+- Les contextes peuvent rendre le code plus difficile à comprendre.
+- L'utilisation de nombreux contextes va faire apparaître ce qu'on appelle le **context hell**.
+
+### Le context hell
+
+Dans cet article, nous avons vu comment créer un contexte et l'utiliser.  
+Et par chance, nous n'avons pas encore rencontré le **context hell**.
+
+Mais maintenant, que se passe-t-il si on a besoin de plusieurs contextes _(plusieurs dizaines par exemple !)_ dans notre application ?  
+On va se retrouver avec une arborescence de composants qui va devenir de plus en plus difficile à comprendre et à maintenir.
+
+Et c'est ça, le **context hell**.
+
+<Admonition type="example" title="Exemple de context hell">  
+  ```tsx
+root.render(
+  <StrictMode>
+    <UserProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <PostProvider>
+            <SettingsProvider>
+              <SocketProvider>
+                <FriendProvider>
+                  <NotificationProvider>
+                    <ChatProvider>
+                      <MusicProvider>
+                        <VideoProvider>
+                          <GameProvider>
+                            <WeatherProvider>
+                              <NewsProvider>
+                                <CalendarProvider>
+                                  <TaskProvider>
+                                    <NoteProvider>
+                                      <App />
+                                    </NoteProvider>
+                                  </TaskProvider>
+                                </CalendarProvider>
+                              </NewsProvider>
+                            </WeatherProvider>
+                          </GameProvider>
+                        </VideoProvider>
+                      </MusicProvider>
+                    </ChatProvider>
+                  </NotificationProvider>
+                </FriendProvider>
+              </SocketProvider>
+            </SettingsProvider>
+          </PostProvider>
+        </LanguageProvider>
+      </ThemeProvider>
+    </UserProvider>
+  </StrictMode>
+);
+  ```
+
+  Maintenant, demande à un développeur d'inverser le provider `UserProvider` avec le provider `NoteProvider`.  
+  C'est jouable sans difficulté, mais si tu entends des cris de désespoir, c'est normal. 😅
+</Admonition>
+
+Pour éviter de tomber dans le **context hell**, il est important de bien réfléchir à l'utilisation des contextes dans notre application avec ces quelques questions :
+
+- Est-ce que l'utilisation d'un contexte est vraiment nécessaire pour ce cas d'usage ?
+- Est-ce que le contexte est utilisé par plusieurs composants ?
+- Est-ce que le contexte est utilisé par des composants éloignés dans l'arborescence ?
+
+Mais alors, si tu as besoin d'autant de contextes dans ton application, comment faire ?  
+Et bien, il existe des solutions pour éviter le **context hell** :
+
+- Utiliser des bibliothèques tierces comme Redux _(solution lourde, mais très puissante)_
+- Créer un nouveau composant qui va regrouper tous les contextes _(solution plus légère, mais plus difficile à maintenir)_
+
+N'étant pas un grand fan de Redux, je te conseille plutôt la deuxième solution.  
+Mais si tu veux en savoir plus sur Redux, n'hésite pas à consulter la [documentation officielle](https://redux.js.org/) !
+
+### Résoudre le context hell avec un composant dédié
+
+Parlons de ce fameux composant qui va regrouper tous les contextes !  
+On ne parle pas ici d'un simple composant `Providers` qui va imbriquer tous les `Provider` de nos contextes, mais d'une solution plus élégante.
+
+Après tout, nous sommes des ~feignants~ développeurs, non ? 😏
+
+Réfléchissons à ce que l'on veut faire :
+
+- On veut pouvoir regrouper tous les contextes dans un seul composant.
+- On veut pouvoir ajouter ou supprimer des contextes facilement.
+- On veut pouvoir facilement les ordonner entre eux.
+- On veut éviter le **context hell**.
