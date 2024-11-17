@@ -249,3 +249,11 @@ Et voilà, tu sais maintenant comment utiliser `useReducer` dans une application
 Tout ce qui t'a été montré plus haut fonctionne, mais est-ce que pour autant ce code est qualitatif ? 🤔
 
 **Non !**
+
+Pourquoi ? Déjà, on a tout mis dans le même fichier, ce qui n'est pas très propre.  
+Mais surtout, notre code n'est pas à l'abri d'erreurs.
+
+Que se passerait-il si on se trompait dans le type de l'action ?  
+Ou si on oubliait de passer un payload à l'action `SET` ?
+
+C'est ce genre de comportements que l'on veut éviter pour nous assurer le bon fonctionnement de notre application.
