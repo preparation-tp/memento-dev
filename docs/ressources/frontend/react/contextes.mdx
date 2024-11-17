@@ -353,12 +353,68 @@ const Providers = ({ providers, children }: ProvidersProps) => {
 
 <Admonition type="tip" title="reduceRight">
   `reduceRight` est une méthode qui va permettre de réduire un tableau _(ou un objet)_ en appliquant une fonction de rappel de droite à gauche.  
-  Cela va nous permettre de réduire un tableau de `Provider` en les imbriquant les uns dans les autres sans se soucier de l'ordre.
+  Cela va nous permettre de réduire un tableau de `Provider` en les imbriquant les uns dans les autres sans se soucier de l'ordre _(qui est défini par le tableau)_.
+
+  Dans l'idée, on commence par le **dernier** élément du tableau, et on l'imbrique avec l'élément **précédent** du tableau et ainsi de suite jusqu'au **premier** élément du tableau.  
+  Chaque itération va créer un nouvel élément imbriqué dans le précédent, en appelant la fonction `nest` qui est passée en argument.
+
+  <details>
+    <summary>Plus d'informations sur `reduceRight`</summary>
+
+    Ajoutons des logs dans notre fonction `nest` pour mieux comprendre le fonctionnement de `reduceRight` :
+
+    ```jsx
+    const providers = [<Provider1 />, <Provider2 />, <Provider3 />, <Provider4 />, <Provider5 />];
+    
+    const nest = (children, component) => {
+      console.log(`Composant à imbriquer : ${children.type.name}. Composant recevant l'imbriquation : ${component.type.name}.`);
+      return React.cloneElement(component, {}, children);
+    };
+
+    const Providers = ({ children }) => {
+      return providers.reduceRight(nest, children);
+    };
+
+    root.render(
+      <Providers>
+        <App />
+      </Providers>
+    );
+    ```
+
+    Voici les logs qui vont s'afficher :
+    ```txt
+    Composant à imbriquer : App. Composant recevant l'imbriquation : Provider5.
+    Composant à imbriquer : Provider5. Composant recevant l'imbriquation : Provider4.
+    Composant à imbriquer : Provider4. Composant recevant l'imbriquation : Provider3.
+    Composant à imbriquer : Provider3. Composant recevant l'imbriquation : Provider2.
+    Composant à imbriquer : Provider2. Composant recevant l'imbriquation : Provider1.
+    ```
+
+    Le premier `Provider` du tableau _(`<Provider1 />`)_ sera donc le `Provider` le plus "haut" dans l'arborescence, tandis que le dernier _(`<Provider5 />`) sera le plus "bas".
+
+    Nous obtiendrons donc cette arborescence de composants :
+    ```jsx
+    <Provider1>
+      <Provider2>
+        <Provider3>
+          <Provider4>
+            <Provider5>
+              <App />
+            </Provider5>
+          </Provider4>
+        </Provider3>
+      </Provider2>
+    </Provider1>
+    ```
+
+    Pour mieux comprendre le fonctionnement de `reduceRight`, n'hésite pas à consulter la [documentation officielle](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/reduceRight).
+  </details>
 </Admonition>
 
 Et voilà ! Il ne nous reste plus qu'à utiliser notre composant `Providers` pour regrouper tous nos `Provider` :
 
-```tsx
+```tsx title="index.tsx" {3-16} showLineNumbers
 root.render(
   <StrictMode>
     <Providers
@@ -381,3 +437,12 @@ root.render(
 
 Évidemment le fichier contiendra toujours beaucoup de lignes, mais au moins, on a évité le **context hell** !  
 Il sera nettement plus facile de modifier l'ordre des `Provider` ou d'en ajouter de nouveaux.
+
+## Conclusion
+
+Ça casse un peu la tête, mais les contextes sont un outil très puissant pour diffuser des données dans nos applications React.
+
+C'est aussi une excellente solution pour éviter d'utiliser des bibliothèques tierces comme Redux
+_(qui est très bien, mais qui peut être un peu lourd pour des petites applications)_.
+
+Et si tu as besoin de plusieurs contextes dans ton application, n'oublie pas de réfléchir à l'utilisation de notre composant `Providers` pour éviter le **context hell**.
