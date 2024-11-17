@@ -121,7 +121,8 @@
   @apply leading-7;
 }
 
-.markdown p + p {
+.markdown p + p,
+.markdown p + details {
   @apply !mt-4;
 }
 
