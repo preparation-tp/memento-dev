@@ -135,3 +135,117 @@ Naturellement, on va commencer par importer le hook `useReducer` :
 ```jsx
 import { useReducer } from 'react';
 ```
+
+Ensuite, on va définir notre état initial :
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx
+    const initialState = { count: 0 };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx
+    type State = {
+      count: number;
+    };
+
+    const initialState: State = {
+      count: 0,
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+On peut maintenant définir notre reducer :
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx
+    const reducer = (state, action) => {
+      switch (action.type) {
+        case "INCREMENT":
+          return { count: state.count + 1 };
+        case "DECREMENT":
+          return { count: state.count - 1 };
+        case "RESET":
+          return { count: 0 };
+        case "SET":
+          return { count: action.payload };
+        default:
+          return state;
+      }
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx
+    type State = {
+      count: number;
+    };
+
+    type Action = {
+      type: "INCREMENT" | "DECREMENT" | "RESET" | "SET";
+      payload?: number;
+    };
+
+    const reducer = (state: State, action: Action) => {
+      switch (action.type) {
+        case "INCREMENT":
+          return { count: state.count + 1 };
+        case "DECREMENT":
+          return { count: state.count - 1 };
+        case "RESET":
+          return { count: 0 };
+        case "SET":
+          return { count: action.payload! };
+        default:
+          return state;
+      }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+<Admonition type="quote" title="C'est quoi `action.payload!` ?">
+  La propriété `payload` de l'action est optionnelle. Il s'agit d'une convention pour passer des données à l'action.
+
+  Le `!` après `action.payload` signifie que l'on est sûr que `payload` est défini.  
+  Cela permet d'éviter une erreur de type avec TypeScript.
+
+  Dans le cas du type `SET`, le payload sera défini obligatoirement avec un nombre qui sera la nouvelle valeur de la propriété `count` de l'état.
+</Admonition>
+
+Enfin, on peut utiliser le hook `useReducer` dans notre composant :
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx
+    const [state, dispatch] = useReducer(reducer, initialState);
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx
+    const [state, dispatch] = useReducer(reducer, initialState);
+    ```
+  </TabItem>
+</Tabs>
+
+`state` contient l'état actuel, et `dispatch` est une fonction qui permet d'envoyer une action au reducer.
+
+Pour modifier l'état, on va donc appeler `dispatch` avec une action :
+
+```jsx
+dispatch({ type: 'INCREMENT' });
+```
+
+Et voilà, tu sais maintenant comment utiliser `useReducer` dans une application React ! 🎉
+
+## On nettoie tout ça !
+
+Tout ce qui t'a été montré plus haut fonctionne, mais est-ce que pour autant ce code est qualitatif ? 🤔
+
+**Non !**
