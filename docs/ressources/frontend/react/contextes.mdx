@@ -1,0 +1,92 @@
+---
+sidebar_position: 7
+title: "Le hook useContext de React"
+description: "Découvrez comment utiliser le hook useContext de React pour gérer les contextes dans vos applications."
+tags:
+  - Frontend
+  - React
+  - JavaScript/TypeScript
+  - Bibliothèque
+  - Interface utilisateur (UI)
+---
+
+import Button from '@site/src/components/Button';
+import Quiz from '@site/src/components/Quiz';
+import Admonition from '@theme/Admonition';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+# L'utilisation des contextes avec React
+
+## Introduction
+
+Les contextes sont un moyen de diffuser des données au travers des composants, sans avoir à les passer explicitement à chaque composant.  
+Pour faire simple, imaginons une arborescence de plusieurs composants imbriqués les uns dans les autres :
+
+```tsx
+import type { Dispatch, SetStateAction } from 'react';
+
+import { useState } from 'react';
+
+type Theme = 'light' | 'dark';
+
+const App = () => {
+  const [theme, setTheme] = useState<Theme>('light');
+
+  return <A theme={theme} setTheme={theme} />
+};
+
+const A = ({ theme, setTheme }: { theme: Theme, setTheme: Dispatch<SetStateAction<Theme>> }) => {
+  return <B theme={theme} setTheme={setTheme} />
+};
+
+const B = ({ theme, setTheme }: { theme: Theme, setTheme: Dispatch<SetStateAction<Theme>> }) => {
+  return <C theme={theme} setTheme={setTheme} />
+};
+```
+
+Fastidieux, n'est-ce pas ? On transmet à chaque fois les mêmes données, et ce, à chaque niveau de l'arborescence.
+
+C'est là que les contextes entrent en jeu !  
+On va pouvoir alors déclarer notre contexte _(qui contiendra les données à diffuser)_ et le fournir à un niveau supérieur de l'arborescence.
+
+## Déclaration d'un contexte
+
+Avant de penser à notre contexte, on va réfléchir à ce que l'on veut diffuser et les valeurs par défaut.  
+Si on reprend notre exemple avec le thème clair et sombre, on sait que l'on va vouloir diffuser la valeur du thème et une fonction pour le changer.
+
+On va donc préparer le terrain en créant un fichier `ThemeContext.tsx` :
+
+```tsx
+import type { Dispatch, SetStateAction } from 'react';
+
+import { createContext } from 'react';
+
+type Theme = 'light' | 'dark';
+
+type ThemeContextType = {
+  theme: Theme;
+  setTheme: Dispatch<SetStateAction<Theme>>;
+};
+```
+
+Mais évidemment, on ne peut pas s'arrêter là.  
+Pour le moment nous n'avons que la forme de notre contexte, il va falloir le créer et le fournir à notre arborescence de composants.
+
+```tsx
+// On crée notre contexte, avec une valeur par défaut : un thème clair
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  setTheme: () => {},
+});
+```
+
+Maintenant on peut le dire : notre contexte est prêt à être utilisé !  
+Il ne reste plus qu'à le fournir à notre arborescence de composants en lui créant un `Provider`.
+
+<Admonition type="quote" title="Un Provider ?">
+  Un `Provider` est un composant qui va permettre de diffuser les données du contexte à ses enfants.  
+  Il est important de noter que le `Provider` doit être placé **au-dessus** des composants qui vont utiliser le contexte.
+</Admonition>
+
+```tsx
