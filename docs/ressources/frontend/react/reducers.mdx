@@ -257,3 +257,263 @@ Que se passerait-il si on se trompait dans le type de l'action ?
 Ou si on oubliait de passer un payload à l'action `SET` ?
 
 C'est ce genre de comportements que l'on veut éviter pour nous assurer le bon fonctionnement de notre application.
+
+Pour contrer ces problèmes, on va créer des actions et des types d'actions pour garantir la cohérence de notre code.
+
+### Création des types d'actions
+
+Nos types d'actions seront tous des chaînes de caractères. On va donc pouvoir les définir sous forme de constantes.
+
+```jsx
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
+export const RESET = 'RESET';
+export const SET = 'SET';
+```
+
+<Admonition type="tip" title="Regrouper les exports">
+  Et là, tu te dis : "Pourquoi ne pas regrouper les exports dans un seul objet ?"
+
+  Bien vu ! Et pour TypeScript, on peut aller encore plus loin en créant un `enum` pour les types d'actions 😉
+
+  <Tabs>
+    <TabItem value="js" label="JavaScript">
+      ```jsx
+      export const CounterActionTypes = {
+        INCREMENT: 'INCREMENT',
+        DECREMENT: 'DECREMENT',
+        RESET: 'RESET',
+        SET: 'SET',
+      };
+      ```
+    </TabItem>
+
+    <TabItem value="ts" label="TypeScript">
+      ```tsx
+      export const enum CounterActionTypes {
+        INCREMENT = 'INCREMENT',
+        DECREMENT = 'DECREMENT',
+        RESET = 'RESET',
+        SET = 'SET',
+      }
+      ```
+    </TabItem>
+  </Tabs>
+</Admonition>
+
+### Typage des actions
+
+Si tu utilises JavaScript, je suis désolé de te dire que tu ne peux pas **fortement** typer les actions.
+
+En revanche, si tu utilises TypeScript, tu peux définir les actions de la manière suivante :
+
+```tsx
+export type CounterAction =
+  | { type: CounterActionTypes.INCREMENT }
+  | { type: CounterActionTypes.DECREMENT }
+  | { type: CounterActionTypes.RESET }
+  | { type: CounterActionTypes.SET; payload: number };
+```
+
+Tu pourras alors utiliser `CounterAction` pour typer les actions de ton reducer :
+
+```tsx
+const reducer = (state: State, action: CounterAction) => {
+  switch (action.type) {
+    case CounterActionTypes.INCREMENT:
+      return { count: state.count + 1 };
+    case CounterActionTypes.DECREMENT:
+      return { count: state.count - 1 };
+    case CounterActionTypes.RESET:
+      return { count: 0 };
+    case CounterActionTypes.SET:
+      return { count: action.payload };
+    default:
+      return state;
+  }
+};
+```
+
+### Action creators
+
+Pour éviter de se tromper dans le type de l'action, on peut se créer des fonctions qui vont nous permettre de créer des actions.
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx
+    export const actions = {
+      increment: () => ({ type: CounterActionTypes.INCREMENT }),
+      decrement: () => ({ type: CounterActionTypes.DECREMENT }),
+      reset: () => ({ type: CounterActionTypes.RESET }),
+      set: (value) => ({ type: CounterActionTypes.SET, payload: value }),
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx
+    export const actions = {
+      increment: (): CounterAction => ({ type: CounterActionTypes.INCREMENT }),
+      decrement: (): CounterAction => ({ type: CounterActionTypes.DECREMENT }),
+      reset: (): CounterAction => ({ type: CounterActionTypes.RESET }),
+      set: (value: number): CounterAction => ({ type: CounterActionTypes.SET, payload: value }),
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+Maintenant le dispatch de nos actions sera beaucoup plus simple et éviter davantage les erreurs lors du développement !
+
+```jsx
+dispatch(actions.increment());
+dispatch(actions.set(10));
+```
+
+## Les fichiers complets
+
+On a vu beaucoup de chose et les fichiers sont un peu éparpillés.  
+Pour t'aider à mieux comprendre le fonctionnement du hook `useReducer` et comment l'implementer, voici les fichiers complets :
+
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx title="/src/reducers/counterReducer.js" showLineNumbers
+    const CounterActionTypes = {
+      INCREMENT: 'INCREMENT',
+      DECREMENT: 'DECREMENT',
+      RESET: 'RESET',
+      SET: 'SET',
+    };
+
+    export const initialState = { count: 0 };
+
+    export const reducer = (state, action) => {
+      switch (action.type) {
+        case CounterActionTypes.INCREMENT:
+          return { count: state.count + 1 };
+        case CounterActionTypes.DECREMENT:
+          return { count: state.count - 1 };
+        case CounterActionTypes.RESET:
+          return { count: 0 };
+        case CounterActionTypes.SET:
+          return { count: action.payload };
+        default:
+          return state;
+      }
+    };
+
+    export const actions = {
+      increment: () => ({ type: CounterActionTypes.INCREMENT }),
+      decrement: () => ({ type: CounterActionTypes.DECREMENT }),
+      reset: () => ({ type: CounterActionTypes.RESET }),
+      set: (value) => ({ type: CounterActionTypes.SET, payload: value }),
+    };
+    ```
+
+    ```jsx title="/src/components/Counter.jsx" showLineNumbers
+    import { initialState, actions, reducer } from '../reducers/counterReducer';
+    import { useReducer } from 'react';
+
+    const Counter = () => {
+      const [state, dispatch] = useReducer(reducer, initialState);
+
+      return (
+        <div>
+          <p>Count: {state.count}</p>
+          
+          <button onClick={() => dispatch(actions.increment())}>
+            Increment
+          </button>
+
+          <button onClick={() => dispatch(actions.decrement())}>
+            Decrement
+          </button>
+
+          <button onClick={() => dispatch(actions.reset())}>
+            Reset
+          </button>
+
+          <button onClick={() => dispatch(actions.set(10))}>
+            Set counter to 10
+          </button>
+        </div>
+      );
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="/src/reducers/counterReducer.ts" showLineNumbers
+    const enum CounterActionTypes {
+      INCREMENT = 'INCREMENT',
+      DECREMENT = 'DECREMENT',
+      RESET = 'RESET',
+      SET = 'SET',
+    }
+
+    type State = {
+      count: number;
+    };
+
+    type Action =
+      | { type: CounterActionTypes.INCREMENT }
+      | { type: CounterActionTypes.DECREMENT }
+      | { type: CounterActionTypes.RESET }
+      | { type: CounterActionTypes.SET; payload: number };
+
+    export const initialState: State = { count: 0 };
+
+    export const reducer = (state: State, action: Action) => {
+      switch (action.type) {
+        case CounterActionTypes.INCREMENT:
+          return { count: state.count + 1 };
+        case CounterActionTypes.DECREMENT:
+          return { count: state.count - 1 };
+        case CounterActionTypes.RESET:
+          return { count: 0 };
+        case CounterActionTypes.SET:
+          return { count: action.payload };
+        default:
+          return state;
+      }
+    };
+
+    export const actions = {
+      increment: (): Action => ({ type: CounterActionTypes.INCREMENT }),
+      decrement: (): Action => ({ type: CounterActionTypes.DECREMENT }),
+      reset: (): Action => ({ type: CounterActionTypes.RESET }),
+      set: (value: number): Action => ({ type: CounterActionTypes.SET, payload: value }),
+    };
+    ```
+
+    ```tsx title="/src/components/Counter.tsx" showLineNumbers
+    import { initialState, actions, reducer } from '../reducers/counterReducer';
+    import { useReducer } from 'react';
+
+    const Counter = () => {
+      const [state, dispatch] = useReducer(reducer, initialState);
+
+      return (
+        <div>
+          <p>Count: {state.count}</p>
+          
+          <button onClick={() => dispatch(actions.increment())}>
+            Increment
+          </button>
+
+          <button onClick={() => dispatch(actions.decrement())}>
+            Decrement
+          </button>
+
+          <button onClick={() => dispatch(actions.reset())}>
+            Reset
+          </button>
+
+          <button onClick={() => dispatch(actions.set(10))}>
+            Set counter to 10
+          </button>
+        </div>
+      );
+    };
+    ```
+  </TabItem>
+</Tabs>
