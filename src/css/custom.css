@@ -121,7 +121,8 @@
   @apply leading-7;
 }
 
-.markdown p + p {
+.markdown p + p,
+.markdown p + details {
   @apply !mt-4;
 }
 
@@ -144,7 +145,7 @@
   @apply bg-violet-100 dark:bg-violet-950 dark:text-white;
 }
 .markdown .tabs-holder + * {
-  /* @apply relative p-4 !mt-0 z-0; */
+  @apply relative p-4 !mt-0 z-0;
 }
 .markdown .tabs-holder + * > * {
   @apply !mt-0;
