@@ -293,3 +293,91 @@ Réfléchissons à ce que l'on veut faire :
 - On veut pouvoir ajouter ou supprimer des contextes facilement.
 - On veut pouvoir facilement les ordonner entre eux.
 - On veut éviter le **context hell**.
+
+Et si on créait un composant `Providers` qui va nous permettre de faire tout ça ?
+
+```tsx title="Providers.tsx" {8-16} showLineNumbers
+import type { ReactNode } from 'react';
+
+type ProvidersProps = {
+  providers: ReactNode[];
+  children: ReactNode;
+};
+
+const Providers = ({ providers, children }: ProvidersProps) => {
+  return (
+    <>
+      {/** Ouverture des providers */}
+        {children}
+      {/** Fermeture des providers */}
+    </>
+  );
+};
+```
+
+Ici on ne va pas remettre une cascade de `Provider` comme on a pu le voir plus tôt.  
+On va chercher à créer une fonction qui va nous permettre de les imbriquer les uns dans les autres.
+
+```tsx
+const nest = (children: ReactNode, component: ReactNode) => {
+  return React.cloneElement(component, {}, children);
+};
+```
+
+<Admonition type="tip" title="React.cloneElement">
+  `React.cloneElement` est une fonction qui va permettre de cloner un élément React en lui passant de nouvelles propriétés.  
+  Cela va nous permettre de créer une nouvelle arborescence de composants sans modifier l'arborescence actuelle.
+
+  Le premier argument est l'élément à cloner _(le composant)_, et le deuxième argument est un objet contenant les nouvelles propriétés.  
+  Le troisième argument est le contenu de l'élément cloné _(les enfants)_.
+</Admonition>
+
+Et maintenant, on va pouvoir utiliser notre fonction `nest` pour imbriquer nos `Provider` en utilisant la méthode `reduceRight` :
+
+```tsx title="Providers.tsx" {18-26} showLineNumbers
+import type { ReactNode } from 'react';
+
+type ProvidersProps = {
+  providers: ReactNode[];
+  children: ReactNode;
+};
+
+const nest = (children: ReactNode, component: ReactNode) => {
+  return React.cloneElement(component, {}, children);
+};
+
+const Providers = ({ providers, children }: ProvidersProps) => {
+  return providers.reduceRight(nest, children);
+};
+```
+
+<Admonition type="tip" title="reduceRight">
+  `reduceRight` est une méthode qui va permettre de réduire un tableau _(ou un objet)_ en appliquant une fonction de rappel de droite à gauche.  
+  Cela va nous permettre de réduire un tableau de `Provider` en les imbriquant les uns dans les autres sans se soucier de l'ordre.
+</Admonition>
+
+Et voilà ! Il ne nous reste plus qu'à utiliser notre composant `Providers` pour regrouper tous nos `Provider` :
+
+```tsx
+root.render(
+  <StrictMode>
+    <Providers
+      providers={[
+        <UserProvider />,
+        <ThemeProvider />,
+        <LanguageProvider />,
+        <PostProvider />,
+        <SettingsProvider />,
+        <SocketProvider />,
+        <FriendProvider />,
+        // ...
+      ]}
+    >
+      <App />
+    </Providers>
+  </StrictMode>
+);
+```
+
+Évidemment le fichier contiendra toujours beaucoup de lignes, mais au moins, on a évité le **context hell** !  
+Il sera nettement plus facile de modifier l'ordre des `Provider` ou d'en ajouter de nouveaux.
