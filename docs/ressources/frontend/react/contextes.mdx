@@ -25,7 +25,7 @@ Pour faire simple, imaginons une arborescence de plusieurs composants imbriqués
 
 <Tabs>
   <TabItem value="js" label="JavaScript">
-    ```tsx title="App.jsx" showLineNumbers
+    ```jsx title="App.jsx" showLineNumbers
     import { useState } from 'react';
 
     const App = () => {
@@ -83,7 +83,7 @@ On va donc préparer le terrain en créant un fichier `ThemeContext.jsx` _(ou `T
 
 <Tabs>
   <TabItem value="js" label="JavaScript">
-    ```tsx title="ThemeContext.jsx" showLineNumbers
+    ```jsx title="ThemeContext.jsx" showLineNumbers
     import { createContext } from 'react';
 
     // On crée notre contexte, avec une valeur par défaut : un thème clair
@@ -101,7 +101,7 @@ On va donc préparer le terrain en créant un fichier `ThemeContext.jsx` _(ou `T
     import { createContext } from 'react';
 
     // On crée un type pour les valeurs de thème
-    type Theme = 'light' | 'dark';
+    export type Theme = 'light' | 'dark';
 
     // On crée un type pour notre contexte
     type ThemeContextType = {
@@ -132,60 +132,110 @@ Un contexte React est un objet qui contient deux propriétés : `Provider` et `C
 Le `Provider` est un composant qui va permettre de diffuser les données du contexte à ses enfants.  
 Le `Consumer` est un composant qui va permettre de récupérer les données du contexte.
 
-```tsx title="App.tsx"
-import { useState } from 'react';
 
-const App = () => {
-  const [theme, setTheme] = useState<Theme>('light');
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx title="App.jsx"
+    import { useState } from 'react';
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <A />
-    </ThemeContext.Provider>
-  );
-};
-```
+    const App = () => {
+      const [theme, setTheme] = useState('light');
+
+      return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          <A />
+        </ThemeContext.Provider>
+      );
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="App.tsx"
+    import type { Theme } from './ThemeContext';
+
+    import { useState } from 'react';
+
+    const App = () => {
+      const [theme, setTheme] = useState<Theme>('light');
+
+      return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          <A />
+        </ThemeContext.Provider>
+      );
+    };
+    ```
+  </TabItem>
+</Tabs>
 
 Mais on peut aller encore plus loin, en créant un `Provider` dédié à notre contexte !  
 Cela permettra de simplifier l'arborescence de composants et de rendre le code plus lisible :
 
-```tsx title="ThemeContext.tsx" {21-29} showLineNumbers
-import type { ReactNode } from 'react';
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx title="ThemeContext.jsx" {8-16} showLineNumbers
+    import { createContext, useState } from 'react';
 
-import { createContext, useState } from 'react';
+    const ThemeContext = createContext({
+      theme: 'light',
+      setTheme: () => {},
+    });
 
-type Theme = 'light' | 'dark';
+    const ThemeProvider = ({ children }) => {
+      const [theme, setTheme] = useState('light');
 
-type ThemeContextType = {
-  theme: Theme;
-  setTheme: Dispatch<SetStateAction<Theme>>;
-};
+      return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          {children}
+        </ThemeContext.Provider>
+      );
+    };
 
-const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light',
-  setTheme: () => {},
-});
+    export { ThemeContext, ThemeProvider };
+    ```
+  </TabItem>
 
-type ThemeProviderProps = {
-  children: ReactNode;
-};
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="ThemeContext.tsx" {21-29} showLineNumbers
+    import type { ReactNode } from 'react';
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<Theme>('light');
+    import { createContext, useState } from 'react';
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
+    export type Theme = 'light' | 'dark';
 
-export { ThemeContext, ThemeProvider };
-```
+    type ThemeContextType = {
+      theme: Theme;
+      setTheme: Dispatch<SetStateAction<Theme>>;
+    };
+
+    const ThemeContext = createContext<ThemeContextType>({
+      theme: 'light',
+      setTheme: () => {},
+    });
+
+    type ThemeProviderProps = {
+      children: ReactNode;
+    };
+
+    const ThemeProvider = ({ children }: ThemeProviderProps) => {
+      const [theme, setTheme] = useState<Theme>('light');
+
+      return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          {children}
+        </ThemeContext.Provider>
+      );
+    };
+
+    export { ThemeContext, ThemeProvider };
+    ```
+  </TabItem>
+</Tabs>
 
 Et pour terminer, on va maintenant pouvoir directement imbriquer notre `ThemeProvider` dans notre `App` :
 
-```tsx title="App.tsx" {1,5-7} showLineNumbers
+```jsx title="App.jsx (ou App.tsx)" {1,5-7} showLineNumbers
 import { ThemeProvider } from './ThemeContext';
 
 const App = () => {
@@ -207,19 +257,19 @@ Et bien, il est temps de le mettre en pratique ! 😁
 Pour commencer, nous allons avoir besoin du fameux hook `useContext` de React.  
 Ce hook va nous permettre de récupérer les données du contexte, et ce, directement dans nos composants.
   
-```tsx title="C.tsx"
+```jsx title="C.jsx (ou C.tsx)"
 import { useContext } from 'react';
 ```
 
 Ensuite, on pensera à importer le contexte que l'on souhaite utiliser :
 
-```tsx title="C.tsx"
+```jsx title="C.jsx (ou C.tsx)"
 import { ThemeContext } from './ThemeContext';
 ```
 
 Et enfin, on va pouvoir utiliser le hook `useContext` pour récupérer les données du contexte :
 
-```tsx title="C.tsx"
+```jsx title="C.jsx (ou C.tsx)"
 const C = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
@@ -232,7 +282,7 @@ const C = () => {
 ```
 
 Pas mal, non ? 😉  
-Fini l'arborscence de composants à rallonge, on peut maintenant récupérer les données du contexte directement dans nos composants !
+Fini l'arborescence de composants à rallonge, on peut maintenant récupérer les données du contexte directement dans nos composants !
 
 ## Les défauts des contextes
 
@@ -256,7 +306,7 @@ On va se retrouver avec une arborescence de composants qui va devenir de plus en
 Et c'est ça, le **context hell**.
 
 <Admonition type="example" title="Exemple de context hell">  
-  ```jsx title="index.tsx" showLineNumbers
+  ```jsx title="index.jsx (ou index.tsx)" showLineNumbers
   root.render(
     <StrictMode>
       <UserProvider>
@@ -333,33 +383,63 @@ Réfléchissons à ce que l'on veut faire :
 
 Et si on créait un composant `Providers` qui va nous permettre de faire tout ça ?
 
-```tsx title="Providers.tsx" {8-16} showLineNumbers
-import type { ReactNode } from 'react';
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx title="Providers.jsx" showLineNumbers
+    const Providers = ({ providers, children }) => {
+      return (
+        <>
+          {/** Ouverture des providers */}
+            {children}
+          {/** Fermeture des providers */}
+        </>
+      );
+    };
+    ```
+  </TabItem>
 
-type ProvidersProps = {
-  providers: ReactNode[];
-  children: ReactNode;
-};
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="Providers.tsx" {8-16} showLineNumbers
+    import type { ReactNode } from 'react';
 
-const Providers = ({ providers, children }: ProvidersProps) => {
-  return (
-    <>
-      {/** Ouverture des providers */}
-        {children}
-      {/** Fermeture des providers */}
-    </>
-  );
-};
-```
+    type ProvidersProps = {
+      providers: ReactNode[];
+      children: ReactNode;
+    };
+
+    const Providers = ({ providers, children }: ProvidersProps) => {
+      return (
+        <>
+          {/** Ouverture des providers */}
+            {children}
+          {/** Fermeture des providers */}
+        </>
+      );
+    };
+    ```
+  </TabItem>
+</Tabs>
 
 Ici on ne va pas remettre une cascade de `Provider` comme on a pu le voir plus tôt.  
 On va chercher à créer une fonction qui va nous permettre de les imbriquer les uns dans les autres.
 
-```tsx
-const nest = (children: ReactNode, component: ReactNode) => {
-  return React.cloneElement(component, {}, children);
-};
-```
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx
+    const nest = (children, component) => {
+      return React.cloneElement(component, {}, children);
+    };
+    ```
+  </TabItem>
+
+  <TabItem value="ts" label="TypeScript">
+    ```tsx
+    const nest = (children: ReactNode, component: ReactNode) => {
+      return React.cloneElement(component, {}, children);
+    };
+    ```
+  </TabItem>
+</Tabs>
 
 <Admonition type="tip" title="React.cloneElement">
   `React.cloneElement` est une fonction qui va permettre de cloner un élément React en lui passant de nouvelles propriétés.  
@@ -371,22 +451,39 @@ const nest = (children: ReactNode, component: ReactNode) => {
 
 Et maintenant, on va pouvoir utiliser notre fonction `nest` pour imbriquer nos `Provider` en utilisant la méthode `reduceRight` :
 
-```tsx title="Providers.tsx" {18-26} showLineNumbers
-import type { ReactNode } from 'react';
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```jsx title="Providers.jsx" showLineNumbers
+    const nest = (children, component) => {
+      return React.cloneElement(component, {}, children);
+    };
 
-type ProvidersProps = {
-  providers: ReactNode[];
-  children: ReactNode;
-};
+    const Providers = ({ providers, children }) => {
+      return providers.reduceRight(nest, children);
+    };
+    ```
+  </TabItem>
 
-const nest = (children: ReactNode, component: ReactNode) => {
-  return React.cloneElement(component, {}, children);
-};
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="Providers.tsx" showLineNumbers
+    import type { ReactNode } from 'react';
 
-const Providers = ({ providers, children }: ProvidersProps) => {
-  return providers.reduceRight(nest, children);
-};
-```
+    type ProvidersProps = {
+      providers: ReactNode[];
+      children: ReactNode;
+    };
+
+    const nest = (children: ReactNode, component: ReactNode) => {
+      return React.cloneElement(component, {}, children);
+    };
+
+    const Providers = ({ providers, children }: ProvidersProps) => {
+      return providers.reduceRight(nest, children);
+    };
+    ```
+  </TabItem>
+</Tabs>
+
 
 <Admonition type="tip" title="reduceRight">
   `reduceRight` est une méthode qui va permettre de réduire un tableau _(ou un objet)_ en appliquant une fonction de rappel de droite à gauche.  
@@ -451,7 +548,7 @@ const Providers = ({ providers, children }: ProvidersProps) => {
 
 Et voilà ! Il ne nous reste plus qu'à utiliser notre composant `Providers` pour regrouper tous nos `Provider` :
 
-```tsx title="index.tsx" {3-16} showLineNumbers
+```jsx title="index.jsx (ou index.tsx)" {3-16} showLineNumbers
 root.render(
   <StrictMode>
     <Providers
