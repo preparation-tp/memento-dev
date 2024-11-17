@@ -166,13 +166,13 @@ On peut maintenant définir notre reducer :
     const reducer = (state, action) => {
       switch (action.type) {
         case "INCREMENT":
-          return { count: state.count + 1 };
+          return { ...state, count: state.count + 1 };
         case "DECREMENT":
-          return { count: state.count - 1 };
+          return { ...state, count: state.count - 1 };
         case "RESET":
-          return { count: 0 };
+          return { ...state, count: 0 };
         case "SET":
-          return { count: action.payload };
+          return { ...state, count: action.payload };
         default:
           return state;
       }
@@ -194,13 +194,13 @@ On peut maintenant définir notre reducer :
     const reducer = (state: State, action: Action) => {
       switch (action.type) {
         case "INCREMENT":
-          return { count: state.count + 1 };
+          return { ...state, count: state.count + 1 };
         case "DECREMENT":
-          return { count: state.count - 1 };
+          return { ...state, count: state.count - 1 };
         case "RESET":
-          return { count: 0 };
+          return { ...state, count: 0 };
         case "SET":
-          return { count: action.payload! };
+          return { ...state, count: action.payload! };
         default:
           return state;
       }
@@ -321,13 +321,13 @@ Tu pourras alors utiliser `CounterAction` pour typer les actions de ton reducer 
 const reducer = (state: State, action: CounterAction) => {
   switch (action.type) {
     case CounterActionTypes.INCREMENT:
-      return { count: state.count + 1 };
+      return { ...state, count: state.count + 1 };
     case CounterActionTypes.DECREMENT:
-      return { count: state.count - 1 };
+      return { ...state, count: state.count - 1 };
     case CounterActionTypes.RESET:
-      return { count: 0 };
+      return { ...state, count: 0 };
     case CounterActionTypes.SET:
-      return { count: action.payload };
+      return { ...state, count: action.payload };
     default:
       return state;
   }
@@ -389,13 +389,13 @@ Pour t'aider à mieux comprendre le fonctionnement du hook `useReducer` et comme
     export const reducer = (state, action) => {
       switch (action.type) {
         case CounterActionTypes.INCREMENT:
-          return { count: state.count + 1 };
+          return { ...state, count: state.count + 1 };
         case CounterActionTypes.DECREMENT:
-          return { count: state.count - 1 };
+          return { ...state, count: state.count - 1 };
         case CounterActionTypes.RESET:
-          return { count: 0 };
+          return { ...state, count: 0 };
         case CounterActionTypes.SET:
-          return { count: action.payload };
+          return { ...state, count: action.payload };
         default:
           return state;
       }
@@ -465,13 +465,13 @@ Pour t'aider à mieux comprendre le fonctionnement du hook `useReducer` et comme
     export const reducer = (state: State, action: Action) => {
       switch (action.type) {
         case CounterActionTypes.INCREMENT:
-          return { count: state.count + 1 };
+          return { ...state, count: state.count + 1 };
         case CounterActionTypes.DECREMENT:
-          return { count: state.count - 1 };
+          return { ...state, count: state.count - 1 };
         case CounterActionTypes.RESET:
-          return { count: 0 };
+          return { ...state, count: 0 };
         case CounterActionTypes.SET:
-          return { count: action.payload };
+          return { ...state, count: action.payload };
         default:
           return state;
       }
@@ -517,3 +517,80 @@ Pour t'aider à mieux comprendre le fonctionnement du hook `useReducer` et comme
     ```
   </TabItem>
 </Tabs>
+
+## C'est l'heure des questions !
+
+<Quiz
+  question="Quand utiliser `useReducer` ?"
+  answers={[
+    { label: "A", value: "Pour des états simples" },
+    { label: "B", value: "Pour des états complexes ou des états qui dépendent les uns des autres" },
+  ]}
+  correctAnswer="B"
+>
+  `useReducer` est plus adapté pour gérer des états complexes ou des états qui dépendent les uns des autres.
+
+  Si tu dois stocker un état simple, comme un booléen, un nombre ou une chaîne de caractères, alors `useState` est parfait pour cela.
+
+  Au contraire, si tu as un état complexe ou des états qui dépendent les uns des autres, il est recommandé d'utiliser `useReducer` du fait que `useState` n'est pas le plus performant pour les états complexes.
+</Quiz>
+
+<Quiz
+  question="Quelle est la signature d'un reducer ?"
+  answers={[
+    { label: "A", value: "(state, action) => { /* Code */ }" },
+    { label: "B", value: "(action, state) => { /* Code */ }" },
+    { label: "C", value: "(state) => { /* Code */ }" },
+  ]}
+  correctAnswer="A"
+>
+  La signature d'un reducer est `(state, action) => { /* Code */ }`.
+
+  On récupère bien deux paramètres : `state` et `action`.
+
+  Le `state` est l'état actuel du composant, et l'`action` est un objet qui contient un type et d'autres propriétés.
+
+  En fonction du type de l'action, on retourne un nouvel état.
+</Quiz>
+
+<Quiz
+  question="Pourquoi déverser le contenu de l'état actuel dans le nouvel état ?"
+  answers={[
+    { label: "A", value: "Pour rendre le code plus lisible" },
+    { label: "B", value: "Pour éviter de perdre les propriétés qui ne sont pas modifiées par l'action" },
+    { label: "C", value: "Pour éviter de faire des erreurs" },
+  ]}
+  correctAnswer="B"
+>
+  On déverse le contenu de l'état actuel dans le nouvel état pour éviter de perdre les propriétés qui ne sont pas modifiées par l'action.
+
+  Si on ne déversait pas le contenu de l'état actuel, on perdrait les propriétés qui ne sont pas modifiées par l'action.
+
+  En déversant le contenu de l'état actuel, on s'assure de ne pas perdre ces propriétés.
+</Quiz>
+
+<Quiz
+  question="Pourquoi utiliser des constantes pour les types d'actions ?"
+  answers={[
+    { label: "A", value: "Pour rendre le code plus lisible" },
+    { label: "B", value: "Pour alourdir inutilement le code" },
+    { label: "C", value: "Pour éviter de se tromper dans le type de l'action" },
+  ]}
+  correctAnswer="C"
+>
+  On utilise des constantes pour les types d'actions pour éviter de se tromper dans le type de l'action.
+
+  En définissant des constantes pour les types d'actions, on s'assure que le type de l'action est correct, cohérent et surtout : **existant**.
+</Quiz>
+
+## Conclusion
+
+Alors, pas trop fatigué·e ? 😅  
+Au moins ça en valait la peine ! Tu te feras moins de nœuds au cerveau par la suite dans tes projets React !
+
+Comme tu as pu le voir, `useReducer` est un outil puissant pour gérer des états complexes ou des états qui dépendent les uns des autres.
+
+Même si ici notre exemple n'était qu'un simple compteur, tu peux appliquer tout ce que tu as pu voir dans des cas plus concrets.
+
+Si tu veux aller encore plus loin, n'hésite pas à jeter un œil à la [documentation officielle de React](https://react.dev/reference/react/useReducer) pour `useReducer`.  
+Tu peux également te renseigner sur [Redux](https://redux.js.org) si tu veux aller encore plus loin dans la gestion de l'état de ton application, mais attention, c'est une autre paire de manches ! 😄
