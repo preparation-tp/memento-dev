@@ -23,7 +23,7 @@ import Tabs from '@theme/Tabs';
 Les contextes sont un moyen de diffuser des données au travers des composants, sans avoir à les passer explicitement à chaque composant.  
 Pour faire simple, imaginons une arborescence de plusieurs composants imbriqués les uns dans les autres :
 
-```tsx
+```tsx title="App.tsx" showLineNumbers
 import type { Dispatch, SetStateAction } from 'react';
 
 import { useState } from 'react';
@@ -57,7 +57,7 @@ Si on reprend notre exemple avec le thème clair et sombre, on sait que l'on va 
 
 On va donc préparer le terrain en créant un fichier `ThemeContext.tsx` :
 
-```tsx
+```tsx title="ThemeContext.tsx" showLineNumbers
 import type { Dispatch, SetStateAction } from 'react';
 
 import { createContext } from 'react';
@@ -73,7 +73,7 @@ type ThemeContextType = {
 Mais évidemment, on ne peut pas s'arrêter là.  
 Pour le moment nous n'avons que la forme de notre contexte, il va falloir le créer et le fournir à notre arborescence de composants.
 
-```tsx
+```tsx title="ThemeContext.tsx"
 // On crée notre contexte, avec une valeur par défaut : un thème clair
 const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
@@ -89,4 +89,71 @@ Il ne reste plus qu'à le fournir à notre arborescence de composants en lui cr�
   Il est important de noter que le `Provider` doit être placé **au-dessus** des composants qui vont utiliser le contexte.
 </Admonition>
 
-```tsx
+Un contexte React est un objet qui contient deux propriétés : `Provider` et `Consumer`.  
+Le `Provider` est un composant qui va permettre de diffuser les données du contexte à ses enfants.  
+Le `Consumer` est un composant qui va permettre de récupérer les données du contexte.
+
+```tsx title="App.tsx"
+import { useState } from 'react';
+
+const App = () => {
+  const [theme, setTheme] = useState<Theme>('light');
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <A />
+    </ThemeContext.Provider>
+  );
+};
+```
+
+Mais on peut aller encore plus loin, en créant un `Provider` dédié à notre contexte !  
+Cela permettra de simplifier l'arborescence de composants et de rendre le code plus lisible :
+
+```tsx title="ThemeContext.tsx" {21-29} showLineNumbers
+import type { ReactNode } from 'react';
+
+import { createContext, useState } from 'react';
+
+type Theme = 'light' | 'dark';
+
+type ThemeContextType = {
+  theme: Theme;
+  setTheme: Dispatch<SetStateAction<Theme>>;
+};
+
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  setTheme: () => {},
+});
+
+type ThemeProviderProps = {
+  children: ReactNode;
+};
+
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [theme, setTheme] = useState<Theme>('light');
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export { ThemeContext, ThemeProvider };
+```
+
+Et pour terminer, on va maintenant pouvoir directement imbriquer notre `ThemeProvider` dans notre `App` :
+
+```tsx title="App.tsx" {1,5-7} showLineNumbers
+import { ThemeProvider } from './ThemeContext';
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <A />
+    </ThemeProvider>
+  );
+};
+```
