@@ -23,27 +23,51 @@ import Tabs from '@theme/Tabs';
 Les contextes sont un moyen de diffuser des données au travers des composants, sans avoir à les passer explicitement à chaque composant.  
 Pour faire simple, imaginons une arborescence de plusieurs composants imbriqués les uns dans les autres :
 
-```tsx title="App.tsx" showLineNumbers
-import type { Dispatch, SetStateAction } from 'react';
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```tsx title="App.jsx" showLineNumbers
+    import { useState } from 'react';
 
-import { useState } from 'react';
+    const App = () => {
+      const [theme, setTheme] = useState('light');
 
-type Theme = 'light' | 'dark';
+      return <A theme={theme} setTheme={theme} />
+    };
 
-const App = () => {
-  const [theme, setTheme] = useState<Theme>('light');
+    const A = ({ theme, setTheme }) => {
+      return <B theme={theme} setTheme={setTheme} />
+    };
 
-  return <A theme={theme} setTheme={theme} />
-};
+    const B = ({ theme, setTheme }) => {
+      return <C theme={theme} setTheme={setTheme} />
+    };
+    ```
+  </TabItem>
+  
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="App.tsx" showLineNumbers
+    import type { Dispatch, SetStateAction } from 'react';
 
-const A = ({ theme, setTheme }: { theme: Theme, setTheme: Dispatch<SetStateAction<Theme>> }) => {
-  return <B theme={theme} setTheme={setTheme} />
-};
+    import { useState } from 'react';
 
-const B = ({ theme, setTheme }: { theme: Theme, setTheme: Dispatch<SetStateAction<Theme>> }) => {
-  return <C theme={theme} setTheme={setTheme} />
-};
-```
+    type Theme = 'light' | 'dark';
+
+    const App = () => {
+      const [theme, setTheme] = useState<Theme>('light');
+
+      return <A theme={theme} setTheme={theme} />
+    };
+
+    const A = ({ theme, setTheme }: { theme: Theme, setTheme: Dispatch<SetStateAction<Theme>> }) => {
+      return <B theme={theme} setTheme={setTheme} />
+    };
+
+    const B = ({ theme, setTheme }: { theme: Theme, setTheme: Dispatch<SetStateAction<Theme>> }) => {
+      return <C theme={theme} setTheme={setTheme} />
+    };
+    ```
+  </TabItem>
+</Tabs>
 
 Fastidieux, n'est-ce pas ? On transmet à chaque fois les mêmes données, et ce, à chaque niveau de l'arborescence.
 
@@ -55,31 +79,44 @@ On va pouvoir alors déclarer notre contexte _(qui contiendra les données à di
 Avant de penser à notre contexte, on va réfléchir à ce que l'on veut diffuser et les valeurs par défaut.  
 Si on reprend notre exemple avec le thème clair et sombre, on sait que l'on va vouloir diffuser la valeur du thème et une fonction pour le changer.
 
-On va donc préparer le terrain en créant un fichier `ThemeContext.tsx` :
+On va donc préparer le terrain en créant un fichier `ThemeContext.jsx` _(ou `ThemeContext.tsx` si tu utilises TypeScript)_ :
 
-```tsx title="ThemeContext.tsx" showLineNumbers
-import type { Dispatch, SetStateAction } from 'react';
+<Tabs>
+  <TabItem value="js" label="JavaScript">
+    ```tsx title="ThemeContext.jsx" showLineNumbers
+    import { createContext } from 'react';
 
-import { createContext } from 'react';
+    // On crée notre contexte, avec une valeur par défaut : un thème clair
+    const ThemeContext = createContext({
+      theme: 'light',
+      setTheme: () => {},
+    });
+    ```
+  </TabItem>
 
-type Theme = 'light' | 'dark';
+  <TabItem value="ts" label="TypeScript">
+    ```tsx title="ThemeContext.tsx" showLineNumbers
+    import type { Dispatch, SetStateAction } from 'react';
 
-type ThemeContextType = {
-  theme: Theme;
-  setTheme: Dispatch<SetStateAction<Theme>>;
-};
-```
+    import { createContext } from 'react';
 
-Mais évidemment, on ne peut pas s'arrêter là.  
-Pour le moment nous n'avons que la forme de notre contexte, il va falloir le créer et le fournir à notre arborescence de composants.
+    // On crée un type pour les valeurs de thème
+    type Theme = 'light' | 'dark';
 
-```tsx title="ThemeContext.tsx"
-// On crée notre contexte, avec une valeur par défaut : un thème clair
-const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light',
-  setTheme: () => {},
-});
-```
+    // On crée un type pour notre contexte
+    type ThemeContextType = {
+      theme: Theme;
+      setTheme: Dispatch<SetStateAction<Theme>>;
+    };
+
+    // On crée notre contexte, avec une valeur par défaut : un thème clair
+    const ThemeContext = createContext<ThemeContextType>({
+      theme: 'light',
+      setTheme: () => {},
+    });
+    ```
+  </TabItem>
+</Tabs>
 
 ## Fournir un contexte
 
@@ -219,46 +256,46 @@ On va se retrouver avec une arborescence de composants qui va devenir de plus en
 Et c'est ça, le **context hell**.
 
 <Admonition type="example" title="Exemple de context hell">  
-  ```tsx
-root.render(
-  <StrictMode>
-    <UserProvider>
-      <ThemeProvider>
-        <LanguageProvider>
-          <PostProvider>
-            <SettingsProvider>
-              <SocketProvider>
-                <FriendProvider>
-                  <NotificationProvider>
-                    <ChatProvider>
-                      <MusicProvider>
-                        <VideoProvider>
-                          <GameProvider>
-                            <WeatherProvider>
-                              <NewsProvider>
-                                <CalendarProvider>
-                                  <TaskProvider>
-                                    <NoteProvider>
-                                      <App />
-                                    </NoteProvider>
-                                  </TaskProvider>
-                                </CalendarProvider>
-                              </NewsProvider>
-                            </WeatherProvider>
-                          </GameProvider>
-                        </VideoProvider>
-                      </MusicProvider>
-                    </ChatProvider>
-                  </NotificationProvider>
-                </FriendProvider>
-              </SocketProvider>
-            </SettingsProvider>
-          </PostProvider>
-        </LanguageProvider>
-      </ThemeProvider>
-    </UserProvider>
-  </StrictMode>
-);
+  ```jsx title="index.tsx" showLineNumbers
+  root.render(
+    <StrictMode>
+      <UserProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <PostProvider>
+              <SettingsProvider>
+                <SocketProvider>
+                  <FriendProvider>
+                    <NotificationProvider>
+                      <ChatProvider>
+                        <MusicProvider>
+                          <VideoProvider>
+                            <GameProvider>
+                              <WeatherProvider>
+                                <NewsProvider>
+                                  <CalendarProvider>
+                                    <TaskProvider>
+                                      <NoteProvider>
+                                        <App />
+                                      </NoteProvider>
+                                    </TaskProvider>
+                                  </CalendarProvider>
+                                </NewsProvider>
+                              </WeatherProvider>
+                            </GameProvider>
+                          </VideoProvider>
+                        </MusicProvider>
+                      </ChatProvider>
+                    </NotificationProvider>
+                  </FriendProvider>
+                </SocketProvider>
+              </SettingsProvider>
+            </PostProvider>
+          </LanguageProvider>
+        </ThemeProvider>
+      </UserProvider>
+    </StrictMode>
+  );
   ```
 
   Maintenant, demande à un développeur d'inverser le provider `UserProvider` avec le provider `NoteProvider`.  
