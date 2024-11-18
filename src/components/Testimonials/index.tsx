@@ -77,7 +77,7 @@ const Testimonials = (props: TestimonialsProps) => {
 
   return (
     <>
-      <ul className="list-none !m-0 grid grid-cols-4 gap-2">
+      <ul className="list-none !m-0 grid sm:grid-cols-2 xl:grid-cols-3 gap-2">
         {testimonials.map((testimonial, index) => (
           <li className="!m-0" key={index}>
             <TestimonialCardButton
