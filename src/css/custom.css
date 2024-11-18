@@ -175,8 +175,11 @@
   @apply ml-4;
 }
 .markdown ol li + li,
-.markdown ul li + li {
+.markdown ul li + li:not(.\!m-0) {
   @apply !mt-1;
+}
+.markdown ul li + li:not(.theme-code-block).\!m-0 {
+  margin: 0 !important;
 }
 
 .markdown
