@@ -1,7 +1,7 @@
 ---
 sidebar_position: 99999
 title: "Retours d'expériences"
-description: "Découvre les témoignages de candidats sur leur soutenance de titre professionnel : leurs ressentis avant, pendant et après leur passage devant le jury."
+description: "Découvre les témoignages de candidats et jury sur leur soutenance de titre professionnel : leurs ressentis avant, pendant et après leur passage devant le jury."
 ---
 
 import Testimonials from '@site/src/components/Testimonials';
@@ -14,13 +14,34 @@ et c'est parfaitement normal !
 Même si chaque expérience est différente d'un candidat à l'autre, tu retrouveras des témoignages de candidats qui ont
 accepté de partager leur ressenti avant, pendant et après leur passage devant le jury.
 
-## Les témoignages
+Tu retrouveras également des témoignages de membres de jury qui partagent leur point de vue sur la soutenance de manière générale.
 
-<Testimonials />
+## Les témoignages candidats
+
+<Testimonials type="candidates" />
 
 {/*
 Pour ajouter un nouveau témoignage, rends-toi dans le fichier `/src/data/testimonials.tsx` et ajoute un nouvel objet
-dans le tableau `testimonials` en suivant le type suivant :
+dans le tableau `candidateTestimonials` en suivant le type suivant :
+
+```tsx
+type Testimonial = {
+  name?: string; // `Undefined` si tu souhaites rester anonyme
+  date: Date; // Date du jour de la rédaction du témoignage
+  before: string[]; // Liste de phrases sur ton ressenti avant la soutenance
+  during: string[]; // Liste de phrases sur ton ressenti pendant la soutenance
+  after: string[]; // Liste de phrases sur ton ressenti après la soutenance
+};
+```
+*/}
+
+## Les témoignages jury
+
+<Testimonials type="jury" />
+
+{/*
+Pour ajouter un nouveau témoignage, rends-toi dans le fichier `/src/data/testimonials.tsx` et ajoute un nouvel objet
+dans le tableau `juryTestimonials` en suivant le type suivant :
 
 ```tsx
 type Testimonial = {

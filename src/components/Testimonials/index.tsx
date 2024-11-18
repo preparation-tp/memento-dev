@@ -2,7 +2,10 @@ import type { Testimonial } from "../../data/testimonials";
 import type { Options } from "react-markdown";
 
 import TestimonialCardButton from "../TestimonialCardButton";
-import testimonials from "../../data/testimonials";
+import {
+  candidateTestimonials,
+  juryTestimonials,
+} from "../../data/testimonials";
 import { useState, useMemo } from "react";
 import Markdown from "react-markdown";
 import clsx from "clsx";
@@ -11,7 +14,11 @@ const markdownOptions: Options = {
   allowedElements: ["strong", "em", "p"],
 };
 
-const Testimonials = () => {
+type TestimonialsProps = {
+  type: "candidates" | "jury";
+};
+
+const Testimonials = (props: TestimonialsProps) => {
   const [selectedTestimonial, setSelectedTestimonial] =
     useState<Testimonial | null>(null);
   const [isOpened, setIsOpened] = useState(false);
@@ -23,6 +30,17 @@ const Testimonials = () => {
       setIsOpened(null);
     }
   };
+
+  const testimonials = useMemo(() => {
+    switch (props.type) {
+      case "candidates":
+        return candidateTestimonials;
+      case "jury":
+        return juryTestimonials;
+      default:
+        return [];
+    }
+  }, [props.type]);
 
   const changeSelectedTestimonial = (testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial);

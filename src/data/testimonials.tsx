@@ -6,7 +6,7 @@ export type Testimonial = {
   after: string[];
 };
 
-const testimonials: Testimonial[] = [
+export const candidateTestimonials: Testimonial[] = [
   {
     name: "Christian HUMBERT",
     date: new Date("2024-11-18"),
@@ -44,4 +44,24 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export default testimonials;
+export const juryTestimonials: Testimonial[] = [
+  {
+    name: "Gauthier DANIELS",
+    date: new Date("2024-11-18"),
+    before: [
+      "Avoir été candidat m'a permis de comprendre ce que les candidats ressentent.",
+      "J'essaye de mettre les candidats à l'aise, de les rassurer, de les guider.",
+      "En prenant le temps de bien lire les dossiers, je prends note des points à aborder lors de l'oral.",
+    ],
+    during: [
+      "J'essaye de poser des questions ouvertes, de ne pas donner la réponse, mais de guider le candidat.",
+      "Je veux m'assurer que le candidat a compris ce qu'il a fait, qu'il est capable de l'expliquer.",
+      'Il n\'y a pas de piège ni de "bonne réponse", je souhaite comprendre la réflexion du candidat à une situation donnée.',
+    ],
+    after: [
+      "Je prends le temps de donner un retour au candidat, de lui expliquer pourquoi j'ai posé telle question.",
+      "Je lui donne des pistes d'amélioration, des axes de travail pour la suite.",
+      "Il est important de partager son expérience aux candidats et de leur permettre d'avancer efficacement dans leur projet professionnel.",
+    ],
+  },
+];
