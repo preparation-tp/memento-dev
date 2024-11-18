@@ -37,6 +37,10 @@ const examsLinks = [
     to: "/titres-professionnels/se-preparer",
   },
   {
+    label: "Retours d'expériences",
+    to: "/titres-professionnels/retours",
+  },
+  {
     label: "Archives",
     to: "/category/%EF%B8%8F-archives",
   },
