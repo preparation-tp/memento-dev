@@ -11,10 +11,13 @@ const TestimonialCardButton = (props: TestimonialProps) => {
   };
 
   return (
-    <button onClick={handleClick}>
+    <button onClick={handleClick} className="button w-full">
       <h3>{props.testimonial.name || "Anonyme"}</h3>
 
-      <time dateTime={props.testimonial.date.toISOString()}>
+      <time
+        className="italic text-sm"
+        dateTime={props.testimonial.date.toISOString()}
+      >
         {props.testimonial.date.toLocaleDateString("fr-FR", {
           year: "numeric",
           month: "long",

@@ -19,9 +19,9 @@ const Testimonials = () => {
 
   return (
     <>
-      <ul className="list-none">
+      <ul className="list-none !m-0 grid grid-cols-4 gap-2">
         {testimonials.map((testimonial, index) => (
-          <li key={index}>
+          <li className="!m-0" key={index}>
             <TestimonialCardButton
               setSelectedTestimonial={setSelectedTestimonial}
               testimonial={testimonial}
