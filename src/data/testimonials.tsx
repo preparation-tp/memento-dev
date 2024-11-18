@@ -22,7 +22,7 @@ export const candidateTestimonials: Testimonial[] = [
     after: [
       'Tu te dis "J\'ai gagné la finale !!".',
       "Tant de temps de formation, des heures de travail pour écrire les dossiers...",
-      "Le tout, c'est d'être fier de ton taf, quelque soit le résultat. Et même si tu ne l'as pas du premier coup, les échecs forments à la réussite 😉",
+      "Le tout, c'est d'être fier de ton taf, quelque soit le résultat. Et même si tu ne l'as pas du premier coup, les échecs forment à la réussite 😉",
     ],
   },
   {
