@@ -4,6 +4,8 @@ title: "Retours d'expériences"
 description: "Découvre les témoignages de candidats sur leur soutenance de titre professionnel : leurs ressentis avant, pendant et après leur passage devant le jury."
 ---
 
+import Testimonials from '@site/src/components/Testimonials';
+
 # Retours d'expériences sur la soutenance de titre professionnel
 
 Tu te poses peut-être des questions sur comment est vécue la soutenance de titre professionnel par les candidats,
@@ -13,6 +15,24 @@ Même si chaque expérience est différente d'un candidat à l'autre, tu retrouv
 accepté de partager leur ressenti avant, pendant et après leur passage devant le jury.
 
 ## Les témoignages
+
+<Testimonials />
+
+{/*
+Pour ajouter un nouveau témoignage, rends-toi dans le fichier `/src/data/testimonials.tsx` et ajoute un nouvel objet
+dans le tableau `testimonials` en suivant le type suivant :
+
+```tsx
+type Testimonial = {
+  name?: string; // Undefined si tu souhaites rester anonyme
+  date: Date; // Date du jour de la rédaction du témoignage
+  before: string[]; // Liste de phrases sur ton ressenti avant la soutenance
+  during: string[]; // Liste de phrases sur ton ressenti pendant la soutenance
+  after: string[]; // Liste de phrases sur ton ressenti après la soutenance
+};
+
+```
+*/}
 
 ## Contribuer à cette page
 

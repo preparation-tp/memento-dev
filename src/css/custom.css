@@ -181,7 +181,7 @@
 
 .markdown
   *:not(summary, .tabs__item, .tabs, .tab-content *, .no-mt, .no-mt *, p, li *)
-  + *:not(br, ul, ol, h1, h2, h3, h4, h5, h6, li) {
+  + *:not(br, ul, ol, h1, h2, h3, h4, h5, h6, li, .no-mt) {
   @apply !mt-4;
 }
 .token-line,
@@ -230,4 +230,8 @@ footer.footer.footer--dark {
 
 button.button.button--primary {
   @apply bg-violet-800 text-violet-200 hover:bg-violet-900;
+}
+
+ul.list-none li {
+  list-style: none;
 }
