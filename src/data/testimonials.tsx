@@ -16,7 +16,7 @@ export const candidateTestimonials: Testimonial[] = [
     ],
     during: [
       "J'ai eu la chance d'avoir un jury qui a su me mettre à l'aise. J'ai également eu la présence d'un accompagnateur _(aménagement d'épreuves)_, ce qui a contribué à me sentir plus serein.",
-      "Les premières secondes semblent toujours un peu longue, mais une fois lancé on oublie qu'on est jugé.",
+      "Les premières secondes semblent toujours un peu longues, mais une fois lancé on oublie qu'on est jugé.",
       "C'est surtout lors des questions du jury qu'il faut bien s'accrocher.",
     ],
     after: [
