@@ -11,8 +11,10 @@ const TestimonialCardButton = (props: TestimonialProps) => {
   };
 
   return (
-    <button onClick={handleClick} className="button w-full">
-      <h3>{props.testimonial.name || "Anonyme"}</h3>
+    <button onClick={handleClick} className="button w-full h-full">
+      <h3 className="text-center text-wrap">
+        {props.testimonial.name || "Anonyme"}
+      </h3>
 
       <time
         className="italic text-sm"
