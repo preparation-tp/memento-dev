@@ -42,6 +42,44 @@ export const candidateTestimonials: Testimonial[] = [
       "Sentiment de soulagement sur 2-3 jours, puis montage russe d'émotions car le processus de reconversion n'est pas fini.",
     ],
   },
+  {
+    name: "Florence CARLIN",
+    date: new Date("2024-11-19"),
+    before: [
+      "Je suis du genre pas à l'aise en public, d'autant plus en présentation (j'ai un TDAH et beaucoup de mal à trouver mes mots en situation de stress...).",
+      "Du coup j'appréhendais juuuste un peu le passage devant le jury.",
+      "Par contre, j'étais plutôt fière de mon dossier projet donc ça compensait un peu le stress quand même !",
+    ],
+    during: [
+      "Les jurés m'ont mis plus à l'aise que je ne l'aurais pensé, mais ce qui m'a destabilisé c'est leur côté totalement inexpressifs pendant la présentation !",
+      "J'ai réussi à plutôt bien gérer quand même, mais ça fait vraiment bizarre.",
+      "J'ai bien aimé le passage des questions, où ils n'ont pas cherché à me \"piéger\" en posant la question de différentes manières pour s'assurer que je comprenais ce que je faisais au-delà du bafouillage.",
+      "On a eu des échanges très intéressants, notamment sur la façon dont j'avais un point de notre BDD et c'était cool !",
+    ],
+    after: [
+      "Très fière, très soulagée et plus de confiance en moi qu'avant le passage !",
+    ],
+  },
+  {
+    date: new Date("2024-11-20"),
+    before: [
+      "Je suis timide et pas du tout à l’aise à parler devant un « public », on conseille souvent de ne pas apprendre par cœur son texte mais c’est ce que j’ai fait.",
+      "Venant du monde de la logistique, je ne suis également pas à l'aise avec tout ce qui est logiciel de traitement de texte. J'ai passé énormément de temps à faire mes dossiers et ma présentation, mais le principal c'est de montrer au jury que vous avez bossé.",
+      "D'autant plus que j'avais repris mon poste en même temps, ce n'était pas évident. J'ai fini ma présentation PowerPoint 2 jours avant ma soutenance.",
+    ],
+    during: [
+      "Ayant beaucoup répété, je finissais en 25 minutes en général, ce qui m'a donné un peu de temps pour de l'improvisation. J'ai finalement terminé ma présentation en 29 minutes.",
+      "Ça m'a déstressé pour les questions ! Ça s'est même terminé en discussion, c'était franchement cool 😎",
+      "Je pense que ça ne se serait pas passé comme ça si je n'avais pas répété autant !",
+      "Le jury m'a félicité pour la soutenance en me reprochant uniquement mon ton monotone pendant la soutenance (l'inconvénient de tout apprendre par cœur).",
+    ],
+    after: [
+      "Je suis sorti avec un bon sentiment, même si j'ai beaucoup galéré à monter mes dossiers. Mais comme avec mon équipe nous avons beaucoup bossé sur le projet, je savais au fond de moi que c'était bon !",
+      "Fierté d'avoir réussi, surtout quand on n'est pas à l'aise.",
+      "J'espère que mon témoignage peut aider des personnes qui sont dans la même situation que moi. À savoir que j'ai redoublé mon bac à l'époque, parce que je ne travaillais pas assez avant l'examen.",
+      "Je me suis promis de ne plus refaire la même erreur !",
+    ],
+  },
 ];
 
 export const juryTestimonials: Testimonial[] = [
