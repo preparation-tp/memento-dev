@@ -29,6 +29,10 @@ const resourcesLinks = [
 
 const examsLinks = [
   {
+    label: "CDA",
+    to: "/titres-professionnels/CDA/intro",
+  },
+  {
     label: "DWWM",
     to: "/titres-professionnels/DWWM/intro",
   },
