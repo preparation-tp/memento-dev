@@ -1,0 +1,67 @@
+---
+sidebar_position: 3
+title: "Création du MCD"
+description: "Tout en respectant la méthode Merise, on va voir comment créer un Modèle Conceptuel de Données (MCD) pour une base de données."
+tags:
+  - Conception
+  - Modélisation
+  - Base de données
+  - Merise
+  - Dictionnaire de Données
+  - Modèle Conceptuel de Données (MCD)
+  - Modèle Logique de Données (MLD)
+  - Modèle Relationnel de Données (MRD)
+  - Modèle Physique de Données (MPD)
+  - SQL
+  - DWWM
+  - CDA
+---
+
+import Admonition from '@theme/Admonition';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+# Merise - Le Dictionnaire de Données
+
+Le **Dictionnaire de Données** est un document qui contient toutes les informations sur les données qui vont être stockées dans la base de données.
+
+Ici, on ne va pas parler de tables, de colonnes ou de relations, mais uniquement de données. Ces informations nous sont données par le client,
+et il est important que le dictionnaire reste compréhensible par le client !
+
+Voici un exemple de dictionnaire de données, à partir des informations données par le client :
+
+<Tabs>
+  <TabItem value="employee" label="Salarié">
+    | Nom de la donnée     | Type de donnée | Description                                                   | Taille attendue | Taille fixe ? | Exemple(s) de valeur     |
+    |----------------------|----------------|---------------------------------------------------------------|-----------------|---------------|--------------------------|
+    | adresse email        | Alphanumérique | -                                                             | N/A             | N/A           | elodie.martin@exemple.fr |
+    | prénom               | Alphabétique   | -                                                             | 50 caractères   | Variable      | Élodie, Christophe       |
+    | nom                  | Alphabétique   | -                                                             | 50 caractères   | Variable      | Martin, Dupont           |
+    | adresse postale      | Alphanumérique | Numéro de rue, type de voie et nom de la voie                 | N/A             | N/A           | 1 rue de la Paix         |
+    | code postal          | Numérique      | -                                                             | 5 caractères    | Fixe          | 75000, 01000             |
+    | ville                | Alphabétique   | -                                                             | 50 caractères   | Variable      | Paris, Lyon              |
+    | mot de passe         | Alphanumérique | Mot de passé sécurisé _(haché)_                               | 80 caractères   | Variable      | -                        |
+    | manager de l'employé | Liaison        | Liaison vers le manager du salarié                            | N/A             | N/A           | N/A                      |
+    | employés managés     | Liaison        | Liste des salariés gérés par ce manager _(également salarié)_ | N/A             | N/A           | N/A                      |
+  </TabItem>
+
+  <TabItem value="task" label="Tâche">
+    | Nom de la donnée          | Type de donnée | Description                             | Taille attendue | Taille fixe ? | Exemple(s) de valeur |
+    |---------------------------|----------------|-----------------------------------------|-----------------|---------------|----------------------|
+    | nom                       | Alphanumérique | -                                       | 255 caractères  | Variable      | -                    |
+    | est réalisée ?            | Vrai/Faux      | Indique si la tâche est réalisée ou non | N/A             | N/A           | Vrai, Faux           |
+    | projet                    | Liaison        | Projet auquel la tâche est rattachée    | N/A             | N/A           | N/A                  |
+  </TabItem>
+
+  <TabItem value="project" label="Projet">
+    | Nom de la donnée | Type de donnée | Description                          | Taille attendue | Taille fixe ? | Exemple(s) de valeur |
+    |------------------|----------------|--------------------------------------|-----------------|---------------|----------------------|
+    | nom              | Alphanumérique | -                                    | 255 caractères  | Variable      | Mon super projet     |
+    | tâches           | Liaison        | Liste des tâches associées au projet | N/A             | N/A           | N/A                  |
+  </TabItem>
+</Tabs>
+
+Comme tu peux voir, il n'y a aucun terme technique dans ce document 😉  
+Cet exemple, on va le mettre de côté car en vrai, il présente quelques notions intermédiaires qui pourraient être déroutantes pour une entrée en matière.
+
+Mais on y reviendra une fois toutes les étapes expliquées, comme ça tu auras un exemple un poil plus concret pour te représenter le lien entre les étapes !

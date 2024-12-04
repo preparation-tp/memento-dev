@@ -1,0 +1,141 @@
+---
+sidebar_position: 3
+title: "Création du MCD"
+description: "Tout en respectant la méthode Merise, on va voir comment créer un Modèle Conceptuel de Données (MCD) pour une base de données."
+tags:
+  - Conception
+  - Modélisation
+  - Base de données
+  - Merise
+  - Dictionnaire de Données
+  - Modèle Conceptuel de Données (MCD)
+  - Modèle Logique de Données (MLD)
+  - Modèle Relationnel de Données (MRD)
+  - Modèle Physique de Données (MPD)
+  - SQL
+  - DWWM
+  - CDA
+---
+
+import Admonition from '@theme/Admonition';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+# Merise - Le MCD
+
+Ce modèle a pour objectif de représenter sous forme graphique les données et les relations entre ces données.  
+Avant le MCD, nous sommes en théorie en possession du dictionnaire de données
+qui contient toutes les informations qui vont nous être utiles.
+
+Il est important de noter que l'on doit rester le plus clair possible dans la représentation des données,
+car ce modèle doit être compris par tout le monde : y compris le client final.
+
+## Les définitions
+
+Chaque regroupement de données est appelé une entité, et chaque entité est composée d'attributs.  
+Les relations entre les entités sont représentées par trois éléments :
+- Un trait reliant les entités _(ou la même entité dans le cas d'une relation réflexive)_
+- Un verbe qui décrit la relation à l'**infinitif**
+- Une cardinalité pour quantifier la relation entre les entités
+
+- **Entité** : Regroupement de données, représentée par un rectangle jaune dans le schéma ci-dessous.
+- **Attribut** : Propriété d'une entité
+    - **Discriminant** _(ou déterminant)_ : Attribut qui permet de distinguer les occurrences d'une entité. Il est souligné et en gras dans le schéma.
+    - **Attribut unique** : Attribut qui ne peut pas avoir la même valeur pour deux occurrences d'une entité. Il est en gras dans le schéma.
+- **Relation** : Lien entre deux entités, représentée par un trait reliant les entités.
+- **Cardinalité** : Nombre d'occurrences _(minimum et maximum)_ d'une entité qui peuvent être associées à une occurrence d'une autre entité.
+
+## Exemple de MCD
+
+C'est pas clair ? Prenons alors ce modèle !
+![Modèle Conceptuel de Données, MCD, Merise](./img/mcd-guide.webp)
+
+Ce modèle nous indique plusieurs choses :
+
+<Tabs>
+  <TabItem value="entities" label="Entités">
+    - Deux entités sont présentes :
+        - `Entité 1` et `Entité 2`
+    - L'entité `Entité 1` possède quatre attributs :
+        - `code entité 1` _(discriminant)_
+        - `attribut 2`
+        - `attribut 3`
+        - `attribut 4`
+    - L'entité `Entité 2` possède trois attributs :
+        - `code entité 2` _(discriminant)_
+        - `attribut 2`
+        - `attribut 3`
+
+    <Admonition type="quote" title="Pourquoi il n'y a pas d'ID dans le schéma ?">
+      Avant d'expliquer **pourquoi** il n'y a pas d'ID, je me permets de faire un petit écart pour expliquer **ce qu'est** un ID.
+
+      `ID`, c'est le nom qu'on donne pour parler de l'identifiant qui se doit d'être unique afin d'identifier facilement une ressource d'une autre.  
+      
+      Il s'agit, en réalité, d'une donnée purement technique.  
+      Après tout, c'est pas le client final qui va s'intéresser à l'ID de ses données, n'est-ce pas ?
+
+      Comme le MCD se doit d'être **non-technique**, le terme `ID` n'est donc pas pertinent et surtout : n'a pas sa place.
+
+      En reprenant le schéma ci-dessus, on peut dire que le `code entité 1` et le `code entité 2` sont les déterminants de leurs entités respectives.  
+      Une fois qu'on fera nos schémas techniques _(MLD, MRD, MPD)_, on pourra alors utiliser le terme `ID` !
+    </Admonition>
+  </TabItem>
+
+  <TabItem value="relations" label="Relations et cardinalités">
+    - Une relation :
+        - Entre `Entité 1` et `Entité 2`
+    - Cardinalité :
+        - `Entité 1` peut posséder de 1 à 1 occurrence de `Entité 2`
+        - `Entité 2` peut être possédée par 0 à n occurrences de `Entité 1`
+    - Verbe :
+        - `POSSÉDER`
+        
+    Si on revient à la déclaration faite plus tôt, on remarque qu'il est effectivement à l'**infinitif**.  
+    Mais alors, pourquoi c'est important ?
+
+    En fait, le verbe à l'infinitif permet de faciliter la compréhension des relations et ce, dans les deux sens.  
+    
+    Mais parlons des cardinalités parce qu'on y retrouve quelque chose de bizarre : `n`.  
+    C'est quoi `n` ?
+
+    `n` est une valeur qui signifie que l'entité peut être possédée par un nombre indéfini d'occurrences de l'autre entité.
+    C'est une notation que l'on retrouvera très fréquemment, puisque la majorité du temps on ne peut pas déterminer le nombre exact d'occurrences.
+
+    <Admonition type="quote" label="Mais est-il possible d'indiquer une valeur définie, comme `42` par exemple ?">
+      Oui ! Si tu connais à l'avance le nombre maximal d'occurrences et que ce nombre est fixe _(peu importe le contexte)_, tu peux tout à fait le spécifier.
+
+      Par exemple : demain on te demande de modéliser une base de données avec deux entités `Année` et `Mois`.
+
+      Tu peux donc représenter la relation de cette manière :
+      
+      > `Année 1,12 - POSSÉDER - 1,1 Mois`  
+      > `Année` possède de 1 à 12 occurrences de `Mois`  
+      > `Mois` est possédée par une seule occurrence de `Année`
+
+      C'est un exemple simple, mais qui montre bien que c'est possible !
+    </Admonition>
+  </TabItem>
+</Tabs>
+
+Tiens d'ailleurs, autre sujet important pour le **MCD** !
+
+On a vu que certains termes ne sont pas employés _(comme `ID`, mais également `tables`, `clé primaire` ou encore `clé étrangère`)_
+pour respecter la nature du document qui se veut non-technique.  
+Mais il y a autre chose qui peut nous sauter aux yeux : c'est écrit en français !
+
+La raison est identique à ce que j'ai pu rabâcher plus tôt : le document doit être compris par tout le monde.  
+Et si le client final est francophone, il est donc plus simple de lui présenter un document dans sa langue maternelle.
+
+<Admonition type="quote" title="Mouais, toujours pas convaincu par le MCD">
+  Tant pis pour toi ! 😜  
+  Si je devais te donner un argument majeur, ce serait celui-ci. Après j'abandonne, promis !
+
+  Ton client est un spécialiste dans son domaine, mais toi tu n'y connais rien.  
+  Il te parle de certaines données, tu arrives à peu près à comprendre comment ça fonctionne, mais tu n'as pas toutes les informations.
+
+  D'une part, le dictionnaire de données t'en donne la nature et "qui" _(l'entité)_ possède ces données.  
+  Par contre, comme le MCD te permet de quantifier et de qualifier les relations entre les entités, tu as une vision plus claire de ce que le client veut.
+
+  Et si le client comprend et valide le MCD, c'est que tu as bien compris ses besoins et que tu peux donc passer à la suite du projet sans foncer dans le mur,
+  ce qui t'obligerai de déconstruire et de reconstruire une partie de ton application.
+</Admonition>
