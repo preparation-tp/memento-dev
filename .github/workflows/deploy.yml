@@ -20,23 +20,6 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
-
-      - name: Install pnpm
-        run: corepack enable && corepack prepare pnpm@latest --activate
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build Docusaurus
-        run: pnpm run build
-
-      - name: Install rsync
-        run: sudo apt-get install -y rsync
-
       - name: Deploy to VPS
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
@@ -52,6 +35,14 @@ jobs:
           VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
         run: |          
           ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && cd $VPS_DEPLOY_PATH && pnpm install"
+
+      - name: Build application
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
+        run: |          
+          ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && cd $VPS_DEPLOY_PATH && pnpm build"
           
       - name: Restart Docusaurus server
         env:
