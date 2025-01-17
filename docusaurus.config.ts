@@ -69,6 +69,15 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
+  scripts: [
+    {
+      src: "https://cloud.umami.is/script.js",
+      async: true,
+      defer: true,
+      "data-website-id": "ba70261e-d145-4dd1-b0e8-27cbf4927b74",
+    },
+  ],
+
   markdown: {
     mermaid: true,
   },
