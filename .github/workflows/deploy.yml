@@ -20,13 +20,13 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to VPS
+      - name: Pull main branch on server
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
-        run: |
-          rsync -avz -q --delete -e "ssh -i ~/.ssh/id_ed25519" ./ $VPS_USER@$VPS_HOST:$VPS_DEPLOY_PATH --exclude=node_module --exclude=.git
+        run: |          
+          ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && cd $VPS_DEPLOY_PATH && git pull"
 
       - name: Install dependencies on server
         env:
@@ -36,7 +36,7 @@ jobs:
         run: |          
           ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && cd $VPS_DEPLOY_PATH && pnpm install"
 
-      - name: Build application
+      - name: Build application on server
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
@@ -49,4 +49,4 @@ jobs:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
-          ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && pm2 restart 8"
+          ssh -i ~/.ssh/id_ed25519 $VPS_USER@$VPS_HOST "source /home/debian/.nvm/nvm.sh && pm2 restart 2"
